@@ -21,7 +21,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     const svgPanZoomOptions: SvgPanZoom.Options = {
       maxZoom: 2.0,
-      minZoom: 0.2,
+      minZoom: 0.0,
       zoomScaleSensitivity: 0.05,
       center: true
       
@@ -41,12 +41,4 @@ export class MapComponent implements OnInit, AfterViewInit {
     }
     this.svgPanZoomMap.zoom(newZoom);
   }
-
-
-  
-
- 
-
-  
-
 }

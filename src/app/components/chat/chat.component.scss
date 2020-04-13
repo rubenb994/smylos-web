@@ -1,0 +1,49 @@
+.show-me {
+    transition: transform 0.3s ease-in-out;
+    transform: translate3d(-300px, 0, 0);
+}
+
+.chat {
+    position: absolute;
+    background-color:#f1f1e6;
+    top: 0;
+    right: 0px;
+    height: 100%;
+    width: 300px;
+}
+
+.buttonBar {
+    position: absolute;
+    background:#cca62b;
+    top: 0;
+    right: 297px;
+    height: 100%;
+    width: 3px;
+}
+
+.locationInfo {
+    position: absolute;
+    top: 200px;
+    right: 15px;
+    height: 100%;
+    width: 270px;
+}
+
+.button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 20px;
+    color: #0a317f;
+    background-color:#f1f1e6;
+    
+    transition: 0.3s;
+    text-align: left;
+    cursor: pointer;
+    
+    &:hover {
+        background: white;
+        border-color: #cca62b;
+
+    }
+}
+
