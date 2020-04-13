@@ -19,7 +19,7 @@ p {
 	left: 50px;
 	top: 50px;
 	display:block;
-	background-color: rgb(255, 233, 193);
+	background-color: #f1f1e6;
 	height: 40px;
 	width: 40px;
 	border-radius: 50%;
@@ -30,4 +30,11 @@ p {
 .buttonMin {
 	left: 50px;
 	top: 100px;
+}
+
+// #container:hover + #cube
+
+
+#bigSmileOffice:hover + #bigSmileDot {
+	opacity: 1;
 }
