@@ -36,7 +36,7 @@ export class MapComponent implements OnInit, AfterViewInit {
       minZoom: 1,
       zoomScaleSensitivity: 0.05,
       center: true
-    }
+    };
     this.svgPanZoomMap = SvgPanZoom('#smylos-map', svgPanZoomOptions);
 
     this.bigSmileOfficeDot = document.getElementById('bigSmileDot');
