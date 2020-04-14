@@ -37,8 +37,8 @@ export class MapComponent implements OnInit, AfterViewInit {
       zoomScaleSensitivity: 0.05,
       center: true
     };
-    this.svgPanZoomMap = SvgPanZoom('#smylos-map', svgPanZoomOptions);
 
+    this.svgPanZoomMap = SvgPanZoom('#smylos-map', svgPanZoomOptions);
     this.bigSmileOfficeDot = document.getElementById('bigSmileDot');
     this.executiveOfficeDot = document.getElementById('executiveOfficeDot');
     this.taxOfficeDot = document.getElementById('taxOfficeDot');
@@ -140,5 +140,4 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.epeosStoreDot.style.opacity = '0';
     this.slumsDot.style.opacity = '0';
   }
-
 }
