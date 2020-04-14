@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   title = 'smylos-web';
   public displayToolbar = true;
   public displayLogo = true;
+  public displayLocationItem = true;
 
   ngOnInit(): void {
 
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit {
   public onWindowResize(): void {
     this.evaluateToolbarDisplay();
     this.evaluateLogoDisplay();
+    this.evaluateLocationItemDisplay();
   }
 
   public evaluateToolbarDisplay(): void {
@@ -34,6 +36,14 @@ export class AppComponent implements OnInit {
       this.displayLogo = false;
     } else {
       this.displayLogo = true;
+    }
+  }
+
+  public evaluateLocationItemDisplay(): void {
+    if (window.innerWidth < 800) {
+      this.displayLocationItem = false;
+    } else {
+      this.displayLocationItem = true;
     }
   }
 }

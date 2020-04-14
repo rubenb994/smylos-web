@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MapComponent } from './components/map/map.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { ChatComponent } from './components/chat/chat.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { LocationItemsComponent } from './components/location-items/location-items.component';
 
@@ -14,7 +13,6 @@ import { LocationItemsComponent } from './components/location-items/location-ite
     AppComponent,
     MapComponent,
     ToolbarComponent,
-    ChatComponent,
     LogoComponent,
     LocationItemsComponent
   ],

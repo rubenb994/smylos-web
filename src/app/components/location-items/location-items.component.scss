@@ -12,15 +12,6 @@
     width: 300px;
 }
 
-.buttonBar {
-    position: absolute;
-    background:#cca62b;
-    top: 0;
-    right: 297px;
-    height: 100%;
-    width: 3px;
-}
-
 .locationInfo {
     position: absolute;
     top: 200px;
@@ -34,6 +25,8 @@
     margin-top: 10px;
     padding: 10px 20px;
     background-color: #ffffff ;
+    color: #0a317f;
+    border-radius: 25px;
     border: 0px solid;
     transition: 0.3s;
     text-align: left;

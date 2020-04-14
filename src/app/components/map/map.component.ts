@@ -140,4 +140,14 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.epeosStoreDot.style.opacity = '0';
     this.slumsDot.style.opacity = '0';
   }
+
+  public onMouseOverGroup(element: SVGElement): void {
+    const image = element.firstChild as SVGImageElement;
+    image.style.opacity = '1';
+  }
+
+  public onMouseOutGroup(element: SVGElement): void {
+    const image = element.firstChild as SVGImageElement;
+    image.style.opacity = '0';
+  }
 }

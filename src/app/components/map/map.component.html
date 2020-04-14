@@ -1,6 +1,7 @@
 <div class="map-container">
 	<button class="buttonPlus" (click)="onClickZoomIn()">+</button>
 	<button class="buttonPlus buttonMin" (click)="onClickZoomOut()">-</button>
+	<i class="material-icons">audiotrack</i>
 
 
 	<svg version="1.1" id="smylos-map" x="0px" y="0px" viewBox="0 0 1338.073 1041.33"
@@ -14,9 +15,13 @@
 		<g id="smylos-map">
 			<g id="Layer_2_1_">
 
-				<g id="bigSmileOfficeContainer">
+				<g #bigSmileOfficeContainer (mouseover)="onMouseOverGroup(bigSmileOfficeContainer)"
+					(mouseout)="onMouseOutGroup(bigSmileOfficeContainer)">
 					<image overflow="visible" opacity="0" enable-background="new   " width="106" height="115"
-						id="bigSmileDot" xlink:href="assets/images/dot.png"
+						xlink:href="assets/images/dot.png" transform="matrix(0.24 0 0 0.24 731.876 148.5126)">
+					</image>
+					<image overflow="visible" opacity="0" enable-background="new   " width="106" height="115"
+						id="bigSmileDot" class="dot" xlink:href="assets/images/dot.png"
 						transform="matrix(0.24 0 0 0.24 731.876 148.5126)">
 					</image>
 
@@ -24,7 +29,11 @@
 						fill="#3ACEB8" enable-background="new    " width="96.451" height="65.12" />
 				</g>
 
-				<g id="executiveOfficeContainer">
+				<g #executiveOfficeContainer (mouseover)="onMouseOverGroup(executiveOfficeContainer)"
+					(mouseout)="onMouseOutGroup(executiveOfficeContainer)">
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						xlink:href="assets/images/dot.png" transform="matrix(0.24 0 0 0.24 741.8243 233.6676)">
+					</image>
 					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
 						id="executiveOfficeDot" xlink:href="assets/images/dot.png"
 						transform="matrix(0.24 0 0 0.24 741.8243 233.6676)">
