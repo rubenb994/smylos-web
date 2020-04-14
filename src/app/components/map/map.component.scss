@@ -16,19 +16,25 @@ p {
 
 .buttonPlus {
 	position: fixed;
-	left: 50px;
-	top: 50px;
-	display:block;
+	right: 50px;
+	bottom: 150px;
 	background-color: #f1f1e6;
 	height: 40px;
 	width: 40px;
 	border-radius: 50%;
 	color: #0a317f;
+	vertical-align: middle;
+	text-align: center;
 	border: 0px;
+	
+	&:hover {
+        border: 2px solid;
+	border-color: #cca62b;        
+    }
 }
 
 .buttonMin {
-	left: 50px;
-	top: 100px;
+	right: 50px;
+	bottom: 100px;
 }
 
