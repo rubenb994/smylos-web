@@ -1,11 +1,15 @@
 <nav id="chat">
+    <div id="close"><i class="material-icons" (click)="onClickMenuOpen()">close</i></div>
+    <h2 id="locationTitle">Big Smile Office</h2>
     <div class="locationInfo">
 
-        <h2>Current Clicked Location</h2>
+        <button class="buttonFragment"><i class="material-icons">audiotrack</i>Chat
+            Person </button>
 
-        <button class="buttonFragment" (click)="onClickLocationItems()">Chat Person</button>
-
-        <button class="buttonFragment" (click)="onClickLocationItems()">Audio Conversation</button>
+        <button class="buttonFragment"><i class="material-icons">chat</i>Audio
+            Conversation</button>
 
     </div>
 </nav>
+
+<button id="buttonMenu" (click)="onClickMenuClose()"><i class="material-icons">menu</i></button>

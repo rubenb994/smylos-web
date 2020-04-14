@@ -3,21 +3,28 @@
     transform: translate3d(-300px, 0, 0);
 }
 
-.chat {
+#chat {
+    transition: left 1s;
     position: absolute;
     background-color:#f1f1e6;
     top: 0;
-    right: 0px;
+    left: -400px;
     height: 100%;
-    width: 300px;
+    width: 400px;
 }
 
 .locationInfo {
     position: absolute;
-    top: 200px;
+    top: 40%;
     right: 15px;
     height: 100%;
-    width: 270px;
+    width: 370px;
+}
+
+#close {
+    padding: 35px;
+    text-align: right;
+	color: #0a317f;
 }
 
 .buttonFragment {
@@ -37,5 +44,27 @@
         border-color: #cca62b;
         
     }
+}
+
+#buttonMenu {
+	position: fixed;
+	left: 25px;
+	top: 25px;
+	background-color: #0a317f;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	color: #f1f1e6;
+    border: 0px;
+
+    &:hover {
+        border: 2px solid;
+        border-color: #cca62b;
+        
+    }
+}
+
+#locationTitle {
+    padding: 30px 25px;
 }
 

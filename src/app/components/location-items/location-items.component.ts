@@ -9,6 +9,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 export class LocationItemsComponent implements OnInit, AfterViewInit {
 
   public locationItem;
+  public menuItem;
 
   constructor() { }
 
@@ -19,10 +20,16 @@ export class LocationItemsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
 
     this.locationItem = document.getElementById('chat');
+    this.menuItem = document.getElementById('buttonMenu');
   }
-  public onClickLocationItems(): void {
-    console.log('Logging to the console');
-    this.locationItem.style.right = '-300px';
+  public onClickMenuOpen(): void {
+    this.locationItem.style.left = '-400px';
+    this.menuItem.style.left = '25px';
+  }
+
+  public onClickMenuClose(): void {
+    this.locationItem.style.left = '0px';
+    this.menuItem.style.left = '-400px';
   }
 
 }
