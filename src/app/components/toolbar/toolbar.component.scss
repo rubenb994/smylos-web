@@ -4,20 +4,37 @@
 	bottom: 0;
 	width: 100%;
 	height: 50px;
-	background-color: rgb(255, 233, 193);
-	color: #0a317f;
+	background-color: #e2dedd;
+	color: #002264;
 	text-align: center;
   }
 
-  p {
-	  margin: 0;
-	  display: inline-block;
+  .alignBar {
+	  vertical-align: middle;
+	  margin-right: 8px;
   }
 
-  i {
-	  vertical-align: middle;
-	  margin-right: 5px;
+  #progressBar {
+	background-color: #fff;
+	border: 2px solid;
+	border-color: #002264;
+	height: 15px;
+	width: 150px;
+	border-radius: 12px;
+	color: #002264;
+	margin: 0;
+	display: inline-block;
+	vertical-align: middle;
   }
+
+  #progressBar:after {
+    content: '';
+    display: block;
+    background: #cca62b;
+    width: 50%;
+    height: 100%;
+    border-radius: 12px;
+}
 
   .toolbar-row {
 	  height: 100%;
