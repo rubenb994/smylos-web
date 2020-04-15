@@ -7,6 +7,8 @@ import { MapComponent } from './components/map/map.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { LocationItemsComponent } from './components/location-items/location-items.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { LocationComponent } from './components/location/location.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { LocationItemsComponent } from './components/location-items/location-ite
     MapComponent,
     ToolbarComponent,
     LogoComponent,
-    LocationItemsComponent
+    LocationItemsComponent,
+    ChatComponent,
+    LocationComponent
   ],
   imports: [
     BrowserModule,
