@@ -1,3 +1,9 @@
+@import "../../../assets/styles/colors.scss";
+
+/*--------------------
+the map
+--------------------*/
+
 .map-container,
 #smylos-map {
 	width: 100%;
@@ -9,22 +15,26 @@
 
 * { padding: 0 }
 
+/*--------------------
+zoom buttons
+--------------------*/
+
 .buttonPlus {
 	position: fixed;
 	right: 50px;
 	bottom: 150px;
-	background-color: #f1f1e6;
+	background-color: $tertiary;
 	height: 40px;
 	width: 40px;
 	border-radius: 50%;
-	color: #002264;
+	color: $primary;
 	vertical-align: middle;
 	text-align: center;
 	border: 0px;
 	
 	&:hover {
         border: 2px solid;
-	border-color: #cca62b;        
+	border-color: $secondary;        
     }
 }
 

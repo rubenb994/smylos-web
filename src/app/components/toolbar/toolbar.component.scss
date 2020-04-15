@@ -1,13 +1,23 @@
+@import "../../../assets/styles/colors.scss";
+
+/*--------------------
+toolbar items
+--------------------*/
+
 .toolbar {
 	position: fixed;
 	left: 0;
 	bottom: 0;
 	width: 100%;
 	height: 50px;
-	background-color: #e2dedd;
-	color: #002264;
+	background-color: $quartiary;
+	color: $primary;
 	text-align: center;
   }
+
+  .toolbar-row {
+	height: 100%;
+}
 
   .alignBar {
 	  vertical-align: middle;
@@ -15,27 +25,27 @@
   }
 
   #progressBar {
-	background-color: #fff;
+	background-color: white;
 	border: 2px solid;
-	border-color: #002264;
+	border-color: $primary;
 	height: 15px;
 	width: 150px;
 	border-radius: 12px;
-	color: #002264;
+	color: $primary;
 	margin: 0;
 	display: inline-block;
 	vertical-align: middle;
   }
 
-  #progressBar:after {
+  #progress {
     content: '';
     display: block;
-    background: #cca62b;
-    width: 50%;
+    background: $secondary;
+	width: 100%;
+	transition: 'width 1s';
+	transition-timing-function: ease;
     height: 100%;
     border-radius: 12px;
 }
 
-  .toolbar-row {
-	  height: 100%;
-  }
+  

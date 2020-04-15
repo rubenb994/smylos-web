@@ -1,26 +1,8 @@
-.buttonFragment {
-    width: 100%;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #ffffff ;
-    color: #002264;
-    border-radius: 25px;
-    border: 0px solid;
-    transition: 0.3s;
-    text-align: left;
-    cursor: pointer;
-    
-    &:hover {
-        border: 2px solid;
-        border-color: #cca62b;
-        
-    }
-}
+@import "../../../assets/styles/colors.scss";
 
-.fragmentIcon {
-    float: right;
-    padding: 10px;
-}
+/*--------------------
+Styling the main component box
+--------------------*/
 
 .locationInfo {
     position: absolute;
@@ -29,3 +11,36 @@
     height: 100%;
     width: 370px;
 }
+
+/*--------------------
+Styling button
+--------------------*/
+
+.buttonFragment {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ffffff ;
+    color: $primary;
+    border-radius: 25px;
+    border: 0px solid;
+    transition: 0.3s;
+    text-align: left;
+    cursor: pointer;
+    
+    &:hover {
+        border: 2px solid;
+        border-color: $secondary;
+        
+    }
+}
+
+/*--------------------
+styling the icons
+--------------------*/
+
+.fragmentIcon {
+    float: right;
+    padding: 10px;
+}
+

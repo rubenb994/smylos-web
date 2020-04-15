@@ -12,6 +12,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   public svgPanZoomMap: SvgPanZoom.Instance;
   public readonly svgZoomFactor = 0.2;
   private readonly minZoom = 1;
+  private readonly maxZoom = 3;
 
   public bigSmileOfficeDot;
   public executiveOfficeDot;
@@ -32,9 +33,9 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     const svgPanZoomOptions: SvgPanZoom.Options = {
-      maxZoom: 3.0,
-      minZoom: 1,
-      zoomScaleSensitivity: 0.05,
+      maxZoom: this.maxZoom,
+      minZoom: this.minZoom,
+      zoomScaleSensitivity: this.svgZoomFactor,
       center: true
     };
 
@@ -55,6 +56,9 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   public onClickZoomIn(): void {
     const newZoom = this.svgPanZoomMap.getZoom() + this.svgZoomFactor;
+    if (newZoom > this.maxZoom) {
+      return;
+    }
     this.svgPanZoomMap.zoom(newZoom);
   }
 

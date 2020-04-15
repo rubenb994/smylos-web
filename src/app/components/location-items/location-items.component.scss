@@ -1,13 +1,22 @@
+@import "../../../assets/styles/colors.scss";
+
+/*--------------------
+the complete menu
+--------------------*/
+
 #chat {
     transition: left 1s;
     position: absolute;
-    background-color:#f1f1e6;
+    background-color: $tertiary;
     top: 0;
     left: -400px;
     height: 100%;
     width: 400px;
 }
 
+/*--------------------
+close button
+--------------------*/
 
 #close {
     padding: 35px;
@@ -15,13 +24,25 @@
 }
 
 #closeButton {
-    color: #002264;
-    background-color: #f1f1e6;
+    color: $primary;
+    background-color: $tertiary;
     border: 0px;
     &:hover {
-    color: #cca62b;    
+    color: $secondary;    
     }
 }
+
+/*--------------------
+Title of selected location
+--------------------*/
+
+#locationTitle {
+    padding: 0px 25px;
+}
+
+/*--------------------
+menu open button
+--------------------*/
 
 #buttonMenu {
 	position: fixed;
@@ -29,19 +50,16 @@
 	top: 25px;
 	height: 40px;
     width: 40px;
-    background-color: #f1f1e6;
+    background-color: $tertiary;
 	border-radius: 50%;
-    color: #002264;
+    color: $primary;
     vertical-align: middle;
 	text-align: center;
     border: 0px;
 
     &:hover {    
         border: 2px solid;
-        border-color: #cca62b;
+        border-color: $secondary;
     }
 }
 
-#locationTitle {
-    padding: 0px 25px;
-}

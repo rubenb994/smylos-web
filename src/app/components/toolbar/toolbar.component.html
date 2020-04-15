@@ -1,21 +1,18 @@
 <div class="toolbar">
 
     <div class="row justify-content-center align-items-center toolbar-row">
-        <div class="col-sm-2">
-            <h3>PROGRESS:</h3>
-        </div>
-        <div class="col-sm-3">
+        <div class="col-auto">
 
             <img class="alignBar" src="assets/images/Potion.png" height="24" width="24">
             <div id="progressBar">
-                <div id="progress"></div>
+                <div id="progress" [ngStyle]="{'width': potionCount + '%'}"></div>
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-auto">
             <i class="material-icons-outlined alignBar">chat</i>
             <h3>1/4</h3>
         </div>
-        <div class="col-sm-2">
+        <div class="col-auto">
             <i class="material-icons-outlined alignBar">audiotrack</i>
             <h3>4/7</h3>
         </div>
