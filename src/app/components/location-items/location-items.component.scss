@@ -15,7 +15,7 @@
 }
 
 #closeButton {
-    color: #0a317f;
+    color: #002264;
     background-color: #f1f1e6;
     border: 0px;
     &:hover {
@@ -27,17 +27,18 @@
 	position: fixed;
 	left: 25px;
 	top: 25px;
-	background-color: #0a317f;
 	height: 40px;
-	width: 40px;
+    width: 40px;
+    background-color: #f1f1e6;
 	border-radius: 50%;
-	color: #f1f1e6;
+    color: #002264;
+    vertical-align: middle;
+	text-align: center;
     border: 0px;
 
-    &:hover {
+    &:hover {    
         border: 2px solid;
         border-color: #cca62b;
-        
     }
 }
 
