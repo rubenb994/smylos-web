@@ -5,6 +5,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { GameStateUtils } from '../utils/game-state-util';
 import { LocationNFC, LOCATION_NFCS } from '../config/location-nfc';
 import { NFC } from '../models/nfc';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,18 @@ export class StageService {
 
   public $currentStage: BehaviorSubject<Stage> = new BehaviorSubject(null);
   private currentStage: Stage;
+
+  public $completedChats: BehaviorSubject<string[]> = new BehaviorSubject(null);
+  private completedChats: string[];
+
+  public $completedAudios: BehaviorSubject<string[]> = new BehaviorSubject(null);
+  private completedAudios: string[];
+
+  public $availableChats: BehaviorSubject<string[]> = new BehaviorSubject(null);
+  private availableChats: string[];
+
+  public $availableAudios: BehaviorSubject<string[]> = new BehaviorSubject(null);
+  private availableAudios: string[];
 
   private readonly jsonUrl = 'assets/config.json';
 
@@ -51,5 +64,107 @@ export class StageService {
       return null;
     }
     return nfcForLocation;
+  }
+
+  /**
+   * Completed chats methods.
+   */
+  public getCompletedChats(): Observable<string[]> {
+    return this.$completedChats;
+  }
+
+  public addCompletedChat(chatId: string): void {
+    const chatIdInCompletedChats = this.completedChats.find(completedChat => completedChat === chatId);
+    if (chatIdInCompletedChats != null) {
+      return;
+    }
+    this.completedChats.push(chatId);
+
+    this.$completedChats.next(this.completedChats);
+  }
+
+  /**
+   * Completed audios methods.
+   */
+  public getCompletedAudios(): Observable<string[]> {
+    return this.$completedAudios;
+  }
+
+  public addCompletedAudio(audioId: string): void {
+    const audioIdInCompletedAudios = this.completedAudios.find(completedAudio => completedAudio === audioId);
+    if (audioIdInCompletedAudios != null) {
+      return;
+    }
+    this.completedAudios.push(audioId);
+
+    this.$completedAudios.next(this.completedAudios);
+  }
+
+  /**
+   * Available chats methods.
+   */
+  public getAvailableChats(): Observable<string[]> {
+    return this.$availableChats;
+  }
+
+  public removeAvailableChats(chatId: string): void {
+    const foundIndex = this.availableChats.findIndex(availableChat => availableChat === chatId);
+    if (foundIndex < 0) {
+      return;
+    }
+    this.availableChats.splice(foundIndex, 1);
+    this.$availableChats.next(this.availableChats);
+  }
+
+  public addAvailableChats(chatIds: string[]): void {
+    this.availableChats.push(...chatIds);
+    this.$availableChats.next(this.availableChats);
+  }
+
+  public setAvailableChats(chatIds: string[]): void {
+    this.availableChats = chatIds;
+    this.$availableChats.next(this.availableChats);
+  }
+
+  /**
+   * Available audios methods.
+   */
+  public getAvailableAudios(): Observable<string[]> {
+    return this.$availableAudios;
+  }
+
+  public removeAvailableAudios(chatId: string): void {
+    const foundIndex = this.availableAudios.findIndex(availableAudio => availableAudio === chatId);
+    if (foundIndex < 0) {
+      return;
+    }
+    this.availableAudios.splice(foundIndex, 1);
+    this.$availableAudios.next(this.availableAudios);
+  }
+
+  public addAvailableAudios(chatIds: string[]): void {
+    this.availableAudios.push(...chatIds);
+    this.$availableAudios.next(this.availableAudios);
+  }
+
+  public setAvailableAudios(chatIds: string[]): void {
+    this.availableAudios = chatIds;
+    this.$availableAudios.next(this.availableAudios);
+  }
+
+  public evaluateStageCleared(): boolean {
+    let stageCleared = true;
+    const clearedItems = this.completedAudios.concat(this.completedChats);
+    const mandatoryItems = this.currentStage.level_setup.manadatory_items;
+
+    // tslint:disable-next-line: prefer-for-of
+    for (let index = 0; index < mandatoryItems.length; index++) {
+      const mandatoryItemIndexInClearedItem = clearedItems.findIndex(clearedItem => clearedItem === mandatoryItems[index]);
+      if (mandatoryItemIndexInClearedItem < 0) {
+        stageCleared = false;
+        break;
+      }
+    }
+    return stageCleared;
   }
 }

@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, OnChanges, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { Chat } from 'src/app/models/chat';
 import { ChatItem } from 'src/app/models/chat-item';
+
 
 @Component({
   selector: 'app-chat',
@@ -10,9 +11,14 @@ import { ChatItem } from 'src/app/models/chat-item';
 export class ChatComponent implements OnInit, OnChanges, AfterViewInit {
 
   @Input() chat: Chat;
+  @Output() chatCompleted = new EventEmitter();
 
+  /**
+   * Array to define which chat items should be displayed.
+   */
   public chatItemsToDisplay: ChatItem[] = [];
-  public chatIndex = 0;
+
+  public chatFinished = false;
 
   constructor() { }
 
@@ -58,23 +64,24 @@ export class ChatComponent implements OnInit, OnChanges, AfterViewInit {
     return nextChatItem;
   }
 
+  public onClickFinishChat(): void {
+    this.chatCompleted.emit(null);
+  }
+
   private addNextChatItem(id: number): void {
-    if (this.chatIndex >= this.chat.chat_items.length) {
-      console.log('chat finished');
+    const currentChatItem = this.chat.chat_items.find(chatItem => chatItem.id === id);
+
+    if (currentChatItem == null || currentChatItem.next == null) {
+      this.chatFinished = true;
       return;
     }
 
-    const currentChatItem = this.chat.chat_items.find(chatItem => chatItem.id === id);
     this.chatItemsToDisplay.push(currentChatItem);
 
     let nextChatItem = this.chat.chat_items.find(chatItem => chatItem.id === currentChatItem.next[0]);
     while (nextChatItem.type !== 'player') {
       this.chatItemsToDisplay.push(nextChatItem);
       nextChatItem = this.chat.chat_items.find(chatItem => chatItem.id === nextChatItem.next[0]);
-    }
-
-    if (nextChatItem.next[0] === -1) {
-      this.chatItemsToDisplay.push(nextChatItem);
     }
   }
 

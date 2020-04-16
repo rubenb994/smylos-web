@@ -28,6 +28,10 @@
 
             </ng-container>
 
+            <ng-container *ngIf="chatFinished">
+                <button (click)="onClickFinishChat()">Leave chat</button>
+            </ng-container>
+
         </div>
     </div>
 </div>

@@ -10,8 +10,9 @@ the complete menu
     background-color: $tertiary;
     top: 0;
     left: -400px;
-    height: 100%;
+    height: 100vh;
     width: 400px;
+    z-index: 2;
 }
 
 /*--------------------

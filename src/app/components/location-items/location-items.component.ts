@@ -104,6 +104,10 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
 
   }
 
+  public onChatCompleted(): void {
+    console.log('chat completed');
+  }
+
   /**
    * Method to fetch the nfc for the selected location.
    */

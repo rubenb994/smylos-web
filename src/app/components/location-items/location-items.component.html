@@ -15,7 +15,7 @@
                         <div class="col-12 chat-col">
 
                             <ng-container *ngIf="displayChat">
-                                <app-chat [chat]="locationNFC.chat"></app-chat>
+                                <app-chat [chat]="locationNFC.chat" (chatCompleted)="onChatCompleted()"></app-chat>
                             </ng-container>
 
                             <ng-container *ngIf="!displayChat && !displayAudio">
