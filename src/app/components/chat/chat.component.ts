@@ -17,15 +17,17 @@ export class ChatComponent implements OnInit, OnChanges, AfterViewInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('inited');
+
   }
 
   ngOnChanges(): void {
-    console.log(this.chat);
+    if (this.chatItemsToDisplay.length <= 0) {
+      this.addNextChatItem(0);
+    }
   }
 
   ngAfterViewInit(): void {
-    this.addNextChatItem(0);
+
   }
 
   public nextItemIsPlayerChatItem(currentChatItem: ChatItem): boolean {
@@ -37,8 +39,8 @@ export class ChatComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   public onClickTitleButton(title: string, chatItem: ChatItem): void {
-    console.log(title);
-    console.log(chatItem);
+    this.chatItemsToDisplay.push(chatItem);
+
     const indexOfClickedTitle = chatItem.titles.indexOf(title);
     if (indexOfClickedTitle < 0) {
       console.log('Could not determine title index');
@@ -61,16 +63,19 @@ export class ChatComponent implements OnInit, OnChanges, AfterViewInit {
       console.log('chat finished');
       return;
     }
+
     const currentChatItem = this.chat.chat_items.find(chatItem => chatItem.id === id);
     this.chatItemsToDisplay.push(currentChatItem);
 
-    const nextChatItem = this.chat.chat_items.find(chatItem => chatItem.id === currentChatItem.next[0]);
-    if (nextChatItem.type !== 'player') {
-      // A narration type chat message never has multiple next since it follows a linear path.
-      this.addNextChatItem(nextChatItem.next[0]);
+    let nextChatItem = this.chat.chat_items.find(chatItem => chatItem.id === currentChatItem.next[0]);
+    while (nextChatItem.type !== 'player') {
+      this.chatItemsToDisplay.push(nextChatItem);
+      nextChatItem = this.chat.chat_items.find(chatItem => chatItem.id === nextChatItem.next[0]);
+    }
+
+    if (nextChatItem.next[0] === -1) {
+      this.chatItemsToDisplay.push(nextChatItem);
     }
   }
-
-
 
 }
