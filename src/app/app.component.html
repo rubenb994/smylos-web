@@ -1,6 +1,6 @@
 <div class="main" (window:resize)="onWindowResize()">
-    <app-map></app-map>
-    <app-location-items *ngIf="displayLocationItem"></app-location-items>
+    <app-map (newLocationSelected)="onNewLocationSelected($event)"></app-map>
+    <app-location-items *ngIf="displayLocationItem" [selectedLocation]="selectedLocation"></app-location-items>
     <app-toolbar *ngIf="displayToolbar"></app-toolbar>
     <app-logo *ngIf="displayLogo"></app-logo>
 </div>

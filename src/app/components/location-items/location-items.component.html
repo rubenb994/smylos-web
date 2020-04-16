@@ -1,11 +1,17 @@
 <nav id="chat">
-    <div id="close"><button id="closeButton"><i class=" material-icons" (click)=" onClickMenuOpen()">close</i></button>
-    </div>
-    <h2 id="locationTitle">Big Smile Office</h2>
 
-    <app-location></app-location>
-    <!-- <app-chat></app-chat> -->
+    <ng-container *ngIf="selectedLocation; else noLocationSelected">
+        <div id="close"><button id="closeButton"><i class=" material-icons"
+                    (click)=" onClickMenuClose()">close</i></button>
+        </div>
+        <h2 id="locationTitle">{{selectedLocationDisplayName}}</h2>
+
+        <app-location></app-location>
+    </ng-container>
+    <ng-template #noLocationSelected>
+        <p>Please select a location</p>
+    </ng-template>
 
 </nav>
 
-<button id="buttonMenu" (click)="onClickMenuClose()"><i class="material-icons">menu</i></button>
+<button id="buttonMenu" (click)="onClickMenuOpen()"><i class="material-icons">menu</i></button>

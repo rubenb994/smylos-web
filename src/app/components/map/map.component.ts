@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import * as SvgPanZoom from 'svg-pan-zoom';
 
 @Component({
@@ -8,6 +8,8 @@ import * as SvgPanZoom from 'svg-pan-zoom';
 
 })
 export class MapComponent implements OnInit, AfterViewInit {
+
+  @Output() newLocationSelected = new EventEmitter<number>();
 
   public svgPanZoomMap: SvgPanZoom.Instance;
   public readonly svgZoomFactor = 0.2;
@@ -73,61 +75,73 @@ export class MapComponent implements OnInit, AfterViewInit {
   public onClickBigSmileOffice(): void {
     this.deactiveAllLocations();
     this.bigSmileOfficeDot.style.opacity = '1';
+    this.newLocationSelected.emit(9);
   }
 
   public onClickExecutiveOffice(): void {
     this.deactiveAllLocations();
     this.executiveOfficeDot.style.opacity = '1';
+    this.newLocationSelected.emit(6);
   }
 
   public onClickTaxOffice(): void {
     this.deactiveAllLocations();
     this.taxOfficeDot.style.opacity = '1';
+    this.newLocationSelected.emit(4);
   }
 
   public onClickHillHouse(): void {
     this.deactiveAllLocations();
     this.hillHouseDot.style.opacity = '1';
+    this.newLocationSelected.emit(12);
   }
 
   public onClickMarket(): void {
     this.deactiveAllLocations();
     this.marketDot.style.opacity = '1';
+    this.newLocationSelected.emit(5);
   }
 
   public onClickEastDistrict(): void {
     this.deactiveAllLocations();
     this.eastDistrictDot.style.opacity = '1';
+    this.newLocationSelected.emit(11);
   }
 
   public onClickWell(): void {
     this.deactiveAllLocations();
     this.wellDot.style.opacity = '1';
+    this.newLocationSelected.emit(2);
   }
 
   public onClickWestDistrict(): void {
     this.deactiveAllLocations();
     this.westDistrictDot.style.opacity = '1';
+    this.newLocationSelected.emit(8);
   }
 
   public onClickPalace(): void {
     this.deactiveAllLocations();
     this.palaceDot.style.opacity = '1';
+    this.newLocationSelected.emit(7);
   }
 
   public onClickPark(): void {
     this.deactiveAllLocations();
     this.parkDot.style.opacity = '1';
+    this.newLocationSelected.emit(10);
   }
 
   public onClickEpeosStore(): void {
     this.deactiveAllLocations();
     this.epeosStoreDot.style.opacity = '1';
+    this.newLocationSelected.emit(1);
   }
 
   public onClickSlums(): void {
     this.deactiveAllLocations();
     this.slumsDot.style.opacity = '1';
+    this.newLocationSelected.emit(3);
   }
 
   public deactiveAllLocations(): void {

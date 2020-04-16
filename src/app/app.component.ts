@@ -12,13 +12,30 @@ import { GameStateUtils } from './utils/game-state-util';
 })
 export class AppComponent implements OnInit {
 
+  /**
+   * Stages loaded from the json file.
+   */
   public stages: Stage[];
 
+  /**
+   * Finished items per stage.
+   */
+  public finishedItems: string[];
+
+  /**
+   * Currently selected location.
+   */
+  public selectedLocation: string;
+
+
+  /**
+   * Variables for displaying the components.
+   */
   public displayToolbar = true;
   public displayLogo = true;
   public displayLocationItem = true;
 
-  private jsonUrl = 'assets/config.json';
+  private readonly jsonUrl = 'assets/config.json';
 
   constructor(private http: HttpClient) {
 
@@ -27,10 +44,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.getConfig().subscribe(data => {
       this.stages = data;
-      console.log(this.stages);
     });
-    // console.log(GameStateUtils.getLevel());
-    // console.log(GameStateUtils.getPotionAmount());
   }
 
   /**
@@ -38,6 +52,14 @@ export class AppComponent implements OnInit {
    */
   public getConfig(): Observable<any> {
     return this.http.get(this.jsonUrl);
+  }
+
+
+  public onNewLocationSelected(newLocation: string): void {
+    if (newLocation === this.selectedLocation) {
+      return;
+    }
+    this.selectedLocation = newLocation;
   }
 
 
