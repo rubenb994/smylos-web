@@ -58,27 +58,44 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
     this.menuItem = document.getElementById('buttonMenu') as HTMLButtonElement;
   }
 
+  /**
+   * Method which triggers when the menu gets opened.
+   * Opens the menu.
+   */
   public onClickMenuOpen(): void {
     this.locationItem.style.left = '0px';
     this.menuItem.style.left = '-400px';
   }
 
+  /**
+   * Method which triggers when the menu gets closed.
+   * Closes the menu.
+   */
   public onClickMenuClose(): void {
     this.locationItem.style.left = '-400px';
     this.menuItem.style.left = '25px';
   }
 
+  /**
+   * Method which triggers when the open chat button gets clicked.
+   */
   public onClickOpenChat(): void {
 
   }
 
+  /**
+   * Method which triggers when the open audio button gets clicked.
+   * @param clickedAudio the clicked audio entry.
+   */
   public onClickOpenAudio(clickedAudio: Audio): void {
 
   }
 
+  /**
+   * Method to fetch the nfc for the selected location.
+   */
   private fetchCurrentLocationNFC(): void {
     this.locationNFC = this.stageService.getNFCForLocation(this.selectedLocation);
-    console.log(this.locationNFC);
   }
 
   /**
