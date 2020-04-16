@@ -1,0 +1,17 @@
+@import "../../../assets/styles/colors.scss";
+
+.buttonAudio {
+	background-color: white;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	color: $primary;
+	vertical-align: middle;
+	text-align: center;
+	border: 0px;
+	
+	&:hover {
+        border: 2px solid;
+	border-color: $secondary;        
+    }
+}

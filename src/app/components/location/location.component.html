@@ -1,16 +1,21 @@
 <div class="locationInfo">
 
-    <button class="buttonFragment">
-        <div class="fragmentIcon"><i class="material-icons">audiotrack</i></div>
+    <button class="buttonFragment row align-items-center">
+        <div class="fragmentIcon"><i class="material-icons-outlined">chat</i></div>
         <div>
-            <p>Chat Person </p>
+            <p>Chat Person</p>
         </div>
     </button>
 
-    <button class="buttonFragment">
-        <div class="fragmentIcon"><i class="material-icons">chat</i></div>
-        <div>
+    <button class="buttonFragment  justify-content-right  row align-items-center">
+
+        <div class="fragmentIcon col-1"><i class="material-icons-outlined">audiotrack</i></div>
+        <div class="col-9">
             <p>Listen to conversation</p>
+
         </div>
+        <app-audio-button class="col-1"></app-audio-button>
     </button>
+
+
 </div>

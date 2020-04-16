@@ -1,20 +1,13 @@
 @import "../../../assets/styles/colors.scss";
-
-/*--------------------
-Mixins
---------------------*/
-@mixin center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
   
   /*--------------------
   Chat
   --------------------*/
   .chat {
-    @include center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 300px;
     height: 80vh;
     max-height: 500px;
