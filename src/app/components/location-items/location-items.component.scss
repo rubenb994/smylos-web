@@ -44,6 +44,20 @@ Title of selected location
 Styling button
 --------------------*/
 
+#button-menu {
+    position: fixed;
+    left: 25px;
+    top: 25px;
+    height: 40px;
+    width: 40px;
+    background-color: $tertiary;
+    border-radius: 50%;
+    color: $primary;
+    vertical-align: middle;
+    text-align: center;
+    border: 0px;
+}
+
 .button-fragment {
     width: 100%;
     margin-top: 10px;
@@ -69,4 +83,10 @@ Styling button
         display: flex;
         align-items: center;
     }
+}
+
+.chat-col {
+    max-height: 80vh;
+    overflow-x: hidden;
+    overflow-x: auto;
 }

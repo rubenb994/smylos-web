@@ -68,7 +68,7 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
 
   ngAfterViewInit(): void {
     this.locationItem = document.getElementById('chat');
-    this.menuItem = document.getElementById('buttonMenu') as HTMLButtonElement;
+    this.menuItem = document.getElementById('button-menu') as HTMLButtonElement;
   }
 
   /**
