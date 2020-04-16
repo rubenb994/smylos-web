@@ -1,9 +1,10 @@
 <nav id="chat">
 
+    <div id="close"><button id="closeButton"><i class=" material-icons" (click)=" onClickMenuClose()">close</i></button>
+    </div>
+
     <ng-container *ngIf="selectedLocation; else noLocationSelected">
-        <div id="close"><button id="closeButton"><i class=" material-icons"
-                    (click)=" onClickMenuClose()">close</i></button>
-        </div>
+
         <h2 id="locationTitle">{{selectedLocationDisplayName}}</h2>
 
 
@@ -24,4 +25,4 @@
 
 </nav>
 
-<button id="buttonMenu" (click)="onClickMenuOpen()"><i class="material-icons">menu</i></button>
+<button id="buttonMenu" (click)="onClickMenuOpen()"><i class="material-icons buttonIconAlign">menu</i></button>

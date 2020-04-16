@@ -55,11 +55,17 @@ menu open button
     color: $primary;
     vertical-align: middle;
 	text-align: center;
-    border: 0px;
+    border: 2px solid;
+    border-color: $tertiary;
 
     &:hover {    
-        border: 2px solid;
         border-color: $secondary;
     }
+}
+
+.buttonIconAlign {
+    text-align: center;
+    margin-left: -1.5px;
+    margin-top: 5px;
 }
 
