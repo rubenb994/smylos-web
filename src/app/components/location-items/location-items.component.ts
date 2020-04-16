@@ -4,6 +4,7 @@ import { StageService } from 'src/app/services/stage.service';
 import { GameStateUtils } from 'src/app/utils/game-state-util';
 import { NFC } from 'src/app/models/nfc';
 import { Audio } from 'src/app/models/audio';
+import { Chat } from 'src/app/models/chat';
 
 
 @Component({
@@ -30,6 +31,18 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * Selected location display name.
    */
   public selectedLocationDisplayName = 'Location';
+
+
+  /**
+   * Variables for displaying audio and chat components.
+   */
+  public displayChat = true;
+  public displayAudio = false;
+
+  /**
+   * Variables for holding the selected chat and selected audio.
+   */
+  public selectedAudio: Audio;
 
   /**
    * Variables for chaning the location and menu.
@@ -80,7 +93,7 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * Method which triggers when the open chat button gets clicked.
    */
   public onClickOpenChat(): void {
-
+    this.displayChat = true;
   }
 
   /**

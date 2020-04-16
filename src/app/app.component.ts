@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GameStateUtils } from './utils/game-state-util';
 import { StageService } from './services/stage.service';
-import { finalize } from 'rxjs/operators';
+import { finalize, first } from 'rxjs/operators';
 import { NFC } from './models/nfc';
 
 
@@ -54,18 +54,17 @@ export class AppComponent implements OnInit {
 
     this.stageService.getStages()
       .pipe(
+        first(results => results != null),
         finalize(() =>
           this.stagesLoading = false
         )
       )
       .subscribe(results => {
         this.stageService.stages = results;
-
         this.stageService.setCurrentStage(GameStateUtils.getLevel());
       });
 
     this.stageService.getCurrentStage().subscribe(result => {
-      console.log(this.currentStage);
       this.currentStage = result;
       this.calculateToolbarValues();
     });

@@ -10,45 +10,52 @@
         <ng-container *ngIf="locationNFC; else noNFCForLocation">
 
             <div class="container buttons-container">
-                <div class="row buttons-row">
 
-                    <ng-container *ngIf="locationNFC.chat != null">
-                        <button class="button-fragment" (click)="onClickOpenChat()">
-                            <div class="row justify-content-between align-self-center">
-                                <div class="col-auto">
-                                    <p>{{locationNFC.chat.chat_title}}</p>
-                                </div>
-                                <div class="col-auto icon-col">
-                                    <i class="material-icons-outlined">chat</i>
-                                </div>
-                            </div>
-                        </button>
+                <div class="row">
+                    <div class="col-12">
 
-                    </ng-container>
+                        <ng-container *ngIf="displayChat">
+                            <app-chat [chat]="locationNFC.chat"></app-chat>
+                        </ng-container>
 
-                    <ng-container *ngIf="locationNFC.audios != null">
-                        <ng-container *ngFor="let audio of locationNFC.audios">
+                        <ng-container *ngIf="!displayChat && !displayAudio">
 
-                            <button class="button-fragment" (click)="onClickOpenAudio(audio)">
-                                <div class="row justify-content-between align-self-center">
-                                    <div class="col-auto">
-                                        <p>Listen to {{audio.audio_title}}</p>
+                            <ng-container *ngIf="locationNFC.chat != null">
+                                <button class="button-fragment" (click)="onClickOpenChat()">
+                                    <div class="row justify-content-between align-self-center">
+                                        <div class="col-auto">
+                                            <p>{{locationNFC.chat.chat_title}}</p>
+                                        </div>
+                                        <div class="col-auto icon-col">
+                                            <i class="material-icons-outlined">chat</i>
+                                        </div>
                                     </div>
-                                    <div class="col-auto icon-col">
-                                        <i class="material-icons-outlined">audiotrack</i>
-                                    </div>
-                                </div>
-                            </button>
+                                </button>
+                            </ng-container>
+
+                            <ng-container *ngIf="locationNFC.audios != null">
+                                <ng-container *ngFor="let audio of locationNFC.audios">
+
+                                    <button class="button-fragment" (click)="onClickOpenAudio(audio)">
+                                        <div class="row justify-content-between align-self-center">
+                                            <div class="col-auto">
+                                                <p>Listen to {{audio.audio_title}}</p>
+                                            </div>
+                                            <div class="col-auto icon-col">
+                                                <i class="material-icons-outlined">audiotrack</i>
+                                            </div>
+                                        </div>
+                                    </button>
+
+                                </ng-container>
+                            </ng-container>
 
                         </ng-container>
-                    </ng-container>
 
+                    </div>
                 </div>
-            </div>
 
-            <!-- <div class="container">
-                <app-chat></app-chat>
-            </div> -->
+            </div>
 
         </ng-container>
         <ng-template #noNFCForLocation>

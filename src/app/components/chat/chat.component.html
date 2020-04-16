@@ -1,4 +1,39 @@
-<div class="chat">
+<div class="container chat-container" *ngIf="chat">
+    <div class="row">
+        <h3>{{chat.chat_title}}</h3>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+            <ng-container *ngFor="let chatItem of chatItemsToDisplay; last as isLastChat">
+                <p>{{chatItem.sender}}</p>
+
+                <ng-container *ngFor="let message of chatItem.messages">
+                    <p>{{message}}</p>
+                </ng-container>
+
+                <ng-container *ngIf="isLastChat">
+
+                    <ng-container *ngIf="nextItemIsPlayerChatItem(chatItem)">
+                        <ng-container *ngFor="let title of getNextChatItem(chatItem).titles">
+                            <button (click)="onClickTitleButton(title, getNextChatItem(chatItem))">{{title}}</button>
+                        </ng-container>
+
+
+                    </ng-container>
+                </ng-container>
+
+            </ng-container>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <div class="chat">
     <div class="chat-title">
         <h4>Big Smile</h4>
         <figure class="avatar">
@@ -13,4 +48,4 @@
     </div>
 
 </div>
-<div class="bg"></div>
+<div class="bg"></div> -->
