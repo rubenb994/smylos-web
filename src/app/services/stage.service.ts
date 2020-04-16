@@ -16,10 +16,9 @@ export class StageService {
   private readonly jsonUrl = 'assets/config.json';
 
   constructor(private http: HttpClient) {
-    this.getStages().subscribe(result => {
-      this.stages = result;
-    });
+
   }
+
 
   public getStages(): Observable<Stage[]> {
     return this.http.get(this.jsonUrl) as Observable<Stage[]>;

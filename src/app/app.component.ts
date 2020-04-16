@@ -3,6 +3,8 @@ import { Stage } from './models/stage';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GameStateUtils } from './utils/game-state-util';
+import { StageService } from './services/stage.service';
+import { finalize } from 'rxjs/operators';
 
 
 @Component({
@@ -30,12 +32,21 @@ export class AppComponent implements OnInit {
   public displayLogo = true;
   public displayLocationItem = true;
 
-  constructor() {
+  public stagesLoading = true;
+
+  constructor(private stageService: StageService) {
 
   }
 
   ngOnInit(): void {
-
+    this.stagesLoading = true;
+    this.stageService.getStages()
+      .pipe(
+        finalize(() => this.stagesLoading = false)
+      )
+      .subscribe(results => {
+        this.stageService.stages = results;
+      });
   }
 
   public onNewLocationSelected(newLocation: number): void {

@@ -3,6 +3,7 @@ import { LOCATION_NAMES } from 'src/app/config/location-names';
 import { StageService } from 'src/app/services/stage.service';
 import { GameStateUtils } from 'src/app/utils/game-state-util';
 import { NFC } from 'src/app/models/nfc';
+import { Audio } from 'src/app/models/audio';
 
 
 @Component({
@@ -65,6 +66,14 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   public onClickMenuClose(): void {
     this.locationItem.style.left = '-400px';
     this.menuItem.style.left = '25px';
+  }
+
+  public onClickOpenChat(): void {
+
+  }
+
+  public onClickOpenAudio(clickedAudio: Audio): void {
+
   }
 
   private fetchCurrentLocationNFC(): void {

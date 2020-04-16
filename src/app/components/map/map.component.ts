@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Output, EventEmitter, AfterViewChecked } from '@angular/core';
 import * as SvgPanZoom from 'svg-pan-zoom';
 
 @Component({
@@ -7,7 +7,7 @@ import * as SvgPanZoom from 'svg-pan-zoom';
   styleUrls: ['./map.component.scss']
 
 })
-export class MapComponent implements OnInit, AfterViewInit {
+export class MapComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   @Output() newLocationSelected = new EventEmitter<number>();
 
@@ -54,6 +54,10 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.parkDot = document.getElementById('parkDot');
     this.epeosStoreDot = document.getElementById('epeosStoreDot');
     this.slumsDot = document.getElementById('slumsDot');
+  }
+
+  ngAfterViewChecked(): void {
+    this.onClickSlums();
   }
 
   public onClickZoomIn(): void {
