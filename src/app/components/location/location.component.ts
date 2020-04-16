@@ -12,4 +12,5 @@ export class LocationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
 }
