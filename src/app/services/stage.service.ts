@@ -42,6 +42,15 @@ export class StageService {
   public setCurrentStage(level: number) {
     this.currentStage = this.stages.find(stage => stage.level === level);
     this.$currentStage.next(this.currentStage);
+    if (this.currentStage == null) {
+      return;
+    }
+
+    const availableItems = this.currentStage.level_setup.enable_items;
+    const availableAudios = availableItems.filter(availableItem => availableItem[0] === 'a');
+    const availableChats = availableItems.filter(availableItem => availableItem[0] === 'C');
+    this.setAvailableAudios(availableAudios);
+    this.setAvailableChats(availableChats);
   }
 
   public getCurrentStage(): Observable<Stage> {
@@ -69,10 +78,6 @@ export class StageService {
   /**
    * Completed chats methods.
    */
-  public getCompletedChats(): Observable<string[]> {
-    return this.$completedChats;
-  }
-
   public addCompletedChat(chatId: string): void {
     const chatIdInCompletedChats = this.completedChats.find(completedChat => completedChat === chatId);
     if (chatIdInCompletedChats != null) {
@@ -86,10 +91,6 @@ export class StageService {
   /**
    * Completed audios methods.
    */
-  public getCompletedAudios(): Observable<string[]> {
-    return this.$completedAudios;
-  }
-
   public addCompletedAudio(audioId: string): void {
     const audioIdInCompletedAudios = this.completedAudios.find(completedAudio => completedAudio === audioId);
     if (audioIdInCompletedAudios != null) {
@@ -103,10 +104,6 @@ export class StageService {
   /**
    * Available chats methods.
    */
-  public getAvailableChats(): Observable<string[]> {
-    return this.$availableChats;
-  }
-
   public removeAvailableChats(chatId: string): void {
     const foundIndex = this.availableChats.findIndex(availableChat => availableChat === chatId);
     if (foundIndex < 0) {
@@ -129,10 +126,6 @@ export class StageService {
   /**
    * Available audios methods.
    */
-  public getAvailableAudios(): Observable<string[]> {
-    return this.$availableAudios;
-  }
-
   public removeAvailableAudios(chatId: string): void {
     const foundIndex = this.availableAudios.findIndex(availableAudio => availableAudio === chatId);
     if (foundIndex < 0) {

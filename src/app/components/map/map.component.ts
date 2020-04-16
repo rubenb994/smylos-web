@@ -57,7 +57,7 @@ export class MapComponent implements OnInit, AfterViewInit, AfterViewChecked {
   }
 
   ngAfterViewChecked(): void {
-    this.onClickSlums();
+
   }
 
   public onClickZoomIn(): void {

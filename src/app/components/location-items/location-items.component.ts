@@ -36,7 +36,7 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   /**
    * Variables for displaying audio and chat components.
    */
-  public displayChat = true;
+  public displayChat = false;
   public displayAudio = false;
 
   /**
@@ -50,12 +50,24 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   public locationItem: HTMLElement;
   public menuItem: HTMLButtonElement;
 
+  /**
+   * Available Chats.
+   */
+  public availableChats: string[];
+  public availableAudios: string[];
+
   constructor(
     private stageService: StageService
   ) { }
 
   ngOnInit(): void {
+    this.stageService.$availableChats.subscribe(results => {
+      this.availableChats = results;
+    });
 
+    this.stageService.$availableAudios.subscribe(results => {
+      this.availableAudios = results;
+    });
   }
 
   ngOnChanges(): void {
@@ -89,6 +101,20 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
     this.menuItem.style.left = '25px';
   }
 
+  public chatAvailable(): boolean {
+    if (this.availableChats == null || this.availableChats.length < 0) {
+      return false;
+    }
+    return this.availableChats.find(availableChat => availableChat === this.locationNFC.chat.chat_id) != null;
+  }
+
+  public audioAvailable(audio: Audio): boolean {
+    if (this.availableAudios == null || this.availableAudios.length < 0) {
+      return false;
+    }
+    return this.availableAudios.find(availableAudio => availableAudio === audio.audio_id) != null;
+  }
+
   /**
    * Method which triggers when the open chat button gets clicked.
    */
@@ -105,7 +131,13 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   }
 
   public onChatCompleted(): void {
+    this.displayChat = false;
+    this.stageService.removeAvailableChats(this.locationNFC.chat.chat_id);
     console.log('chat completed');
+  }
+
+  public onAudioCompleted(completedAudio: Audio): void {
+
   }
 
   /**

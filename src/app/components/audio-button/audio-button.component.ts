@@ -10,15 +10,14 @@ export class AudioButtonComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
-  public onClickAudioPlayer(audioPlayer: HTMLAudioElement): void {
 
+  }
+
+  public onClickAudioPlayer(audioPlayer: HTMLAudioElement): void {
     if (audioPlayer.paused) {
       audioPlayer.play();
-
     } else {
       audioPlayer.pause();
     }
-    console.log(audioPlayer.constructor.name);
   }
 }

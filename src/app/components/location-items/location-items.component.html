@@ -19,8 +19,8 @@
                             </ng-container>
 
                             <ng-container *ngIf="!displayChat && !displayAudio">
+                                <ng-container *ngIf="locationNFC.chat != null && chatAvailable()">
 
-                                <ng-container *ngIf="locationNFC.chat != null">
                                     <button class="button-fragment" (click)="onClickOpenChat()">
                                         <div class="row justify-content-between align-self-center">
                                             <div class="col-auto">
@@ -31,22 +31,25 @@
                                             </div>
                                         </div>
                                     </button>
+
                                 </ng-container>
 
                                 <ng-container *ngIf="locationNFC.audios != null">
                                     <ng-container *ngFor="let audio of locationNFC.audios">
+                                        <ng-container *ngIf="audioAvailable(audio)">
 
-                                        <button class="button-fragment" (click)="onClickOpenAudio(audio)">
-                                            <div class="row justify-content-between align-self-center">
-                                                <div class="col-auto">
-                                                    <p>Listen to {{audio.audio_title}}</p>
+                                            <button class="button-fragment" (click)="onClickOpenAudio(audio)">
+                                                <div class="row justify-content-between align-self-center">
+                                                    <div class="col-auto">
+                                                        <p>Listen to {{audio.audio_title}}</p>
+                                                    </div>
+                                                    <div class="col-auto icon-col">
+                                                        <i class="material-icons-outlined">audiotrack</i>
+                                                    </div>
                                                 </div>
-                                                <div class="col-auto icon-col">
-                                                    <i class="material-icons-outlined">audiotrack</i>
-                                                </div>
-                                            </div>
-                                        </button>
+                                            </button>
 
+                                        </ng-container>
                                     </ng-container>
                                 </ng-container>
 
