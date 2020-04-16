@@ -6,7 +6,17 @@
         </div>
         <h2 id="locationTitle">{{selectedLocationDisplayName}}</h2>
 
-        <app-location></app-location>
+
+        <ng-container *ngIf="locationNFC; else noNFCForLocation">
+
+            <app-location></app-location>
+
+        </ng-container>
+        <ng-template #noNFCForLocation>
+            <p>Nothing to do here</p>
+        </ng-template>
+
+
     </ng-container>
     <ng-template #noLocationSelected>
         <p>Please select a location</p>

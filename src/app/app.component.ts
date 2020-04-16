@@ -13,11 +13,6 @@ import { GameStateUtils } from './utils/game-state-util';
 export class AppComponent implements OnInit {
 
   /**
-   * Stages loaded from the json file.
-   */
-  public stages: Stage[];
-
-  /**
    * Finished items per stage.
    */
   public finishedItems: string[];
@@ -25,7 +20,7 @@ export class AppComponent implements OnInit {
   /**
    * Currently selected location.
    */
-  public selectedLocation: string;
+  public selectedLocation: number;
 
 
   /**
@@ -35,28 +30,16 @@ export class AppComponent implements OnInit {
   public displayLogo = true;
   public displayLocationItem = true;
 
-  private readonly jsonUrl = 'assets/config.json';
-
-  constructor(private http: HttpClient) {
+  constructor() {
 
   }
 
   ngOnInit(): void {
-    this.getConfig().subscribe(data => {
-      this.stages = data;
-    });
+
   }
 
-  /**
-   * Method to read the json config.
-   */
-  public getConfig(): Observable<any> {
-    return this.http.get(this.jsonUrl);
-  }
-
-
-  public onNewLocationSelected(newLocation: string): void {
-    if (newLocation === this.selectedLocation) {
+  public onNewLocationSelected(newLocation: number): void {
+    if (newLocation == null || newLocation === this.selectedLocation) {
       return;
     }
     this.selectedLocation = newLocation;

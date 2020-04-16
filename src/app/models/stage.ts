@@ -6,5 +6,5 @@ export interface Stage {
     level: number;
     nfc_title: string;
     level_setup: LevelSetup;
-    nfcs: NFC[];
+    nfc: NFC[];
 }
