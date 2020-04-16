@@ -28,6 +28,10 @@ Styling button
     text-align: left;
     cursor: pointer;
     
+    
+}
+
+.buttonFragment2 {
     &:hover {
         border: 2px solid;
         border-color: $secondary;
