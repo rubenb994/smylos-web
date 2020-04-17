@@ -173,7 +173,7 @@ export class StageService {
     for (let index = 0; index < chat.enable_items.length; index++) {
       const chatToEnable = chat.enable_items[index];
 
-      const foundAvailableItemIndex = this.availableAudios.findIndex(availableChat => availableChat === chatToEnable);
+      const foundAvailableItemIndex = this.availableChats.findIndex(availableChat => availableChat === chatToEnable);
       // Dont add duplicates.
       if (foundAvailableItemIndex > 0) {
         return;
@@ -194,7 +194,7 @@ export class StageService {
     for (let index = 0; index < chat.disable_items.length; index++) {
       const chatToDisable = chat.disable_items[index];
 
-      const foundAvailableItemIndex = this.availableAudios.findIndex(availableChat => availableChat === chatToDisable);
+      const foundAvailableItemIndex = this.availableChats.findIndex(availableChat => availableChat === chatToDisable);
       if (foundAvailableItemIndex < 0) {
         return;
       }
