@@ -20,13 +20,18 @@
                 </ng-container>
             </ng-template>
 
-
+            <ng-container *ngIf="chatItemDisplay.chatItem.audio_message != null">
+                <app-audio-button class="audio-button"
+                    [audio]="createAudioObjectForAudioMessage(chatItemDisplay.chatItem.audio_message)"
+                    (audioCompleted)="onAudioCompleted()">
+                </app-audio-button>
+            </ng-container>
 
             <ng-container *ngIf="isLastChat">
 
                 <ng-container *ngIf="nextItemIsPlayerChatItem(chatItemDisplay.chatItem)">
                     <ng-container *ngFor="let title of getNextChatItem(chatItemDisplay.chatItem).titles">
-                        <button
+                        <button [disabled]="!audioFinished"
                             (click)="onClickTitleButton(title, getNextChatItem(chatItemDisplay.chatItem))">{{title}}</button>
                     </ng-container>
                 </ng-container>
