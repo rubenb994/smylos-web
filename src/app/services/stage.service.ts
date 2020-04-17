@@ -28,33 +28,43 @@ export class StageService {
   public $availableAudios: BehaviorSubject<string[]> = new BehaviorSubject(null);
   private availableAudios: string[];
 
+  public $stageFinished: BehaviorSubject<boolean> = new BehaviorSubject(null);
+
   private readonly jsonUrl = 'assets/config.json';
 
   constructor(private http: HttpClient) {
 
   }
 
+  /**
+   * Method to read stages from JSON file.
+   */
   public getStages(): Observable<Stage[]> {
     return this.http.get(this.jsonUrl) as Observable<Stage[]>;
   }
 
   public setCurrentStage(level: number) {
+    // Set the finished stage to false.
+    this.$stageFinished.next(false);
+
+    // Clear completed items of previous stage.
+    this.clearCompletedChatsAudios();
+
+    // Find the currentStage.
     this.currentStage = this.stages.find(stage => stage.level === level);
     this.$currentStage.next(this.currentStage);
     if (this.currentStage == null) {
       return;
     }
-
+    // Find availableItems, audios and chats.
     const availableItems = this.currentStage.level_setup.enable_items;
     const availableAudios = availableItems.filter(availableItem => availableItem[0] === 'a');
     const availableChats = availableItems.filter(availableItem => availableItem[0] === 'C');
+    // Set them in the service.
     this.setAvailableAudios(availableAudios);
     this.setAvailableChats(availableChats);
   }
 
-  public getCurrentStage(): Observable<Stage> {
-    return this.$currentStage;
-  }
 
   public getNFCForLocation(locationId: number): NFC {
     const currentStage = this.stages.find(stage => stage.level === GameStateUtils.getLevel());
@@ -72,6 +82,13 @@ export class StageService {
       return null;
     }
     return nfcForLocation;
+  }
+
+  private clearCompletedChatsAudios(): void {
+    this.completedAudios = [];
+    this.$completedAudios.next(this.completedAudios);
+    this.completedChats = [];
+    this.$completedChats.next(this.completedChats);
   }
 
   /**
@@ -103,7 +120,7 @@ export class StageService {
   /**
    * Available chats methods.
    */
-  public removeAvailableChat(chatId: string): boolean {
+  public removeAvailableChat(chatId: string): void {
     const foundIndex = this.availableChats.findIndex(availableChat => availableChat === chatId);
     if (foundIndex < 0) {
       return;
@@ -113,7 +130,7 @@ export class StageService {
 
     this.addCompletedChat(chatId);
 
-    return this.evaluateStageCleared();
+    this.evaluateStageCleared();
   }
 
   public addAvailableChats(chatIds: string[]): void {
@@ -129,7 +146,7 @@ export class StageService {
   /**
    * Available audios methods.
    */
-  public removeAvailableAudio(audioId: string): boolean {
+  public removeAvailableAudio(audioId: string): void {
     const foundIndex = this.availableAudios.findIndex(availableAudio => availableAudio === audioId);
     if (foundIndex < 0) {
       return;
@@ -139,7 +156,7 @@ export class StageService {
 
     this.addCompletedAudio(audioId);
 
-    return this.evaluateStageCleared();
+    this.evaluateStageCleared();
   }
 
   public addAvailableAudios(audioIds: string[]): void {
@@ -152,7 +169,7 @@ export class StageService {
     this.$availableAudios.next(this.availableAudios);
   }
 
-  private evaluateStageCleared(): boolean {
+  private evaluateStageCleared() {
     let stageCleared = true;
     const clearedItems = this.completedAudios.concat(this.completedChats);
     const mandatoryItems = this.currentStage.level_setup.mandatory_items;
@@ -165,6 +182,7 @@ export class StageService {
         break;
       }
     }
-    return stageCleared;
+
+    this.$stageFinished.next(stageCleared);
   }
 }
