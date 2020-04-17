@@ -33,7 +33,7 @@ export class ChatComponent implements OnInit, OnChanges, AfterViewInit {
   constructor() { }
 
   ngOnInit(): void {
-
+    this.audioFinished = false;
   }
 
   ngOnChanges(): void {
@@ -80,13 +80,18 @@ export class ChatComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   public createAudioObjectForAudioMessage(audioId: string): Audio {
-    if (!this.audioFinished) {
-      this.audioFinished = false;
+    if (audioId == null) {
+      return;
     }
     return { audio_id: audioId };
   }
 
-  public onAudioCompleted(): void {
+  public onAudioCompleted(audio: Audio): void {
+    console.log(audio);
+    if (audio == null) {
+      return;
+    }
+    console.log(this.audioFinished);
     this.audioFinished = true;
   }
 

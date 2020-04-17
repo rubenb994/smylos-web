@@ -144,8 +144,9 @@ export class StageService {
     this.availableChats.splice(foundIndex, 1);
     this.removeDisabledChatsFromAvailableChats(chat);
     this.addEnabledChatsToAvailableChats(chat);
-    this.$availableChats.next(this.availableChats);
 
+    this.$availableChats.next(this.availableChats);
+    this.$availableAudios.next(this.availableAudios);
     // Add removed chat to completed chats.
     this.addCompletedChat(chat.chat_id);
     // Evaluate if stage is cleared.
@@ -171,14 +172,22 @@ export class StageService {
     }
 
     for (let index = 0; index < chat.enable_items.length; index++) {
-      const chatToEnable = chat.enable_items[index];
-
-      const foundAvailableItemIndex = this.availableChats.findIndex(availableChat => availableChat === chatToEnable);
-      // Dont add duplicates.
-      if (foundAvailableItemIndex > 0) {
-        return;
+      const itemToEnable = chat.enable_items[index];
+      if (itemToEnable[0] === 'a') {
+        const foundAvailableItemIndex = this.availableAudios.findIndex(availableAudio => availableAudio === itemToEnable);
+        // Dont add duplicates.
+        if (foundAvailableItemIndex > 0) {
+          return;
+        }
+        this.availableAudios.push(itemToEnable);
+      } else {
+        const foundAvailableItemIndex = this.availableChats.findIndex(availableChat => availableChat === itemToEnable);
+        // Dont add duplicates.
+        if (foundAvailableItemIndex > 0) {
+          return;
+        }
+        this.availableChats.push(itemToEnable);
       }
-      this.availableChats.push(chatToEnable);
     }
   }
 
@@ -192,13 +201,21 @@ export class StageService {
     }
 
     for (let index = 0; index < chat.disable_items.length; index++) {
-      const chatToDisable = chat.disable_items[index];
+      const itemToDisable = chat.disable_items[index];
 
-      const foundAvailableItemIndex = this.availableChats.findIndex(availableChat => availableChat === chatToDisable);
-      if (foundAvailableItemIndex < 0) {
-        return;
+      if (itemToDisable[0] === 'a') {
+        const foundAvailableItemIndex = this.availableAudios.findIndex(avialableAudio => avialableAudio === itemToDisable);
+        if (foundAvailableItemIndex < 0) {
+          return;
+        }
+        this.availableAudios.splice(foundAvailableItemIndex, 1);
+      } else {
+        const foundAvailableItemIndex = this.availableChats.findIndex(availableChat => availableChat === itemToDisable);
+        if (foundAvailableItemIndex < 0) {
+          return;
+        }
+        this.availableChats.splice(foundAvailableItemIndex, 1);
       }
-      this.availableChats.splice(foundAvailableItemIndex, 1);
     }
   }
 
@@ -218,8 +235,9 @@ export class StageService {
 
     this.availableAudios.splice(foundIndex, 1);
     this.removeDisabledAudiosFromAvailableAudios(audio);
-    this.$availableAudios.next(this.availableAudios);
 
+    this.$availableChats.next(this.availableChats);
+    this.$availableAudios.next(this.availableAudios);
     // Add removed audio to complete audios.
     this.addCompletedAudio(audio.audio_id);
     // Evaluate if stage is cleared.
@@ -235,7 +253,6 @@ export class StageService {
     this.$availableAudios.next(this.availableAudios);
   }
 
-
   /**
    * Method to remove the disabled items of a audio from the available items array.
    * @param audio the audio to remove the disabled items for.
@@ -246,13 +263,21 @@ export class StageService {
     }
 
     for (let index = 0; index < audio.disable_items.length; index++) {
-      const audioToDisable = audio.disable_items[index];
+      const itemToDisable = audio.disable_items[index];
 
-      const foundAvailableItemIndex = this.availableAudios.findIndex(availableAudio => availableAudio === audioToDisable);
-      if (foundAvailableItemIndex < 0) {
-        return;
+      if (itemToDisable[0] === 'C') {
+        const foundAvailableItemIndex = this.availableChats.findIndex(avialableChat => avialableChat === itemToDisable);
+        if (foundAvailableItemIndex < 0) {
+          return;
+        }
+        this.availableChats.splice(foundAvailableItemIndex, 1);
+      } else {
+        const foundAvailableItemIndex = this.availableAudios.findIndex(availableAudio => availableAudio === itemToDisable);
+        if (foundAvailableItemIndex < 0) {
+          return;
+        }
+        this.availableAudios.splice(foundAvailableItemIndex, 1);
       }
-      this.availableAudios.splice(foundAvailableItemIndex, 1);
     }
   }
 
