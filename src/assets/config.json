@@ -4,7 +4,8 @@
         "nfc_title": "Tutorial",
         "level_setup": {
             "enable_items": [
-                "a1_24_0"
+                "a1_24_0",
+                "C0.0.1"
             ],
             "mandatory_items": [
                 "a1_24_0"

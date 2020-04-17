@@ -4,7 +4,6 @@ export interface LocationName {
 }
 
 export const LOCATION_NAMES: LocationName[] = [
-    { id: 0, displayName: 'Tutorial NFC' },
     { id: 1, displayName: 'Epeo\' store' },
     { id: 2, displayName: 'Well' },
     { id: 3, displayName: 'Slum' },

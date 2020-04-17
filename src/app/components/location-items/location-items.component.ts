@@ -72,6 +72,10 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   }
 
   ngOnChanges(): void {
+    // Reset display values when the selectedLocation changes.
+    this.displayAudio = false;
+    this.displayChat = false;
+
     if (this.selectedLocation == null) {
       return;
     }
@@ -109,7 +113,7 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * Method to check whether the selected location has available chats.
    */
   public chatAvailable(): boolean {
-    if (this.availableChats == null || this.availableChats.length < 0) {
+    if (this.availableChats == null || this.availableChats.length < 0 || this.locationNFC.chat == null) {
       return false;
     }
     return this.availableChats.find(availableChat => availableChat === this.locationNFC.chat.chat_id) != null;
@@ -120,7 +124,7 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * @param audio the audio to check.
    */
   public audioAvailable(audio: Audio): boolean {
-    if (this.availableAudios == null || this.availableAudios.length < 0) {
+    if (this.availableAudios == null || this.availableAudios.length < 0 || audio == null) {
       return false;
     }
     return this.availableAudios.find(availableAudio => availableAudio === audio.audio_id) != null;
@@ -131,7 +135,7 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    */
   public audiosAvailable(): boolean {
     const locationAudios = this.locationNFC.audios;
-    if (this.availableAudios == null || this.availableAudios.length < 0) {
+    if (this.availableAudios == null || this.availableAudios.length < 0 || locationAudios == null) {
       return false;
     }
 

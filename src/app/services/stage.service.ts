@@ -171,7 +171,7 @@ export class StageService {
     }
 
     for (let index = 0; index < chat.enable_items.length; index++) {
-      const chatToEnable = chat.disable_items[index];
+      const chatToEnable = chat.enable_items[index];
 
       const foundAvailableItemIndex = this.availableAudios.findIndex(availableChat => availableChat === chatToEnable);
       // Dont add duplicates.
