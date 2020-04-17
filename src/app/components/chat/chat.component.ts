@@ -82,13 +82,10 @@ export class ChatComponent implements OnInit, OnChanges, AfterViewInit {
       return;
     }
 
-    // else {
-    //   // If the currentChatItemNext equals -1 the chat is finished.
-    //   if (currentChatItem.next[0] === -1) {
-    //     this.chatFinished = true;
-    //     return;
-    //   }
-    // }
+    // Do nothing if the next chat item is the last one.
+    if (currentChatItem.next[0] === -1) {
+      return;
+    }
 
     this.chatItemsToDisplay.push(this.createChatItemDisplay(currentChatItem));
 
