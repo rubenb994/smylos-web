@@ -1,6 +1,17 @@
 <div class="main" (window:resize)="onWindowResize()">
-    <app-map (newLocationSelected)="onNewLocationSelected($event)"></app-map>
-    <app-location-items *ngIf="displayLocationItem" [selectedLocation]="selectedLocation"></app-location-items>
-    <app-toolbar *ngIf="displayToolbar"></app-toolbar>
-    <app-logo *ngIf="displayLogo"></app-logo>
+
+    <ng-container *ngIf="stagesLoading; else gameReady">
+
+        <p>Loading application</p>
+
+    </ng-container>
+    <ng-template #gameReady>
+
+        <app-map (newLocationSelected)="onNewLocationSelected($event)"></app-map>
+        <app-location-items *ngIf="displayLocationItem" [selectedLocation]="selectedLocation"></app-location-items>
+        <app-toolbar *ngIf="displayToolbar" [currentStage]="currentStage"></app-toolbar>
+        <app-logo *ngIf="displayLogo"></app-logo>
+
+    </ng-template>
+
 </div>

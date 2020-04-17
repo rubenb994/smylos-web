@@ -8,7 +8,6 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { LocationItemsComponent } from './components/location-items/location-items.component';
 import { ChatComponent } from './components/chat/chat.component';
-import { LocationComponent } from './components/location/location.component';
 import { AudioButtonComponent } from './components/audio-button/audio-button.component';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -20,7 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
     LogoComponent,
     LocationItemsComponent,
     ChatComponent,
-    LocationComponent,
     AudioButtonComponent
   ],
   imports: [

@@ -10,8 +10,9 @@ the complete menu
     background-color: $tertiary;
     top: 0;
     left: -400px;
-    height: 100%;
+    height: 100vh;
     width: 400px;
+    z-index: 2;
 }
 
 /*--------------------
@@ -23,12 +24,12 @@ close button
     text-align: right;
 }
 
-#closeButton {
+#close-button {
     color: $primary;
     background-color: $tertiary;
     border: 0px;
     &:hover {
-    color: $secondary;    
+        color: $secondary;
     }
 }
 
@@ -36,36 +37,57 @@ close button
 Title of selected location
 --------------------*/
 
-#locationTitle {
+#location-title {
     padding: 0px 25px;
 }
 
 /*--------------------
-menu open button
+Styling button
 --------------------*/
 
-#buttonMenu {
-	position: fixed;
-	left: 25px;
-	top: 25px;
-	height: 40px;
+#button-menu {
+    position: fixed;
+    left: 25px;
+    top: 25px;
+    height: 40px;
     width: 40px;
     background-color: $tertiary;
-	border-radius: 50%;
+    border-radius: 50%;
     color: $primary;
     vertical-align: middle;
-	text-align: center;
-    border: 2px solid;
-    border-color: $tertiary;
+    text-align: center;
+    border: 0px;
+}
 
-    &:hover {    
+.button-fragment {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: $primary;
+    border-radius: 25px;
+    border: 0px solid;
+    transition: 0.3s;
+    text-align: left;
+    cursor: pointer;
+
+    &:hover {
+        border: 2px solid;
         border-color: $secondary;
     }
 }
 
-.buttonIconAlign {
-    text-align: center;
-    margin-left: -1.5px;
-    margin-top: 5px;
+.buttons-container {
+    padding: 5px;
+
+    .icon-col {
+        display: flex;
+        align-items: center;
+    }
 }
 
+.chat-col {
+    max-height: 80vh;
+    overflow-x: hidden;
+    overflow-x: auto;
+}
