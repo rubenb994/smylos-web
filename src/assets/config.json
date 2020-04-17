@@ -162,7 +162,9 @@
                 "a1_36_0",
                 "a1_6_0",
                 "a1_13_0",
-                "a1_45_0"
+                "a1_45_0",
+                "a1_45_1",
+                "a1_23_0"
             ],
             "disable_items": [
                 "a1_24_0"
@@ -622,6 +624,12 @@
                                 "Ok, see you Golin!"
                             ]
                         }
+                    ],
+                    "audios": [
+                        {
+                            "audio_id": "a1_13_0",
+                            "audio_title": "Epeo and Sisyphus"
+                        }
                     ]
                 }
             },
@@ -634,8 +642,7 @@
                     "enable_items": [
                         "C1.3.0",
                         "a1_45_0",
-                        "a1_45_1",
-                        "a1_15_0"
+                        "a1_45_1"
                     ],
                     "chat_items": [
                         {
@@ -848,10 +855,6 @@
                 "chat": {
                     "chat_id": "C1.3.0",
                     "chat_title": "Talk to Sysiphus",
-                    "enable_items": [
-                        "a1_23_0",
-                        "a1_36_0"
-                    ],
                     "chat_items": [
                         {
                             "id": 0,
@@ -1036,28 +1039,22 @@
                 },
                 "audios": [
                     {
+                        "audio_id": "a1_36_0",
+                        "audio_title": "Sysiphus and Koralia"
+                    },
+                    {
                         "audio_id": "a1_23_0",
                         "audio_title": "Golin and Sysiphus"
                     }
                 ]
             },
             {
-                "nfc_id": 7,
+                "nfc_id": 8,
                 "nfc_title": "West district",
                 "audios": [
                     {
                         "audio_id": "a1_8_0",
-                        "audio_title": "Listen to Johan"
-                    }
-                ]
-            },
-            {
-                "nfc_id": 9,
-                "nfc_title": "Well",
-                "audios": [
-                    {
-                        "audio_id": "a1_13_0",
-                        "audio_title": "Epeo and Sisyphus"
+                        "audio_title": "Listen to Johan and his wife"
                     }
                 ]
             },
@@ -1082,11 +1079,11 @@
                 ]
             },
             {
-                "nfc_id": 13,
+                "nfc_id": 12,
                 "nfc_title": "Hill house",
                 "audios": [
                     {
-                        "audio_id": "a1_6_1",
+                        "audio_id": "a1_6_0",
                         "audio_title": "Listen to Koralia"
                     }
                 ]
@@ -1413,7 +1410,7 @@
                 ]
             },
             {
-                "nfc_id": 12,
+                "nfc_id": 7,
                 "nfc_title": "Golin's House",
                 "chat": {
                     "chat_id": "C2.2.0",
@@ -2406,7 +2403,7 @@
                 }
             },
             {
-                "nfc_id": 8,
+                "nfc_id": 9,
                 "nfc_title": "Big Smile's office",
                 "audios": [
                     {
@@ -2897,7 +2894,7 @@
                 }
             },
             {
-                "nfc_id": 9,
+                "nfc_id": 2,
                 "nfc_title": "Well",
                 "chat": {
                     "chat_id": "C3.3.0",
@@ -3646,7 +3643,7 @@
                 ]
             },
             {
-                "nfc_id": 8,
+                "nfc_id": 9,
                 "nfc_title": "Big Smile's office",
                 "audios": [
                     {
@@ -3726,7 +3723,7 @@
                 }
             },
             {
-                "nfc_id": 9,
+                "nfc_id": 2,
                 "nfc_title": "Well",
                 "chat": {
                     "chat_id": "C4.1.0",
