@@ -168,7 +168,7 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    */
   public onChatCompleted(): void {
     this.displayChat = false;
-    this.stageService.removeAvailableChat(this.locationNFC.chat.chat_id);
+    this.stageService.removeAvailableChat(this.locationNFC.chat);
     console.log('chat completed');
   }
 
@@ -179,7 +179,7 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    */
   public onAudioCompleted(audio: Audio): void {
     this.displayAudio = false;
-    this.stageService.removeAvailableAudio(audio.audio_id);
+    this.stageService.removeAvailableAudio(audio);
     console.log('audio completed');
   }
 

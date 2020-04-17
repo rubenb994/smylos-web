@@ -5,6 +5,8 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { GameStateUtils } from '../utils/game-state-util';
 import { LocationNFC, LOCATION_NFCS } from '../config/location-nfc';
 import { NFC } from '../models/nfc';
+import { Chat } from '../models/chat';
+import { Audio } from '../models/audio';
 
 @Injectable({
   providedIn: 'root'
@@ -65,7 +67,10 @@ export class StageService {
     this.setAvailableChats(availableChats);
   }
 
-
+  /**
+   * Method to get the NFC based on a locationId and the current stage.
+   * @param locationId locationId to fetch the NFC for.
+   */
   public getNFCForLocation(locationId: number): NFC {
     const currentStage = this.stages.find(stage => stage.level === GameStateUtils.getLevel());
     if (currentStage == null) {
@@ -84,6 +89,9 @@ export class StageService {
     return nfcForLocation;
   }
 
+  /**
+   * Method to clear the completd chats and audios arrays.
+   */
   private clearCompletedChatsAudios(): void {
     this.completedAudios = [];
     this.$completedAudios.next(this.completedAudios);
@@ -92,7 +100,8 @@ export class StageService {
   }
 
   /**
-   * Completed chats methods.
+   * Method to add a completed chat to the completed chats array.
+   * @param chatId the completed chat id.
    */
   private addCompletedChat(chatId: string): void {
     const chatIdInCompletedChats = this.completedChats.find(completedChat => completedChat === chatId);
@@ -105,7 +114,8 @@ export class StageService {
   }
 
   /**
-   * Completed audios methods.
+   * Method to add a completed audio to the complete audios array.
+   * @param audioId the completed audio id.
    */
   private addCompletedAudio(audioId: string): void {
     const audioIdInCompletedAudios = this.completedAudios.find(completedAudio => completedAudio === audioId);
@@ -118,57 +128,138 @@ export class StageService {
   }
 
   /**
-   * Available chats methods.
+   * Method to remove an available chat from the available items array when the chat completed.
+   * Handles the adding and removal of enabled and disabled items.
+   * Adds the removed chat to the completed items array.
+   * Evaluates if the stage is cleared.
+   * @param chat the chat to remove from available items.
    */
-  public removeAvailableChat(chatId: string): void {
-    const foundIndex = this.availableChats.findIndex(availableChat => availableChat === chatId);
+  public removeAvailableChat(chat: Chat): void {
+    // Handling of available chats.
+    const foundIndex = this.availableChats.findIndex(availableChat => availableChat === chat.chat_id);
     if (foundIndex < 0) {
       return;
     }
+
     this.availableChats.splice(foundIndex, 1);
+    this.removeDisabledChatsFromAvailableChats(chat);
+    this.addEnabledChatsToAvailableChats(chat);
     this.$availableChats.next(this.availableChats);
 
-    this.addCompletedChat(chatId);
-
+    // Add removed chat to completed chats.
+    this.addCompletedChat(chat.chat_id);
+    // Evaluate if stage is cleared.
     this.evaluateStageCleared();
   }
 
-  public addAvailableChats(chatIds: string[]): void {
-    this.availableChats.push(...chatIds);
-    this.$availableChats.next(this.availableChats);
-  }
-
-  public setAvailableChats(chatIds: string[]): void {
+  /**
+   * Method to set the available chats.
+   * @param chatIds chat ids to set as available.
+   */
+  private setAvailableChats(chatIds: string[]): void {
     this.availableChats = chatIds;
     this.$availableChats.next(this.availableChats);
   }
 
   /**
-   * Available audios methods.
+   * Method to add the enabled items of a chat to the available items array.
+   * @param chat the chat to add the enabled items of.
    */
-  public removeAvailableAudio(audioId: string): void {
-    const foundIndex = this.availableAudios.findIndex(availableAudio => availableAudio === audioId);
+  private addEnabledChatsToAvailableChats(chat: Chat): void {
+    if (chat.enable_items == null || chat.enable_items.length <= 0) {
+      return;
+    }
+
+    for (let index = 0; index < chat.enable_items.length; index++) {
+      const chatToEnable = chat.disable_items[index];
+
+      const foundAvailableItemIndex = this.availableAudios.findIndex(availableChat => availableChat === chatToEnable);
+      // Dont add duplicates.
+      if (foundAvailableItemIndex > 0) {
+        return;
+      }
+      this.availableChats.push(chatToEnable);
+    }
+  }
+
+  /**
+   * Method to remove the disabled items of a chat from the available items array.
+   * @param chat the chat to remove the disabled items for.
+   */
+  private removeDisabledChatsFromAvailableChats(chat: Chat): void {
+    if (chat.disable_items == null || chat.disable_items.length <= 0) {
+      return;
+    }
+
+    for (let index = 0; index < chat.disable_items.length; index++) {
+      const chatToDisable = chat.disable_items[index];
+
+      const foundAvailableItemIndex = this.availableAudios.findIndex(availableChat => availableChat === chatToDisable);
+      if (foundAvailableItemIndex < 0) {
+        return;
+      }
+      this.availableChats.splice(foundAvailableItemIndex, 1);
+    }
+  }
+
+  /**
+   * Method to remove an available audio from the available items array when the audio completed.
+   * Handles the adding and removal of enabled and disabled items.
+   * Adds the removed audio to the completed items array.
+   * Evaluates if the stage is cleared.
+   * @param audio the audio to remove from available items.
+   */
+  public removeAvailableAudio(audio: Audio): void {
+    // Handling of available audios.
+    const foundIndex = this.availableAudios.findIndex(availableAudio => availableAudio === audio.audio_id);
     if (foundIndex < 0) {
       return;
     }
+
     this.availableAudios.splice(foundIndex, 1);
+    this.removeDisabledAudiosFromAvailableAudios(audio);
     this.$availableAudios.next(this.availableAudios);
 
-    this.addCompletedAudio(audioId);
-
+    // Add removed audio to complete audios.
+    this.addCompletedAudio(audio.audio_id);
+    // Evaluate if stage is cleared.
     this.evaluateStageCleared();
   }
 
-  public addAvailableAudios(audioIds: string[]): void {
-    this.availableAudios.push(...audioIds);
-    this.$availableAudios.next(this.availableAudios);
-  }
-
-  public setAvailableAudios(chatIds: string[]): void {
+  /**
+   * Method to set the available audios.
+   * @param chatIds the chats ids to set.
+   */
+  private setAvailableAudios(chatIds: string[]): void {
     this.availableAudios = chatIds;
     this.$availableAudios.next(this.availableAudios);
   }
 
+
+  /**
+   * Method to remove the disabled items of a audio from the available items array.
+   * @param audio the audio to remove the disabled items for.
+   */
+  private removeDisabledAudiosFromAvailableAudios(audio: Audio): void {
+    if (audio.disable_items == null || audio.disable_items.length <= 0) {
+      return;
+    }
+
+    for (let index = 0; index < audio.disable_items.length; index++) {
+      const audioToDisable = audio.disable_items[index];
+
+      const foundAvailableItemIndex = this.availableAudios.findIndex(availableAudio => availableAudio === audioToDisable);
+      if (foundAvailableItemIndex < 0) {
+        return;
+      }
+      this.availableAudios.splice(foundAvailableItemIndex, 1);
+    }
+  }
+
+  /**
+   * Method to evaluate if a stage has cleared.
+   * In case its matches the contidon for a stage to be cleared, it updates the $stageFinished observable.
+   */
   private evaluateStageCleared() {
     let stageCleared = true;
     const clearedItems = this.completedAudios.concat(this.completedChats);
