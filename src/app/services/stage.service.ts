@@ -5,7 +5,6 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { GameStateUtils } from '../utils/game-state-util';
 import { LocationNFC, LOCATION_NFCS } from '../config/location-nfc';
 import { NFC } from '../models/nfc';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +17,10 @@ export class StageService {
   private currentStage: Stage;
 
   public $completedChats: BehaviorSubject<string[]> = new BehaviorSubject(null);
-  private completedChats: string[];
+  private completedChats: string[] = [];
 
   public $completedAudios: BehaviorSubject<string[]> = new BehaviorSubject(null);
-  private completedAudios: string[];
+  private completedAudios: string[] = [];
 
   public $availableChats: BehaviorSubject<string[]> = new BehaviorSubject(null);
   private availableChats: string[];
@@ -78,7 +77,7 @@ export class StageService {
   /**
    * Completed chats methods.
    */
-  public addCompletedChat(chatId: string): void {
+  private addCompletedChat(chatId: string): void {
     const chatIdInCompletedChats = this.completedChats.find(completedChat => completedChat === chatId);
     if (chatIdInCompletedChats != null) {
       return;
@@ -91,7 +90,7 @@ export class StageService {
   /**
    * Completed audios methods.
    */
-  public addCompletedAudio(audioId: string): void {
+  private addCompletedAudio(audioId: string): void {
     const audioIdInCompletedAudios = this.completedAudios.find(completedAudio => completedAudio === audioId);
     if (audioIdInCompletedAudios != null) {
       return;
@@ -104,13 +103,17 @@ export class StageService {
   /**
    * Available chats methods.
    */
-  public removeAvailableChats(chatId: string): void {
+  public removeAvailableChat(chatId: string): boolean {
     const foundIndex = this.availableChats.findIndex(availableChat => availableChat === chatId);
     if (foundIndex < 0) {
       return;
     }
     this.availableChats.splice(foundIndex, 1);
     this.$availableChats.next(this.availableChats);
+
+    this.addCompletedChat(chatId);
+
+    return this.evaluateStageCleared();
   }
 
   public addAvailableChats(chatIds: string[]): void {
@@ -126,17 +129,21 @@ export class StageService {
   /**
    * Available audios methods.
    */
-  public removeAvailableAudios(chatId: string): void {
-    const foundIndex = this.availableAudios.findIndex(availableAudio => availableAudio === chatId);
+  public removeAvailableAudio(audioId: string): boolean {
+    const foundIndex = this.availableAudios.findIndex(availableAudio => availableAudio === audioId);
     if (foundIndex < 0) {
       return;
     }
     this.availableAudios.splice(foundIndex, 1);
     this.$availableAudios.next(this.availableAudios);
+
+    this.addCompletedAudio(audioId);
+
+    return this.evaluateStageCleared();
   }
 
-  public addAvailableAudios(chatIds: string[]): void {
-    this.availableAudios.push(...chatIds);
+  public addAvailableAudios(audioIds: string[]): void {
+    this.availableAudios.push(...audioIds);
     this.$availableAudios.next(this.availableAudios);
   }
 
@@ -145,10 +152,10 @@ export class StageService {
     this.$availableAudios.next(this.availableAudios);
   }
 
-  public evaluateStageCleared(): boolean {
+  private evaluateStageCleared(): boolean {
     let stageCleared = true;
     const clearedItems = this.completedAudios.concat(this.completedChats);
-    const mandatoryItems = this.currentStage.level_setup.manadatory_items;
+    const mandatoryItems = this.currentStage.level_setup.mandatory_items;
 
     // tslint:disable-next-line: prefer-for-of
     for (let index = 0; index < mandatoryItems.length; index++) {

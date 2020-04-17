@@ -24,7 +24,8 @@
                             </ng-container>
 
                             <ng-container *ngIf="!displayChat && !displayAudio">
-                                <ng-container *ngIf="locationNFC.chat != null">
+
+                                <ng-container *ngIf="locationNFC.chat != null && chatAvailable()">
 
                                     <button class="button-fragment" (click)="onClickOpenChat()">
                                         <div class="row justify-content-between align-self-center">
