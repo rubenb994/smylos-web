@@ -13,16 +13,14 @@
         },
         "nfc": [
             {
-                "nfc_id": 3,
+                "nfc_id": 1,
                 "nfc_title": "Tutorial",
                 "chat": {
                     "chat_id": "C0.0.1",
                     "chat_title": "Start the tutorial",
                     "enable_items": [
-                        "C1.1.0"
-                    ],
-                    "disable_items": [
-                        "0.0.1"
+                        "C1.1.0",
+                        "a1_24_0"
                     ],
                     "chat_items": [
                         {
@@ -34,8 +32,7 @@
                             "sender": "Narrator",
                             "messages": [
                                 "Welcome to the Smylos world. In here, people’s wealth is measured by the dimension of their smile. There are two main classes: smiling people, who live in the city, according to their social status, and non-smiling people, who live in the slums. The smile is only a measurement of wealth and does not resemble joy and happiness as in the out world. "
-                            ],
-                            "audio_message": "A.0.0"
+                            ]
                         },
                         {
                             "id": 1,
@@ -138,11 +135,15 @@
                             ]
                         }
                     ]
-                },
+                }
+            },
+            {
+                "nfc_id": 3,
+                "nfc_title": "Slums",
                 "audios": [
                     {
                         "audio_id": "a1_24_0",
-                        "audio_title": "Hear Golin and Kyril talking"
+                        "audio_title": "Golin and Kyril"
                     }
                 ]
             }
@@ -162,6 +163,9 @@
                 "a1_6_0",
                 "a1_13_0",
                 "a1_45_0"
+            ],
+            "disable_items": [
+                "a1_24_0"
             ],
             "mandatory_items": [
                 "a1_8_0",
@@ -405,8 +409,16 @@
                 },
                 "audios": [
                     {
-                        "audio_id": "a2_1_0",
-                        "audio_title": "Epeo is talking 1"
+                        "audio_id": "a1_15_0",
+                        "audio_title": "Epeo and Hypatia",
+                        "disable_items": [
+                            "a1_45_0",
+                            "a1_45_1"
+                        ]
+                    },
+                    {
+                        "audio_id": "a1_1_0",
+                        "audio_title": "Listen to Epeo"
                     }
                 ]
             },
@@ -418,11 +430,7 @@
                     "chat_title": "Talk to Golin",
                     "enable_items": [
                         "C1.4.0",
-                        "a1_15_0",
-                        "a1_1_0"
-                    ],
-                    "disable_items": [
-                        "a2_1_0"
+                        "a1_15_0"
                     ],
                     "chat_items": [
                         {
@@ -615,39 +623,16 @@
                             ]
                         }
                     ]
-                },
-                "audios": [
-                    {
-                        "audio_id": "A0.0.0",
-                        "audio_title": "Epeo is talking 1",
-                        "enable_items": [
-                            "A0.0.4"
-                        ],
-                        "disable_items": [
-                            "A0.0.5"
-                        ]
-                    },
-                    {
-                        "audio_id": "A0.0.1",
-                        "audio_title": "Epeo is talking more 2",
-                        "enable_items": [
-                            "A0.0.4"
-                        ],
-                        "disable_items": [
-                            "A0.0.5"
-                        ]
-                    }
-                ]
+                }
             },
             {
                 "nfc_id": 3,
-                "nfc_title": "Kyril",
+                "nfc_title": "Slums",
                 "chat": {
                     "chat_id": "C1.4.0",
                     "chat_title": "Talk to Kyril",
                     "enable_items": [
                         "C1.3.0",
-                        "a1_24_0",
                         "a1_45_0",
                         "a1_45_1",
                         "a1_15_0"
@@ -845,10 +830,6 @@
                 },
                 "audios": [
                     {
-                        "audio_id": "a1_24_0",
-                        "audio_title": "Golin and Kyril"
-                    },
-                    {
                         "audio_id": "a1_45_0",
                         "audio_title": "Hypatia 1"
                     },
@@ -857,14 +838,6 @@
                         "audio_title": "Hypatia 2",
                         "disable_items": [
                             "a1_45_0"
-                        ]
-                    },
-                    {
-                        "audio_id": "a1_15_0",
-                        "audio_title": "Hypatia 3",
-                        "disable_items": [
-                            "a1_45_0",
-                            "a1_45_1"
                         ]
                     }
                 ]
@@ -1074,7 +1047,7 @@
                 "audios": [
                     {
                         "audio_id": "a1_8_0",
-                        "audio_title": "West district"
+                        "audio_title": "Listen to Johan"
                     }
                 ]
             },
@@ -1084,7 +1057,7 @@
                 "audios": [
                     {
                         "audio_id": "a1_13_0",
-                        "audio_title": "Well"
+                        "audio_title": "Epeo and Sisyphus"
                     }
                 ]
             },
@@ -1094,7 +1067,7 @@
                 "audios": [
                     {
                         "audio_id": "a1_3_0",
-                        "audio_title": "Park"
+                        "audio_title": "Listen to Sisyphus"
                     }
                 ]
             },
@@ -1104,7 +1077,7 @@
                 "audios": [
                     {
                         "audio_id": "a1_8_1",
-                        "audio_title": "West district"
+                        "audio_title": "Listen to Johan"
                     }
                 ]
             },
@@ -1114,7 +1087,7 @@
                 "audios": [
                     {
                         "audio_id": "a1_6_1",
-                        "audio_title": "Hill house"
+                        "audio_title": "Listen to Koralia"
                     }
                 ]
             }
@@ -1431,11 +1404,17 @@
                             ]
                         }
                     ]
-                }
+                },
+                "audios": [
+                    {
+                        "audio_id": "a2_1_0",
+                        "audio_title": "Listen to Epeo"
+                    }
+                ]
             },
             {
                 "nfc_id": 12,
-                "nfc_title": "Golin",
+                "nfc_title": "Golin's House",
                 "chat": {
                     "chat_id": "C2.2.0",
                     "chat_title": "Talk to Golin",
@@ -1618,27 +1597,21 @@
                 "audios": [
                     {
                         "audio_id": "a2_26_0",
-                        "audio_title": "Golin and"
+                        "audio_title": "Golin and Koralia"
                     },
                     {
                         "audio_id": "a2_25_0",
-                        "audio_title": "Epeo is talking more 2"
+                        "audio_title": "Golin and Hypatia"
                     }
                 ]
             },
             {
                 "nfc_id": 3,
-                "nfc_title": "Kyril",
+                "nfc_title": "Slums",
                 "chat": {
                     "chat_id": "C2.4.0",
                     "chat_title": "Talk to Kyril",
-                    "enable_items": [
-                        "C1.3.0",
-                        "a1_24_0",
-                        "a1_45_0",
-                        "a1_45_1",
-                        "a1_15_0"
-                    ],
+                    "enable_items": [],
                     "chat_items": [
                         {
                             "id": 0,
@@ -1833,22 +1806,24 @@
                             ]
                         }
                     ]
-                }
+                },
+                "audios": [
+                    {
+                        "audio_id": "a2_4_0",
+                        "audio_title": "Listen to Kyril"
+                    }
+                ]
             },
             {
                 "nfc_id": 4,
-                "nfc_title": "Sysiphus",
+                "nfc_title": "Tax Office",
                 "chat": {
                     "chat_id": "C2.3.0",
                     "chat_title": "Talk to Sysiphus",
                     "enable_items": [
                         "a2_38_0",
                         "C2.6.0",
-                        "C2.5.0",
-                        "a2_57_0"
-                    ],
-                    "disable_items": [
-                        "a2_25_0"
+                        "C2.5.0"
                     ],
                     "chat_items": [
                         {
@@ -2034,7 +2009,7 @@
                 "audios": [
                     {
                         "audio_id": "a2_36_0",
-                        "audio_title": "Golin and Sysiphus"
+                        "audio_title": "Sisyphus and Koralia"
                     }
                 ]
             },
@@ -2043,10 +2018,12 @@
                 "nfc_title": "Market",
                 "chat": {
                     "chat_id": "C2.5.0",
-                    "chat_title": "Talk to Sysiphus",
+                    "chat_title": "Talk to Hypatia",
                     "enable_items": [
-                        "a1_23_0",
-                        "a1_36_0"
+                        "a2_57_0"
+                    ],
+                    "disable_items": [
+                        "a2_25_0"
                     ],
                     "chat_items": [
                         {
@@ -2210,11 +2187,7 @@
                 "nfc_title": "Executive office",
                 "chat": {
                     "chat_id": "C2.6.0",
-                    "chat_title": "Talk to Sysiphus",
-                    "enable_items": [
-                        "a1_23_0",
-                        "a1_36_0"
-                    ],
+                    "chat_title": "Talk to Koralia",
                     "chat_items": [
                         {
                             "id": 0,
@@ -2438,7 +2411,7 @@
                 "audios": [
                     {
                         "audio_id": "a2_57_0",
-                        "audio_title": "Well"
+                        "audio_title": "Hypatia and Big Smile"
                     }
                 ]
             },
@@ -2448,9 +2421,1732 @@
                 "audios": [
                     {
                         "audio_id": "a2_38_0",
-                        "audio_title": "Park"
+                        "audio_title": "Listen to Johan"
                     }
                 ]
+            }
+        ]
+    },
+    {
+        "level": 3,
+        "nfc_title": "Epeo's House",
+        "level_setup": {
+            "enable_items": [
+                "C3.1.0",
+                "a3_57_0",
+                "a3_6_0"
+            ],
+            "disable_items": [
+                "C2.1.0",
+                "a2_1_0",
+                "a2_4_0",
+                "a2_25_0",
+                "a2_26_0",
+                "a2_36_0",
+                "a2_38_0",
+                "a2_57_0"
+            ]
+        },
+        "nfc": [
+            {
+                "nfc_id": 1,
+                "nfc_title": "Epeo's shop",
+                "chat": {
+                    "chat_id": "C3.1.0",
+                    "chat_title": "Talk to Epeo",
+                    "enable_items": [
+                        "C3.3.0",
+                        "C3.6.0",
+                        "C3.2.0",
+                        "a3_3_0"
+                    ],
+                    "chat_items": [
+                        {
+                            "id": 0,
+                            "next": [
+                                1
+                            ],
+                            "type": "Me",
+                            "sender": "player",
+                            "titles": [
+                                "Hi"
+                            ],
+                            "messages": [
+                                "Hi Epeo! It’s me again!"
+                            ]
+                        },
+                        {
+                            "id": 1,
+                            "next": [
+                                2
+                            ],
+                            "type": "npg",
+                            "sender": "Epeo",
+                            "messages": [
+                                "Have you found the potion?"
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "next": [
+                                3
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Not yet"
+                            ],
+                            "messages": [
+                                "Not yet, but maybe I have some interesting clues which bring me closer to the final resolution!"
+                            ]
+                        },
+                        {
+                            "id": 3,
+                            "next": [
+                                4
+                            ],
+                            "type": "npg",
+                            "sender": "Epeo",
+                            "messages": [
+                                "I told you it is very important, this potion can damage society as we know it. Do you want to be responsible for that? Now tell me, what is your answer?"
+                            ]
+                        },
+                        {
+                            "id": 4,
+                            "next": [
+                                5
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Will do my best",
+                                "No"
+                            ],
+                            "messages": [
+                                "No, I will do my best, I am going around trying to get the right information, but no one really helps me.",
+                                "No, really I don't, I will go and continue my work. I'm really trying to find the potion."
+                            ]
+                        },
+                        {
+                            "id": 5,
+                            "next": [
+                                6
+                            ],
+                            "type": "npg",
+                            "sender": "Epeo",
+                            "messages": [
+                                "Why are you trying, we need results! Do you realise how much potion you already used? Do you realise how much I gave to you? Ohh... You owe me a lot. So stop waiting for my smiles and bring me what makes me happy!"
+                            ]
+                        },
+                        {
+                            "id": 6,
+                            "next": [
+                                7
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Thank you",
+                                "What if I fail?"
+                            ],
+                            "messages": [
+                                "Thank you Epeo, I will do as you wish",
+                                "Thank you Epeo, but what if I fail, I mean it is very difficult to find, the people in the city are sending me in circles."
+                            ]
+                        },
+                        {
+                            "id": 7,
+                            "next": [
+                                8
+                            ],
+                            "type": "npg",
+                            "sender": "Epeo",
+                            "messages": [
+                                "Well, let me tell you this: If you don't find that potion and bring it to me, I'll have something else for you to do. But don't think it will be this social or free. There is nowhere to go, you are in great debt to me. So get out of here!"
+                            ]
+                        },
+                        {
+                            "id": 8,
+                            "next": [
+                                -1
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Drink the potion"
+                            ],
+                            "messages": [
+                                "Glu glu glu..."
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "nfc_id": 12,
+                "nfc_title": "Golin's House",
+                "chat": {
+                    "chat_id": "C3.2.0",
+                    "chat_title": "Talk to Golin",
+                    "enable_items": [
+                        "C3.7.2"
+                    ],
+                    "chat_items": [
+                        {
+                            "id": 0,
+                            "next": [
+                                1
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Hey"
+                            ],
+                            "messages": [
+                                "Hey, can I come in?"
+                            ]
+                        },
+                        {
+                            "id": 1,
+                            "next": [
+                                2
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "Oh, hey, it’s you again. No, it is too messy inside. We can talk here. What do you want?"
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "next": [
+                                3
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Not found the potion"
+                            ],
+                            "messages": [
+                                "I am still working on the mission I got from Epeo. I have talked to a lot of people, but I still haven’t found the potion. "
+                            ]
+                        },
+                        {
+                            "id": 3,
+                            "next": [
+                                4,
+                                9
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Ask about his journey?",
+                                "Ask about Hypatia"
+                            ],
+                            "messages": [
+                                "So how is your mission finding yourself going? Seems that are living a completely different lifestyle.",
+                                "I met Hypata the other day, she asked for you."
+                            ]
+                        },
+                        {
+                            "id": 4,
+                            "next": [
+                                5
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "My mission? Ohh, well I don’t know really. I have a pretty chill life. I party, drink, eat, have sex. I can’t complain, can I? I got a lot of friends, at least a lot of people showing up for my parties... And I got a really nice chariot. Not as good as my neighbour though. That piece of shit thinks he has that amazing smile, showing off with his Egyptian obelisk in his garden…"
+                            ]
+                        },
+                        {
+                            "id": 5,
+                            "next": [
+                                6,
+                                7
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Imply jealousy",
+                                "Complemeht his chariot"
+                            ],
+                            "messages": [
+                                "You sound a bit jealous...",
+                                "I think your chariot looks amazing!"
+                            ]
+                        },
+                        {
+                            "id": 6,
+                            "next": [
+                                8
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "Fuck you! I'm not jealous. I just... don't like people showing off."
+                            ]
+                        },
+                        {
+                            "id": 7,
+                            "next": [
+                                8
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "Yeah, you are right. It is a masterpiece."
+                            ]
+                        },
+                        {
+                            "id": 8,
+                            "next": [
+                                10
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "But I can’t really say I found myself yet, no. I just need to live my life to the fullest, and one day I will find my revelation."
+                            ]
+                        },
+                        {
+                            "id": 9,
+                            "next": [
+                                10
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "Oh yes, she came by. I don’t know how she found me. She was really upset when I left her and Kyril. But it’s fine now, after she heard the story about my dad and that I had a wealthy life here, she accepted it. It also seemed that she had something else on her mind. She was quite concerned about this world, talked about how awful it was, and how she wanted to destroy it."
+                            ]
+                        },
+                        {
+                            "id": 10,
+                            "next": [
+                                11
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Ask for Big Smile"
+                            ],
+                            "messages": [
+                                "With all these parties, I guess you have quite a big network now? Do you know Big Smile by any chance?"
+                            ]
+                        },
+                        {
+                            "id": 11,
+                            "next": [
+                                12
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "Big Smile, the ruthless dictator of this city? I know him. I cannot say we are friends, but I know him."
+                            ]
+                        },
+                        {
+                            "id": 12,
+                            "next": [
+                                13,
+                                19
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Ask him how he knows him.",
+                                "Ask if he can arrange a meeting."
+                            ],
+                            "messages": [
+                                "How do you actually know the most important man in the city?",
+                                "I would really like to meet him. Can you help me out?"
+                            ]
+                        },
+                        {
+                            "id": 13,
+                            "next": [
+                                14
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "I don’t really know if I should tell you."
+                            ]
+                        },
+                        {
+                            "id": 14,
+                            "next": [
+                                15,
+                                18
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Push him to tell you",
+                                "Don't bother"
+                            ],
+                            "messages": [
+                                "Ok, I don’t believe you then. You are probably just bragging about that you know him. If you actually know him you should be able to prove it. ",
+                                "Okay, whatever."
+                            ]
+                        },
+                        {
+                            "id": 15,
+                            "next": [
+                                16
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "Ok, so you don’t think I have contacts?! I am one of the most influential people around here. Look at my smile! It’s perfect. Ok, I will tell you. I deliver packages to him. "
+                            ]
+                        },
+                        {
+                            "id": 16,
+                            "next": [
+                                17
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Packages?"
+                            ],
+                            "messages": [
+                                "So you are a postman?"
+                            ]
+                        },
+                        {
+                            "id": 17,
+                            "next": [
+                                18
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "You can call it that, yes."
+                            ]
+                        },
+                        {
+                            "id": 18,
+                            "next": [
+                                19
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Ask for a meeting"
+                            ],
+                            "messages": [
+                                "I would really like to meet him. Can you help me out?"
+                            ]
+                        },
+                        {
+                            "id": 19,
+                            "next": [
+                                20
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "Wow, you are really a pain in the ass today. I am tired ok!? I had a huuge party yesterday, and I have a huuuge hangover! But ok, if it will make you leave me alone, I will help you out one last time. Wait here. Golin goes back in the house and comes back with a small ziplock bag in his hand. Here, take this to his office. I will let you know that you are bringing his merch. You acquired a mysterious bag"
+                            ]
+                        },
+                        {
+                            "id": 20,
+                            "next": [
+                                21,
+                                -1
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Ask what is in the bag",
+                                "Leave"
+                            ],
+                            "messages": [
+                                "What is in the bag exactly?",
+                                "Bye!"
+                            ]
+                        },
+                        {
+                            "id": 21,
+                            "next": [
+                                22
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "For christ sake, that is none of your business. Just leave!"
+                            ]
+                        },
+                        {
+                            "id": 22,
+                            "next": [
+                                -1
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Leave"
+                            ],
+                            "messages": [
+                                "Bye!"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "nfc_id": 9,
+                "nfc_title": "Well",
+                "chat": {
+                    "chat_id": "C3.3.0",
+                    "chat_title": "Talk to Sysiphus",
+                    "enable_items": [
+                        "C3.8.0"
+                    ],
+                    "disable_items": [
+                        "a3_3_0"
+                    ],
+                    "chat_items": [
+                        {
+                            "id": 0,
+                            "next": [
+                                1
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Hey Sisyphus"
+                            ],
+                            "messages": [
+                                "Hey Sisyphus, I am back, how are you?"
+                            ]
+                        },
+                        {
+                            "id": 1,
+                            "next": [
+                                2
+                            ],
+                            "type": "npg",
+                            "sender": "Sisyphus",
+                            "messages": [
+                                "Hey, I am good, how are you? Did you speak to Koralia and Hypatia? How did it go?"
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "next": [
+                                3
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Alright"
+                            ],
+                            "messages": [
+                                "It went alright, Koralia was a bit abrupt. Hypatia talked to me about the city. But none of them could bring me to Johan."
+                            ]
+                        },
+                        {
+                            "id": 3,
+                            "next": [
+                                4
+                            ],
+                            "type": "npg",
+                            "sender": "Sisyphus",
+                            "messages": [
+                                "And this potion you were talking about, did you get any closer to that? It is as if the whole city is going crazy at the moment. I think it is important that these secrets are getting exposed. "
+                            ]
+                        },
+                        {
+                            "id": 4,
+                            "next": [
+                                5
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Tell him no"
+                            ],
+                            "messages": [
+                                "No, it is difficult, no one seems to have it. I keep going around the city talking to people but I don't get any closer. "
+                            ]
+                        },
+                        {
+                            "id": 5,
+                            "next": [
+                                6
+                            ],
+                            "type": "npg",
+                            "sender": "Sisyphus",
+                            "messages": [
+                                "What does this potion actually mean to you, why is it so important?"
+                            ]
+                        },
+                        {
+                            "id": 6,
+                            "next": [
+                                7
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Trust him"
+                            ],
+                            "messages": [
+                                "Well, I guess I can trust you Sisyphus, you have been helping me along the way."
+                            ]
+                        },
+                        {
+                            "id": 7,
+                            "next": [
+                                8,
+                                9
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Talk about Epeo",
+                                "Talk about what the potion does"
+                            ],
+                            "messages": [
+                                "Epeo has this business with potions, and he is pushing me to get this potion. I have no more time, he says this potion could be dangerous for society.",
+                                "I have been told that the potion is destroying the world. It could take down everything that exists in this city."
+                            ]
+                        },
+                        {
+                            "id": 8,
+                            "next": [
+                                10
+                            ],
+                            "type": "npg",
+                            "sender": "Sisyphus",
+                            "messages": [
+                                "I see, so it is related to his business. Yes, I know Epeo, and you don't know what it does exactly? Maybe I have another idea. Have a talk with Johan. Perhaps you’ll find him in the market. I hope he can help you a bit. Let me know how things are going, ok? I look forward to seeing you back here, it is a revelation to talk to you in this terrible environment. "
+                            ]
+                        },
+                        {
+                            "id": 9,
+                            "next": [
+                                10
+                            ],
+                            "type": "npg",
+                            "sender": "Sisyphus",
+                            "messages": [
+                                "I see, so it could take this system down you say? Interesting… It is important that you get it, I guess. Maybe I have another idea. Have a talk with Johan. Perhaps you’ll find him in the market. I hope he can help you a bit. Let me know how things are going, ok? I look forward to seeing you back here, it is a revelation to talk to you in this terrible environment. "
+                            ]
+                        },
+                        {
+                            "id": 10,
+                            "next": [
+                                -1
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Thanks"
+                            ],
+                            "messages": [
+                                "Thank you again Sisyphus, I will go have a look in the city to find Johan. See you soon and good luck with the work."
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "nfc_id": 6,
+                "nfc_title": "Executive office",
+                "chat": {
+                    "chat_id": "C3.6.0",
+                    "chat_title": "Talk to Koralia",
+                    "enable_items": [
+                        "C3.7.1"
+                    ],
+                    "chat_items": [
+                        {
+                            "id": 0,
+                            "next": [
+                                1
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Ask for Big Smile"
+                            ],
+                            "messages": [
+                                "Hello, I think I have an appointment with Big Smile."
+                            ]
+                        },
+                        {
+                            "id": 1,
+                            "next": [
+                                2
+                            ],
+                            "type": "npg",
+                            "sender": "Receptionist",
+                            "messages": [
+                                "No?! This is not a… Oh, it’s you! Sorry, I didn't recognise you, yes. Miss Koralia wanted to see you before you meet Big Smile. Let me call her."
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "next": [
+                                3
+                            ],
+                            "type": "narration",
+                            "sender": "Narrator",
+                            "messages": [
+                                "Koralia enters the room"
+                            ]
+                        },
+                        {
+                            "id": 3,
+                            "next": [
+                                4
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Greet Koralia"
+                            ],
+                            "messages": [
+                                "Hello, you wanted to see me?"
+                            ]
+                        },
+                        {
+                            "id": 4,
+                            "next": [
+                                5
+                            ],
+                            "type": "npg",
+                            "sender": "Koralia",
+                            "messages": [
+                                "Hi! Yes, I do. Just wanted to give you some background info before meeting Big Smile. There are a lot of rumours that float around, but no one really knows him very well. First of all, don’t be afraid of meeting him. Actually, he’s a really approachable person, way different from what people normally say about him. They don’t even know him in person, so, as usual, people need to talk rubbish just for the pleasure of doing it."
+                            ]
+                        },
+                        {
+                            "id": 5,
+                            "next": [
+                                6
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Ask her why"
+                            ],
+                            "messages": [
+                                "Why are you telling me this?"
+                            ]
+                        },
+                        {
+                            "id": 6,
+                            "next": [
+                                7
+                            ],
+                            "type": "npg",
+                            "sender": "Koralia",
+                            "messages": [
+                                "I just think he deserves to be viewed by who he actually is, not just by rumours. I once had a brother, his name was Plousios. He died some years ago, but I can’t stop questioning what I have been told about his death. Nobody has ever found his dead body."
+                            ]
+                        },
+                        {
+                            "id": 5,
+                            "next": [
+                                6
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Ask why again"
+                            ],
+                            "messages": [
+                                "Yes, I understand but..."
+                            ]
+                        },
+                        {
+                            "id": 6,
+                            "next": [
+                                7
+                            ],
+                            "type": "npg",
+                            "sender": "Koralia",
+                            "messages": [
+                                "I had a private meeting with Big Smile. I’ve always thought that he was a strong leader, but without heart. However, I found out that he has a story too. He lost his brother, just like I did. You might think that we only think about our work, but we are people too, you know. We like to go sailing at the weekends, go out for dinner, have a good time with friends. I have a wonderful time during the holidays at my house looking over the sea. On the other hand, we work hard, that is why we are here in society. We make the city work."
+                            ]
+                        },
+                        {
+                            "id": 7,
+                            "next": [
+                                8
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Ask what she wants to say"
+                            ],
+                            "messages": [
+                                "What are you trying to say?"
+                            ]
+                        },
+                        {
+                            "id": 8,
+                            "next": [
+                                9
+                            ],
+                            "type": "npg",
+                            "sender": "Koralia",
+                            "messages": [
+                                "Sorry, but I have another meeting right now, let me quickly tell them I will come a bit later since our conversation is more important. "
+                            ]
+                        },
+                        {
+                            "id": 9,
+                            "next": [
+                                10,
+                                11
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Say you will wait.",
+                                "You have more things to do."
+                            ],
+                            "messages": [
+                                "Yes, sure, I will be right here.",
+                                "Ok, don't worry, I have plenty of things to do, we can talk another time."
+                            ]
+                        },
+                        {
+                            "id": 10,
+                            "next": [
+                                12
+                            ],
+                            "type": "npg",
+                            "sender": "Koralia",
+                            "messages": [
+                                "I will only be gone for a couple of minutes, I’ll be back soon!"
+                            ]
+                        },
+                        {
+                            "id": 11,
+                            "next": [
+                                12
+                            ],
+                            "type": "npg",
+                            "sender": "Koralia",
+                            "messages": [
+                                "I will only be gone for a couple of minutes, you should wait!"
+                            ]
+                        },
+                        {
+                            "id": 12,
+                            "next": [
+                                13
+                            ],
+                            "type": "narration",
+                            "sender": "Narrator",
+                            "messages": [
+                                "You are now alone in Koralia's office."
+                            ]
+                        },
+                        {
+                            "id": 13,
+                            "next": [
+                                17,
+                                14
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Wait",
+                                "Sniff around"
+                            ],
+                            "messages": [
+                                "Wait, it won’t take so much time.",
+                                "Start to look around in the office to find out more"
+                            ]
+                        },
+                        {
+                            "id": 14,
+                            "next": [
+                                15
+                            ],
+                            "type": "narration",
+                            "sender": "Narrator",
+                            "messages": [
+                                "Under a huge pile of papers, right on Miss Koralia’s desk, you find an interesting document. You read it hastily in your mind, worried to be discovered."
+                            ]
+                        },
+                        {
+                            "id": 15,
+                            "next": [
+                                16
+                            ],
+                            "type": "narration",
+                            "sender": "Narrator",
+                            "messages": [
+                                "After the court decision, taking into account the legal deeds, Mr Plousios is sentenced to give his actual status to the only survivor of the victim’s family. Henceforth, he is forbidden to ever recover his previous social condition as the court recognizes Mr Plousios as the only responsible for Mr Nekrós’ death."
+                            ]
+                        },
+                        {
+                            "id": 16,
+                            "next": [
+                                17
+                            ],
+                            "type": "narration",
+                            "sender": "Narrator",
+                            "messages": [
+                                "Koralia is returning. Anxiously you hide the document under the pile of papers as you found them."
+                            ]
+                        },
+                        {
+                            "id": 17,
+                            "next": [
+                                18
+                            ],
+                            "type": "npg",
+                            "sender": "Koralia",
+                            "messages": [
+                                "Sorry, daily bureaucracy. Here I am. What was I saying?"
+                            ]
+                        },
+                        {
+                            "id": 18,
+                            "next": [
+                                19
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Remind her of Big Smile"
+                            ],
+                            "messages": [
+                                "You were telling me about your and Big Smile’s past. Anyway, I found it really difficult to follow you."
+                            ]
+                        },
+                        {
+                            "id": 19,
+                            "next": [
+                                20
+                            ],
+                            "type": "npg",
+                            "sender": "Koralia",
+                            "messages": [
+                                "Yes, I wanted to tell you about Big Smile so you will not judge him from what you heard. Give him a chance the way he is. But time flies. I really need to go to that meeting now. Business can’t wait, you know… I think now you are ready to talk with Big Smile. Goodbye."
+                            ]
+                        },
+                        {
+                            "id": 20,
+                            "next": [
+                                -1
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Thank Koralia"
+                            ],
+                            "messages": [
+                                "Thanks for the time! Goodbye."
+                            ]
+                        }
+                    ]
+                },
+                "audios": [
+                    {
+                        "audio_id": "a3_6_0",
+                        "audio_title": "Koralia"
+                    }
+                ]
+            },
+            {
+                "nfc_id": 5,
+                "nfc_title": "Market",
+                "chat": {
+                    "chat_id": "C3.8.0",
+                    "chat_title": "Talk to Johan",
+                    "enable_items": [
+                        "a3_8_0"
+                    ],
+                    "chat_items": [
+                        {
+                            "id": 0,
+                            "next": [
+                                1
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Approach Johan"
+                            ],
+                            "messages": [
+                                "Are you Johan?"
+                            ]
+                        },
+                        {
+                            "id": 1,
+                            "next": [
+                                2
+                            ],
+                            "type": "npg",
+                            "sender": "Johan",
+                            "messages": [
+                                "Yes, that is me, what do you want?"
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "next": [
+                                3
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "you are happy you found him"
+                            ],
+                            "messages": [
+                                "Hi, I’m just glad I found you… I have heard a lot about you."
+                            ]
+                        },
+                        {
+                            "id": 3,
+                            "next": [
+                                4
+                            ],
+                            "type": "npg",
+                            "sender": "Johan",
+                            "messages": [
+                                "I have heard a lot about you too. You are the one who is spreading the news about the potion. "
+                            ]
+                        },
+                        {
+                            "id": 4,
+                            "next": [
+                                5,
+                                6
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Tell him about your mission.",
+                                "Ask him about the potion."
+                            ],
+                            "messages": [
+                                "It was not my intention, in fact, I am working for Epeo and he gave me the difficult task to find a potion for him. It is really hard, indeed I continue to talk with a lot of people and nobody has an accurate hint of where I can find it, maybe you can help me.",
+                                "It was not my intention, I continue to talk with a lot of people and nobody has an accurate hint of where I can find it. I have been told that you may know something about it, don’t you?"
+                            ]
+                        },
+                        {
+                            "id": 5,
+                            "next": [
+                                7
+                            ],
+                            "type": "npg",
+                            "sender": "Johan",
+                            "messages": [
+                                "Ah, Epeo wants to find this potion as well. So what did he tell you this potion does?"
+                            ]
+                        },
+                        {
+                            "id": 6,
+                            "next": [
+                                7
+                            ],
+                            "type": "npg",
+                            "sender": "Johan",
+                            "messages": [
+                                "Oh yes?! Why should I know something? And what have you been told about this potion?"
+                            ]
+                        },
+                        {
+                            "id": 7,
+                            "next": [
+                                8
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Say what Epeo told you"
+                            ],
+                            "messages": [
+                                "Epeo told me that this potion may destroy the world."
+                            ]
+                        },
+                        {
+                            "id": 8,
+                            "next": [
+                                9
+                            ],
+                            "type": "npg",
+                            "sender": "Johan",
+                            "messages": [
+                                "Why would it do that! I mean, it does make someone very very powerful, but is that different from the current situation with Big Smile? As far as I have heard, everyone is after the potion now. Thanks to your gossip. But the potion is not what you think it is. "
+                            ]
+                        },
+                        {
+                            "id": 9,
+                            "next": [
+                                10
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Ask clarification"
+                            ],
+                            "messages": [
+                                "What do you mean? How do you know?"
+                            ]
+                        },
+                        {
+                            "id": 10,
+                            "next": [
+                                11
+                            ],
+                            "type": "npg",
+                            "sender": "Johan",
+                            "messages": [
+                                "Because I am the one who made the potion! Since the beginning, the potion brought me nothing but disgrace. The first time I worked on it, I created a potion that was not as valuable and desired as it is now. The outcome of the first potion was an increased smile but with a temporary result, it only lasted for a limited amount of time.  "
+                            ]
+                        },
+                        {
+                            "id": 11,
+                            "next": [
+                                12,
+                                13
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Tell him about Epeo’s business.",
+                                "Ask him what happened next"
+                            ],
+                            "messages": [
+                                "This is funny, Epeo uses a similar potion to run his business.",
+                                "What had happened next? "
+                            ]
+                        },
+                        {
+                            "id": 12,
+                            "next": [
+                                14
+                            ],
+                            "type": "npg",
+                            "sender": "Johan",
+                            "messages": [
+                                "Oh, well, I see. I did not know who had my potion. The thing is that my partners thought that this potion was useless and that we were wasting our time. They betrayed me and sold the potion to a man, so this man may be Epeo. It all starts to make sense. After that, there was nothing left. My smile started to decrease and my perfect life to decline. Now I know it was Epeo’s fault. I lost my dignity and the love of my life because of this. I lost everything, due to my partners."
+                            ]
+                        },
+                        {
+                            "id": 13,
+                            "next": [
+                                14
+                            ],
+                            "type": "npg",
+                            "sender": "Johan",
+                            "messages": [
+                                "My partners thought that this potion was useless and that we were wasting our time. I knew I could do better so I continue to try to perfect it but I was betrayed by them and the potion was sold to a man. There was nothing left. My smile started to decrease and my perfect life to decline. I lost my dignity and the love of my life. I lost everything, due to my partners."
+                            ]
+                        },
+                        {
+                            "id": 14,
+                            "next": [
+                                15
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Ask about the final potion"
+                            ],
+                            "messages": [
+                                "I understand, but what about the final potion? "
+                            ]
+                        },
+                        {
+                            "id": 15,
+                            "next": [
+                                16
+                            ],
+                            "type": "npg",
+                            "sender": "Johan",
+                            "messages": [
+                                "I have perfected the potion and I have created one that gives you a permanent smile, not bad uh? I worked hard to achieve this, I just want to get my previous wealth back. But these potions are cursed. If you want to have it, you are too late. Someone came to my lab and stole it right under my nose. "
+                            ]
+                        },
+                        {
+                            "id": 16,
+                            "next": [
+                                17
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "So he doenst have it?"
+                            ],
+                            "messages": [
+                                "So you are telling me that you don’t have the potion anymore. "
+                            ]
+                        },
+                        {
+                            "id": 17,
+                            "next": [
+                                18
+                            ],
+                            "type": "npg",
+                            "sender": "Johan",
+                            "messages": [
+                                "That’s exactly what I’m saying. That bastard! He entered my house. And he probably knew about the potion because of all your chatter!"
+                            ]
+                        },
+                        {
+                            "id": 18,
+                            "next": [
+                                19
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Ask who stole it"
+                            ],
+                            "messages": [
+                                "Oh, I’m sorry to hear this, it seems that this potion is running away from me. Do you know who stole it from you? "
+                            ]
+                        },
+                        {
+                            "id": 19,
+                            "next": [
+                                20
+                            ],
+                            "type": "npg",
+                            "sender": "Johan",
+                            "messages": [
+                                "I really don’t know him. He looked a little bit confused, I could see the craziness in his eyes. But I’m going to fix this, I’m going to get my potion again. I’m sure I am."
+                            ]
+                        },
+                        {
+                            "id": 20,
+                            "next": [
+                                -1
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Leave"
+                            ],
+                            "messages": [
+                                "Nice to meet you, see you! If I get to know something I’ll tell you. Bye!"
+                            ]
+                        }
+                    ]
+                },
+                "audios": [
+                    {
+                        "audio_id": "a3_8_0",
+                        "audio_title": "Johan"
+                    }
+                ]
+            },
+            {
+                "nfc_id": 8,
+                "nfc_title": "Big Smile's office",
+                "audios": [
+                    {
+                        "audio_id": "a3_57_0",
+                        "audio_title": "Hypatia and Big Smile"
+                    }
+                ]
+            },
+            {
+                "nfc_id": 4,
+                "nfc_title": "Tax Office",
+                "audios": [
+                    {
+                        "audio_id": "a3_3_0",
+                        "audio_title": "Colleague Sisyphus"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "level": 4,
+        "nfc_title": "Epeo's House",
+        "level_setup": {
+            "enable_items": [
+                "C4.0.0"
+            ]
+        },
+        "nfc": [
+            {
+                "nfc_id": 1,
+                "nfc_title": "Epeo's House",
+                "chat": {
+                    "chat_id": "C4.0.0",
+                    "chat_title": "Talk to Epeo",
+                    "enable_items": [
+                        "C4.1.0"
+                    ],
+                    "chat_items": [
+                        {
+                            "id": 0,
+                            "next": [
+                                1
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Approach Epeo"
+                            ],
+                            "messages": [
+                                "Epeo I am back, I found a man called Johan who made the potion but it got stolen right before I spoke to him."
+                            ]
+                        },
+                        {
+                            "id": 1,
+                            "next": [
+                                2
+                            ],
+                            "type": "npg",
+                            "sender": "Epeo",
+                            "messages": [
+                                "Yes, I heard about it. There is a lot happening at the moment. The city is in danger. We need to go to the well now! People are gathering there. I don't know if we will still be on time to settle things right. "
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "next": [
+                                -1
+                            ],
+                            "type": "npg",
+                            "sender": "Narrator",
+                            "messages": [
+                                "Move to the well"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "nfc_id": 9,
+                "nfc_title": "Well",
+                "chat": {
+                    "chat_id": "C4.1.0",
+                    "chat_title": "Final Countdown",
+                    "enable_items": [
+                        "a4_1_1",
+                        "a4_1_2a",
+                        "a4_1_2b",
+                        "a4_1_3",
+                        "a4_1_4a",
+                        "a4_1_4b",
+                        "a4_2_1",
+                        "a4_2_2a",
+                        "a4_2_2b",
+                        "a4_2_3",
+                        "a4_2_4a",
+                        "a4_2_4b",
+                        "a4_2_5",
+                        "Background final countdown",
+                        "Final decision background voices"
+                    ],
+                    "chat_items": [
+                        {
+                            "id": 0,
+                            "next": [
+                                1
+                            ],
+                            "type": "npg",
+                            "sender": "Audio",
+                            "messages": [
+                                "Sounds at the well"
+                            ],
+                            "audio_message": "Background final countdown"
+                        },
+                        {
+                            "id": 1,
+                            "next": [
+                                2
+                            ],
+                            "type": "npg",
+                            "sender": "Audio",
+                            "messages": [
+                                "Finish listening to the audio and decide"
+                            ],
+                            "audio_message": "a4_1_1"
+                        },
+                        {
+                            "id": 2,
+                            "next": [
+                                3,
+                                4
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Me?",
+                                "Ignore"
+                            ],
+                            "messages": [
+                                "Me?",
+                                "Ignore"
+                            ]
+                        },
+                        {
+                            "id": 3,
+                            "next": [
+                                5
+                            ],
+                            "type": "npg",
+                            "sender": "Audio",
+                            "messages": [
+                                "Finish listening to the audio"
+                            ],
+                            "audio_message": "a4_1_2a"
+                        },
+                        {
+                            "id": 4,
+                            "next": [
+                                5
+                            ],
+                            "type": "npg",
+                            "sender": "Audio",
+                            "messages": [
+                                "Finish listening to the audio"
+                            ],
+                            "audio_message": "a4_1_2b"
+                        },
+                        {
+                            "id": 5,
+                            "next": [
+                                6
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "continue"
+                            ],
+                            "messages": [
+                                "Continue"
+                            ]
+                        },
+                        {
+                            "id": 6,
+                            "next": [
+                                7
+                            ],
+                            "type": "npg",
+                            "sender": "Audio",
+                            "messages": [
+                                "Finish listening to the audio and decide"
+                            ],
+                            "audio_message": "a4_1_3"
+                        },
+                        {
+                            "id": 7,
+                            "next": [
+                                8,
+                                9
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Give it to me",
+                                "Throw it in the well"
+                            ],
+                            "messages": [
+                                "Give it to me",
+                                "Throw it in the well"
+                            ]
+                        },
+                        {
+                            "id": 8,
+                            "next": [
+                                11
+                            ],
+                            "type": "npg",
+                            "sender": "Audio",
+                            "messages": [
+                                "Finish listening to the audio"
+                            ],
+                            "audio_message": "a4_1_4a"
+                        },
+                        {
+                            "id": 9,
+                            "next": [
+                                10
+                            ],
+                            "type": "npg",
+                            "sender": "Audio",
+                            "messages": [
+                                "Finish listening to the audio"
+                            ],
+                            "audio_message": "a4_1_4b"
+                        },
+                        {
+                            "id": 10,
+                            "next": [
+                                -1
+                            ],
+                            "type": "npg",
+                            "sender": "Narrator",
+                            "messages": [
+                                "The game is finished, you created equality for the complete city. Everyone has a smile. You are a comunist"
+                            ]
+                        },
+                        {
+                            "id": 11,
+                            "next": [
+                                12
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "continue"
+                            ],
+                            "messages": [
+                                "Continue"
+                            ]
+                        },
+                        {
+                            "id": 12,
+                            "next": [
+                                13
+                            ],
+                            "type": "npg",
+                            "sender": "Audio",
+                            "messages": [
+                                "Finish listening to the audio and decide"
+                            ],
+                            "audio_message": "a4_2_1"
+                        },
+                        {
+                            "id": 13,
+                            "next": [
+                                14,
+                                15
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Yes",
+                                "No"
+                            ],
+                            "messages": [
+                                "Yes",
+                                "No"
+                            ]
+                        },
+                        {
+                            "id": 14,
+                            "next": [
+                                16
+                            ],
+                            "type": "npg",
+                            "sender": "Audio",
+                            "messages": [
+                                "Finish listening to the audio"
+                            ],
+                            "audio_message": "a4_2_2a"
+                        },
+                        {
+                            "id": 15,
+                            "next": [
+                                16
+                            ],
+                            "type": "npg",
+                            "sender": "Audio",
+                            "messages": [
+                                "Finish listening to the audio"
+                            ],
+                            "audio_message": "a4_2_2b"
+                        },
+                        {
+                            "id": 16,
+                            "next": [
+                                17
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "continue"
+                            ],
+                            "messages": [
+                                "Continue"
+                            ]
+                        },
+                        {
+                            "id": 17,
+                            "next": [
+                                18
+                            ],
+                            "type": "npg",
+                            "sender": "Audio",
+                            "messages": [
+                                "Finish listening to the audio and decide"
+                            ],
+                            "audio_message": "a4_2_3"
+                        },
+                        {
+                            "id": 18,
+                            "next": [
+                                19,
+                                20
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Yes",
+                                "No"
+                            ],
+                            "messages": [
+                                "Yes",
+                                "No"
+                            ]
+                        },
+                        {
+                            "id": 19,
+                            "next": [
+                                21
+                            ],
+                            "type": "npg",
+                            "sender": "Audio",
+                            "messages": [
+                                "Finish listening to the audio"
+                            ],
+                            "audio_message": "a4_2_4a"
+                        },
+                        {
+                            "id": 20,
+                            "next": [
+                                21
+                            ],
+                            "type": "npg",
+                            "sender": "Audio",
+                            "messages": [
+                                "Finish listening to the audio"
+                            ],
+                            "audio_message": "a4_2_4b"
+                        },
+                        {
+                            "id": 21,
+                            "next": [
+                                22
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "continue"
+                            ],
+                            "messages": [
+                                "Continue"
+                            ]
+                        },
+                        {
+                            "id": 22,
+                            "next": [
+                                23
+                            ],
+                            "type": "npg",
+                            "sender": "Audio",
+                            "messages": [
+                                "Finish listening to the audio"
+                            ],
+                            "audio_message": "a4_2_5"
+                        },
+                        {
+                            "id": 23,
+                            "next": [
+                                24
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "continue"
+                            ],
+                            "messages": [
+                                "Continue"
+                            ]
+                        },
+                        {
+                            "id": 24,
+                            "next": [
+                                25
+                            ],
+                            "type": "npg",
+                            "sender": "Audio",
+                            "messages": [
+                                "Finish listening to the audio"
+                            ],
+                            "audio_message": "Final decision background voices"
+                        },
+                        {
+                            "id": 25,
+                            "next": [
+                                26,
+                                27,
+                                28,
+                                29
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Epeo",
+                                "Johan",
+                                "Big Smile",
+                                "Sisyphus"
+                            ],
+                            "messages": [
+                                "I give it to you Epeo",
+                                "I give it to you Johan",
+                                "I give it to you Big Smile",
+                                "I give it to you Sisyphus"
+                            ]
+                        },
+                        {
+                            "id": 26,
+                            "next": [
+                                -1
+                            ],
+                            "type": "npg",
+                            "sender": "Narrator",
+                            "messages": [
+                                "The game is finished, you gave the potion back to Epeo. You value loyalty"
+                            ]
+                        },
+                        {
+                            "id": 27,
+                            "next": [
+                                -1
+                            ],
+                            "type": "npg",
+                            "sender": "Narrator",
+                            "messages": [
+                                "The game is finished, you gave the potion to Johan. He regained his wealth. He was the original inventor."
+                            ]
+                        },
+                        {
+                            "id": 28,
+                            "next": [
+                                -1
+                            ],
+                            "type": "npg",
+                            "sender": "Narrator",
+                            "messages": [
+                                "The game is finished, you gave the potion to Big Smile. He is became the most powerful man in the world. You don't care about equality rules are important. Have you considered moving to China or Russia?"
+                            ]
+                        },
+                        {
+                            "id": 29,
+                            "next": [
+                                -1
+                            ],
+                            "type": "npg",
+                            "sender": "Narrator",
+                            "messages": [
+                                "The game is finished, you created equality for the complete city. Everyone has a smile"
+                            ]
+                        }
+                    ]
+                }
             }
         ]
     }

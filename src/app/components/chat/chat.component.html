@@ -5,33 +5,42 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12">
 
 
-            <ng-container *ngFor="let chatItem of chatItemsToDisplay; last as isLastChat">
-                <p>{{chatItem.sender}}</p>
+        <div class="col-12" *ngFor="let chatItemDisplay of chatItemsToDisplay; last as isLastChat">
 
-                <ng-container *ngFor="let message of chatItem.messages">
+            <p>{{chatItemDisplay.chatItem.sender}}</p>
+
+            <ng-container *ngIf="chatItemDisplay.option != null; else defaultMessage">
+                <p>{{chatItemDisplay.chatItem.messages[chatItemDisplay.option]}}</p>
+            </ng-container>
+            <ng-template #defaultMessage>
+                <ng-container *ngFor="let message of chatItemDisplay.chatItem.messages">
                     <p>{{message}}</p>
                 </ng-container>
+            </ng-template>
 
-                <ng-container *ngIf="isLastChat">
 
-                    <ng-container *ngIf="nextItemIsPlayerChatItem(chatItem)">
-                        <ng-container *ngFor="let title of getNextChatItem(chatItem).titles">
-                            <button (click)="onClickTitleButton(title, getNextChatItem(chatItem))">{{title}}</button>
-                        </ng-container>
+
+            <ng-container *ngIf="isLastChat">
+
+                <ng-container *ngIf="nextItemIsPlayerChatItem(chatItemDisplay.chatItem)">
+                    <ng-container *ngFor="let title of getNextChatItem(chatItemDisplay.chatItem).titles">
+                        <button
+                            (click)="onClickTitleButton(title, getNextChatItem(chatItemDisplay.chatItem))">{{title}}</button>
                     </ng-container>
-
-
                 </ng-container>
 
-            </ng-container>
 
-            <ng-container *ngIf="chatFinished">
-                <button (click)="onClickFinishChat()">Leave chat</button>
             </ng-container>
 
         </div>
+
+        <ng-container *ngIf="chatFinished">
+            <div class="col-12">
+                <button (click)="onClickFinishChat()">Leave chat</button>
+            </div>
+        </ng-container>
+
     </div>
 </div>

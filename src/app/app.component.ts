@@ -42,11 +42,12 @@ export class AppComponent implements OnInit {
   public displayToolbar = true;
   public displayLogo = true;
   public displayLocationItem = true;
+  public displayFinishStage = false;
 
   public stagesLoading = true;
 
   constructor(private stageService: StageService) {
-
+    // GameStateUtils.setLevel(0);
   }
 
   ngOnInit(): void {
@@ -64,9 +65,19 @@ export class AppComponent implements OnInit {
         this.stageService.setCurrentStage(GameStateUtils.getLevel());
       });
 
-    this.stageService.getCurrentStage().subscribe(result => {
+    this.stageService.$currentStage.subscribe(result => {
+      if (result == null) {
+        return;
+      }
       this.currentStage = result;
       this.calculateToolbarValues();
+    });
+
+    this.stageService.$stageFinished.subscribe(result => {
+      if (result == null) {
+        return;
+      }
+      this.displayFinishStage = result;
     });
   }
 

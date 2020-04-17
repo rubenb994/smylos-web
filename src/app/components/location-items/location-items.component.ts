@@ -59,6 +59,9 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   ) { }
 
   ngOnInit(): void {
+    /**
+     * Subscribe to the available chats and audios.
+     */
     this.stageService.$availableChats.subscribe(results => {
       this.availableChats = results;
     });
@@ -69,6 +72,10 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   }
 
   ngOnChanges(): void {
+    // Reset display values when the selectedLocation changes.
+    this.displayAudio = false;
+    this.displayChat = false;
+
     if (this.selectedLocation == null) {
       return;
     }
@@ -76,6 +83,9 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
     this.fetchCurrentLocationNFC();
   }
 
+  /**
+   * Create links to html elements for controlling them.
+   */
   ngAfterViewInit(): void {
     this.locationItem = document.getElementById('chat');
     this.menuItem = document.getElementById('button-menu') as HTMLButtonElement;
@@ -99,18 +109,45 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
     this.menuItem.style.left = '25px';
   }
 
+  /**
+   * Method to check whether the selected location has available chats.
+   */
   public chatAvailable(): boolean {
-    if (this.availableChats == null || this.availableChats.length < 0) {
+    if (this.availableChats == null || this.availableChats.length < 0 || this.locationNFC.chat == null) {
       return false;
     }
     return this.availableChats.find(availableChat => availableChat === this.locationNFC.chat.chat_id) != null;
   }
 
+  /**
+   * Method to check wheter a audio item is in the available audios list.
+   * @param audio the audio to check.
+   */
   public audioAvailable(audio: Audio): boolean {
-    if (this.availableAudios == null || this.availableAudios.length < 0) {
+    if (this.availableAudios == null || this.availableAudios.length < 0 || audio == null) {
       return false;
     }
     return this.availableAudios.find(availableAudio => availableAudio === audio.audio_id) != null;
+  }
+
+  /**
+   * Method to check wheter any audio item of a location NFC is available.
+   */
+  public audiosAvailable(): boolean {
+    const locationAudios = this.locationNFC.audios;
+    if (this.availableAudios == null || this.availableAudios.length < 0 || locationAudios == null) {
+      return false;
+    }
+
+    for (let index = 0; index < locationAudios.length; index++) {
+      const audio = locationAudios[index];
+
+      const availableAudioMatch = this.availableAudios.find(availableAudio => availableAudio === audio.audio_id);
+      if (availableAudioMatch == null) {
+        locationAudios.splice(index, 1);
+      }
+    }
+    return locationAudios.length > 0;
   }
 
   /**
@@ -129,15 +166,24 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
     this.selectedAudio = audio;
   }
 
+  /**
+   * Method which triggers when the chat completed.
+   * Removes the chat from the available chats.
+   */
   public onChatCompleted(): void {
     this.displayChat = false;
-    this.stageService.removeAvailableChats(this.locationNFC.chat.chat_id);
+    this.stageService.removeAvailableChat(this.locationNFC.chat);
     console.log('chat completed');
   }
 
+  /**
+   * Method which triggers when the audio completed.
+   * Removes the audio from the available audios.
+   * @param audio the completed audio.
+   */
   public onAudioCompleted(audio: Audio): void {
     this.displayAudio = false;
-    this.stageService.removeAvailableAudios(audio.audio_id);
+    this.stageService.removeAvailableAudio(audio);
     console.log('audio completed');
   }
 

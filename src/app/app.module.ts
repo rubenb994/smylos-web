@@ -10,6 +10,7 @@ import { LocationItemsComponent } from './components/location-items/location-ite
 import { ChatComponent } from './components/chat/chat.component';
 import { AudioButtonComponent } from './components/audio-button/audio-button.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FinishStageComponent } from './components/finish-stage/finish-stage.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     LogoComponent,
     LocationItemsComponent,
     ChatComponent,
-    AudioButtonComponent
+    AudioButtonComponent,
+    FinishStageComponent
   ],
   imports: [
     BrowserModule,

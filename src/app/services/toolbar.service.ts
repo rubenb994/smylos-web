@@ -7,31 +7,7 @@ import { Stage } from '../models/stage';
 })
 export class ToolbarService {
 
-  public $finishedAmountChats: BehaviorSubject<number> = new BehaviorSubject(null);
-  private finishedAmountChats = 0;
-
-  public $finishedAmountAudios: BehaviorSubject<number> = new BehaviorSubject(null);
-  private finishedAmountAudios = 0;
-
   constructor() { }
-
-  public getFinishedChatsAmount(): BehaviorSubject<number> {
-    return this.$finishedAmountAudios;
-  }
-
-  public setFinishedChatsAmount(amount): void {
-    this.finishedAmountChats = amount;
-    this.$finishedAmountChats.next(this.finishedAmountChats);
-  }
-
-  public getFinishedAudiosAmount(): BehaviorSubject<number> {
-    return this.$finishedAmountAudios;
-  }
-
-  public setFinishedAudiosAmount(amount): void {
-    this.finishedAmountAudios = amount;
-    this.$finishedAmountAudios.next(this.finishedAmountAudios);
-  }
 
   public calculateMaxAmountChatsAndAudios(currentStage: Stage): [number, number] {
     if (currentStage == null) {
@@ -54,6 +30,4 @@ export class ToolbarService {
     return [maxAmountChats, maxAmountAudios];
   }
 
-
 }
-

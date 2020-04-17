@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { interval } from 'rxjs';
 import { ToolbarService } from 'src/app/services/toolbar.service';
 import { Stage } from 'src/app/models/stage';
+import { StageService } from 'src/app/services/stage.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -16,29 +17,31 @@ export class ToolbarComponent implements OnInit, OnChanges {
   public potionCount = 100;
 
   public maxAmountChats = 0;
-  public finishedAmountChats = 0;
+  public completedAmountChats = 0;
 
   public maxAmountAudios = 0;
-  public finishedAmountAudios = 0;
+  public completedAmountAudios = 0;
 
   constructor(
+    private stageService: StageService,
     private toolbarService: ToolbarService
   ) { }
 
   ngOnInit(): void {
-    this.toolbarService.$finishedAmountAudios.subscribe(result => {
-      if (result == null) {
+    this.stageService.$completedAudios.subscribe(results => {
+      if (results == null || results.length < 0) {
         return;
       }
-      this.finishedAmountAudios = result;
+      this.completedAmountAudios = results.length;
     });
 
-    this.toolbarService.$finishedAmountChats.subscribe(result => {
-      if (result == null) {
+    this.stageService.$completedChats.subscribe(results => {
+      if (results == null || results.length < 0) {
         return;
       }
-      this.finishedAmountChats = result;
+      this.completedAmountChats = results.length;
     });
+
 
     // let decreasePotion = true;
     // const changeFactor = 1;
