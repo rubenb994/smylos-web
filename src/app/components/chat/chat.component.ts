@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { Chat } from 'src/app/models/chat';
 import { ChatItem } from 'src/app/models/chat-item';
+import { Audio } from 'src/app/models/audio';
 
 export interface ChatItemDisplay {
   chatItem: ChatItem;
@@ -23,6 +24,11 @@ export class ChatComponent implements OnInit, OnChanges, AfterViewInit {
   public chatItemsToDisplay: ChatItemDisplay[] = [];
 
   public chatFinished = false;
+
+  /**
+   * Variable to check wheter an audio message has been listen to.
+   */
+  public audioFinished = false;
 
   constructor() { }
 
@@ -71,6 +77,17 @@ export class ChatComponent implements OnInit, OnChanges, AfterViewInit {
 
   public onClickFinishChat(): void {
     this.chatCompleted.emit(null);
+  }
+
+  public createAudioObjectForAudioMessage(audioId: string): Audio {
+    if (!this.audioFinished) {
+      this.audioFinished = false;
+    }
+    return { audio_id: audioId };
+  }
+
+  public onAudioCompleted(): void {
+    this.audioFinished = true;
   }
 
   private addNextChatItem(id: number): void {
