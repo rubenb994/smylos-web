@@ -1,10 +1,8 @@
 import { Component, OnInit, AfterViewInit, Input, OnChanges } from '@angular/core';
 import { LOCATION_NAMES } from 'src/app/config/location-names';
 import { StageService } from 'src/app/services/stage.service';
-import { GameStateUtils } from 'src/app/utils/game-state-util';
 import { NFC } from 'src/app/models/nfc';
 import { Audio } from 'src/app/models/audio';
-import { Chat } from 'src/app/models/chat';
 
 
 @Component({
@@ -126,8 +124,9 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * Method which triggers when the open audio button gets clicked.
    * @param clickedAudio the clicked audio entry.
    */
-  public onClickOpenAudio(clickedAudio: Audio): void {
-
+  public onClickOpenAudio(audio: Audio): void {
+    this.displayAudio = true;
+    this.selectedAudio = audio;
   }
 
   public onChatCompleted(): void {
@@ -136,8 +135,10 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
     console.log('chat completed');
   }
 
-  public onAudioCompleted(completedAudio: Audio): void {
-
+  public onAudioCompleted(audio: Audio): void {
+    this.displayAudio = false;
+    this.stageService.removeAvailableAudios(audio.audio_id);
+    console.log('audio completed');
   }
 
   /**

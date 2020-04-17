@@ -18,6 +18,11 @@
                                 <app-chat [chat]="locationNFC.chat" (chatCompleted)="onChatCompleted()"></app-chat>
                             </ng-container>
 
+                            <ng-container *ngIf="displayAudio">
+                                <app-audio-button [audio]="selectedAudio" (audioCompleted)="onAudioCompleted($event)">
+                                </app-audio-button>
+                            </ng-container>
+
                             <ng-container *ngIf="!displayChat && !displayAudio">
                                 <ng-container *ngIf="locationNFC.chat != null && chatAvailable()">
 
