@@ -23,7 +23,7 @@
             <ng-container *ngIf="chatItemDisplay.chatItem.audio_message != null">
                 <app-audio-button class="audio-button"
                     [audio]="createAudioObjectForAudioMessage(chatItemDisplay.chatItem.audio_message)"
-                    (audioCompleted)="onAudioCompleted()">
+                    (audioCompleted)="onAudioCompleted($event)">
                 </app-audio-button>
             </ng-container>
 

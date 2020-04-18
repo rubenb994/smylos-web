@@ -11,8 +11,6 @@ export class AudioButtonComponent implements OnInit, OnChanges {
   @Input() audio: Audio;
   @Output() audioCompleted = new EventEmitter<Audio>(null);
 
-  public audioFinished = false;
-
   constructor() { }
 
   ngOnInit(): void {
@@ -26,7 +24,6 @@ export class AudioButtonComponent implements OnInit, OnChanges {
     }
     // Event listener to check when the audio player has finished.
     audioPlayer.addEventListener('ended', () => {
-      this.audioFinished = true;
       this.audioCompleted.emit(this.audio);
     });
   }
@@ -55,7 +52,7 @@ export class AudioButtonComponent implements OnInit, OnChanges {
       audioPlayer.pause();
     }
     // Todo remove line below.
-    // this.audioCompleted.emit(this.audio);
+    this.audioCompleted.emit(this.audio);
   }
 
   /**
