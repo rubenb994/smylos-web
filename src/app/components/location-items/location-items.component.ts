@@ -63,12 +63,10 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
      */
     this.stageService.$availableChats.subscribe(results => {
       this.availableChats = results;
-      console.log(results);
     });
 
     this.stageService.$availableAudios.subscribe(results => {
       this.availableAudios = results;
-      console.log(results);
     });
   }
 
@@ -135,7 +133,7 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * Method to check wheter any audio item of a location NFC is available.
    */
   public audiosAvailable(): boolean {
-    const locationAudios = Object.assign([], this.locationNFC.audios);
+    const locationAudios = this.locationNFC.audios;
     if (this.availableAudios == null || this.availableAudios.length < 0 || locationAudios == null) {
       return false;
     }
@@ -144,11 +142,11 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
       const audio = locationAudios[index];
 
       const availableAudioMatch = this.availableAudios.find(availableAudio => availableAudio === audio.audio_id);
-      if (availableAudioMatch == null) {
-        locationAudios.splice(index, 1);
+      if (availableAudioMatch != null) {
+        return true;
       }
     }
-    return locationAudios.length > 0;
+    return false;
   }
 
   /**

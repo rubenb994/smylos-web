@@ -51,7 +51,6 @@ export class AppComponent implements OnInit {
 
     // Subscribe to the current stage and calculate toolbar values based on current stage.
     this.stageService.$currentStage.subscribe(result => {
-      console.log(result);
       if (result == null) {
         return;
       }
