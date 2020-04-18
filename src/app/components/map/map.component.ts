@@ -16,18 +16,18 @@ export class MapComponent implements OnInit, AfterViewInit, AfterViewChecked {
   private readonly minZoom = 1;
   private readonly maxZoom = 3;
 
-  public bigSmileOfficeDot;
-  public executiveOfficeDot;
-  public taxOfficeDot;
-  public hillHouseDot;
-  public marketDot;
-  public eastDistrictDot;
-  public wellDot;
-  public westDistrictDot;
-  public palaceDot;
-  public parkDot;
-  public epeosStoreDot;
-  public slumsDot;
+  public bigSmileOfficeDot: SVGImageElement;
+  public executiveOfficeDot: SVGImageElement;
+  public taxOfficeDot: SVGImageElement;
+  public hillHouseDot: SVGImageElement;
+  public marketDot: SVGImageElement;
+  public eastDistrictDot: SVGImageElement;
+  public wellDot: SVGImageElement;
+  public westDistrictDot: SVGImageElement;
+  public palaceDot: SVGImageElement;
+  public parkDot: SVGImageElement;
+  public epeosStoreDot: SVGImageElement;
+  public slumsDot: SVGImageElement;
   constructor() { }
 
   ngOnInit(): void {
@@ -42,18 +42,18 @@ export class MapComponent implements OnInit, AfterViewInit, AfterViewChecked {
     };
 
     this.svgPanZoomMap = SvgPanZoom('#smylos-map', svgPanZoomOptions);
-    this.bigSmileOfficeDot = document.getElementById('bigSmileDot');
-    this.executiveOfficeDot = document.getElementById('executiveOfficeDot');
-    this.taxOfficeDot = document.getElementById('taxOfficeDot');
-    this.hillHouseDot = document.getElementById('hillHouseDot');
-    this.marketDot = document.getElementById('marketDot');
-    this.eastDistrictDot = document.getElementById('eastDistrictDot');
-    this.wellDot = document.getElementById('wellDot');
-    this.westDistrictDot = document.getElementById('westDistrictDot');
-    this.palaceDot = document.getElementById('palaceDot');
-    this.parkDot = document.getElementById('parkDot');
-    this.epeosStoreDot = document.getElementById('epeosStoreDot');
-    this.slumsDot = document.getElementById('slumsDot');
+    this.bigSmileOfficeDot = document.getElementById('bigSmileDot') as unknown as SVGImageElement;
+    this.executiveOfficeDot = document.getElementById('executiveOfficeDot') as unknown as SVGImageElement;
+    this.taxOfficeDot = document.getElementById('taxOfficeDot') as unknown as SVGImageElement;
+    this.hillHouseDot = document.getElementById('hillHouseDot') as unknown as SVGImageElement;
+    this.marketDot = document.getElementById('marketDot') as unknown as SVGImageElement;
+    this.eastDistrictDot = document.getElementById('eastDistrictDot') as unknown as SVGImageElement;
+    this.wellDot = document.getElementById('wellDot') as unknown as SVGImageElement;
+    this.westDistrictDot = document.getElementById('westDistrictDot') as unknown as SVGImageElement;
+    this.palaceDot = document.getElementById('palaceDot') as unknown as SVGImageElement;
+    this.parkDot = document.getElementById('parkDot') as unknown as SVGImageElement;
+    this.epeosStoreDot = document.getElementById('epeosStoreDot') as unknown as SVGImageElement;
+    this.slumsDot = document.getElementById('slumsDot') as unknown as SVGImageElement;
   }
 
   ngAfterViewChecked(): void {

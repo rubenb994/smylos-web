@@ -45,8 +45,8 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   /**
    * Variables for chaning the location and menu.
    */
-  public locationItem: HTMLElement;
-  public menuItem: HTMLButtonElement;
+  public locationItemMenu: HTMLElement;
+  public menuButton: HTMLButtonElement;
 
   /**
    * Available Chats.
@@ -64,10 +64,12 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
      */
     this.stageService.$availableChats.subscribe(results => {
       this.availableChats = results;
+      console.log(results);
     });
 
     this.stageService.$availableAudios.subscribe(results => {
       this.availableAudios = results;
+      console.log(results);
     });
   }
 
@@ -87,8 +89,8 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * Create links to html elements for controlling them.
    */
   ngAfterViewInit(): void {
-    this.locationItem = document.getElementById('chat');
-    this.menuItem = document.getElementById('button-menu') as HTMLButtonElement;
+    this.locationItemMenu = document.getElementById('chat');
+    this.menuButton = document.getElementById('button-menu') as HTMLButtonElement;
   }
 
   /**
@@ -96,8 +98,8 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * Opens the menu.
    */
   public onClickMenuOpen(): void {
-    this.locationItem.style.left = '0px';
-    this.menuItem.style.left = '-400px';
+    this.locationItemMenu.style.left = '0px';
+    this.menuButton.style.left = '-400px';
   }
 
   /**
@@ -105,8 +107,8 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * Closes the menu.
    */
   public onClickMenuClose(): void {
-    this.locationItem.style.left = '-400px';
-    this.menuItem.style.left = '25px';
+    this.locationItemMenu.style.left = '-400px';
+    this.menuButton.style.left = '25px';
   }
 
   /**
@@ -173,7 +175,6 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   public onChatCompleted(): void {
     this.displayChat = false;
     this.stageService.removeAvailableChat(this.locationNFC.chat);
-    console.log('chat completed');
   }
 
   /**
@@ -184,7 +185,6 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   public onAudioCompleted(audio: Audio): void {
     this.displayAudio = false;
     this.stageService.removeAvailableAudio(audio);
-    console.log('audio completed');
   }
 
   /**
