@@ -2,18 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Stage } from '../models/stage';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { GameStateUtils } from '../utils/game-state-util';
 import { LocationNFC, LOCATION_NFCS } from '../config/location-nfc';
 import { NFC } from '../models/nfc';
 import { Chat } from '../models/chat';
 import { Audio } from '../models/audio';
+
+import * as data from '../../assets/config.json';
+import { GameStateUtils } from '../utils/game-state-util';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StageService {
 
-  public stages: Stage[] = [];
+  public readonly stages: Stage[] = (data as any).default;
 
   public $currentStage: BehaviorSubject<Stage> = new BehaviorSubject(null);
   private currentStage: Stage;
@@ -34,15 +36,8 @@ export class StageService {
 
   private readonly jsonUrl = 'assets/config.json';
 
-  constructor(private http: HttpClient) {
-
-  }
-
-  /**
-   * Method to read stages from JSON file.
-   */
-  public getStages(): Observable<Stage[]> {
-    return this.http.get(this.jsonUrl) as Observable<Stage[]>;
+  constructor() {
+    console.log(this.stages);
   }
 
   public setCurrentStage(level: number) {
@@ -141,16 +136,16 @@ export class StageService {
       return;
     }
 
-    this.availableChats.splice(foundIndex, 1);
-    this.removeDisabledChatsFromAvailableChats(chat);
-    this.addEnabledChatsToAvailableChats(chat);
+    // this.availableChats.splice(foundIndex, 1);
+    // this.removeDisabledChatsFromAvailableChats(chat);
+    // this.addEnabledChatsToAvailableChats(chat);
 
-    this.$availableChats.next(this.availableChats);
-    this.$availableAudios.next(this.availableAudios);
+    // this.$availableChats.next(this.availableChats);
+    // this.$availableAudios.next(this.availableAudios);
     // Add removed chat to completed chats.
-    this.addCompletedChat(chat.chat_id);
+    // this.addCompletedChat(chat.chat_id);
     // Evaluate if stage is cleared.
-    this.evaluateStageCleared();
+    // this.evaluateStageCleared();
   }
 
   /**

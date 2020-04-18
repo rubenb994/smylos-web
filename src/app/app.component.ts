@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Stage } from './models/stage';
 import { GameStateUtils } from './utils/game-state-util';
 import { StageService } from './services/stage.service';
-import { finalize, first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -43,31 +42,21 @@ export class AppComponent implements OnInit {
   public stagesLoading = true;
 
   constructor(private stageService: StageService) {
-    GameStateUtils.setLevel(1);
+    // GameStateUtils.setLevel(1);
   }
 
   ngOnInit(): void {
     this.stagesLoading = true;
-
-    // Subscribe to the stages and set them in the service.
-    this.stageService.getStages()
-      .pipe(
-        first(results => results != null),
-        finalize(() =>
-          this.stagesLoading = false
-        )
-      )
-      .subscribe(results => {
-        this.stageService.stages = results;
-        this.stageService.setCurrentStage(GameStateUtils.getLevel());
-      });
+    this.stageService.setCurrentStage(GameStateUtils.getLevel());
 
     // Subscribe to the current stage and calculate toolbar values based on current stage.
     this.stageService.$currentStage.subscribe(result => {
+      console.log(result);
       if (result == null) {
         return;
       }
       this.currentStage = result;
+      this.stagesLoading = false;
       this.calculateToolbarValues();
     });
 
