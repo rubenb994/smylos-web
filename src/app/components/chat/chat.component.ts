@@ -28,12 +28,13 @@ export class ChatComponent implements OnInit, OnChanges, AfterViewInit {
   /**
    * Variable to check wheter an audio message has been listen to.
    */
-  public audioFinished = false;
+  public audioFinished = true;
+  public audioLoaded = false;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.audioFinished = false;
+
   }
 
   ngOnChanges(): void {
@@ -57,7 +58,6 @@ export class ChatComponent implements OnInit, OnChanges, AfterViewInit {
   public onClickTitleButton(title: string, chatItem: ChatItem): void {
     const indexOfClickedTitle = chatItem.titles.indexOf(title);
     if (indexOfClickedTitle < 0) {
-      console.log('Could not determine title index');
       return;
     }
     const chatItemDisplay = this.createChatItemDisplay(chatItem, indexOfClickedTitle);
@@ -69,7 +69,6 @@ export class ChatComponent implements OnInit, OnChanges, AfterViewInit {
   public getNextChatItem(currentChatItem: ChatItem): ChatItem {
     const nextChatItem = this.chat.chat_items.find(chatItem => chatItem.id === currentChatItem.next[0]);
     if (nextChatItem == null) {
-      console.log('Could not fetch next chat item');
       return;
     }
     return nextChatItem;
@@ -80,6 +79,7 @@ export class ChatComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   public createAudioObjectForAudioMessage(audioId: string): Audio {
+    this.setAudioVariables();
     if (audioId == null) {
       return;
     }
@@ -87,12 +87,17 @@ export class ChatComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   public onAudioCompleted(audio: Audio): void {
-    console.log(audio);
     if (audio == null) {
       return;
     }
-    console.log(this.audioFinished);
     this.audioFinished = true;
+  }
+
+  private setAudioVariables(): void {
+    if (!this.audioLoaded) {
+      this.audioLoaded = true;
+      this.audioFinished = false;
+    }
   }
 
   private addNextChatItem(id: number): void {
