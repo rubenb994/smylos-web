@@ -15,7 +15,7 @@ import { GameStateUtils } from '../utils/game-state-util';
 })
 export class StageService {
 
-  public readonly stages: Stage[] = (data as any).default;
+  public stages: Stage[] = (data as any).default;
 
   public $currentStage: BehaviorSubject<Stage> = new BehaviorSubject(null);
   private currentStage: Stage;
@@ -27,17 +27,33 @@ export class StageService {
   private completedAudios: string[] = [];
 
   public $availableChats: BehaviorSubject<string[]> = new BehaviorSubject(null);
-  private availableChats: string[];
+  private availableChats: string[] = [];
 
   public $availableAudios: BehaviorSubject<string[]> = new BehaviorSubject(null);
-  private availableAudios: string[];
+  private availableAudios: string[] = [];
 
   public $stageFinished: BehaviorSubject<boolean> = new BehaviorSubject(null);
 
-  private readonly jsonUrl = 'assets/config.json';
-
   constructor() {
-    console.log(this.stages);
+    // this.stages = this.deepFreeze(this.stages);
+  }
+
+  // TODO test if method below is needed
+  private deepFreeze(object): any {
+    // Retrieve the property names defined on object
+    const propNames = Object.getOwnPropertyNames(object);
+
+    // Freeze properties before freezing self
+
+    for (const name of propNames) {
+      const value = object[name];
+
+      if (value && typeof value === 'object') {
+        this.deepFreeze(value);
+      }
+    }
+
+    return Object.freeze(object);
   }
 
   public setCurrentStage(level: number) {
@@ -132,20 +148,20 @@ export class StageService {
   public removeAvailableChat(chat: Chat): void {
     // Handling of available chats.
     const foundIndex = this.availableChats.findIndex(availableChat => availableChat === chat.chat_id);
-    if (foundIndex < 0) {
+    if (foundIndex < 0 || this.availableChats == null || this.availableChats.length <= 0) {
       return;
     }
+    // TODO fix line below causing audio to dissapear
+    this.availableChats.splice(foundIndex, 1);
+    this.removeDisabledChatsFromAvailableChats(chat);
+    this.addEnabledChatsToAvailableChats(chat);
 
-    // this.availableChats.splice(foundIndex, 1);
-    // this.removeDisabledChatsFromAvailableChats(chat);
-    // this.addEnabledChatsToAvailableChats(chat);
-
-    // this.$availableChats.next(this.availableChats);
-    // this.$availableAudios.next(this.availableAudios);
+    this.$availableChats.next(this.availableChats);
+    this.$availableAudios.next(this.availableAudios);
     // Add removed chat to completed chats.
-    // this.addCompletedChat(chat.chat_id);
+    this.addCompletedChat(chat.chat_id);
     // Evaluate if stage is cleared.
-    // this.evaluateStageCleared();
+    this.evaluateStageCleared();
   }
 
   /**

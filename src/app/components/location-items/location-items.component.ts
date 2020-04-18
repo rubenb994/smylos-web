@@ -4,7 +4,6 @@ import { StageService } from 'src/app/services/stage.service';
 import { NFC } from 'src/app/models/nfc';
 import { Audio } from 'src/app/models/audio';
 
-
 @Component({
   selector: 'app-location-items',
   templateUrl: './location-items.component.html',
@@ -18,7 +17,7 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   @Input() selectedLocation: number;
 
 
-  public locationNFC: NFC = null;
+  public locationNFC: NFC;
 
   /**
    * Default location names.
@@ -136,7 +135,7 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * Method to check wheter any audio item of a location NFC is available.
    */
   public audiosAvailable(): boolean {
-    const locationAudios = this.locationNFC.audios;
+    const locationAudios = Object.assign([], this.locationNFC.audios);
     if (this.availableAudios == null || this.availableAudios.length < 0 || locationAudios == null) {
       return false;
     }
