@@ -624,14 +624,14 @@
                                 "Ok, see you Golin!"
                             ]
                         }
-                    ],
-                    "audios": [
-                        {
-                            "audio_id": "a1_13_0",
-                            "audio_title": "Epeo and Sisyphus"
-                        }
                     ]
-                }
+                },
+                "audios": [
+                    {
+                        "audio_id": "a1_13_0",
+                        "audio_title": "Epeo and Sisyphus"
+                    }
+                ]
             },
             {
                 "nfc_id": 3,

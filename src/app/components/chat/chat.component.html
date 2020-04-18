@@ -4,10 +4,10 @@
             <h3>{{chat.chat_title}}</h3>
         </div>
     </div>
+
     <div class="row">
-
-
-        <div class="col-12" *ngFor="let chatItemDisplay of chatItemsToDisplay; last as isLastChat">
+        <div class="col-12" [ngClass]="getChatClassNameForChatItem(chatItemDisplay.chatItem)"
+            *ngFor="let chatItemDisplay of chatItemsToDisplay; last as isLastChat">
 
             <p>{{chatItemDisplay.chatItem.sender}}</p>
 
@@ -21,17 +21,24 @@
             </ng-template>
 
             <ng-container *ngIf="chatItemDisplay.chatItem.audio_message != null">
-                <app-audio-button class="audio-button"
-                    [audio]="createAudioObjectForAudioMessage(chatItemDisplay.chatItem.audio_message)"
-                    (audioCompleted)="onAudioCompleted($event)">
-                </app-audio-button>
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <p>Listen to audio</p>
+                    </div>
+                    <div class="col-auto">
+                        <app-audio-button class="audio-button"
+                            [audio]="createAudioObjectForAudioMessage(chatItemDisplay.chatItem.audio_message)"
+                            (audioCompleted)="onAudioCompleted($event)">
+                        </app-audio-button>
+                    </div>
+                </div>
             </ng-container>
 
             <ng-container *ngIf="isLastChat">
 
                 <ng-container *ngIf="nextItemIsPlayerChatItem(chatItemDisplay.chatItem)">
                     <ng-container *ngFor="let title of getNextChatItem(chatItemDisplay.chatItem).titles">
-                        <button [disabled]="!audioFinished"
+                        <button class="choice-button" [disabled]="!audioFinished"
                             (click)="onClickTitleButton(title, getNextChatItem(chatItemDisplay.chatItem))">{{title}}</button>
                     </ng-container>
                 </ng-container>

@@ -4,9 +4,23 @@
   width: 100%;
 
   .audio-button {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
+    display: inline-block;
+  }
+
+  .chat-bubble-player {
+    background-color: red;
+  }
+
+  .chat-bubble-narration {
+    background-color: blue;
+  }
+
+  .chat-bubble-npg {
+    background-color: green;
+  }
+
+  .choice-button {
+    margin-bottom: 16px;
   }
 }
 

@@ -2,18 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Stage } from '../models/stage';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { GameStateUtils } from '../utils/game-state-util';
 import { LocationNFC, LOCATION_NFCS } from '../config/location-nfc';
 import { NFC } from '../models/nfc';
 import { Chat } from '../models/chat';
 import { Audio } from '../models/audio';
+
+import * as data from '../../assets/config.json';
+import { GameStateUtils } from '../utils/game-state-util';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StageService {
 
-  public stages: Stage[] = [];
+  public stages: Stage[] = (data as any).default;
 
   public $currentStage: BehaviorSubject<Stage> = new BehaviorSubject(null);
   private currentStage: Stage;
@@ -25,24 +27,33 @@ export class StageService {
   private completedAudios: string[] = [];
 
   public $availableChats: BehaviorSubject<string[]> = new BehaviorSubject(null);
-  private availableChats: string[];
+  private availableChats: string[] = [];
 
   public $availableAudios: BehaviorSubject<string[]> = new BehaviorSubject(null);
-  private availableAudios: string[];
+  private availableAudios: string[] = [];
 
   public $stageFinished: BehaviorSubject<boolean> = new BehaviorSubject(null);
 
-  private readonly jsonUrl = 'assets/config.json';
-
-  constructor(private http: HttpClient) {
-
+  constructor() {
+    // this.stages = this.deepFreeze(this.stages);
   }
 
-  /**
-   * Method to read stages from JSON file.
-   */
-  public getStages(): Observable<Stage[]> {
-    return this.http.get(this.jsonUrl) as Observable<Stage[]>;
+  // TODO test if method below is needed
+  private deepFreeze(object): any {
+    // Retrieve the property names defined on object
+    const propNames = Object.getOwnPropertyNames(object);
+
+    // Freeze properties before freezing self
+
+    for (const name of propNames) {
+      const value = object[name];
+
+      if (value && typeof value === 'object') {
+        this.deepFreeze(value);
+      }
+    }
+
+    return Object.freeze(object);
   }
 
   public setCurrentStage(level: number) {
@@ -137,10 +148,10 @@ export class StageService {
   public removeAvailableChat(chat: Chat): void {
     // Handling of available chats.
     const foundIndex = this.availableChats.findIndex(availableChat => availableChat === chat.chat_id);
-    if (foundIndex < 0) {
+    if (foundIndex < 0 || this.availableChats == null || this.availableChats.length <= 0) {
       return;
     }
-
+    // TODO fix line below causing audio to dissapear
     this.availableChats.splice(foundIndex, 1);
     this.removeDisabledChatsFromAvailableChats(chat);
     this.addEnabledChatsToAvailableChats(chat);

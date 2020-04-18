@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Stage } from './models/stage';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { GameStateUtils } from './utils/game-state-util';
 import { StageService } from './services/stage.service';
-import { finalize, first } from 'rxjs/operators';
-import { NFC } from './models/nfc';
-
 
 @Component({
   selector: 'app-root',
@@ -47,29 +42,20 @@ export class AppComponent implements OnInit {
   public stagesLoading = true;
 
   constructor(private stageService: StageService) {
-    // GameStateUtils.setLevel(0);
+    // GameStateUtils.setLevel(1);
   }
 
   ngOnInit(): void {
     this.stagesLoading = true;
+    this.stageService.setCurrentStage(GameStateUtils.getLevel());
 
-    this.stageService.getStages()
-      .pipe(
-        first(results => results != null),
-        finalize(() =>
-          this.stagesLoading = false
-        )
-      )
-      .subscribe(results => {
-        this.stageService.stages = results;
-        this.stageService.setCurrentStage(GameStateUtils.getLevel());
-      });
-
+    // Subscribe to the current stage and calculate toolbar values based on current stage.
     this.stageService.$currentStage.subscribe(result => {
       if (result == null) {
         return;
       }
       this.currentStage = result;
+      this.stagesLoading = false;
       this.calculateToolbarValues();
     });
 
@@ -81,13 +67,17 @@ export class AppComponent implements OnInit {
     });
   }
 
+  /**
+   * Method which triggers when a new location is selected by the map component.
+   * Sets the selectedLocation for the locationItems component.
+   * @param newLocation the new locaton.
+   */
   public onNewLocationSelected(newLocation: number): void {
-    if (newLocation == null || newLocation === this.selectedLocation) {
+    if (newLocation == null) {
       return;
     }
     this.selectedLocation = newLocation;
   }
-
 
   /**
    * Methods for displaying the right components.
@@ -98,6 +88,9 @@ export class AppComponent implements OnInit {
     this.evaluateLocationItemDisplay();
   }
 
+  /**
+   * Method to evaluate if the toolbar should be displayed.
+   */
   public evaluateToolbarDisplay(): void {
     if (window.innerWidth < 600) {
       this.displayToolbar = false;
@@ -106,6 +99,9 @@ export class AppComponent implements OnInit {
     }
   }
 
+  /**
+   * Method to evaluate if the logo should be displayed.
+   */
   public evaluateLogoDisplay(): void {
     if (window.innerWidth < 400) {
       this.displayLogo = false;
@@ -114,6 +110,9 @@ export class AppComponent implements OnInit {
     }
   }
 
+  /**
+   * Method to evaluate if the locationItem should be displayed.
+   */
   public evaluateLocationItemDisplay(): void {
     if (window.innerWidth < 800) {
       this.displayLocationItem = false;
@@ -122,6 +121,10 @@ export class AppComponent implements OnInit {
     }
   }
 
+  /**
+   * Method to calculate the values for the toolbar.
+   * Stores these values in the maxAmountAudios & maxAmountChats variables.
+   */
   private calculateToolbarValues(): void {
     if (this.currentStage == null) {
       return;

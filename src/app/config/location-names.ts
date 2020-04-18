@@ -17,4 +17,3 @@ export const LOCATION_NAMES: LocationName[] = [
     { id: 11, displayName: 'East District' },
     { id: 12, displayName: 'Hill House' },
 ];
-``

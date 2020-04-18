@@ -4,7 +4,6 @@ import { StageService } from 'src/app/services/stage.service';
 import { NFC } from 'src/app/models/nfc';
 import { Audio } from 'src/app/models/audio';
 
-
 @Component({
   selector: 'app-location-items',
   templateUrl: './location-items.component.html',
@@ -18,7 +17,7 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   @Input() selectedLocation: number;
 
 
-  public locationNFC: NFC = null;
+  public locationNFC: NFC;
 
   /**
    * Default location names.
@@ -45,8 +44,8 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   /**
    * Variables for chaning the location and menu.
    */
-  public locationItem: HTMLElement;
-  public menuItem: HTMLButtonElement;
+  public locationItemMenu: HTMLElement;
+  public menuButton: HTMLButtonElement;
 
   /**
    * Available Chats.
@@ -87,8 +86,8 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * Create links to html elements for controlling them.
    */
   ngAfterViewInit(): void {
-    this.locationItem = document.getElementById('chat');
-    this.menuItem = document.getElementById('button-menu') as HTMLButtonElement;
+    this.locationItemMenu = document.getElementById('chat');
+    this.menuButton = document.getElementById('button-menu') as HTMLButtonElement;
   }
 
   /**
@@ -96,8 +95,8 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * Opens the menu.
    */
   public onClickMenuOpen(): void {
-    this.locationItem.style.left = '0px';
-    this.menuItem.style.left = '-400px';
+    this.locationItemMenu.style.left = '0px';
+    this.menuButton.style.left = '-400px';
   }
 
   /**
@@ -105,8 +104,8 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * Closes the menu.
    */
   public onClickMenuClose(): void {
-    this.locationItem.style.left = '-400px';
-    this.menuItem.style.left = '25px';
+    this.locationItemMenu.style.left = '-400px';
+    this.menuButton.style.left = '25px';
   }
 
   /**
@@ -143,11 +142,11 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
       const audio = locationAudios[index];
 
       const availableAudioMatch = this.availableAudios.find(availableAudio => availableAudio === audio.audio_id);
-      if (availableAudioMatch == null) {
-        locationAudios.splice(index, 1);
+      if (availableAudioMatch != null) {
+        return true;
       }
     }
-    return locationAudios.length > 0;
+    return false;
   }
 
   /**
@@ -173,7 +172,6 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   public onChatCompleted(): void {
     this.displayChat = false;
     this.stageService.removeAvailableChat(this.locationNFC.chat);
-    console.log('chat completed');
   }
 
   /**
@@ -184,7 +182,6 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   public onAudioCompleted(audio: Audio): void {
     this.displayAudio = false;
     this.stageService.removeAvailableAudio(audio);
-    console.log('audio completed');
   }
 
   /**
