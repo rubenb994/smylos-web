@@ -58,6 +58,7 @@ export class ChatComponent implements OnChanges {
    * @param chatItem  the chat item which involved player interaction.
    */
   public onClickTitleButton(title: string, chatItem: ChatItem): void {
+    this.chatCompleted.emit();
     const indexOfClickedTitle = chatItem.titles.indexOf(title);
     if (indexOfClickedTitle < 0) {
       return;
@@ -110,6 +111,10 @@ export class ChatComponent implements OnChanges {
       return;
     }
     this.audioFinished = true;
+  }
+
+  public getChatClassNameForChatItem(chatItem: ChatItem): string {
+    return `chat-bubble-${chatItem.type}`;
   }
 
   /**
