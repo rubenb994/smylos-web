@@ -278,11 +278,44 @@ export class StageService {
     }
   }
 
-  private calculatePotionAmount(): void {
-    let potionAmount = 0;
+  public calculatePotionAmount(): void {
+    let potionAmount, totalChat, totalAudio = 0;
+
+    // Amount of mantory audios & chats required to finish a stage.
+    const mandatoryChatsNumber = this.currentStage.level_setup.mandatory_chats_amount;
+    const mandatoryAudiosNumber = this.currentStage.level_setup.mandatory_audios_amount;
+
+    // Amount of completed audios & chats.
+    const completedAmountOfAudios = this.completedAudios.length;
+    const completedAmountOfChats = this.completedChats.length;
+
+    const mandatoryItems = this.currentStage.level_setup.mandatory_items;
+
+    // Amount of specfic mandatory audios & chats.
+    const mandatoryAudios = mandatoryItems.filter(availableItem => availableItem[0] === 'a');
+    const mandatoryChats = mandatoryItems.filter(availableItem => availableItem[0] === 'C');
+
+    let mandatoryCompletedAudios, mandatoryCompletedChats = 0;
+
+    this.completedAudios.forEach(completedAudio => {
+      const foundMandatoryItem = mandatoryAudios.find(mandatoryAudio => mandatoryAudio === completedAudio);
+      if (foundMandatoryItem == null) {
+        return;
+      }
+      mandatoryCompletedAudios++;
+    });
+
+    this.completedChats.forEach(completedChat => {
+      const foundMandatoryItem = mandatoryChats.find(mandatoryChat => mandatoryChat === completedChat);
+      if (foundMandatoryItem == null) {
+        return;
+      }
+      mandatoryCompletedChats++;
+    });
 
 
 
+    potionAmount = 100 - ((completedAmountOfChats + completedAmountOfAudios) / (totalAudio + totalChat) * 100);
 
     this.potionAmount = potionAmount;
     this.$potionAmount.next(this.potionAmount);

@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
   public stagesLoading = true;
 
   constructor(private stageService: StageService) {
-    GameStateUtils.setLevel(3);
+    GameStateUtils.setLevel(1);
   }
 
   ngOnInit(): void {
@@ -57,6 +57,7 @@ export class AppComponent implements OnInit {
       this.currentStage = result;
       this.stagesLoading = false;
       this.calculateToolbarValues();
+      this.stageService.calculatePotionAmount();
     });
 
     this.stageService.$stageFinished.subscribe(result => {

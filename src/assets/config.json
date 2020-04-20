@@ -176,7 +176,9 @@
                 "C1.2.0",
                 "C1.3.0",
                 "C1.4.0"
-            ]
+            ],
+            "mandatory_audios_amount": 8,
+            "mandatory_chats_amount": 4
         },
         "nfc": [
             {
@@ -2454,7 +2456,6 @@
                     "chat_title": "Talk to Epeo",
                     "enable_items": [
                         "C3.3.0",
-                        "C3.6.0",
                         "C3.2.0",
                         "a3_3_0"
                     ],
@@ -2587,7 +2588,7 @@
                     "chat_id": "C3.2.0",
                     "chat_title": "Talk to Golin",
                     "enable_items": [
-                        "C3.7.2"
+                        "C3.6.0"
                     ],
                     "chat_items": [
                         {
@@ -3059,7 +3060,7 @@
                     "chat_id": "C3.6.0",
                     "chat_title": "Talk to Koralia",
                     "enable_items": [
-                        "C3.7.1"
+                        "C3.7.0"
                     ],
                     "chat_items": [
                         {
@@ -3646,6 +3647,289 @@
             {
                 "nfc_id": 9,
                 "nfc_title": "Big Smile's office",
+                "chat": {
+                    "chat_id": "C3.7.0",
+                    "chat_title": "Talk to Big Smile",
+                    "chat_items": [
+                        {
+                            "id": 0,
+                            "next": [
+                                1
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Permission to enter"
+                            ],
+                            "messages": [
+                                "May I come in?"
+                            ]
+                        },
+                        {
+                            "id": 1,
+                            "next": [
+                                2
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "Who are you?"
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "next": [
+                                3
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Explain"
+                            ],
+                            "messages": [
+                                "Good morning sir, last week I came here to the big tower and I talked with your colleague Koralia, who booked me an appointment to talk with you."
+                            ]
+                        },
+                        {
+                            "id": 3,
+                            "next": [
+                                4
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "First of all, Koralia is not my colleague. She works for me."
+                            ]
+                        },
+                        {
+                            "id": 4,
+                            "next": [
+                                5
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "That said, what brings you here?"
+                            ]
+                        },
+                        {
+                            "id": 5,
+                            "next": [
+                                6,
+                                11
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Talk directly about your mission",
+                                "Don’t be straightforward"
+                            ],
+                            "messages": [
+                                "Ehm… I was sent to the city in order to accomplish a mission.",
+                                "Ehm… I heard there is something which threatens your power"
+                            ]
+                        },
+                        {
+                            "id": 6,
+                            "next": [
+                                7
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "Sent to the city?! So you do not come from the city, I infer… And exactly, of what kind of mission are you talking about? Who sent you here?"
+                            ]
+                        },
+                        {
+                            "id": 7,
+                            "next": [
+                                8
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Answer"
+                            ],
+                            "messages": [
+                                "No, I meant that I was sent to the city centre, in the business district, to conduct my investigation. It is about… a potion. I understood it is really dangerous if it ends in the wrong hands, so I’m here to warn you and to ask if you know anything about that. Who could have it? "
+                            ]
+                        },
+                        {
+                            "id": 8,
+                            "next": [
+                                9
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "Another time that bloody potion?! Who could have it?! Damn, YOU should tell me that! Why are you here then, if you don’t have any useful information?! Have you read news agency on this door plaque?! "
+                            ]
+                        },
+                        {
+                            "id": 9,
+                            "next": [
+                                10
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Defend"
+                            ],
+                            "messages": [
+                                "Surely not, I thought I could discover more here, simply because you are the supreme leader, so I imagine you have your own privileged channels of communication."
+                            ]
+                        },
+                        {
+                            "id": 10,
+                            "next": [
+                                11
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "Are you trying to face me?! Obviously I have my own emissaries, but do you really think I am going to tell confidential information to the first person who comes here?!"
+                            ]
+                        },
+                        {
+                            "id": 11,
+                            "next": [
+                                12
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "They always try to undermine society, nothing new. But the absurd is that they do not even realize that they are going against themselves in this way. They ignore how much effort it takes to maintain the order. It would be surely easier for me to let people drown in their own freedom, but I am not such a selfish leader."
+                            ]
+                        },
+                        {
+                            "id": 12,
+                            "next": [
+                                13
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Ask how he manages to govern",
+                                "Show compassion"
+                            ],
+                            "messages": [
+                                "I see… How do you manage all that?",
+                                "I see your point. It has to be difficult to govern an entire city, we can’t even imagine that."
+                            ]
+                        },
+                        {
+                            "id": 13,
+                            "next": [
+                                14
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "Surely it requires a strong temper and determination… But you know, fortunately, there’s this amazing white lady, who is always by my side and helps me! I suppose you’re the one who visited Golin… you should have something for me, shouldn’t you?"
+                            ]
+                        },
+                        {
+                            "id": 14,
+                            "next": [
+                                15
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Hand it over"
+                            ],
+                            "messages": [
+                                "Oh yes, I forgot about it. Here you are"
+                            ]
+                        },
+                        {
+                            "id": 15,
+                            "next": [
+                                16
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "We all need a shelter sometimes, where feeling safe. You definitely need it, especially if you have experienced abandon and your loved ones have passed away…"
+                            ]
+                        },
+                        {
+                            "id": 16,
+                            "next": [
+                                17
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "One day a man killed my brother, the only loved person I had, as our parents died when we were just kids. As a punishment for the murder, the court gave me the killer’s wealth. I didn’t even choose my condition. They forced me to carry this huge fortune, which brings with it a huge burden. "
+                            ]
+                        },
+                        {
+                            "id": 17,
+                            "next": [
+                                18
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "So, what I had to do?! I worked hard in order to be not just one of the wealthiest men, but the biggest smile ever! I wanted to have my revenge from this cruel life. What should a person pursue when he has lost everyone and everything in life?!"
+                            ]
+                        },
+                        {
+                            "id": 18,
+                            "next": [
+                                19,
+                                20
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Be sorry",
+                                "Say goodbye"
+                            ],
+                            "messages": [
+                                "Oh, I’m terribly sorry about that, I didn’t know it.",
+                                "I see your point. It has to be difficult to govern an entire city, we can’t even imagine that. However, I really have to leave you, I need to speed up my quest. It has been a pleasure to meet you. Goodbye!"
+                            ]
+                        },
+                        {
+                            "id": 19,
+                            "next": [
+                                21
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "Why should you? They only tell bad things about me, without even know my story. Anyway, work calls. Our conversation should end here. Goodbye!"
+                            ]
+                        },
+                        {
+                            "id": 20,
+                            "next": [
+                                21
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "I have not so much time too. Goodbye!"
+                            ]
+                        },
+                        {
+                            "id": 21,
+                            "next": [
+                                -1
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Great"
+                            ],
+                            "messages": [
+                                "Goodbye! It has been a pleasure to meet you."
+                            ]
+                        }
+                    ]
+                },
                 "audios": [
                     {
                         "audio_id": "a3_57_0",
@@ -3714,10 +3998,13 @@
                             "next": [
                                 -1
                             ],
-                            "type": "npg",
-                            "sender": "Narrator",
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Yes"
+                            ],
                             "messages": [
-                                "Move to the well"
+                                "I am ready Epeo, lets go"
                             ]
                         }
                     ]
@@ -3884,7 +4171,7 @@
                             "next": [
                                 -1
                             ],
-                            "type": "npg",
+                            "type": "narration",
                             "sender": "Narrator",
                             "messages": [
                                 "The game is finished, you created equality for the complete city. Everyone has a smile. You are a comunist"
@@ -4104,7 +4391,7 @@
                             "next": [
                                 -1
                             ],
-                            "type": "npg",
+                            "type": "narration",
                             "sender": "Narrator",
                             "messages": [
                                 "The game is finished, you gave the potion back to Epeo. You value loyalty"
@@ -4115,7 +4402,7 @@
                             "next": [
                                 -1
                             ],
-                            "type": "npg",
+                            "type": "narration",
                             "sender": "Narrator",
                             "messages": [
                                 "The game is finished, you gave the potion to Johan. He regained his wealth. He was the original inventor."
@@ -4126,7 +4413,7 @@
                             "next": [
                                 -1
                             ],
-                            "type": "npg",
+                            "type": "narration",
                             "sender": "Narrator",
                             "messages": [
                                 "The game is finished, you gave the potion to Big Smile. He is became the most powerful man in the world. You don't care about equality rules are important. Have you considered moving to China or Russia?"
@@ -4137,7 +4424,7 @@
                             "next": [
                                 -1
                             ],
-                            "type": "npg",
+                            "type": "narration",
                             "sender": "Narrator",
                             "messages": [
                                 "The game is finished, you created equality for the complete city. Everyone has a smile"
