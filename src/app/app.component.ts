@@ -57,7 +57,6 @@ export class AppComponent implements OnInit {
       this.currentStage = result;
       this.stagesLoading = false;
       this.calculateToolbarValues();
-      this.stageService.calculatePotionAmount();
     });
 
     this.stageService.$stageFinished.subscribe(result => {

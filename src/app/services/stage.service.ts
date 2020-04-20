@@ -279,23 +279,27 @@ export class StageService {
   }
 
   public calculatePotionAmount(): void {
-    let potionAmount, totalChat, totalAudio = 0;
+    let potionAmount = 0;
+    let totalChat = 0;
+    let totalAudio = 0;
 
     // Amount of mantory audios & chats required to finish a stage.
     const mandatoryChatsNumber = this.currentStage.level_setup.mandatory_chats_amount;
     const mandatoryAudiosNumber = this.currentStage.level_setup.mandatory_audios_amount;
 
-    // Amount of completed audios & chats.
+    // Amount of completed audios & chats (specific).
     const completedAmountOfAudios = this.completedAudios.length;
     const completedAmountOfChats = this.completedChats.length;
 
-    const mandatoryItems = this.currentStage.level_setup.mandatory_items;
+    const mandatoryItems = Object.assign({}, this.currentStage.level_setup.mandatory_items);
 
     // Amount of specfic mandatory audios & chats.
     const mandatoryAudios = mandatoryItems.filter(availableItem => availableItem[0] === 'a');
     const mandatoryChats = mandatoryItems.filter(availableItem => availableItem[0] === 'C');
 
-    let mandatoryCompletedAudios, mandatoryCompletedChats = 0;
+    // Amount of completed audios & chats that are mandatory (specific)
+    let mandatoryCompletedAudios = 0;
+    let mandatoryCompletedChats = 0;
 
     this.completedAudios.forEach(completedAudio => {
       const foundMandatoryItem = mandatoryAudios.find(mandatoryAudio => mandatoryAudio === completedAudio);
@@ -313,7 +317,20 @@ export class StageService {
       mandatoryCompletedChats++;
     });
 
+    const unchattedMandatoryChatsAmount = mandatoryChats.length - mandatoryCompletedChats;
+    const unlistenedMandatoryAudiosAmount = mandatoryAudios.length - mandatoryCompletedAudios;
 
+    if (completedAmountOfChats + unchattedMandatoryChatsAmount <= mandatoryChatsNumber) {
+      totalChat = mandatoryChatsNumber;
+    } else {
+      totalChat = completedAmountOfChats + unchattedMandatoryChatsAmount;
+    }
+
+    if (completedAmountOfAudios + unlistenedMandatoryAudiosAmount <= mandatoryAudiosNumber) {
+      totalAudio = mandatoryAudiosNumber;
+    } else {
+      totalAudio = completedAmountOfAudios + unlistenedMandatoryAudiosAmount;
+    }
 
     potionAmount = 100 - ((completedAmountOfChats + completedAmountOfAudios) / (totalAudio + totalChat) * 100);
 
