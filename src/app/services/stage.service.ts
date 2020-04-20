@@ -32,28 +32,12 @@ export class StageService {
   public $availableAudios: BehaviorSubject<string[]> = new BehaviorSubject(null);
   private availableAudios: string[] = [];
 
+  public $potionAmount: BehaviorSubject<number> = new BehaviorSubject(null);
+  private potionAmount: number;
+
   public $stageFinished: BehaviorSubject<boolean> = new BehaviorSubject(null);
 
   constructor() {
-    // this.stages = this.deepFreeze(this.stages);
-  }
-
-  // TODO test if method below is needed
-  private deepFreeze(object): any {
-    // Retrieve the property names defined on object
-    const propNames = Object.getOwnPropertyNames(object);
-
-    // Freeze properties before freezing self
-
-    for (const name of propNames) {
-      const value = object[name];
-
-      if (value && typeof value === 'object') {
-        this.deepFreeze(value);
-      }
-    }
-
-    return Object.freeze(object);
   }
 
   public setCurrentStage(level: number) {
@@ -161,6 +145,7 @@ export class StageService {
     // Add removed chat to completed chats.
     this.addCompletedChat(chat.chat_id);
     // Evaluate if stage is cleared.
+    this.calculatePotionAmount();
     this.evaluateStageCleared();
   }
 
@@ -252,15 +237,16 @@ export class StageService {
     // Add removed audio to complete audios.
     this.addCompletedAudio(audio.audio_id);
     // Evaluate if stage is cleared.
+    this.calculatePotionAmount();
     this.evaluateStageCleared();
   }
 
   /**
    * Method to set the available audios.
-   * @param chatIds the chats ids to set.
+   * @param audiosIds the chats ids to set.
    */
-  private setAvailableAudios(chatIds: string[]): void {
-    this.availableAudios = chatIds;
+  private setAvailableAudios(audiosIds: string[]): void {
+    this.availableAudios = audiosIds;
     this.$availableAudios.next(this.availableAudios);
   }
 
@@ -292,16 +278,30 @@ export class StageService {
     }
   }
 
+  private calculatePotionAmount(): void {
+    let potionAmount = 0;
+
+
+
+
+    this.potionAmount = potionAmount;
+    this.$potionAmount.next(this.potionAmount);
+  }
+
   /**
    * Method to evaluate if a stage has cleared.
    * In case its matches the contidon for a stage to be cleared, it updates the $stageFinished observable.
    */
   private evaluateStageCleared() {
+    // A stage can only be cleared if the potion amount is zero
+    // if (this.potionAmount !== 0) {
+    //   return;
+    // }
+
     let stageCleared = true;
     const clearedItems = this.completedAudios.concat(this.completedChats);
     const mandatoryItems = this.currentStage.level_setup.mandatory_items;
 
-    // tslint:disable-next-line: prefer-for-of
     for (let index = 0; index < mandatoryItems.length; index++) {
       const mandatoryItemIndexInClearedItem = clearedItems.findIndex(clearedItem => clearedItem === mandatoryItems[index]);
       if (mandatoryItemIndexInClearedItem < 0) {
@@ -310,6 +310,9 @@ export class StageService {
       }
     }
 
+    if (!stageCleared) {
+      return;
+    }
     this.$stageFinished.next(stageCleared);
   }
 }
