@@ -21,7 +21,7 @@
     padding-right: 10px;
 
     //Height of game elements = max viewheight - closeButton - titleRow - chatTitleRow - chatOptionButtons - toolbar
-    max-height: calc(100vh - 101px - 80px - 59px - 75px - 50px);
+    max-height: calc(100vh - 101px - 31px - 59px - 85px - 50px);
 
     overflow-x: hidden;
     overflow-x: auto;
@@ -32,6 +32,16 @@
       background-color: white;
       border-radius: 25px 25px 25px 0;
       margin-bottom: 10px;
+
+      .chat-item-sender {
+        margin-bottom: 0;
+        font-family: "Asap", sans-serif;
+        font-size: 12px;
+      }
+
+      .chat-item-message {
+        margin-top: 8px;
+      }
     }
 
     .chat-bubble-player {
@@ -40,6 +50,7 @@
     }
 
     .chat-bubble-narration {
+      border-radius: 25px;
       text-align: left;
       background-color: #e3c76f;
     }
@@ -48,19 +59,23 @@
       text-align: left;
       background-color: #85bfd8;
     }
-
-    .choice-button {
-      width: 100%;
-      margin-bottom: 16px;
-    }
   }
 
   .buttons-row {
     position: fixed;
     bottom: 50px;
     left: 0;
-    height: 75px;
+    height: 85px;
     width: 400px;
-    background-color: blue;
+    padding: 10px;
+
+    .choice-button {
+      width: 100%;
+      background-color: white;
+      border: 2px solid $secondary;
+      border-radius: 25px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
   }
 }

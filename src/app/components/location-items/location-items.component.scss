@@ -13,6 +13,7 @@ the complete menu
     height: calc(100vh - 50px);
     width: 400px;
     border-right: 10px solid $tertiary;
+    z-index: 2;
 }
 
 /*--------------------
@@ -20,7 +21,7 @@ close button
 --------------------*/
 
 #close {
-    padding: 35px;
+    padding-top: 25px;
     text-align: right;
 }
 
