@@ -29,7 +29,7 @@
                     <div class="col-auto">
                         <p>Listen to audio</p>
                     </div>
-                    <div class="col-auto">
+                    <div class="col-auto audio-button-col">
                         <app-audio-button class="audio-button"
                             [audio]="createAudioObjectForAudioMessage(chatItemDisplay.chatItem.audio_message)"
                             (audioCompleted)="onAudioCompleted($event)">
