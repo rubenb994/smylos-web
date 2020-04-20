@@ -1,8 +1,9 @@
-import { Component, OnInit, AfterViewInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { LOCATION_NAMES } from 'src/app/config/location-names';
 import { StageService } from 'src/app/services/stage.service';
 import { NFC } from 'src/app/models/nfc';
 import { Audio } from 'src/app/models/audio';
+import { MenuService } from 'src/app/services/menu.service';
 
 @Component({
   selector: 'app-location-items',
@@ -15,7 +16,6 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * Inputed selected location.
    */
   @Input() selectedLocation: number;
-
 
   public locationNFC: NFC;
 
@@ -54,7 +54,8 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   public availableAudios: string[];
 
   constructor(
-    private stageService: StageService
+    private stageService: StageService,
+    private menuService: MenuService
   ) { }
 
   ngOnInit(): void {
@@ -95,6 +96,7 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * Opens the menu.
    */
   public onClickMenuOpen(): void {
+    this.menuService.openMenu();
     this.locationItemMenu.style.left = '0px';
     this.menuButton.style.left = '-400px';
   }
@@ -104,6 +106,7 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * Closes the menu.
    */
   public onClickMenuClose(): void {
+    this.menuService.closeMenu();
     this.locationItemMenu.style.left = '-400px';
     this.menuButton.style.left = '25px';
   }
@@ -204,7 +207,7 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
     this.selectedLocationDisplayName = locationName.displayName;
     // Open menu when location changes.
     this.onClickMenuOpen();
-    this.onClickOpenChat();
+    // this.onClickOpenChat();
   }
 
 }
