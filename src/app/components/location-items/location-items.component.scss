@@ -10,7 +10,7 @@ the complete menu
     background-color: $tertiary;
     top: 0;
     left: -400px;
-    height: 100vh;
+    height: calc(100vh - 50px);
     width: 400px;
     z-index: 2;
 }
@@ -69,17 +69,20 @@ Styling button
     }
 }
 
-.buttons-container {
-    padding: 5px;
+.game-elements-container {
+    padding-left: 5px;
+    padding-right: 5px;
 
     .icon-col {
         display: flex;
         align-items: center;
     }
-}
 
-.chat-col {
-    max-height: 80vh;
-    overflow-x: hidden;
-    overflow-x: auto;
+    .game-elements-col {
+        //Height of game elements = max viewheight - closeButton - titleRow - toolbar
+        max-height: calc(100vh - 101px - 80px - 50px);
+
+        overflow-x: hidden;
+        overflow-x: auto;
+    }
 }
