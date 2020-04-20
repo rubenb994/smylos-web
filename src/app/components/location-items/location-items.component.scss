@@ -10,8 +10,9 @@ the complete menu
     background-color: $tertiary;
     top: 0;
     left: -400px;
-    height: 100vh;
+    height: calc(100vh - 50px);
     width: 400px;
+    border-right: 10px solid $tertiary;
     z-index: 2;
 }
 
@@ -20,7 +21,7 @@ close button
 --------------------*/
 
 #close {
-    padding: 35px;
+    padding-top: 25px;
     text-align: right;
 }
 
@@ -69,17 +70,9 @@ Styling button
     }
 }
 
-.buttons-container {
-    padding: 5px;
-
+.game-elements-container {
     .icon-col {
         display: flex;
         align-items: center;
     }
-}
-
-.chat-col {
-    max-height: 80vh;
-    overflow-x: hidden;
-    overflow-x: auto;
 }

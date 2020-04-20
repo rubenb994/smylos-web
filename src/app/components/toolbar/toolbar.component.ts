@@ -42,6 +42,17 @@ export class ToolbarComponent implements OnInit, OnChanges {
       this.completedAmountChats = results.length;
     });
 
+    this.stageService.$potionAmount.subscribe(result => {
+      this.potionCount = result;
+    });
+
+    this.stageService.$potionAmount.subscribe(result => {
+      if (result == null) {
+        return;
+      }
+      this.potionCount = result;
+    });
+
 
     // let decreasePotion = true;
     // const changeFactor = 1;
@@ -73,7 +84,7 @@ export class ToolbarComponent implements OnInit, OnChanges {
       return;
     }
     this.maxAmountChats = maxChatAudio[0];
-    this.maxAmountAudios = maxChatAudio[1]
+    this.maxAmountAudios = maxChatAudio[1];
   }
 
   public getPotionWidth(): string {

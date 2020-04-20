@@ -14,10 +14,10 @@
 
             <ng-container *ngIf="locationNFC && (chatAvailable() || audiosAvailable()); else noNFCForLocation">
 
-                <div class="container buttons-container">
+                <div class="game-elements-container">
 
                     <div class="row">
-                        <div class="col-12 chat-col">
+                        <div class="col-12 game-elements-col">
 
                             <ng-container *ngIf="displayChat">
                                 <app-chat [chat]="locationNFC.chat" (chatCompleted)="onChatCompleted()"></app-chat>
