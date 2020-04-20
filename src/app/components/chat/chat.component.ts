@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter, AfterViewChecked, ChangeDetectionStrategy } from '@angular/core';
 import { Chat } from 'src/app/models/chat';
 import { ChatItem } from 'src/app/models/chat-item';
 import { Audio } from 'src/app/models/audio';
@@ -11,9 +11,10 @@ export interface ChatItemDisplay {
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+  styleUrls: ['./chat.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChatComponent implements OnChanges {
+export class ChatComponent implements OnChanges, AfterViewChecked {
 
   @Input() chat: Chat;
   @Output() chatCompleted = new EventEmitter();
@@ -40,6 +41,14 @@ export class ChatComponent implements OnChanges {
     }
   }
 
+  ngAfterViewChecked(): void {
+    const chatRowElement = document.getElementById('chat-row');
+    if (chatRowElement == null) {
+      return;
+    }
+    chatRowElement.scrollTop = chatRowElement.scrollHeight;
+  }
+
   /**
    * Method to check if the next chat item is of player type.
    * @param currentChatItem the current chat item to check the next chat item for.
@@ -58,7 +67,7 @@ export class ChatComponent implements OnChanges {
    * @param chatItem  the chat item which involved player interaction.
    */
   public onClickTitleButton(title: string, chatItem: ChatItem): void {
-    this.chatCompleted.emit();
+    // this.chatCompleted.emit();
     const indexOfClickedTitle = chatItem.titles.indexOf(title);
     if (indexOfClickedTitle < 0) {
       return;

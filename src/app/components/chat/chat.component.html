@@ -5,7 +5,7 @@
         </div>
     </div>
 
-    <div class="row chat-row">
+    <div class="row" id="chat-row">
         <div class="col-12 chat-bubble-default" [ngClass]="getChatClassNameForChatItem(chatItemDisplay.chatItem)"
             *ngFor="let chatItemDisplay of chatItemsToDisplay; last as isLastChat">
 
@@ -40,12 +40,12 @@
 
             <ng-container *ngIf="isLastChat">
 
-                <ng-container *ngIf="nextItemIsPlayerChatItem(chatItemDisplay.chatItem)">
+                <div class="buttons-row" *ngIf="nextItemIsPlayerChatItem(chatItemDisplay.chatItem)">
                     <ng-container *ngFor="let title of getNextChatItem(chatItemDisplay.chatItem).titles">
                         <button class="choice-button" [disabled]="!audioFinished"
                             (click)="onClickTitleButton(title, getNextChatItem(chatItemDisplay.chatItem))">{{title}}</button>
                     </ng-container>
-                </ng-container>
+                </div>
 
 
             </ng-container>
@@ -54,7 +54,9 @@
 
         <ng-container *ngIf="chatFinished">
             <div class="col-12">
-                <button (click)="onClickFinishChat()">Leave chat</button>
+                <div class="buttons-row">
+                    <button class="choice-button" (click)="onClickFinishChat()">Leave chat</button>
+                </div>
             </div>
         </ng-container>
 
