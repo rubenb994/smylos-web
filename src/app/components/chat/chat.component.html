@@ -1,12 +1,12 @@
 <div class="chat-container" *ngIf="chat">
-    <div class="row">
+    <div class="row title-row">
         <div class="col-12 chat-title">
             <h3>{{chat.chat_title}}</h3>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-12" [ngClass]="getChatClassNameForChatItem(chatItemDisplay.chatItem)"
+    <div class="row chat-row">
+        <div class="col-12 chat-bubble-default" [ngClass]="getChatClassNameForChatItem(chatItemDisplay.chatItem)"
             *ngFor="let chatItemDisplay of chatItemsToDisplay; last as isLastChat">
 
 

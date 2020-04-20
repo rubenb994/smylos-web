@@ -12,7 +12,6 @@ the complete menu
     left: -400px;
     height: calc(100vh - 50px);
     width: 400px;
-    z-index: 2;
 }
 
 /*--------------------
@@ -70,19 +69,8 @@ Styling button
 }
 
 .game-elements-container {
-    padding-left: 5px;
-    padding-right: 5px;
-
     .icon-col {
         display: flex;
         align-items: center;
-    }
-
-    .game-elements-col {
-        //Height of game elements = max viewheight - closeButton - titleRow - toolbar
-        max-height: calc(100vh - 101px - 80px - 50px);
-
-        overflow-x: hidden;
-        overflow-x: auto;
     }
 }

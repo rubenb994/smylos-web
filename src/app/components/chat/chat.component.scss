@@ -5,35 +5,49 @@
     display: inline-block;
   }
 
-  .chat-bubble-player {
-    background-color: white;
-    border-radius: 25px;
-    text-align: right;
-    margin-bottom: 10px;
+  .title-row {
+    // position: absolute;
+    // margin-bottom: 59px;
+
+    .chat-title {
+      margin-bottom: 15px;
+      padding: 10px;
+    }
   }
 
-  .chat-bubble-narration {
-    background-color: white;
-    text-align: left;
-    border-radius: 25px;
-    margin-bottom: 10px;
-  }
+  .chat-row {
+    padding-left: 10px;
+    padding-right: 10px;
 
-  .chat-bubble-npg {
-    background-color: white;
-    text-align: left;
-    border-radius: 25px;
-    margin-bottom: 10px;
-  }
+    //Height of game elements = max viewheight - closeButton - titleRow - chatTitleRow - toolbar
+    max-height: calc(100vh - 101px - 80px - 59px - 50px);
 
-  .choice-button {
-    margin-bottom: 16px;
-    margin-bottom: 40px;
-  }
-}
+    overflow-x: hidden;
+    overflow-x: auto;
 
-.chat-title {
-  margin-bottom: 15px;
-  padding: 10px;
-  background-color: green;
+    .chat-bubble-default {
+      background-color: white;
+      border-radius: 25px 25px 25px 0;
+      margin-bottom: 10px;
+    }
+
+    .chat-bubble-player {
+      border-radius: 25px 25px 0 25px;
+      text-align: right;
+    }
+
+    .chat-bubble-narration {
+      text-align: left;
+      background-color: #e3c76f;
+    }
+
+    .chat-bubble-npg {
+      text-align: left;
+      background-color: #85bfd8;
+    }
+
+    .choice-button {
+      margin-bottom: 16px;
+    }
+  }
 }
