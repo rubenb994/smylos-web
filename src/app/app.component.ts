@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
   public stagesLoading = true;
 
   constructor(private stageService: StageService) {
-    // GameStateUtils.setLevel(1);
+    GameStateUtils.setLevel(3);
   }
 
   ngOnInit(): void {

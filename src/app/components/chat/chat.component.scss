@@ -1,27 +1,46 @@
-// @import "../../../assets/styles/colors.scss";
+
+@import "../../../assets/styles/colors.scss";
 
 .chat-container {
-  width: 100%;
+
+  
 
   .audio-button {
     display: inline-block;
   }
 
   .chat-bubble-player {
-    background-color: red;
+    background-color: white;
+    border-radius: 25px;
+    text-align: right;
+    margin-bottom: 10px;
+    
   }
 
   .chat-bubble-narration {
-    background-color: blue;
+    background-color: white;
+    text-align: left;
+    border-radius: 25px;
+    margin-bottom: 10px;
   }
 
   .chat-bubble-npg {
-    background-color: green;
+    background-color: white;
+    text-align: left;
+    border-radius: 25px;
+    margin-bottom: 10px;
   }
 
   .choice-button {
     margin-bottom: 16px;
+    margin-bottom: 40px;
   }
+}
+
+.chat-title {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: green;
 }
 
 // /*--------------------

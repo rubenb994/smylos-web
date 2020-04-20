@@ -1041,10 +1041,6 @@
                     {
                         "audio_id": "a1_36_0",
                         "audio_title": "Sysiphus and Koralia"
-                    },
-                    {
-                        "audio_id": "a1_23_0",
-                        "audio_title": "Golin and Sysiphus"
                     }
                 ]
             },
@@ -1098,8 +1094,7 @@
                 "C2.1.0",
                 "a2_1_0",
                 "a2_4_0",
-                "a2_36_0",
-                "a2_25_0"
+                "a2_36_0"
             ],
             "disable_items": [
                 "C1.1.0",
@@ -1418,7 +1413,7 @@
                     "enable_items": [
                         "C2.4.0",
                         "a2_26_0",
-                        "a2_2_0"
+                        "a2_25_0"
                     ],
                     "chat_items": [
                         {
@@ -2442,6 +2437,12 @@
                 "a2_36_0",
                 "a2_38_0",
                 "a2_57_0"
+            ],
+            "mandatory_items": [
+                "C3.1.0",
+                "a3_57_0",
+                "a3_6_0",
+                "a3_8_0"
             ]
         },
         "nfc": [
@@ -2463,8 +2464,8 @@
                             "next": [
                                 1
                             ],
-                            "type": "Me",
-                            "sender": "player",
+                            "type": "player",
+                            "sender": "Me",
                             "titles": [
                                 "Hi"
                             ],
@@ -2580,7 +2581,7 @@
                 }
             },
             {
-                "nfc_id": 12,
+                "nfc_id": 7,
                 "nfc_title": "Golin's House",
                 "chat": {
                     "chat_id": "C3.2.0",

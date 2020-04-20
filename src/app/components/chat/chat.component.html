@@ -1,6 +1,6 @@
 <div class="chat-container" *ngIf="chat">
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 chat-title">
             <h3>{{chat.chat_title}}</h3>
         </div>
     </div>
@@ -9,14 +9,18 @@
         <div class="col-12" [ngClass]="getChatClassNameForChatItem(chatItemDisplay.chatItem)"
             *ngFor="let chatItemDisplay of chatItemsToDisplay; last as isLastChat">
 
+
             <p>{{chatItemDisplay.chatItem.sender}}</p>
+
 
             <ng-container *ngIf="chatItemDisplay.option != null; else defaultMessage">
                 <p>{{chatItemDisplay.chatItem.messages[chatItemDisplay.option]}}</p>
             </ng-container>
             <ng-template #defaultMessage>
                 <ng-container *ngFor="let message of chatItemDisplay.chatItem.messages">
+
                     <p>{{message}}</p>
+
                 </ng-container>
             </ng-template>
 
