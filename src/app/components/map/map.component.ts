@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit, Output, EventEmitter, AfterViewChecked } from '@angular/core';
 import * as SvgPanZoom from 'svg-pan-zoom';
+import { MenuService } from 'src/app/services/menu.service';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-map',
@@ -28,9 +30,30 @@ export class MapComponent implements OnInit, AfterViewInit, AfterViewChecked {
   public parkDot: SVGImageElement;
   public epeosStoreDot: SVGImageElement;
   public slumsDot: SVGImageElement;
-  constructor() { }
+
+  public menuOpen: boolean;
+
+  constructor(
+    private menuService: MenuService
+  ) { }
 
   ngOnInit(): void {
+    this.menuService.$menuChanged.subscribe(menuOpen => {
+
+      if (menuOpen == null) {
+        return;
+      }
+
+      if (this.menuOpen == null) {
+        this.menuOpen = menuOpen;
+        this.panForMenuChange(menuOpen);
+      }
+
+      if (this.menuOpen != null && this.menuOpen !== menuOpen) {
+        this.menuOpen = menuOpen;
+        this.panForMenuChange(menuOpen);
+      }
+    });
   }
 
   ngAfterViewInit(): void {
@@ -54,6 +77,9 @@ export class MapComponent implements OnInit, AfterViewInit, AfterViewChecked {
     this.parkDot = document.getElementById('parkDot') as unknown as SVGImageElement;
     this.epeosStoreDot = document.getElementById('epeosStoreDot') as unknown as SVGImageElement;
     this.slumsDot = document.getElementById('slumsDot') as unknown as SVGImageElement;
+
+
+    // this.onClickEpeosStore();
   }
 
   ngAfterViewChecked(): void {
@@ -171,5 +197,54 @@ export class MapComponent implements OnInit, AfterViewInit, AfterViewChecked {
   public onMouseOutGroup(element: SVGElement): void {
     const image = element.firstChild as SVGImageElement;
     image.style.opacity = '0';
+  }
+
+  /**
+   * Method to pan for a menu change.
+   * @param menuOpen the desired pan value.
+   */
+  private panForMenuChange(menuOpen: boolean): void {
+    const panAmount = 200;
+    if (menuOpen) {
+      this.smoothXPan(panAmount);
+    } else {
+      this.smoothXPan(panAmount * -1);
+    }
+  }
+
+  /**
+   * Method to smooth pan the svg zoom pan map to a new pan value.
+   * @param panX the desired pan value.
+   */
+  private smoothXPan(panX: number): void {
+    if (panX == null || panX === 0) {
+      return;
+    }
+
+    const panAmountPerInterval = 5;
+    const panInterval = 10;
+
+    let changedX = 0;
+
+    const source = interval(panInterval);
+    const subscribtion = source.subscribe(val => {
+      // Modify values.
+      if (panX < 0) {
+        changedX -= panAmountPerInterval;
+      } else {
+        changedX += panAmountPerInterval;
+      }
+
+      // Evaluate values.
+      if ((panX < 0 && changedX <= panX) || (panX > 0 && changedX >= panX)) {
+        subscribtion.unsubscribe();
+      }
+      // Pan new values.
+      if (panX > 0) {
+        this.svgPanZoomMap.panBy({ x: panAmountPerInterval, y: 0 });
+      } else {
+        this.svgPanZoomMap.panBy({ x: panAmountPerInterval * -1, y: 0 });
+      }
+    });
   }
 }

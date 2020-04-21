@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, Output, EventEmitter, AfterViewChecked, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Chat } from 'src/app/models/chat';
 import { ChatItem } from 'src/app/models/chat-item';
 import { Audio } from 'src/app/models/audio';
@@ -26,13 +26,17 @@ export class ChatComponent implements OnChanges, AfterViewChecked {
 
   public chatFinished = false;
 
+  private readonly timeBetweenChatsDuration = 1500;
+
   /**
    * Variable to check wheter an audio message has been listen to.
    */
   public audioFinished = true;
   public audioLoaded = false;
 
-  constructor() { }
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef
+  ) { }
 
   ngOnChanges(): void {
     if (this.chatItemsToDisplay.length <= 0) {
@@ -75,8 +79,10 @@ export class ChatComponent implements OnChanges, AfterViewChecked {
     // Create and draw the chat message for the clicked title.
     const chatItemDisplay = this.createChatItemDisplay(chatItem, indexOfClickedTitle);
     this.chatItemsToDisplay.push(chatItemDisplay);
-    // Add the next chat item.
-    this.addNextChatItem(chatItem.next[indexOfClickedTitle]);
+    // Add the next chat item with a timeout.
+    setTimeout(() => {
+      this.addNextChatItem(chatItem.next[indexOfClickedTitle]);
+    }, this.timeBetweenChatsDuration);
   }
 
   /**
@@ -156,14 +162,17 @@ export class ChatComponent implements OnChanges, AfterViewChecked {
     }
 
     this.chatItemsToDisplay.push(this.createChatItemDisplay(currentChatItem));
+    // Detect changes and redraw array.
+    this.changeDetectorRef.detectChanges();
 
     let nextChatItem = this.chat.chat_items.find(chatItem => chatItem.id === currentChatItem.next[0]);
     // If the next chat item is not of type player keep adding the chat items.
     while (nextChatItem.type !== 'player') {
       this.chatItemsToDisplay.push(this.createChatItemDisplay(nextChatItem));
+      // Detect changes and redraw array.
+      this.changeDetectorRef.detectChanges();
       nextChatItem = this.chat.chat_items.find(chatItem => chatItem.id === nextChatItem.next[0]);
     }
-
   }
 
   /**
@@ -180,6 +189,10 @@ export class ChatComponent implements OnChanges, AfterViewChecked {
       chatItemDisplay.option = option;
     }
     return chatItemDisplay;
+  }
+
+  private sleep(ms): Promise<any> {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
 }

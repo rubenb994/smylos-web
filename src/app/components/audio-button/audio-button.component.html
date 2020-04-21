@@ -1,9 +1,12 @@
-<button (click)="onClickAudioPlayer(audioPlayer)" class="buttonAudio">
-    <ng-container *ngIf="audioPlayer.paused; else playing"><i class="material-icons">play_arrow</i></ng-container>
-    <ng-template #playing><i class="material-icons">pause</i></ng-template>
-</button>
+<ng-container *ngIf="audioPlayerSrc != null">
+    <button (click)="onClickAudioPlayer(audioPlayer)" class="buttonAudio">
+        <ng-container *ngIf="audioPlayer.paused; else playing"><i class="material-icons">play_arrow</i>
+        </ng-container>
+        <ng-template #playing><i class="material-icons">pause</i></ng-template>
+    </button>
 
-<audio id="audio-player" #audioPlayer [src]="getSrcUrl()">
-    Your browser does not support the
-    <code>audio</code> element.
-</audio>
+    <audio id="audio-player" #audioPlayer [src]="audioPlayerSrc">
+        Your browser does not support the
+        <code>audio</code> element.
+    </audio>
+</ng-container>
