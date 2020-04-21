@@ -145,7 +145,7 @@ export class StageService {
     // Add removed chat to completed chats.
     this.addCompletedChat(chat.chat_id);
     // Evaluate if stage is cleared.
-    this.calculatePotionAmount();
+    // this.calculatePotionAmount();
     this.evaluateStageCleared();
   }
 
@@ -237,7 +237,7 @@ export class StageService {
     // Add removed audio to complete audios.
     this.addCompletedAudio(audio.audio_id);
     // Evaluate if stage is cleared.
-    this.calculatePotionAmount();
+    // this.calculatePotionAmount();
     this.evaluateStageCleared();
   }
 

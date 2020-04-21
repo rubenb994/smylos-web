@@ -207,6 +207,7 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
     this.selectedLocationDisplayName = locationName.displayName;
     // Open menu when location changes.
     this.onClickMenuOpen();
+    // TODO remove this developent line below.
     // this.onClickOpenChat();
   }
 

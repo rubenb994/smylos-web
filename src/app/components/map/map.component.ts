@@ -78,7 +78,7 @@ export class MapComponent implements OnInit, AfterViewInit, AfterViewChecked {
     this.epeosStoreDot = document.getElementById('epeosStoreDot') as unknown as SVGImageElement;
     this.slumsDot = document.getElementById('slumsDot') as unknown as SVGImageElement;
 
-
+    // TODO remove this development line
     // this.onClickEpeosStore();
   }
 
