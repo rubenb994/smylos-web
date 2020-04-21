@@ -54,14 +54,16 @@
                 </div>
 
                 <ng-template #npgTyping>
-                    <div class="npg-typing-container">
-                        <div class="lds-ellipsis">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
+                    <ng-container *ngIf="!chatFinished">
+                        <div class="npg-typing-container">
+                            <div class="lds-ellipsis">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
                         </div>
-                    </div>
+                    </ng-container>
                 </ng-template>
 
 

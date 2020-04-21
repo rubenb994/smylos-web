@@ -26,7 +26,7 @@ export class ChatComponent implements OnChanges, AfterViewChecked {
 
   public chatFinished = false;
 
-  private readonly timeBetweenChatsDuration = 1500;
+  private readonly timeBetweenChatsDuration = 1;
 
   /**
    * Variable to check wheter an audio message has been listen to.
@@ -153,6 +153,7 @@ export class ChatComponent implements OnChanges, AfterViewChecked {
     // If there is no currentChatItem chat is finished.
     if (currentChatItem == null || currentChatItem.next == null) {
       this.chatFinished = true;
+      this.changeDetectorRef.detectChanges();
       return;
     }
 
