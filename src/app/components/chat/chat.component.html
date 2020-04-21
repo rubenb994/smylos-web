@@ -6,7 +6,8 @@
     </div>
 
     <div class="row" id="chat-row">
-        <div class="col-12 chat-bubble-default" [ngClass]="getChatClassNameForChatItem(chatItemDisplay.chatItem)"
+        <div class="col-12 chat-bubble-default box-shadow"
+            [ngClass]="getChatClassNameForChatItem(chatItemDisplay.chatItem)"
             *ngFor="let chatItemDisplay of chatItemsToDisplay; last as isLastChat">
 
 

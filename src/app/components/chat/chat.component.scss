@@ -22,7 +22,6 @@
 
     //Height of game elements = max viewheight - closeButton - titleRow - chatTitleRow - chatOptionButtons - toolbar
     max-height: calc(100vh - 101px - 31px - 59px - 85px - 50px);
-
     overflow-x: hidden;
     overflow-x: auto;
 
@@ -32,6 +31,7 @@
       background-color: white;
       border-radius: 25px 25px 25px 0;
       margin-bottom: 10px;
+      margin-top: 5px;
 
       .chat-item-sender {
         margin-bottom: 0;
@@ -59,7 +59,6 @@
       text-align: left;
       background-color: #e3c76f;
     }
-
     .chat-bubble-npg {
       text-align: left;
       background-color: #85bfd8;
