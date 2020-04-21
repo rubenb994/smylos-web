@@ -26,7 +26,8 @@ export class ChatComponent implements OnChanges, AfterViewChecked {
 
   public chatFinished = false;
 
-  private readonly timeBetweenChatsDuration = 1;
+  // TODO timer of chat delay
+  private readonly timeBetweenChatsDuration = 1500;
 
   /**
    * Variable to check wheter an audio message has been listen to.

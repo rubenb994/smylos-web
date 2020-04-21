@@ -4,7 +4,6 @@
         "nfc_title": "Tutorial",
         "level_setup": {
             "enable_items": [
-                "a1_24_0",
                 "C0.0.1"
             ],
             "mandatory_items": [
@@ -17,7 +16,7 @@
                 "nfc_title": "Tutorial",
                 "chat": {
                     "chat_id": "C0.0.1",
-                    "chat_title": "Start the tutorial",
+                    "chat_title": "Tutorial",
                     "enable_items": [
                         "C1.1.0",
                         "a1_24_0"

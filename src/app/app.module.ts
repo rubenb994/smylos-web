@@ -11,6 +11,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { AudioButtonComponent } from './components/audio-button/audio-button.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FinishStageComponent } from './components/finish-stage/finish-stage.component';
+import { IntroductionComponent } from './components/introduction/introduction.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FinishStageComponent } from './components/finish-stage/finish-stage.com
     LocationItemsComponent,
     ChatComponent,
     AudioButtonComponent,
-    FinishStageComponent
+    FinishStageComponent,
+    IntroductionComponent
   ],
   imports: [
     BrowserModule,

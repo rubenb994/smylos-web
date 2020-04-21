@@ -6,7 +6,8 @@
 
     </ng-container>
     <ng-template #gameReady>
-
+        <app-introduction *ngIf="!introductionFinished" (introductionFinish)="onIntroductionFinish()">
+        </app-introduction>
         <app-map (newLocationSelected)="onNewLocationSelected($event)"></app-map>
         <app-finish-stage *ngIf="displayFinishStage"></app-finish-stage>
         <app-location-items *ngIf="displayLocationItem" [selectedLocation]="selectedLocation"></app-location-items>

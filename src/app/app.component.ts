@@ -40,12 +40,16 @@ export class AppComponent implements OnInit {
   public displayFinishStage = false;
 
   public stagesLoading = true;
+  public introductionFinished = false;
+
 
   constructor(private stageService: StageService) {
 
     // Todo remove this line below (only for development)
     // GameStateUtils.setLevel(0);
   }
+
+
 
   ngOnInit(): void {
     this.stagesLoading = true;
@@ -123,6 +127,11 @@ export class AppComponent implements OnInit {
     }
   }
 
+  public onIntroductionFinish(): void {
+    this.introductionFinished = true;
+
+  }
+
   /**
    * Method to calculate the values for the toolbar.
    * Stores these values in the maxAmountAudios & maxAmountChats variables.
@@ -148,5 +157,8 @@ export class AppComponent implements OnInit {
     this.maxAmountAudios = maxAmountAudios;
     this.maxAmountChats = maxAmountChats;
   }
+
+
+
 
 }
