@@ -41,7 +41,7 @@
 
             <ng-container *ngIf="isLastChat">
 
-                <div class="buttons-row" *ngIf="nextItemIsPlayerChatItem(chatItemDisplay.chatItem)">
+                <div class="buttons-row" *ngIf="nextItemIsPlayerChatItem(chatItemDisplay.chatItem); else npgTyping">
                     <div class="row">
                         <div class="col-12" *ngFor="let title of getNextChatItem(chatItemDisplay.chatItem).titles">
                             <button class="choice-button" [disabled]="!audioFinished"
@@ -52,6 +52,17 @@
 
                     </ng-container>
                 </div>
+
+                <ng-template #npgTyping>
+                    <div class="npg-typing-container">
+                        <div class="lds-ellipsis">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </ng-template>
 
 
             </ng-container>
