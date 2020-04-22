@@ -60,7 +60,7 @@ export class AudioButtonComponent implements OnInit, OnChanges, AfterViewInit {
       audioPlayer.pause();
     }
     // Todo remove line below.
-    // this.audioCompleted.emit(this.audio);
+    this.audioCompleted.emit(this.audio);
   }
 
   public checkIfAudioPlayerIsPaused(audioPlayer: HTMLAudioElement): boolean {

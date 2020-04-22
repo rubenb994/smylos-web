@@ -1,0 +1,22 @@
+@import "../../../assets/styles/colors.scss";
+
+.mobile-row {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 3;
+}
+
+.mobile {
+    width: 80%;
+    background-color: white;
+    border: 2px solid;
+    border-color: $secondary;
+    border-radius: 20px;
+}
+
+.mobile-text {
+    text-align: justify;
+    color: $primary;
+    padding: 40px;
+}

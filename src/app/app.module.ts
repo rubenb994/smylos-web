@@ -12,6 +12,8 @@ import { AudioButtonComponent } from './components/audio-button/audio-button.com
 import { HttpClientModule } from '@angular/common/http';
 import { FinishStageComponent } from './components/finish-stage/finish-stage.component';
 import { IntroductionComponent } from './components/introduction/introduction.component';
+import { PotionAlarmComponent } from './components/potion-alarm/potion-alarm.component';
+import { MobileErrorComponent } from './components/mobile-error/mobile-error.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { IntroductionComponent } from './components/introduction/introduction.co
     ChatComponent,
     AudioButtonComponent,
     FinishStageComponent,
-    IntroductionComponent
+    IntroductionComponent,
+    PotionAlarmComponent,
+    MobileErrorComponent
   ],
   imports: [
     BrowserModule,

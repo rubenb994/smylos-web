@@ -1,19 +1,30 @@
 <div class="main" (window:resize)="onWindowResize()">
 
-    <ng-container *ngIf="stagesLoading; else gameReady">
+    <ng-container *ngIf="!isMobile; else mobileNotSupported">
 
-        <p>Loading application</p>
+        <ng-container *ngIf="stagesLoading; else gameReady">
 
+            <p>Loading application</p>
+
+        </ng-container>
+        <ng-template #gameReady>
+
+            <app-potion-alarm *ngIf="alarmFinished" (alarmFinish)="onAlarmFinish()">
+            </app-potion-alarm>
+            <app-introduction *ngIf="!introductionFinished" (introductionFinish)="onIntroductionFinish()">
+            </app-introduction>
+            <app-map (newLocationSelected)="onNewLocationSelected($event)"></app-map>
+            <app-location-items [selectedLocation]="selectedLocation"></app-location-items>
+            <app-toolbar [currentStage]="currentStage"></app-toolbar>
+            <app-logo></app-logo>
+
+        </ng-template>
     </ng-container>
-    <ng-template #gameReady>
-        <app-introduction *ngIf="!introductionFinished" (introductionFinish)="onIntroductionFinish()">
-        </app-introduction>
-        <app-map (newLocationSelected)="onNewLocationSelected($event)"></app-map>
-        <app-finish-stage *ngIf="displayFinishStage"></app-finish-stage>
-        <app-location-items *ngIf="displayLocationItem" [selectedLocation]="selectedLocation"></app-location-items>
-        <app-toolbar *ngIf="displayToolbar" [currentStage]="currentStage"></app-toolbar>
-        <app-logo *ngIf="displayLogo"></app-logo>
 
+    <ng-template #mobileNotSupported>
+        <app-mobile-error></app-mobile-error>
     </ng-template>
+
+
 
 </div>

@@ -153,17 +153,7 @@
         "nfc_title": "Epeo's House",
         "level_setup": {
             "enable_items": [
-                "C1.1.0",
-                "a1_8_0",
-                "a1_8_1",
-                "a1_3_0",
-                "a1_1_0",
-                "a1_36_0",
-                "a1_6_0",
-                "a1_13_0",
-                "a1_45_0",
-                "a1_45_1",
-                "a1_23_0"
+                "C1.1.0"
             ],
             "disable_items": [
                 "a1_24_0"
@@ -187,7 +177,17 @@
                     "chat_id": "C1.1.0",
                     "chat_title": "Talk to Epeo",
                     "enable_items": [
-                        "C1.2.0"
+                        "C1.2.0",
+                        "a1_8_0",
+                        "a1_8_1",
+                        "a1_3_0",
+                        "a1_1_0",
+                        "a1_36_0",
+                        "a1_6_0",
+                        "a1_13_0",
+                        "a1_45_0",
+                        "a1_45_1",
+                        "a1_23_0"
                     ],
                     "chat_items": [
                         {
@@ -1092,10 +1092,7 @@
         "nfc_title": "Epeo's House",
         "level_setup": {
             "enable_items": [
-                "C2.1.0",
-                "a2_1_0",
-                "a2_4_0",
-                "a2_36_0"
+                "C2.1.0"
             ],
             "disable_items": [
                 "C1.1.0",
@@ -1110,9 +1107,12 @@
             ],
             "mandatory_items": [
                 "a2_38_0",
-                "C2.6.0",
-                "C2.5.0"
-            ]
+                "C2.1.0",
+                "C2.2.0",
+                "C2.3.0"
+            ],
+            "mandatory_audios_amount": 5,
+            "mandatory_chats_amount": 5
         },
         "nfc": [
             {
@@ -1123,7 +1123,10 @@
                     "chat_title": "Talk to Epeo",
                     "enable_items": [
                         "C2.2.0",
-                        "C2.3.0"
+                        "C2.3.0",
+                        "a2_1_0",
+                        "a2_4_0",
+                        "a2_36_0"
                     ],
                     "chat_items": [
                         {
@@ -2425,9 +2428,7 @@
         "nfc_title": "Epeo's House",
         "level_setup": {
             "enable_items": [
-                "C3.1.0",
-                "a3_57_0",
-                "a3_6_0"
+                "C3.1.0"
             ],
             "disable_items": [
                 "C2.1.0",
@@ -2440,11 +2441,14 @@
                 "a2_57_0"
             ],
             "mandatory_items": [
-                "C3.1.0",
+                "C3.8.0",
+                "C3.7.0",
                 "a3_57_0",
                 "a3_6_0",
                 "a3_8_0"
-            ]
+            ],
+            "mandatory_audios_amount": 3,
+            "mandatory_chats_amount": 6
         },
         "nfc": [
             {
@@ -2456,7 +2460,9 @@
                     "enable_items": [
                         "C3.3.0",
                         "C3.2.0",
-                        "a3_3_0"
+                        "a3_3_0",
+                        "a3_57_0",
+                        "a3_6_0"
                     ],
                     "chat_items": [
                         {

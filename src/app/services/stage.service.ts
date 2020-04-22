@@ -145,8 +145,8 @@ export class StageService {
     // Add removed chat to completed chats.
     this.addCompletedChat(chat.chat_id);
     // Evaluate if stage is cleared.
-    // this.calculatePotionAmount();
     this.evaluateStageCleared();
+    this.calculatePotionAmount();
   }
 
   /**
@@ -213,6 +213,7 @@ export class StageService {
         this.availableChats.splice(foundAvailableItemIndex, 1);
       }
     }
+
   }
 
   /**
@@ -237,7 +238,7 @@ export class StageService {
     // Add removed audio to complete audios.
     this.addCompletedAudio(audio.audio_id);
     // Evaluate if stage is cleared.
-    // this.calculatePotionAmount();
+    this.calculatePotionAmount();
     this.evaluateStageCleared();
   }
 
@@ -291,7 +292,7 @@ export class StageService {
     const completedAmountOfAudios = this.completedAudios.length;
     const completedAmountOfChats = this.completedChats.length;
 
-    const mandatoryItems = Object.assign({}, this.currentStage.level_setup.mandatory_items);
+    const mandatoryItems = this.currentStage.level_setup.mandatory_items;
 
     // Amount of specfic mandatory audios & chats.
     const mandatoryAudios = mandatoryItems.filter(availableItem => availableItem[0] === 'a');
@@ -320,6 +321,8 @@ export class StageService {
     const unchattedMandatoryChatsAmount = mandatoryChats.length - mandatoryCompletedChats;
     const unlistenedMandatoryAudiosAmount = mandatoryAudios.length - mandatoryCompletedAudios;
 
+    console.log(unlistenedMandatoryAudiosAmount);
+
     if (completedAmountOfChats + unchattedMandatoryChatsAmount <= mandatoryChatsNumber) {
       totalChat = mandatoryChatsNumber;
     } else {
@@ -336,6 +339,8 @@ export class StageService {
 
     this.potionAmount = potionAmount;
     this.$potionAmount.next(this.potionAmount);
+    console.log(potionAmount);
+
   }
 
   /**
