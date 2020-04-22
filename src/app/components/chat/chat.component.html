@@ -15,7 +15,7 @@
 
 
             <ng-container *ngIf="chatItemDisplay.option != null; else defaultMessage">
-                <p>{{chatItemDisplay.chatItem.messages[chatItemDisplay.option]}}</p>
+                <p class="chat-item-message">{{chatItemDisplay.chatItem.messages[chatItemDisplay.option]}}</p>
             </ng-container>
             <ng-template #defaultMessage>
                 <ng-container *ngFor="let message of chatItemDisplay.chatItem.messages">
