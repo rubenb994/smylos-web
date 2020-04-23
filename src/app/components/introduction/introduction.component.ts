@@ -7,7 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class IntroductionComponent implements OnInit {
 
-  @Output() introductionFinish = new EventEmitter();
+  @Output() introductionFinish = new EventEmitter<boolean>(false);
 
   constructor() { }
 
@@ -15,7 +15,7 @@ export class IntroductionComponent implements OnInit {
   }
 
   public onClickFinishIntroduction(): void {
-    this.introductionFinish.emit();
+    this.introductionFinish.emit(true);
   }
 
 }
