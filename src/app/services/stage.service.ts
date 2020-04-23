@@ -135,7 +135,7 @@ export class StageService {
     if (foundIndex < 0 || this.availableChats == null || this.availableChats.length <= 0) {
       return;
     }
-    // TODO fix line below causing audio to dissapear
+
     this.availableChats.splice(foundIndex, 1);
     this.removeDisabledChatsFromAvailableChats(chat);
     this.addEnabledChatsToAvailableChats(chat);

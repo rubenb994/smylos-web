@@ -4,6 +4,7 @@ import { StageService } from 'src/app/services/stage.service';
 import { NFC } from 'src/app/models/nfc';
 import { Audio } from 'src/app/models/audio';
 import { MenuService } from 'src/app/services/menu.service';
+import { AudioService } from 'src/app/services/audio.service';
 
 @Component({
   selector: 'app-location-items',
@@ -34,12 +35,6 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * Variables for displaying audio and chat components.
    */
   public displayChat = false;
-  public displayAudio = false;
-
-  /**
-   * Variables for holding the selected chat and selected audio.
-   */
-  public selectedAudio: Audio;
 
   /**
    * Variables for chaning the location and menu.
@@ -55,7 +50,8 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
 
   constructor(
     private stageService: StageService,
-    private menuService: MenuService
+    private menuService: MenuService,
+    private audioService: AudioService
   ) { }
 
   ngOnInit(): void {
@@ -73,7 +69,6 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
 
   ngOnChanges(): void {
     // Reset display values when the selectedLocation changes.
-    this.displayAudio = false;
     this.displayChat = false;
 
     if (this.selectedLocation == null) {
@@ -164,8 +159,7 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * @param clickedAudio the clicked audio entry.
    */
   public onClickOpenAudio(audio: Audio): void {
-    this.displayAudio = true;
-    this.selectedAudio = audio;
+    this.audioService.toggleAudio(audio);
   }
 
   /**
@@ -183,7 +177,6 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
    * @param audio the completed audio.
    */
   public onAudioCompleted(audio: Audio): void {
-    this.displayAudio = false;
     this.stageService.removeAvailableAudio(audio);
   }
 

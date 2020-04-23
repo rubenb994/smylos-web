@@ -1,15 +1,19 @@
 @import "../../../assets/styles/colors.scss";
 
-.buttonAudio {
+.button-audio {
 	background-color: white;
 	height: 40px;
 	width: 40px;
 	border-radius: 50%;
 	color: $primary;
 	border: 0px;
-	
+
 	&:hover {
-        border: 2px solid;
-	border-color: $secondary;        
-    }
+		border: 2px solid;
+		border-color: $secondary;
+	}
+}
+
+.disabled-audio:hover {
+	border: none;
 }

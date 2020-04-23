@@ -1,26 +1,52 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, AfterViewInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Audio } from 'src/app/models/audio';
+import { AudioService } from 'src/app/services/audio.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-audio-button',
   templateUrl: './audio-button.component.html',
   styleUrls: ['./audio-button.component.scss']
 })
-export class AudioButtonComponent implements OnInit, OnChanges, AfterViewInit {
+export class AudioButtonComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
 
   @Input() audio: Audio;
   @Input() autoPlay = false;
+  @Input() disableButton = false;
   @Output() audioCompleted = new EventEmitter<Audio>(null);
 
   public audioPlayerSrc: string;
+  public audioPlayerId: string;
 
   public paused = true;
 
+  public audioPlayerDisabledClass = '';
+
+
+  private audioServiceSubscription: Subscription;
+
   constructor(
-    private changeDetectorRef: ChangeDetectorRef) { }
+    private changeDetectorRef: ChangeDetectorRef,
+    private audioService: AudioService) { }
 
   ngOnInit(): void {
+    this.audioServiceSubscription = this.audioService.$toggleAudio.subscribe(audioId => {
+      console.log(audioId, this.audio.audio_id);
+      if (this.audio == null || audioId == null) {
+        return;
+      }
+      const audioPlayer = document.getElementById(`${this.audio.audio_id}-audio-player`) as HTMLAudioElement;
+      if (audioPlayer == null || this.audio.audio_id !== audioId) {
+        return;
+      }
 
+      console.log('Toggled ', this.audio.audio_id);
+      if (audioPlayer.paused) {
+        audioPlayer.play();
+      } else {
+        audioPlayer.pause();
+      }
+    });
   }
 
   ngOnChanges(): void {
@@ -29,16 +55,18 @@ export class AudioButtonComponent implements OnInit, OnChanges, AfterViewInit {
     }
 
     this.audioPlayerSrc = this.getSrcUrl();
+    this.audioPlayerId = this.audio.audio_id;
+
+    this.setDisabledClass();
   }
 
   ngAfterViewInit(): void {
-    const audioPlayer = document.getElementById('audio-player') as HTMLAudioElement;
+    const audioPlayer = document.getElementById(`${this.audio.audio_id}-audio-player`) as HTMLAudioElement;
     if (audioPlayer == null) {
       return;
     }
-
-    if (this.autoPlay) {
-      this.onClickAudioPlayer(audioPlayer);
+    if (this.autoPlay && audioPlayer.paused) {
+      audioPlayer.play();
       // Detect changes so that the audio button displays the right icon.
       this.changeDetectorRef.detectChanges();
     }
@@ -49,18 +77,27 @@ export class AudioButtonComponent implements OnInit, OnChanges, AfterViewInit {
     });
   }
 
+  ngOnDestroy(): void {
+    this.audioServiceSubscription.unsubscribe();
+  }
+
   /**
    * Method to play and pause the audio player.
    * @param audioPlayer the audio player.
    */
   public onClickAudioPlayer(audioPlayer: HTMLAudioElement): void {
+    if (this.disableButton) {
+      return;
+    }
+
     if (audioPlayer.paused) {
       audioPlayer.play();
     } else {
       audioPlayer.pause();
     }
+    console.log(audioPlayer.paused);
     // Todo remove line below.
-    this.audioCompleted.emit(this.audio);
+    // this.audioCompleted.emit(this.audio);
   }
 
   public checkIfAudioPlayerIsPaused(audioPlayer: HTMLAudioElement): boolean {
@@ -76,6 +113,14 @@ export class AudioButtonComponent implements OnInit, OnChanges, AfterViewInit {
    */
   public onClickFinishAudio(): void {
     this.audioCompleted.emit(this.audio);
+  }
+
+  private setDisabledClass(): void {
+    if (this.disableButton) {
+      this.audioPlayerDisabledClass = 'disabled-audio';
+    } else {
+      this.audioPlayerDisabledClass = '';
+    }
   }
 
   /**
