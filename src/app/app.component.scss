@@ -3,3 +3,16 @@
     margin: 0;
 }
 
+.main > div {
+    height: 100%;
+}
+
+.game-items {
+    transition: filter 1s ease-out;
+}
+
+$blurValue: 5px;
+.blur {
+    -webkit-filter: blur($blurValue);
+    filter: blur($blurValue);
+}

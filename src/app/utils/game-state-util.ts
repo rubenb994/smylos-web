@@ -2,6 +2,7 @@ export class GameStateUtils {
 
     private static levelLocalStorage = 'currentLevel';
     private static potionAmountLocalStorage = 'potionAmount';
+    private static introductionCleared = 'introductionCleared';
 
     public static getLevel(): number {
         const currentLevel: string = localStorage.getItem(this.levelLocalStorage);
@@ -25,5 +26,17 @@ export class GameStateUtils {
             return;
         }
         localStorage.setItem(this.potionAmountLocalStorage, newPotionAmount.toString());
+    }
+
+    public static getIntroductionCleared(): boolean {
+        const introductionCleared = localStorage.getItem(this.introductionCleared);
+        return introductionCleared == 'true';
+    }
+
+    public static setIntroductionCleared(newIntroductionValue: boolean): void {
+        if (newIntroductionValue == null) {
+            return;
+        }
+        localStorage.setItem(this.introductionCleared, newIntroductionValue.toString());
     }
 }

@@ -31,12 +31,13 @@ export class AppComponent implements OnInit {
 
   public notSupportedWidth = 995;
 
-
+  public blurClass = '';
 
   constructor(private stageService: StageService) {
 
     // Todo remove this line below (only for development)
     GameStateUtils.setLevel(0);
+    GameStateUtils.setIntroductionCleared(false);
   }
 
   ngOnInit(): void {
@@ -44,8 +45,11 @@ export class AppComponent implements OnInit {
       this.isMobile = true;
     }
 
-    this.stagesLoading = true;
     this.stageService.setCurrentStage(GameStateUtils.getLevel());
+    this.introductionFinished = GameStateUtils.getIntroductionCleared();
+    this.applyBlurClass();
+
+    this.stagesLoading = true;
 
     // Subscribe to the current stage and calculate toolbar values based on current stage.
     this.stageService.$currentStage.subscribe(result => {
@@ -93,11 +97,32 @@ export class AppComponent implements OnInit {
     }
   }
 
-  public onIntroductionFinish(): void {
-    this.introductionFinished = true;
+  /**
+   * Method which triggers when the introduction finishes.
+   * @param introductionFinished the value which indicates if the stage is finsihed.
+   */
+  public onIntroductionFinish(introductionFinished: boolean): void {
+    GameStateUtils.setIntroductionCleared(introductionFinished);
+    this.introductionFinished = introductionFinished;
+    this.applyBlurClass();
   }
 
+  /**
+   * Method which triggers when the potion alarm outputs.
+   */
   public onAlarmFinish(): void {
     this.alarmFinished = false;
   }
+
+  /**
+   * Method to set the blurClass property based on the introductionFinished property.
+   */
+  private applyBlurClass(): void {
+    if (this.introductionFinished) {
+      this.blurClass = '';
+    } else {
+      this.blurClass = 'blur';
+    }
+  }
+
 }
