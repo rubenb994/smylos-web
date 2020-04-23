@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { IntroductionComponent } from './components/introduction/introduction.component';
 import { PotionAlarmComponent } from './components/potion-alarm/potion-alarm.component';
 import { MobileErrorComponent } from './components/mobile-error/mobile-error.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { MobileErrorComponent } from './components/mobile-error/mobile-error.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
