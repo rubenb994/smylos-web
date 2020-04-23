@@ -47,13 +47,12 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit {
 
   ngOnInit(): void {
     this.menuService.$menuChanged.subscribe(menuOpen => {
-      console.log(menuOpen);
       if (menuOpen) {
         this.optionButtonVisible = true;
       } else {
         this.optionButtonVisible = false;
       }
-      console.log(this.optionButtonVisible);
+      this.setButtonClass();
     });
   }
 
@@ -151,6 +150,18 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit {
     return `chat-bubble-${chatItem.type}`;
   }
 
+  private setButtonClass(): void {
+    const buttonRows: HTMLDivElement[] = Array.from(document.getElementsByClassName('buttons-row')) as HTMLDivElement[];
+    buttonRows.forEach(buttonRow => {
+      if (this.optionButtonVisible) {
+        buttonRow.style.left = '0';
+      } else {
+        buttonRow.style.left = '-400px';
+      }
+    });
+    this.changeDetectorRef.detectChanges();
+  }
+
   /**
    * Method to set the audio booleans necessary for displaying the audio.
    * Disables the title buttons when the audio has not been completed.
@@ -209,10 +220,6 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit {
       chatItemDisplay.option = option;
     }
     return chatItemDisplay;
-  }
-
-  private sleep(ms): Promise<any> {
-    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
 }

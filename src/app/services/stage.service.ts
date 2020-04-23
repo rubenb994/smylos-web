@@ -321,8 +321,6 @@ export class StageService {
     const unchattedMandatoryChatsAmount = mandatoryChats.length - mandatoryCompletedChats;
     const unlistenedMandatoryAudiosAmount = mandatoryAudios.length - mandatoryCompletedAudios;
 
-    console.log(unlistenedMandatoryAudiosAmount);
-
     if (completedAmountOfChats + unchattedMandatoryChatsAmount <= mandatoryChatsNumber) {
       totalChat = mandatoryChatsNumber;
     } else {
@@ -339,8 +337,6 @@ export class StageService {
 
     this.potionAmount = potionAmount;
     this.$potionAmount.next(this.potionAmount);
-    console.log(potionAmount);
-
   }
 
   /**

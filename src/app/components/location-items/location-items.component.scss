@@ -1,11 +1,12 @@
 @import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/values.scss";
 
 /*--------------------
 the complete menu
 --------------------*/
 
 #chat {
-    transition: left 1s;
+    transition: left $location-items-transition;
     position: absolute;
     background-color: $tertiary;
     top: 0;
