@@ -1,17 +1,18 @@
-import { Component, OnInit, AfterViewInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, OnChanges, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { LOCATION_NAMES } from 'src/app/config/location-names';
 import { StageService } from 'src/app/services/stage.service';
 import { NFC } from 'src/app/models/nfc';
 import { Audio } from 'src/app/models/audio';
 import { MenuService } from 'src/app/services/menu.service';
 import { AudioService } from 'src/app/services/audio.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-location-items',
   templateUrl: './location-items.component.html',
   styleUrls: ['./location-items.component.scss']
 })
-export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit {
+export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
 
   /**
    * Inputed selected location.
@@ -48,6 +49,9 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   public availableChats: string[];
   public availableAudios: string[];
 
+  private availableChatsSubscription: Subscription;
+  private availableAudiosSubscription: Subscription;
+
   constructor(
     private stageService: StageService,
     private menuService: MenuService,
@@ -58,11 +62,11 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
     /**
      * Subscribe to the available chats and audios.
      */
-    this.stageService.$availableChats.subscribe(results => {
+    this.availableChatsSubscription = this.stageService.$availableChats.subscribe(results => {
       this.availableChats = results;
     });
 
-    this.stageService.$availableAudios.subscribe(results => {
+    this.availableAudiosSubscription = this.stageService.$availableAudios.subscribe(results => {
       this.availableAudios = results;
     });
   }
@@ -84,6 +88,11 @@ export class LocationItemsComponent implements OnInit, OnChanges, AfterViewInit 
   ngAfterViewInit(): void {
     this.locationItemMenu = document.getElementById('chat');
     this.menuButton = document.getElementById('button-menu') as HTMLButtonElement;
+  }
+
+  ngOnDestroy(): void {
+    this.availableAudiosSubscription.unsubscribe();
+    this.availableChatsSubscription.unsubscribe();
   }
 
   /**

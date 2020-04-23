@@ -1,16 +1,17 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { interval } from 'rxjs';
 import { ToolbarService } from 'src/app/services/toolbar.service';
 import { Stage } from 'src/app/models/stage';
 import { StageService } from 'src/app/services/stage.service';
 
+/**
+ * Component to display the toolbar including the chats, audios and potion amounts.
+ */
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit, OnChanges {
-
 
   @Input() currentStage: Stage;
 
@@ -52,33 +53,10 @@ export class ToolbarComponent implements OnInit, OnChanges {
       }
       this.potionCount = result;
     });
-
-
-    // let decreasePotion = true;
-    // const changeFactor = 1;
-
-    // const source = interval(1);
-    // const subscribe = source.subscribe(val => {
-    //   let newPotionValue = this.potionCount;
-
-    //   if (this.potionCount >= 100 || this.potionCount <= 0) {
-    //     decreasePotion = !decreasePotion;
-    //   }
-
-    //   if (decreasePotion) {
-    //     newPotionValue = newPotionValue - changeFactor;
-    //   } else {
-    //     newPotionValue = newPotionValue + changeFactor;
-    //   }
-
-    //   if (newPotionValue > 100 || newPotionValue < 0) {
-    //     return;
-    //   }
-    //   this.potionCount = newPotionValue;
-    // });
   }
 
   ngOnChanges(): void {
+    // Recalculate the amount of maxChats and audios.
     const maxChatAudio = this.toolbarService.calculateMaxAmountChatsAndAudios(this.currentStage);
     if (maxChatAudio == null) {
       return;
@@ -87,6 +65,9 @@ export class ToolbarComponent implements OnInit, OnChanges {
     this.maxAmountAudios = maxChatAudio[1];
   }
 
+  /**
+   * Method to map the potion amount to a percentage.
+   */
   public getPotionWidth(): string {
     return `${this.potionCount}%`;
   }

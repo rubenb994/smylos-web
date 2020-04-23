@@ -1,8 +1,9 @@
-import { Component, Input, OnChanges, Output, EventEmitter, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
 import { Chat } from 'src/app/models/chat';
 import { ChatItem } from 'src/app/models/chat-item';
 import { Audio } from 'src/app/models/audio';
 import { MenuService } from 'src/app/services/menu.service';
+import { Subscription } from 'rxjs';
 
 export interface ChatItemDisplay {
   chatItem: ChatItem;
@@ -15,7 +16,7 @@ export interface ChatItemDisplay {
   styleUrls: ['./chat.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChatComponent implements OnChanges, AfterViewChecked, OnInit {
+export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDestroy {
 
   @Input() chat: Chat;
   @Output() chatCompleted = new EventEmitter();
@@ -39,6 +40,8 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit {
   public audioFinished = true;
   public audioLoaded = false;
 
+  public menuServiceSubscription: Subscription;
+
   constructor(
     private menuService: MenuService,
     private changeDetectorRef: ChangeDetectorRef
@@ -46,7 +49,7 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit {
 
 
   ngOnInit(): void {
-    this.menuService.$menuChanged.subscribe(menuOpen => {
+    this.menuServiceSubscription = this.menuService.$menuChanged.subscribe(menuOpen => {
       if (menuOpen) {
         this.optionButtonVisible = true;
       } else {
@@ -60,6 +63,8 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit {
     if (this.chatItemsToDisplay.length <= 0) {
       // Add the first chat item.
       this.addNextChatItem(0);
+      // TODO remove line below (only for development)
+      // this.chatCompleted.emit();
     }
   }
 
@@ -69,6 +74,10 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit {
       return;
     }
     chatRowElement.scrollTop = chatRowElement.scrollHeight;
+  }
+
+  ngOnDestroy(): void {
+    this.menuServiceSubscription.unsubscribe();
   }
 
   /**
@@ -89,6 +98,7 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit {
    * @param chatItem  the chat item which involved player interaction.
    */
   public onClickTitleButton(title: string, chatItem: ChatItem): void {
+    // TODO remove line below (only for development)
     // this.chatCompleted.emit();
     const indexOfClickedTitle = chatItem.titles.indexOf(title);
     if (indexOfClickedTitle < 0) {
