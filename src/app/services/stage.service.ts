@@ -145,8 +145,8 @@ export class StageService {
     // Add removed chat to completed chats.
     this.addCompletedChat(chat.chat_id);
     // Evaluate if stage is cleared.
-    // this.calculatePotionAmount();
     this.evaluateStageCleared();
+    this.calculatePotionAmount();
   }
 
   /**
@@ -213,6 +213,7 @@ export class StageService {
         this.availableChats.splice(foundAvailableItemIndex, 1);
       }
     }
+
   }
 
   /**
@@ -237,7 +238,7 @@ export class StageService {
     // Add removed audio to complete audios.
     this.addCompletedAudio(audio.audio_id);
     // Evaluate if stage is cleared.
-    // this.calculatePotionAmount();
+    this.calculatePotionAmount();
     this.evaluateStageCleared();
   }
 
@@ -278,14 +279,68 @@ export class StageService {
     }
   }
 
-  private calculatePotionAmount(): void {
+  public calculatePotionAmount(): void {
     let potionAmount = 0;
+    let totalChat = 0;
+    let totalAudio = 0;
 
+    // Amount of mantory audios & chats required to finish a stage.
+    const mandatoryChatsNumber = this.currentStage.level_setup.mandatory_chats_amount;
+    const mandatoryAudiosNumber = this.currentStage.level_setup.mandatory_audios_amount;
 
+    // Amount of completed audios & chats (specific).
+    const completedAmountOfAudios = this.completedAudios.length;
+    const completedAmountOfChats = this.completedChats.length;
 
+    const mandatoryItems = this.currentStage.level_setup.mandatory_items;
+
+    // Amount of specfic mandatory audios & chats.
+    const mandatoryAudios = mandatoryItems.filter(availableItem => availableItem[0] === 'a');
+    const mandatoryChats = mandatoryItems.filter(availableItem => availableItem[0] === 'C');
+
+    // Amount of completed audios & chats that are mandatory (specific)
+    let mandatoryCompletedAudios = 0;
+    let mandatoryCompletedChats = 0;
+
+    this.completedAudios.forEach(completedAudio => {
+      const foundMandatoryItem = mandatoryAudios.find(mandatoryAudio => mandatoryAudio === completedAudio);
+      if (foundMandatoryItem == null) {
+        return;
+      }
+      mandatoryCompletedAudios++;
+    });
+
+    this.completedChats.forEach(completedChat => {
+      const foundMandatoryItem = mandatoryChats.find(mandatoryChat => mandatoryChat === completedChat);
+      if (foundMandatoryItem == null) {
+        return;
+      }
+      mandatoryCompletedChats++;
+    });
+
+    const unchattedMandatoryChatsAmount = mandatoryChats.length - mandatoryCompletedChats;
+    const unlistenedMandatoryAudiosAmount = mandatoryAudios.length - mandatoryCompletedAudios;
+
+    console.log(unlistenedMandatoryAudiosAmount);
+
+    if (completedAmountOfChats + unchattedMandatoryChatsAmount <= mandatoryChatsNumber) {
+      totalChat = mandatoryChatsNumber;
+    } else {
+      totalChat = completedAmountOfChats + unchattedMandatoryChatsAmount;
+    }
+
+    if (completedAmountOfAudios + unlistenedMandatoryAudiosAmount <= mandatoryAudiosNumber) {
+      totalAudio = mandatoryAudiosNumber;
+    } else {
+      totalAudio = completedAmountOfAudios + unlistenedMandatoryAudiosAmount;
+    }
+
+    potionAmount = 100 - ((completedAmountOfChats + completedAmountOfAudios) / (totalAudio + totalChat) * 100);
 
     this.potionAmount = potionAmount;
     this.$potionAmount.next(this.potionAmount);
+    console.log(potionAmount);
+
   }
 
   /**

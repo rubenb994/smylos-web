@@ -21,33 +21,29 @@ export class AppComponent implements OnInit {
   public selectedLocation: number;
   public currentStage: Stage;
 
-
-  /**
-   * Variables for displaying toolbar values.
-   */
-  public maxAmountChats = 0;
-  public finishedAmountChats = 0;
-
-  public maxAmountAudios = 0;
-  public finishedAmountAudios = 0;
-
   /**
    * Variables for displaying the components.
    */
-  public displayToolbar = true;
-  public displayLogo = true;
-  public displayLocationItem = true;
-  public displayFinishStage = false;
-
+  public isMobile = false;
   public stagesLoading = true;
+  public introductionFinished = false;
+  public alarmFinished = false;
+
+  public notSupportedWidth = 995;
+
+
 
   constructor(private stageService: StageService) {
 
     // Todo remove this line below (only for development)
-    // GameStateUtils.setLevel(0);
+    GameStateUtils.setLevel(0);
   }
 
   ngOnInit(): void {
+    if (window.innerWidth < this.notSupportedWidth) {
+      this.isMobile = true;
+    }
+
     this.stagesLoading = true;
     this.stageService.setCurrentStage(GameStateUtils.getLevel());
 
@@ -58,14 +54,12 @@ export class AppComponent implements OnInit {
       }
       this.currentStage = result;
       this.stagesLoading = false;
-      this.calculateToolbarValues();
     });
 
-    this.stageService.$stageFinished.subscribe(result => {
-      if (result == null) {
-        return;
+    this.stageService.$potionAmount.subscribe(result => {
+      if (result === 0) {
+        this.alarmFinished = true;
       }
-      this.displayFinishStage = result;
     });
   }
 
@@ -85,68 +79,25 @@ export class AppComponent implements OnInit {
    * Methods for displaying the right components.
    */
   public onWindowResize(): void {
-    this.evaluateToolbarDisplay();
-    this.evaluateLogoDisplay();
-    this.evaluateLocationItemDisplay();
+    this.evaluateMobileErrorDisplay();
   }
 
   /**
-   * Method to evaluate if the toolbar should be displayed.
+   * Method to evaluate if the mobile error should be displayed.
    */
-  public evaluateToolbarDisplay(): void {
-    if (window.innerWidth < 600) {
-      this.displayToolbar = false;
+  public evaluateMobileErrorDisplay(): void {
+    if (window.innerWidth < this.notSupportedWidth) {
+      this.isMobile = true;
     } else {
-      this.displayToolbar = true;
+      this.isMobile = false;
     }
   }
 
-  /**
-   * Method to evaluate if the logo should be displayed.
-   */
-  public evaluateLogoDisplay(): void {
-    if (window.innerWidth < 400) {
-      this.displayLogo = false;
-    } else {
-      this.displayLogo = true;
-    }
+  public onIntroductionFinish(): void {
+    this.introductionFinished = true;
   }
 
-  /**
-   * Method to evaluate if the locationItem should be displayed.
-   */
-  public evaluateLocationItemDisplay(): void {
-    if (window.innerWidth < 800) {
-      this.displayLocationItem = false;
-    } else {
-      this.displayLocationItem = true;
-    }
+  public onAlarmFinish(): void {
+    this.alarmFinished = false;
   }
-
-  /**
-   * Method to calculate the values for the toolbar.
-   * Stores these values in the maxAmountAudios & maxAmountChats variables.
-   */
-  private calculateToolbarValues(): void {
-    if (this.currentStage == null) {
-      return;
-    }
-
-    let maxAmountAudios = 0;
-    let maxAmountChats = 0;
-
-    this.currentStage.nfc.forEach(nfcItem => {
-
-      if (nfcItem.chat != null) {
-        maxAmountChats++;
-      }
-
-      if (nfcItem.audios != null && nfcItem.audios.length > 0) {
-        maxAmountAudios = maxAmountAudios + nfcItem.audios.length;
-      }
-    });
-    this.maxAmountAudios = maxAmountAudios;
-    this.maxAmountChats = maxAmountChats;
-  }
-
 }

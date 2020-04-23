@@ -10,7 +10,9 @@ import { LocationItemsComponent } from './components/location-items/location-ite
 import { ChatComponent } from './components/chat/chat.component';
 import { AudioButtonComponent } from './components/audio-button/audio-button.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FinishStageComponent } from './components/finish-stage/finish-stage.component';
+import { IntroductionComponent } from './components/introduction/introduction.component';
+import { PotionAlarmComponent } from './components/potion-alarm/potion-alarm.component';
+import { MobileErrorComponent } from './components/mobile-error/mobile-error.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { FinishStageComponent } from './components/finish-stage/finish-stage.com
     LocationItemsComponent,
     ChatComponent,
     AudioButtonComponent,
-    FinishStageComponent
+    IntroductionComponent,
+    PotionAlarmComponent,
+    MobileErrorComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,8 @@
-import { Component, Input, OnChanges, Output, EventEmitter, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, OnInit } from '@angular/core';
 import { Chat } from 'src/app/models/chat';
 import { ChatItem } from 'src/app/models/chat-item';
 import { Audio } from 'src/app/models/audio';
+import { MenuService } from 'src/app/services/menu.service';
 
 export interface ChatItemDisplay {
   chatItem: ChatItem;
@@ -14,7 +15,7 @@ export interface ChatItemDisplay {
   styleUrls: ['./chat.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChatComponent implements OnChanges, AfterViewChecked {
+export class ChatComponent implements OnChanges, AfterViewChecked, OnInit {
 
   @Input() chat: Chat;
   @Output() chatCompleted = new EventEmitter();
@@ -26,7 +27,11 @@ export class ChatComponent implements OnChanges, AfterViewChecked {
 
   public chatFinished = false;
 
+  // TODO timer of chat delay
   private readonly timeBetweenChatsDuration = 1;
+
+  // option buttons in chat disable
+  public optionButtonVisible = false;
 
   /**
    * Variable to check wheter an audio message has been listen to.
@@ -35,8 +40,22 @@ export class ChatComponent implements OnChanges, AfterViewChecked {
   public audioLoaded = false;
 
   constructor(
+    private menuService: MenuService,
     private changeDetectorRef: ChangeDetectorRef
   ) { }
+
+
+  ngOnInit(): void {
+    this.menuService.$menuChanged.subscribe(menuOpen => {
+      console.log(menuOpen);
+      if (menuOpen) {
+        this.optionButtonVisible = true;
+      } else {
+        this.optionButtonVisible = false;
+      }
+      console.log(this.optionButtonVisible);
+    });
+  }
 
   ngOnChanges(): void {
     if (this.chatItemsToDisplay.length <= 0) {
