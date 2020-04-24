@@ -145,7 +145,7 @@ export class StageService {
     // Add removed chat to completed chats.
     this.addCompletedChat(chat.chat_id);
     // Evaluate if stage is cleared.
-    this.evaluateStageCleared();
+    // this.evaluateStageCleared();
     this.calculatePotionAmount();
   }
 
@@ -239,7 +239,7 @@ export class StageService {
     this.addCompletedAudio(audio.audio_id);
     // Evaluate if stage is cleared.
     this.calculatePotionAmount();
-    this.evaluateStageCleared();
+    // this.evaluateStageCleared();
   }
 
   /**
@@ -288,9 +288,27 @@ export class StageService {
     const mandatoryChatsNumber = this.currentStage.level_setup.mandatory_chats_amount;
     const mandatoryAudiosNumber = this.currentStage.level_setup.mandatory_audios_amount;
 
+    const completedChats = Object.assign([], this.completedChats);
+    const completedAudios = Object.assign([], this.completedAudios);
+
+    // Items independend of the potion mechanism
+    const unrelatedPotions = this.currentStage.level_setup.potion_unrelated;
+
+    unrelatedPotions.forEach(unrelatedPotion => {
+      let completedMatchingIndex = completedChats.findIndex(completedChat => completedChat === unrelatedPotion);
+      if (completedMatchingIndex >= 0) {
+        completedChats.splice(completedMatchingIndex, 1);
+      }
+
+      completedMatchingIndex = completedAudios.findIndex(completedAudio => completedAudio === unrelatedPotion);
+      if (completedMatchingIndex >= 0) {
+        completedAudios.splice(completedMatchingIndex, 1);
+      }
+    });
+
     // Amount of completed audios & chats (specific).
-    const completedAmountOfAudios = this.completedAudios.length;
-    const completedAmountOfChats = this.completedChats.length;
+    const completedAmountOfAudios = completedAudios.length;
+    const completedAmountOfChats = completedChats.length;
 
     const mandatoryItems = this.currentStage.level_setup.mandatory_items;
 
@@ -302,7 +320,7 @@ export class StageService {
     let mandatoryCompletedAudios = 0;
     let mandatoryCompletedChats = 0;
 
-    this.completedAudios.forEach(completedAudio => {
+    completedAudios.forEach(completedAudio => {
       const foundMandatoryItem = mandatoryAudios.find(mandatoryAudio => mandatoryAudio === completedAudio);
       if (foundMandatoryItem == null) {
         return;
@@ -310,7 +328,7 @@ export class StageService {
       mandatoryCompletedAudios++;
     });
 
-    this.completedChats.forEach(completedChat => {
+    completedChats.forEach(completedChat => {
       const foundMandatoryItem = mandatoryChats.find(mandatoryChat => mandatoryChat === completedChat);
       if (foundMandatoryItem == null) {
         return;
@@ -332,7 +350,7 @@ export class StageService {
     } else {
       totalAudio = completedAmountOfAudios + unlistenedMandatoryAudiosAmount;
     }
-
+    console.log(completedAmountOfChats);
     potionAmount = 100 - ((completedAmountOfChats + completedAmountOfAudios) / (totalAudio + totalChat) * 100);
 
     this.potionAmount = potionAmount;

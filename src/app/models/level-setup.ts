@@ -3,4 +3,5 @@ export interface LevelSetup {
     mandatory_items: string[];
     mandatory_audios_amount?: number;
     mandatory_chats_amount?: number;
+    potion_unrelated: string[];
 }
