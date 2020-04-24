@@ -37,6 +37,8 @@ export class StageService {
 
   public $stageFinished: BehaviorSubject<boolean> = new BehaviorSubject(null);
 
+  public $gameFinished: BehaviorSubject<boolean> = new BehaviorSubject(null);
+
   constructor() {
   }
 
@@ -50,9 +52,13 @@ export class StageService {
     // Find the currentStage.
     this.currentStage = this.stages.find(stage => stage.level === level);
     this.$currentStage.next(this.currentStage);
+
+    // If the current stage if null all stages have been finished and the games is done.
     if (this.currentStage == null) {
+      this.$gameFinished.next(true);
       return;
     }
+
     // Find availableItems, audios and chats.
     const availableItems = this.currentStage.level_setup.enable_items;
     const availableAudios = availableItems.filter(availableItem => availableItem[0] === 'a');
@@ -365,5 +371,37 @@ export class StageService {
       return;
     }
     this.$stageFinished.next(stageCleared);
+  }
+
+  /**
+   * Method to reset the game back to it's initial state.
+   */
+  public resetGame(): void {
+    // Reset the GameStatUtils to their default values.
+    GameStateUtils.setLevel(0);
+    GameStateUtils.setIntroductionCleared(false);
+    GameStateUtils.setPotionAmount(0);
+
+    this.availableAudios = [];
+    this.availableChats = [];
+    this.completedAudios = [];
+    this.completedChats = [];
+
+    this.potionAmount = 0;
+    this.currentStage = null;
+
+    this.$availableAudios.next(null);
+    this.$availableChats.next(null);
+    this.$completedAudios.next(null);
+    this.$completedChats.next(null);
+
+    this.$currentStage.next(null);
+    this.$potionAmount.next(0);
+
+    this.$stageFinished.next(false);
+    this.$gameFinished.next(false);
+
+    // Refresh the window.
+    location.reload();
   }
 }

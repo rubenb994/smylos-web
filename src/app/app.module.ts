@@ -15,6 +15,7 @@ import { PotionAlarmComponent } from './components/potion-alarm/potion-alarm.com
 import { MobileErrorComponent } from './components/mobile-error/mobile-error.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { FinishGameComponent } from './components/finish-game/finish-game.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { environment } from '../environments/environment';
     AudioButtonComponent,
     IntroductionComponent,
     PotionAlarmComponent,
-    MobileErrorComponent
+    MobileErrorComponent,
+    FinishGameComponent
   ],
   imports: [
     BrowserModule,

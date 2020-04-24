@@ -28,23 +28,25 @@ export class AppComponent implements OnInit {
   public stagesLoading = true;
   public introductionFinished = false;
   public alarmFinished = false;
+  public gameFinished = false;
 
   public notSupportedWidth = 995;
 
   public blurClass = '';
 
   constructor(private stageService: StageService) {
-
     // Todo remove this line below (only for development)
-    // GameStateUtils.setLevel(1);
-    GameStateUtils.setIntroductionCleared(true);
+    // GameStateUtils.setLevel(4);
+    // GameStateUtils.setIntroductionCleared(true);
   }
 
   ngOnInit(): void {
+    // Toggle isMobile property based on window and notsupported width.
     if (window.innerWidth < this.notSupportedWidth) {
       this.isMobile = true;
     }
 
+    // Set the currentStage & introductionFinished properties and apply based on introductionFinished.
     this.stageService.setCurrentStage(GameStateUtils.getLevel());
     this.introductionFinished = GameStateUtils.getIntroductionCleared();
     this.applyBlurClass();
@@ -58,6 +60,16 @@ export class AppComponent implements OnInit {
       }
       this.currentStage = result;
       this.stagesLoading = false;
+    });
+
+    // Subscribe to stage finished property to display and hide the finish-game component.
+    this.stageService.$gameFinished.subscribe(result => {
+      if (result == null) {
+        return;
+      }
+      console.log(result);
+      this.gameFinished = result;
+      this.applyBlurClass();
     });
 
     this.stageService.$potionAmount.subscribe(result => {
@@ -115,10 +127,12 @@ export class AppComponent implements OnInit {
   }
 
   /**
-   * Method to set the blurClass property based on the introductionFinished property.
+   * Method to set the blurClass property based on the introductionFinished property or the game finished property.
+   * If the game is finished or the introduction is not cleared the blur class will be applied.
    */
   private applyBlurClass(): void {
-    if (this.introductionFinished) {
+    console.log(this.introductionFinished, this.gameFinished);
+    if (this.introductionFinished && !this.gameFinished) {
       this.blurClass = '';
     } else {
       this.blurClass = 'blur';

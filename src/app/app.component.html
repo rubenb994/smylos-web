@@ -12,6 +12,8 @@
             <app-introduction *ngIf="!introductionFinished" (introductionFinish)="onIntroductionFinish($event)">
             </app-introduction>
 
+            <app-finish-game *ngIf="gameFinished"></app-finish-game>
+
             <div class="game-items" [ngClass]="blurClass">
                 <app-potion-alarm *ngIf="alarmFinished" (alarmFinish)="onAlarmFinish()">
                 </app-potion-alarm>
