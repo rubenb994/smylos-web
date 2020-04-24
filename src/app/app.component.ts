@@ -27,17 +27,17 @@ export class AppComponent implements OnInit {
   public isMobile = false;
   public stagesLoading = true;
   public introductionFinished = false;
-  public alarmFinished = false;
+  public displayAlarm = false;
   public gameFinished = false;
 
-  public notSupportedWidth = 995;
+  private notSupportedWidth = 995;
 
   public blurClass = '';
 
   constructor(private stageService: StageService) {
     // Todo remove this line below (only for development)
-    // GameStateUtils.setLevel(4);
-    // GameStateUtils.setIntroductionCleared(true);
+    GameStateUtils.setLevel(1);
+    // GameStateUtils.setIntroductionCleared(false);
   }
 
   ngOnInit(): void {
@@ -62,6 +62,18 @@ export class AppComponent implements OnInit {
       this.stagesLoading = false;
     });
 
+    this.stageService.$stageFinished.subscribe(result => {
+      if (result == null || result === false) {
+        return;
+      }
+
+      if (this.currentStage.level === 0) {
+        this.moveToNextStage();
+        return;
+      }
+      this.displayAlarm = true;
+    });
+
     // Subscribe to stage finished property to display and hide the finish-game component.
     this.stageService.$gameFinished.subscribe(result => {
       if (result == null) {
@@ -70,12 +82,6 @@ export class AppComponent implements OnInit {
       console.log(result);
       this.gameFinished = result;
       this.applyBlurClass();
-    });
-
-    this.stageService.$potionAmount.subscribe(result => {
-      if (result === 0) {
-        this.alarmFinished = true;
-      }
     });
   }
 
@@ -123,7 +129,7 @@ export class AppComponent implements OnInit {
    * Method which triggers when the potion alarm outputs.
    */
   public onAlarmFinish(): void {
-    this.alarmFinished = false;
+    this.displayAlarm = false;
   }
 
   /**
@@ -137,6 +143,13 @@ export class AppComponent implements OnInit {
     } else {
       this.blurClass = 'blur';
     }
+  }
+
+  private moveToNextStage(): void {
+    const nextLevel = GameStateUtils.getLevel() + 1;
+    GameStateUtils.setLevel(nextLevel);
+
+    this.stageService.setCurrentStage(nextLevel);
   }
 
 }

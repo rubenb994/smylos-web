@@ -15,7 +15,7 @@ export class ToolbarComponent implements OnInit, OnChanges {
 
   @Input() currentStage: Stage;
 
-  public potionCount = 100;
+  public potionCount = 0;
 
   public maxAmountChats = 0;
   public completedAmountChats = 0;

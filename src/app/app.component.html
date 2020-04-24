@@ -15,7 +15,7 @@
             <app-finish-game *ngIf="gameFinished"></app-finish-game>
 
             <div class="game-items" [ngClass]="blurClass">
-                <app-potion-alarm *ngIf="alarmFinished" (alarmFinish)="onAlarmFinish()">
+                <app-potion-alarm *ngIf="displayAlarm" (alarmFinish)="onAlarmFinish()">
                 </app-potion-alarm>
 
                 <app-map (newLocationSelected)="onNewLocationSelected($event)"></app-map>

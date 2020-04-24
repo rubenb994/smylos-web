@@ -148,11 +148,25 @@ export class StageService {
 
     this.$availableChats.next(this.availableChats);
     this.$availableAudios.next(this.availableAudios);
+
     // Add removed chat to completed chats.
     this.addCompletedChat(chat.chat_id);
+
+    // Evaluate if potion should be calculated.
+    const ignoredPotionItems = this.currentStage.level_setup.ignore_potion;
+
+    if (ignoredPotionItems != null) {
+      const itemIsPotionUnrelated = ignoredPotionItems.find(unrelatedItem => unrelatedItem === chat.chat_id) == null;
+      if (itemIsPotionUnrelated) {
+        this.calculatePotionAmount();
+      }
+    } else {
+      // Always calculate potionAmount if there no ignored potion items.
+      this.calculatePotionAmount();
+    }
+
     // Evaluate if stage is cleared.
-    // this.evaluateStageCleared();
-    this.calculatePotionAmount();
+    this.evaluateStageCleared();
   }
 
   /**
@@ -241,11 +255,24 @@ export class StageService {
 
     this.$availableChats.next(this.availableChats);
     this.$availableAudios.next(this.availableAudios);
+
     // Add removed audio to complete audios.
     this.addCompletedAudio(audio.audio_id);
+
+    // Evaluate if potion should be calculated.
+    const ignoredPotionItems = this.currentStage.level_setup.ignore_potion;
+    if (ignoredPotionItems != null) {
+      const itemIsPotionUnrelated = ignoredPotionItems.find(unrelatedItem => unrelatedItem === audio.audio_id) == null;
+      if (itemIsPotionUnrelated) {
+        this.calculatePotionAmount();
+      }
+    } else {
+      // Always calculate potionAmount if there no ignored potion items.
+      this.calculatePotionAmount();
+    }
+
     // Evaluate if stage is cleared.
-    this.calculatePotionAmount();
-    // this.evaluateStageCleared();
+    this.evaluateStageCleared();
   }
 
   /**
@@ -356,7 +383,6 @@ export class StageService {
     } else {
       totalAudio = completedAmountOfAudios + unlistenedMandatoryAudiosAmount;
     }
-    console.log(completedAmountOfChats);
     potionAmount = 100 - ((completedAmountOfChats + completedAmountOfAudios) / (totalAudio + totalChat) * 100);
 
     this.potionAmount = potionAmount;
@@ -368,27 +394,37 @@ export class StageService {
    * In case its matches the contidon for a stage to be cleared, it updates the $stageFinished observable.
    */
   private evaluateStageCleared() {
-    // A stage can only be cleared if the potion amount is zero
-    // if (this.potionAmount !== 0) {
-    //   return;
-    // }
-
-    let stageCleared = true;
+    // Evaluate if all specific items are cleared.
+    let specificItemsCleared = true;
     const clearedItems = this.completedAudios.concat(this.completedChats);
     const mandatoryItems = this.currentStage.level_setup.mandatory_items;
 
     for (let index = 0; index < mandatoryItems.length; index++) {
       const mandatoryItemIndexInClearedItem = clearedItems.findIndex(clearedItem => clearedItem === mandatoryItems[index]);
       if (mandatoryItemIndexInClearedItem < 0) {
-        stageCleared = false;
+        specificItemsCleared = false;
         break;
       }
     }
 
-    if (!stageCleared) {
-      return;
+    // Evaluate if enough audios have been cleared.
+    let mandatoryAudioAmountCleared = true;
+    const amountClearedAudios = clearedItems.filter(clearedItem => clearedItem[0] === 'a');
+    const amountMandatoryAudios = this.currentStage.level_setup.mandatory_audios_amount;
+    if (amountClearedAudios != null && amountMandatoryAudios != null) {
+      mandatoryAudioAmountCleared = amountClearedAudios.length >= amountMandatoryAudios;
     }
-    this.$stageFinished.next(stageCleared);
+
+    // Evaluate if enough chats have been cleared.
+    let mandatoryChatAmountCleared = true;
+    const amountClearedChats = clearedItems.filter(clearedItem => clearedItem[0] === 'C');
+    const amountMandatoryChats = this.currentStage.level_setup.mandatory_chats_amount;
+    if (amountClearedAudios != null && amountMandatoryChats != null) {
+      mandatoryChatAmountCleared = amountClearedChats.length >= amountMandatoryChats;
+    }
+
+    const stageFinished = specificItemsCleared && mandatoryAudioAmountCleared && mandatoryChatAmountCleared;
+    this.$stageFinished.next(stageFinished);
   }
 
   /**

@@ -9,7 +9,10 @@
             "mandatory_items": [
                 "a1_24_0"
             ],
-            "potion_unrelated": []
+            "ignore_potion": [
+                "C0.0.1",
+                "a1_24_0"
+            ]
         },
         "nfc": [
             {
