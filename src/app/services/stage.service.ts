@@ -327,17 +327,21 @@ export class StageService {
     // Items independend of the potion mechanism
     const unrelatedPotions = this.currentStage.level_setup.potion_unrelated;
 
-    unrelatedPotions.forEach(unrelatedPotion => {
-      let completedMatchingIndex = completedChats.findIndex(completedChat => completedChat === unrelatedPotion);
-      if (completedMatchingIndex >= 0) {
-        completedChats.splice(completedMatchingIndex, 1);
-      }
+    if (unrelatedPotions != null) {
 
-      completedMatchingIndex = completedAudios.findIndex(completedAudio => completedAudio === unrelatedPotion);
-      if (completedMatchingIndex >= 0) {
-        completedAudios.splice(completedMatchingIndex, 1);
-      }
-    });
+      unrelatedPotions.forEach(unrelatedPotion => {
+        let completedMatchingIndex = completedChats.findIndex(completedChat => completedChat === unrelatedPotion);
+        if (completedMatchingIndex >= 0) {
+          completedChats.splice(completedMatchingIndex, 1);
+        }
+
+        completedMatchingIndex = completedAudios.findIndex(completedAudio => completedAudio === unrelatedPotion);
+        if (completedMatchingIndex >= 0) {
+          completedAudios.splice(completedMatchingIndex, 1);
+        }
+      });
+
+    }
 
     // Amount of completed audios & chats (specific).
     const completedAmountOfAudios = completedAudios.length;
@@ -346,8 +350,12 @@ export class StageService {
     const mandatoryItems = this.currentStage.level_setup.mandatory_items;
 
     // Amount of specfic mandatory audios & chats.
-    const mandatoryAudios = mandatoryItems.filter(availableItem => availableItem[0] === 'a');
-    const mandatoryChats = mandatoryItems.filter(availableItem => availableItem[0] === 'C');
+    let mandatoryAudios = [];
+    let mandatoryChats = [];
+    if (mandatoryItems != null) {
+      mandatoryAudios = mandatoryItems.filter(availableItem => availableItem[0] === 'a');
+      mandatoryChats = mandatoryItems.filter(availableItem => availableItem[0] === 'C');
+    }
 
     // Amount of completed audios & chats that are mandatory (specific)
     let mandatoryCompletedAudios = 0;
@@ -399,11 +407,13 @@ export class StageService {
     const clearedItems = this.completedAudios.concat(this.completedChats);
     const mandatoryItems = this.currentStage.level_setup.mandatory_items;
 
-    for (let index = 0; index < mandatoryItems.length; index++) {
-      const mandatoryItemIndexInClearedItem = clearedItems.findIndex(clearedItem => clearedItem === mandatoryItems[index]);
-      if (mandatoryItemIndexInClearedItem < 0) {
-        specificItemsCleared = false;
-        break;
+    if (mandatoryItems != null) {
+      for (let index = 0; index < mandatoryItems.length; index++) {
+        const mandatoryItemIndexInClearedItem = clearedItems.findIndex(clearedItem => clearedItem === mandatoryItems[index]);
+        if (mandatoryItemIndexInClearedItem < 0) {
+          specificItemsCleared = false;
+          break;
+        }
       }
     }
 

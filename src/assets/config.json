@@ -3960,6 +3960,14 @@
         "level_setup": {
             "enable_items": [
                 "C4.0.0"
+            ],
+            "mandatory_items": [
+                "C4.0.0",
+                "C4.1.0"
+            ],
+            "ignore_potion": [
+                "C4.0.0",
+                "C4.1.0"
             ]
         },
         "nfc": [
