@@ -44,10 +44,6 @@ export class ToolbarComponent implements OnInit, OnChanges {
     });
 
     this.stageService.$potionAmount.subscribe(result => {
-      this.potionCount = result;
-    });
-
-    this.stageService.$potionAmount.subscribe(result => {
       if (result == null) {
         return;
       }
