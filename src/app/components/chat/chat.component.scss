@@ -1,0 +1,96 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/values.scss";
+
+.chat-container {
+  .audio-button {
+    display: inline-block;
+  }
+
+  .title-row {
+    // position: absolute;
+    // margin-bottom: 59px;
+
+    .chat-title {
+      background-color: white;
+      margin-bottom: 5px;
+      padding: 10px;
+    }
+  }
+
+  #chat-row {
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    //Height of game elements = max viewheight - closeButton - titleRow - chatTitleRow - chatOptionButtons - toolbar
+    height: calc(100vh - 101px - 31px - 59px - 85px - 50px);
+
+    overflow-x: hidden;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+
+    .chat-bubble-default {
+      padding: 5px 15px 5px 15px;
+
+      margin-top: 5px;
+      margin-bottom: 5px;
+
+      background-color: white;
+      border-radius: 25px 25px 25px 0;
+      margin-bottom: 10px;
+      margin-top: 5px;
+
+      .chat-item-sender {
+        margin-bottom: 0;
+        margin-top: 8px;
+      }
+
+      .chat-item-message {
+        margin-top: 5px;
+        margin-bottom: 8px;
+      }
+
+      .audio-button-col {
+        padding: 0;
+      }
+    }
+
+    .chat-bubble-player {
+      border-radius: 25px 25px 0 25px;
+      text-align: right;
+    }
+
+    .chat-bubble-narration {
+      border-radius: 25px;
+      text-align: left;
+      background-color: #e3c76f;
+    }
+    .chat-bubble-npg {
+      text-align: left;
+      background-color: #85bfd8;
+    }
+  }
+
+  .buttons-row {
+    position: fixed;
+    bottom: 50px;
+    left: 0;
+    height: 85px;
+    width: 400px;
+    padding: 10px;
+    transition: left $location-items-transition;
+
+    .choice-button {
+      width: 100%;
+      background-color: white;
+      border: 2px solid $secondary;
+      border-radius: 25px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+  }
+
+  .npg-typing-container {
+    position: absolute;
+  }
+}

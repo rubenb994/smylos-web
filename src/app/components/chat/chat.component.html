@@ -1,0 +1,83 @@
+<div class="chat-container" *ngIf="chat">
+    <div class="row title-row">
+        <div class="col-12 chat-title">
+            <h3>{{chat.chat_title}}</h3>
+        </div>
+    </div>
+
+    <div class="row" id="chat-row">
+        <div class="col-12 chat-bubble-default box-shadow"
+            [ngClass]="getChatClassNameForChatItem(chatItemDisplay.chatItem)"
+            *ngFor="let chatItemDisplay of chatItemsToDisplay; last as isLastChat">
+
+
+            <h3 class="chat-item-sender">{{chatItemDisplay.chatItem.sender}}</h3>
+
+
+            <ng-container *ngIf="chatItemDisplay.option != null; else defaultMessage">
+                <p class="chat-item-message">{{chatItemDisplay.chatItem.messages[chatItemDisplay.option]}}</p>
+            </ng-container>
+            <ng-template #defaultMessage>
+                <ng-container *ngFor="let message of chatItemDisplay.chatItem.messages">
+
+                    <p class="chat-item-message">{{message}}</p>
+
+                </ng-container>
+            </ng-template>
+
+            <ng-container *ngIf="chatItemDisplay.chatItem.audio_message != null">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <p>Listen to audio</p>
+                    </div>
+                    <div class="col-auto audio-button-col">
+                        <app-audio-button class="audio-button"
+                            [audio]="createAudioObjectForAudioMessage(chatItemDisplay.chatItem.audio_message)"
+                            (audioCompleted)="onAudioCompleted($event)">
+                        </app-audio-button>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="isLastChat">
+
+                <div class="buttons-row" *ngIf="nextItemIsPlayerChatItem(chatItemDisplay.chatItem); else npgTyping">
+                    <div class="row">
+                        <div class="col-12" *ngFor="let title of getNextChatItem(chatItemDisplay.chatItem).titles">
+                            <button class="choice-button" [disabled]="!audioFinished"
+                                (click)="onClickTitleButton(title, getNextChatItem(chatItemDisplay.chatItem))">{{title}}</button>
+                        </div>
+                    </div>
+                    <ng-container>
+
+                    </ng-container>
+                </div>
+
+                <ng-template #npgTyping>
+                    <ng-container *ngIf="!chatFinished">
+                        <div class="npg-typing-container">
+                            <div class="lds-ellipsis">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </ng-template>
+
+
+            </ng-container>
+
+        </div>
+
+        <ng-container *ngIf="chatFinished">
+            <div class="col-12">
+                <div class="buttons-row">
+                    <button class="choice-button" (click)="onClickFinishChat()">Leave chat</button>
+                </div>
+            </div>
+        </ng-container>
+
+    </div>
+</div>

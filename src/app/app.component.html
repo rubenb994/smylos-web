@@ -1,16 +1,36 @@
-<div class="container">
-  <div class="row">
+<div class="main" (window:resize)="onWindowResize()">
 
-    <div class="col-12">
-      <app-toolbar></app-toolbar>
-    </div>
-    <div class="col-12">
-      <app-map></app-map>
-    </div>
+    <ng-container *ngIf="!isMobile; else mobileNotSupported">
 
-  </div>
+        <ng-container *ngIf="stagesLoading; else gameReady">
+
+            <p>Loading application</p>
+
+        </ng-container>
+        <ng-template #gameReady>
+
+            <app-introduction *ngIf="!introductionFinished" (introductionFinish)="onIntroductionFinish($event)">
+            </app-introduction>
+
+            <app-finish-game *ngIf="gameFinished"></app-finish-game>
+
+            <div class="game-items" [ngClass]="blurClass">
+                <app-potion-alarm *ngIf="displayAlarm" (alarmFinish)="onAlarmFinish()">
+                </app-potion-alarm>
+
+                <app-map (newLocationSelected)="onNewLocationSelected($event)"></app-map>
+                <app-location-items [selectedLocation]="selectedLocation"></app-location-items>
+                <app-toolbar [currentStage]="currentStage"></app-toolbar>
+                <app-logo></app-logo>
+            </div>
+
+        </ng-template>
+    </ng-container>
+
+    <ng-template #mobileNotSupported>
+        <app-mobile-error></app-mobile-error>
+    </ng-template>
+
+
+
 </div>
-
-
-
-<!-- <router-outlet></router-outlet> -->
