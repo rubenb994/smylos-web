@@ -37,6 +37,8 @@ export class StageService {
 
   public $stageFinished: BehaviorSubject<boolean> = new BehaviorSubject(null);
 
+  public $gameFinished: BehaviorSubject<boolean> = new BehaviorSubject(null);
+
   constructor() {
   }
 
@@ -50,9 +52,13 @@ export class StageService {
     // Find the currentStage.
     this.currentStage = this.stages.find(stage => stage.level === level);
     this.$currentStage.next(this.currentStage);
+
+    // If the current stage if null all stages have been finished and the games is done.
     if (this.currentStage == null) {
+      this.$gameFinished.next(true);
       return;
     }
+
     // Find availableItems, audios and chats.
     const availableItems = this.currentStage.level_setup.enable_items;
     const availableAudios = availableItems.filter(availableItem => availableItem[0] === 'a');
@@ -135,18 +141,32 @@ export class StageService {
     if (foundIndex < 0 || this.availableChats == null || this.availableChats.length <= 0) {
       return;
     }
-    // TODO fix line below causing audio to dissapear
+
     this.availableChats.splice(foundIndex, 1);
     this.removeDisabledChatsFromAvailableChats(chat);
     this.addEnabledChatsToAvailableChats(chat);
 
     this.$availableChats.next(this.availableChats);
     this.$availableAudios.next(this.availableAudios);
+
     // Add removed chat to completed chats.
     this.addCompletedChat(chat.chat_id);
+
+    // Evaluate if potion should be calculated.
+    const ignoredPotionItems = this.currentStage.level_setup.ignore_potion;
+
+    if (ignoredPotionItems != null) {
+      const itemIsPotionUnrelated = ignoredPotionItems.find(unrelatedItem => unrelatedItem === chat.chat_id) == null;
+      if (itemIsPotionUnrelated) {
+        this.calculatePotionAmount();
+      }
+    } else {
+      // Always calculate potionAmount if there no ignored potion items.
+      this.calculatePotionAmount();
+    }
+
     // Evaluate if stage is cleared.
-    // this.evaluateStageCleared();
-    this.calculatePotionAmount();
+    this.evaluateStageCleared();
   }
 
   /**
@@ -235,11 +255,24 @@ export class StageService {
 
     this.$availableChats.next(this.availableChats);
     this.$availableAudios.next(this.availableAudios);
+
     // Add removed audio to complete audios.
     this.addCompletedAudio(audio.audio_id);
+
+    // Evaluate if potion should be calculated.
+    const ignoredPotionItems = this.currentStage.level_setup.ignore_potion;
+    if (ignoredPotionItems != null) {
+      const itemIsPotionUnrelated = ignoredPotionItems.find(unrelatedItem => unrelatedItem === audio.audio_id) == null;
+      if (itemIsPotionUnrelated) {
+        this.calculatePotionAmount();
+      }
+    } else {
+      // Always calculate potionAmount if there no ignored potion items.
+      this.calculatePotionAmount();
+    }
+
     // Evaluate if stage is cleared.
-    this.calculatePotionAmount();
-    // this.evaluateStageCleared();
+    this.evaluateStageCleared();
   }
 
   /**
@@ -294,17 +327,21 @@ export class StageService {
     // Items independend of the potion mechanism
     const unrelatedPotions = this.currentStage.level_setup.potion_unrelated;
 
-    unrelatedPotions.forEach(unrelatedPotion => {
-      let completedMatchingIndex = completedChats.findIndex(completedChat => completedChat === unrelatedPotion);
-      if (completedMatchingIndex >= 0) {
-        completedChats.splice(completedMatchingIndex, 1);
-      }
+    if (unrelatedPotions != null) {
 
-      completedMatchingIndex = completedAudios.findIndex(completedAudio => completedAudio === unrelatedPotion);
-      if (completedMatchingIndex >= 0) {
-        completedAudios.splice(completedMatchingIndex, 1);
-      }
-    });
+      unrelatedPotions.forEach(unrelatedPotion => {
+        let completedMatchingIndex = completedChats.findIndex(completedChat => completedChat === unrelatedPotion);
+        if (completedMatchingIndex >= 0) {
+          completedChats.splice(completedMatchingIndex, 1);
+        }
+
+        completedMatchingIndex = completedAudios.findIndex(completedAudio => completedAudio === unrelatedPotion);
+        if (completedMatchingIndex >= 0) {
+          completedAudios.splice(completedMatchingIndex, 1);
+        }
+      });
+
+    }
 
     // Amount of completed audios & chats (specific).
     const completedAmountOfAudios = completedAudios.length;
@@ -313,8 +350,12 @@ export class StageService {
     const mandatoryItems = this.currentStage.level_setup.mandatory_items;
 
     // Amount of specfic mandatory audios & chats.
-    const mandatoryAudios = mandatoryItems.filter(availableItem => availableItem[0] === 'a');
-    const mandatoryChats = mandatoryItems.filter(availableItem => availableItem[0] === 'C');
+    let mandatoryAudios = [];
+    let mandatoryChats = [];
+    if (mandatoryItems != null) {
+      mandatoryAudios = mandatoryItems.filter(availableItem => availableItem[0] === 'a');
+      mandatoryChats = mandatoryItems.filter(availableItem => availableItem[0] === 'C');
+    }
 
     // Amount of completed audios & chats that are mandatory (specific)
     let mandatoryCompletedAudios = 0;
@@ -350,7 +391,6 @@ export class StageService {
     } else {
       totalAudio = completedAmountOfAudios + unlistenedMandatoryAudiosAmount;
     }
-    console.log(completedAmountOfChats);
     potionAmount = 100 - ((completedAmountOfChats + completedAmountOfAudios) / (totalAudio + totalChat) * 100);
 
     this.potionAmount = potionAmount;
@@ -362,26 +402,70 @@ export class StageService {
    * In case its matches the contidon for a stage to be cleared, it updates the $stageFinished observable.
    */
   private evaluateStageCleared() {
-    // A stage can only be cleared if the potion amount is zero
-    // if (this.potionAmount !== 0) {
-    //   return;
-    // }
-
-    let stageCleared = true;
+    // Evaluate if all specific items are cleared.
+    let specificItemsCleared = true;
     const clearedItems = this.completedAudios.concat(this.completedChats);
     const mandatoryItems = this.currentStage.level_setup.mandatory_items;
 
-    for (let index = 0; index < mandatoryItems.length; index++) {
-      const mandatoryItemIndexInClearedItem = clearedItems.findIndex(clearedItem => clearedItem === mandatoryItems[index]);
-      if (mandatoryItemIndexInClearedItem < 0) {
-        stageCleared = false;
-        break;
+    if (mandatoryItems != null) {
+      for (let index = 0; index < mandatoryItems.length; index++) {
+        const mandatoryItemIndexInClearedItem = clearedItems.findIndex(clearedItem => clearedItem === mandatoryItems[index]);
+        if (mandatoryItemIndexInClearedItem < 0) {
+          specificItemsCleared = false;
+          break;
+        }
       }
     }
 
-    if (!stageCleared) {
-      return;
+    // Evaluate if enough audios have been cleared.
+    let mandatoryAudioAmountCleared = true;
+    const amountClearedAudios = clearedItems.filter(clearedItem => clearedItem[0] === 'a');
+    const amountMandatoryAudios = this.currentStage.level_setup.mandatory_audios_amount;
+    if (amountClearedAudios != null && amountMandatoryAudios != null) {
+      mandatoryAudioAmountCleared = amountClearedAudios.length >= amountMandatoryAudios;
     }
-    this.$stageFinished.next(stageCleared);
+
+    // Evaluate if enough chats have been cleared.
+    let mandatoryChatAmountCleared = true;
+    const amountClearedChats = clearedItems.filter(clearedItem => clearedItem[0] === 'C');
+    const amountMandatoryChats = this.currentStage.level_setup.mandatory_chats_amount;
+    if (amountClearedAudios != null && amountMandatoryChats != null) {
+      mandatoryChatAmountCleared = amountClearedChats.length >= amountMandatoryChats;
+    }
+
+    const stageFinished = specificItemsCleared && mandatoryAudioAmountCleared && mandatoryChatAmountCleared;
+    this.$stageFinished.next(stageFinished);
+  }
+
+  /**
+   * Method to reset the game back to it's initial state.
+   */
+  public resetGame(): void {
+    // Reset the GameStatUtils to their default values.
+    GameStateUtils.setLevel(0);
+    GameStateUtils.setIntroductionCleared(false);
+    GameStateUtils.setPotionAmount(0);
+
+    this.availableAudios = [];
+    this.availableChats = [];
+    this.completedAudios = [];
+    this.completedChats = [];
+
+    this.potionAmount = 0;
+    this.currentStage = null;
+
+    this.$availableAudios.next(null);
+    this.$availableChats.next(null);
+    this.$completedAudios.next(null);
+    this.$completedChats.next(null);
+
+    this.$currentStage.next(null);
+    this.$potionAmount.next(0);
+
+    this.$stageFinished.next(false);
+    this.$gameFinished.next(false);
+
+    // Refresh the window.
+    location.reload();
   }
 }

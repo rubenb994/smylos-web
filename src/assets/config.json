@@ -9,7 +9,10 @@
             "mandatory_items": [
                 "a1_24_0"
             ],
-            "potion_unrelated": []
+            "ignore_potion": [
+                "C0.0.1",
+                "a1_24_0"
+            ]
         },
         "nfc": [
             {
@@ -3957,6 +3960,14 @@
         "level_setup": {
             "enable_items": [
                 "C4.0.0"
+            ],
+            "mandatory_items": [
+                "C4.0.0",
+                "C4.1.0"
+            ],
+            "ignore_potion": [
+                "C4.0.0",
+                "C4.1.0"
             ]
         },
         "nfc": [

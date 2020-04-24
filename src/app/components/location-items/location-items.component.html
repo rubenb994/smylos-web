@@ -24,12 +24,7 @@
                                 <app-chat [chat]="locationNFC.chat" (chatCompleted)="onChatCompleted()"></app-chat>
                             </ng-container>
 
-                            <ng-container *ngIf="displayAudio">
-                                <app-audio-button [audio]="selectedAudio" (audioCompleted)="onAudioCompleted($event)">
-                                </app-audio-button>
-                            </ng-container>
-
-                            <ng-container *ngIf="!displayChat && !displayAudio">
+                            <ng-container *ngIf="!displayChat">
 
                                 <ng-container *ngIf="locationNFC.chat != null && chatAvailable()">
 
@@ -56,7 +51,9 @@
                                                         <p>Listen to {{audio.audio_title}}</p>
                                                     </div>
                                                     <div class="col-auto icon-col">
-                                                        <i class="material-icons-outlined">audiotrack</i>
+                                                        <app-audio-button [audio]="audio" [disableButton]="true"
+                                                            (audioCompleted)="onAudioCompleted($event)">
+                                                        </app-audio-button>
                                                     </div>
                                                 </div>
                                             </button>

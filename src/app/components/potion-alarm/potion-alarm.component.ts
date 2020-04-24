@@ -16,15 +16,12 @@ export class PotionAlarmComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public onClickFinishAlarm(): void {
-    this.alarmFinish.emit();
-  }
-
   public onClickFinishStage(): void {
     const nextLevel = GameStateUtils.getLevel() + 1;
     GameStateUtils.setLevel(nextLevel);
 
     this.stageService.setCurrentStage(nextLevel);
+    this.alarmFinish.emit();
   }
 
 }
