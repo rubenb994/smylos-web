@@ -636,9 +636,7 @@
                     "chat_id": "C1.4.0",
                     "chat_title": "Talk to Kyril",
                     "enable_items": [
-                        "C1.3.0",
-                        "a1_45_0",
-                        "a1_45_1"
+                        "C1.3.0"
                     ],
                     "chat_items": [
                         {
