@@ -56,7 +56,7 @@
                             "type": "narration",
                             "sender": "Narrator",
                             "messages": [
-                                "The smile is only a measurement of wealth and does not resemble joy and happiness as in the out world. "
+                                "The smile is only a measurement of wealth and does not resemble joy and happiness as in the world you know. "
                             ]
                         },
                         {
@@ -164,7 +164,7 @@
                             "type": "player",
                             "sender": "Me",
                             "titles": [
-                                "A job?"
+                                "Looking forward to start"
                             ],
                             "messages": [
                                 "Mmm, interesting... I am looking forward to meet Epeo!"
@@ -335,8 +335,7 @@
                             "type": "npg",
                             "sender": "Epeo",
                             "messages": [
-                                "Good",
-                                "I have an important mission for you. It’s a matter of saving this world."
+                                "Good I have an important mission for you. It’s a matter of saving this world."
                             ]
                         },
                         {
@@ -386,7 +385,7 @@
                                 "How"
                             ],
                             "messages": [
-                                "But how can I orient myself in the city? Where should I go? Do you have any tips?"
+                                "But how can I orientate myself in the city? Where should I go? Do you have any tips?"
                             ]
                         },
                         {
@@ -2440,11 +2439,33 @@
                             "type": "npg",
                             "sender": "Hypatia",
                             "messages": [
-                                "First of all, pay attention while you’re in the city. People living here are always thirsty for acquiring the biggest smile possible. I had a hard life: I was raised by some relatives in the slums, as my parents died. When I got the opportunity to pay their help back and raise Golin, it meant a lot to me. Now I want to find Golin, only to be sure he’s safe and sound. This world is awful, you never know. I would love to destroy the whole system, its senseless hierarchy based on smiles. Be careful, don’t believe anything you hear or people tell you. Good luck on your journey!"
+                                "First of all, pay attention while you’re in the city. People living here are always thirsty for acquiring the biggest smile possible."
                             ]
                         },
                         {
                             "id": 11,
+                            "next": [
+                                12
+                            ],
+                            "type": "npg",
+                            "sender": "Hypatia",
+                            "messages": [
+                                "I had a hard life: I was raised by some relatives in the slums, as my parents died. When I got the opportunity to pay their help back and raise Golin, it meant a lot to me. Now I want to find Golin, only to be sure he’s safe and sound."
+                            ]
+                        },
+                        {
+                            "id": 12,
+                            "next": [
+                                13
+                            ],
+                            "type": "npg",
+                            "sender": "Hypatia",
+                            "messages": [
+                                "This world is awful, you never know. I would love to destroy the whole system, its senseless hierarchy based on smiles. Be careful, don’t believe anything you hear or people tell you. Good luck on your journey!"
+                            ]
+                        },
+                        {
+                            "id": 13,
                             "next": [
                                 -1
                             ],
@@ -2512,7 +2533,7 @@
                         {
                             "id": 3,
                             "next": [
-                                5
+                                6
                             ],
                             "type": "npg",
                             "sender": "Receptionist",
@@ -2528,8 +2549,7 @@
                             "type": "npg",
                             "sender": "Receptionist",
                             "messages": [
-                                "What do you think? This is the Executive Office, you can’t just walk in here as it was your local post office. I am sorry, I am having a bad day. Let me check if she is available at the moment.",
-                                "Ok, she has a couple of minutes. But next time book an appointment!"
+                                "What do you think? This is the Executive Office, you can’t just walk in here as it was your local post office. I am sorry, I am having a bad day. Let me check if she is available at the moment."
                             ]
                         },
                         {
@@ -2540,13 +2560,24 @@
                             "type": "npg",
                             "sender": "Receptionist",
                             "messages": [
-                                "I will lead you to Koralia’s office. Oh, here she is!"
+                                "Ok, she has a couple of minutes. But next time book an appointment!"
                             ]
                         },
                         {
                             "id": 6,
                             "next": [
                                 7
+                            ],
+                            "type": "npg",
+                            "sender": "Receptionist",
+                            "messages": [
+                                "I will lead you to Koralia’s office. Oh, here she is!"
+                            ]
+                        },
+                        {
+                            "id": 7,
+                            "next": [
+                                8
                             ],
                             "type": "narration",
                             "sender": "Narrator",
@@ -2555,9 +2586,9 @@
                             ]
                         },
                         {
-                            "id": 7,
+                            "id": 8,
                             "next": [
-                                8
+                                9
                             ],
                             "type": "npg",
                             "sender": "Koralia",
@@ -2566,10 +2597,10 @@
                             ]
                         },
                         {
-                            "id": 8,
+                            "id": 9,
                             "next": [
-                                9,
-                                12
+                                10,
+                                13
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -2583,9 +2614,9 @@
                             ]
                         },
                         {
-                            "id": 9,
+                            "id": 10,
                             "next": [
-                                10
+                                11
                             ],
                             "type": "npg",
                             "sender": "Koralia",
@@ -2594,9 +2625,9 @@
                             ]
                         },
                         {
-                            "id": 10,
+                            "id": 11,
                             "next": [
-                                11
+                                12
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -2608,9 +2639,9 @@
                             ]
                         },
                         {
-                            "id": 11,
+                            "id": 12,
                             "next": [
-                                15
+                                16
                             ],
                             "type": "npg",
                             "sender": "Koralia",
@@ -2620,9 +2651,9 @@
                             ]
                         },
                         {
-                            "id": 12,
+                            "id": 13,
                             "next": [
-                                13
+                                14
                             ],
                             "type": "npg",
                             "sender": "Koralia",
@@ -2631,9 +2662,9 @@
                             ]
                         },
                         {
-                            "id": 13,
+                            "id": 14,
                             "next": [
-                                14
+                                15
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -2645,9 +2676,9 @@
                             ]
                         },
                         {
-                            "id": 14,
+                            "id": 15,
                             "next": [
-                                15
+                                16
                             ],
                             "type": "npg",
                             "sender": "Koralia",
@@ -2656,9 +2687,9 @@
                             ]
                         },
                         {
-                            "id": 15,
+                            "id": 16,
                             "next": [
-                                16
+                                17
                             ],
                             "type": "npg",
                             "sender": "Koralia",
@@ -2667,7 +2698,7 @@
                             ]
                         },
                         {
-                            "id": 16,
+                            "id": 17,
                             "type": "player",
                             "next": [
                                 -1
@@ -2851,11 +2882,22 @@
                             "type": "npg",
                             "sender": "Epeo",
                             "messages": [
-                                "Well, let me tell you this: If you don't find that potion and bring it to me, I'll have something else for you to do. But don't think it will be this social or free. There is nowhere to go, you are in great debt to me. So get out of here!"
+                                "Well, let me tell you this: If you don't find that potion and bring it to me, I'll have something else for you to do. But don't think it will be this social or free."
                             ]
                         },
                         {
                             "id": 8,
+                            "next": [
+                                9
+                            ],
+                            "type": "npg",
+                            "sender": "Epeo",
+                            "messages": [
+                                "There is nowhere to go, you are in great debt to me. So get out of here!"
+                            ]
+                        },
+                        {
+                            "id": 9,
                             "next": [
                                 -1
                             ],
@@ -2917,7 +2959,7 @@
                                 "Not found the potion"
                             ],
                             "messages": [
-                                "I am still working on the mission I got from Epeo. I have talked to a lot of people, but I still haven’t found the potion. "
+                                "I am still working on the mission I got from Epeo. I spoke to a lot of people, but I still haven’t found the potion. "
                             ]
                         },
                         {
@@ -2945,14 +2987,36 @@
                             "type": "npg",
                             "sender": "Golin",
                             "messages": [
-                                "My mission? Ohh, well I don’t know really. I have a pretty chill life. I party, drink, eat, have sex. I can’t complain, can I? I got a lot of friends, at least a lot of people showing up for my parties... And I got a really nice chariot. Not as good as my neighbour though. That piece of shit thinks he has that amazing smile, showing off with his Egyptian obelisk in his garden…"
+                                "My mission? Ohh, well I don’t know really. I have a pretty chill life. I party, drink, eat, have sex. I can’t complain, can I? I got a lot of friends, at least a lot of people showing up for my parties..."
                             ]
                         },
                         {
                             "id": 5,
                             "next": [
-                                6,
+                                6
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "And I got a really nice chariot"
+                            ]
+                        },
+                        {
+                            "id": 6,
+                            "next": [
                                 7
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "Not as good as my neighbour though. That piece of shit thinks he has that amazing smile, showing off with his Egyptian obelisk in his garden…"
+                            ]
+                        },
+                        {
+                            "id": 7,
+                            "next": [
+                                8,
+                                9
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -2961,30 +3025,8 @@
                                 "Complemeht his chariot"
                             ],
                             "messages": [
-                                "You sound a bit jealous...",
-                                "I think your chariot looks amazing!"
-                            ]
-                        },
-                        {
-                            "id": 6,
-                            "next": [
-                                8
-                            ],
-                            "type": "npg",
-                            "sender": "Golin",
-                            "messages": [
-                                "Fuck you! I'm not jealous. I just... don't like people showing off."
-                            ]
-                        },
-                        {
-                            "id": 7,
-                            "next": [
-                                8
-                            ],
-                            "type": "npg",
-                            "sender": "Golin",
-                            "messages": [
-                                "Yeah, you are right. It is a masterpiece."
+                                "You sound a bit jealous... What is going on?",
+                                "I think your chariot looks amazing! Don't worry about your neighbour"
                             ]
                         },
                         {
@@ -2995,7 +3037,7 @@
                             "type": "npg",
                             "sender": "Golin",
                             "messages": [
-                                "But I can’t really say I found myself yet, no. I just need to live my life to the fullest, and one day I will find my revelation."
+                                "Fuck you! I'm not jealous. I just... don't like people showing off."
                             ]
                         },
                         {
@@ -3006,13 +3048,46 @@
                             "type": "npg",
                             "sender": "Golin",
                             "messages": [
-                                "Oh yes, she came by. I don’t know how she found me. She was really upset when I left her and Kyril. But it’s fine now, after she heard the story about my dad and that I had a wealthy life here, she accepted it. It also seemed that she had something else on her mind. She was quite concerned about this world, talked about how awful it was, and how she wanted to destroy it."
+                                "Yeah, you are right. It is a masterpiece."
                             ]
                         },
                         {
                             "id": 10,
                             "next": [
-                                11
+                                13
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "But I can’t really say I found myself yet, no. I just need to live my life to the fullest, and one day I will find my revelation."
+                            ]
+                        },
+                        {
+                            "id": 11,
+                            "next": [
+                                12
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "Oh yes, she came by. I don’t know how she found me. She was really upset when I left her and Kyril. But it’s fine now, after she heard the story about my dad and that I had a wealthy life here, she accepted it."
+                            ]
+                        },
+                        {
+                            "id": 12,
+                            "next": [
+                                13
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "It also seemed that she had something else on her mind. She was quite concerned about this world, talked about how awful it was, and how she wanted to destroy it."
+                            ]
+                        },
+                        {
+                            "id": 13,
+                            "next": [
+                                14
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -3024,9 +3099,9 @@
                             ]
                         },
                         {
-                            "id": 11,
+                            "id": 14,
                             "next": [
-                                12
+                                15
                             ],
                             "type": "npg",
                             "sender": "Golin",
@@ -3035,10 +3110,10 @@
                             ]
                         },
                         {
-                            "id": 12,
+                            "id": 15,
                             "next": [
-                                13,
-                                19
+                                16,
+                                22
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -3052,9 +3127,9 @@
                             ]
                         },
                         {
-                            "id": 13,
+                            "id": 16,
                             "next": [
-                                14
+                                17
                             ],
                             "type": "npg",
                             "sender": "Golin",
@@ -3063,10 +3138,10 @@
                             ]
                         },
                         {
-                            "id": 14,
+                            "id": 17,
                             "next": [
-                                15,
-                                18
+                                18,
+                                21
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -3080,9 +3155,9 @@
                             ]
                         },
                         {
-                            "id": 15,
+                            "id": 18,
                             "next": [
-                                16
+                                19
                             ],
                             "type": "npg",
                             "sender": "Golin",
@@ -3091,9 +3166,9 @@
                             ]
                         },
                         {
-                            "id": 16,
+                            "id": 19,
                             "next": [
-                                17
+                                20
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -3105,9 +3180,9 @@
                             ]
                         },
                         {
-                            "id": 17,
+                            "id": 20,
                             "next": [
-                                18
+                                21
                             ],
                             "type": "npg",
                             "sender": "Golin",
@@ -3116,9 +3191,9 @@
                             ]
                         },
                         {
-                            "id": 18,
+                            "id": 21,
                             "next": [
-                                19
+                                22
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -3130,20 +3205,42 @@
                             ]
                         },
                         {
-                            "id": 19,
+                            "id": 22,
                             "next": [
-                                20
+                                23
                             ],
                             "type": "npg",
                             "sender": "Golin",
                             "messages": [
-                                "Wow, you are really a pain in the ass today. I am tired ok!? I had a huuge party yesterday, and I have a huuuge hangover! But ok, if it will make you leave me alone, I will help you out one last time. Wait here. Golin goes back in the house and comes back with a small ziplock bag in his hand. Here, take this to his office. I will let you know that you are bringing his merch. You acquired a mysterious bag"
+                                "Wow, you are really a pain in the ass today. I am tired ok!? I had a huuge party yesterday, and I have a huuuge hangover! But ok, if it will make you leave me alone, I will help you out one last time. Wait here."
                             ]
                         },
                         {
-                            "id": 20,
+                            "id": 23,
                             "next": [
-                                21,
+                                24
+                            ],
+                            "type": "naration",
+                            "sender": "Narrator",
+                            "messages": [
+                                "Golin goes back in the house and comes back with a small ziplock bag in his hand."
+                            ]
+                        },
+                        {
+                            "id": 24,
+                            "next": [
+                                25
+                            ],
+                            "type": "npg",
+                            "sender": "Golin",
+                            "messages": [
+                                "Here, take this to his office. I will let you know that you are bringing his merch. You acquired a mysterious bag"
+                            ]
+                        },
+                        {
+                            "id": 25,
+                            "next": [
+                                26,
                                 -1
                             ],
                             "type": "player",
@@ -3158,9 +3255,9 @@
                             ]
                         },
                         {
-                            "id": 21,
+                            "id": 26,
                             "next": [
-                                22
+                                27
                             ],
                             "type": "npg",
                             "sender": "Golin",
@@ -3169,7 +3266,7 @@
                             ]
                         },
                         {
-                            "id": 22,
+                            "id": 27,
                             "next": [
                                 -1
                             ],
@@ -3307,12 +3404,12 @@
                         {
                             "id": 8,
                             "next": [
-                                10
+                                11
                             ],
                             "type": "npg",
                             "sender": "Sisyphus",
                             "messages": [
-                                "I see, so it is related to his business. Yes, I know Epeo, and you don't know what it does exactly? Maybe I have another idea. Have a talk with Johan. Perhaps you’ll find him in the market. I hope he can help you a bit. Let me know how things are going, ok? I look forward to seeing you back here, it is a revelation to talk to you in this terrible environment. "
+                                "I see, so it is related to his business. Yes, I know Epeo, and you don't know what it does exactly? Maybe I have another idea. Have a talk with Johan. Perhaps you’ll find him in the market. I hope he can help you a bit."
                             ]
                         },
                         {
@@ -3323,11 +3420,22 @@
                             "type": "npg",
                             "sender": "Sisyphus",
                             "messages": [
-                                "I see, so it could take this system down you say? Interesting… It is important that you get it, I guess. Maybe I have another idea. Have a talk with Johan. Perhaps you’ll find him in the market. I hope he can help you a bit. Let me know how things are going, ok? I look forward to seeing you back here, it is a revelation to talk to you in this terrible environment. "
+                                "So it could take this system down you say? Interesting… It is important that you get it, I guess. Maybe I have another idea. Have a talk with Johan. Perhaps you’ll find him in the market. I hope he can help you a bit."
                             ]
                         },
                         {
                             "id": 10,
+                            "next": [
+                                11
+                            ],
+                            "type": "npg",
+                            "sender": "Sisyphus",
+                            "messages": [
+                                "Let me know how things are going, ok? I look forward to seeing you back here, it is a revelation to talk to you in this terrible environment."
+                            ]
+                        },
+                        {
+                            "id": 11,
                             "next": [
                                 -1
                             ],
@@ -3411,13 +3519,24 @@
                             "type": "npg",
                             "sender": "Koralia",
                             "messages": [
-                                "Hi! Yes, I do. Just wanted to give you some background info before meeting Big Smile. There are a lot of rumours that float around, but no one really knows him very well. First of all, don’t be afraid of meeting him. Actually, he’s a really approachable person, way different from what people normally say about him. They don’t even know him in person, so, as usual, people need to talk rubbish just for the pleasure of doing it."
+                                "Hi! Yes, I do. Just wanted to give you some background info before meeting Big Smile. There are a lot of rumours that float around, but no one really knows him very well."
                             ]
                         },
                         {
                             "id": 5,
                             "next": [
                                 6
+                            ],
+                            "type": "npg",
+                            "sender": "Koralia",
+                            "messages": [
+                                "First of all, don’t be afraid of meeting him. Actually, he’s a really approachable person, way different from what people normally say about him. They don’t even know him in person, so, as usual, people need to talk rubbish just for the pleasure of doing it."
+                            ]
+                        },
+                        {
+                            "id": 6,
+                            "next": [
+                                7
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -3429,9 +3548,9 @@
                             ]
                         },
                         {
-                            "id": 6,
+                            "id": 7,
                             "next": [
-                                7
+                                8
                             ],
                             "type": "npg",
                             "sender": "Koralia",
@@ -3440,9 +3559,9 @@
                             ]
                         },
                         {
-                            "id": 5,
+                            "id": 8,
                             "next": [
-                                6
+                                9
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -3450,24 +3569,35 @@
                                 "Ask why again"
                             ],
                             "messages": [
-                                "Yes, I understand but..."
+                                "Yes, I understand but why are you telling me this"
                             ]
                         },
                         {
-                            "id": 6,
+                            "id": 9,
                             "next": [
-                                7
+                                10
                             ],
                             "type": "npg",
                             "sender": "Koralia",
                             "messages": [
-                                "I had a private meeting with Big Smile. I’ve always thought that he was a strong leader, but without heart. However, I found out that he has a story too. He lost his brother, just like I did. You might think that we only think about our work, but we are people too, you know. We like to go sailing at the weekends, go out for dinner, have a good time with friends. I have a wonderful time during the holidays at my house looking over the sea. On the other hand, we work hard, that is why we are here in society. We make the city work."
+                                "I had a private meeting with Big Smile. I’ve always thought that he was a strong leader, but without heart. However, I found out that he has a story too. He lost his brother, just like I did. You might think that we only think about our work, but we are people too, you know."
                             ]
                         },
                         {
-                            "id": 7,
+                            "id": 10,
                             "next": [
-                                8
+                                11
+                            ],
+                            "type": "npg",
+                            "sender": "Koralia",
+                            "messages": [
+                                "We like to go sailing at the weekends, go out for dinner, have a good time with friends. I have a wonderful time during the holidays at my house looking over the sea. On the other hand, we work hard, that is why we are here in society. We make the city work."
+                            ]
+                        },
+                        {
+                            "id": 11,
+                            "next": [
+                                12
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -3475,13 +3605,13 @@
                                 "Ask what she wants to say"
                             ],
                             "messages": [
-                                "What are you trying to say?"
+                                "What are you trying to say with this story?"
                             ]
                         },
                         {
-                            "id": 8,
+                            "id": 12,
                             "next": [
-                                9
+                                13
                             ],
                             "type": "npg",
                             "sender": "Koralia",
@@ -3490,10 +3620,10 @@
                             ]
                         },
                         {
-                            "id": 9,
+                            "id": 13,
                             "next": [
-                                10,
-                                11
+                                14,
+                                15
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -3507,9 +3637,9 @@
                             ]
                         },
                         {
-                            "id": 10,
+                            "id": 14,
                             "next": [
-                                12
+                                16
                             ],
                             "type": "npg",
                             "sender": "Koralia",
@@ -3518,9 +3648,9 @@
                             ]
                         },
                         {
-                            "id": 11,
+                            "id": 15,
                             "next": [
-                                12
+                                16
                             ],
                             "type": "npg",
                             "sender": "Koralia",
@@ -3529,9 +3659,9 @@
                             ]
                         },
                         {
-                            "id": 12,
+                            "id": 16,
                             "next": [
-                                13
+                                17
                             ],
                             "type": "narration",
                             "sender": "Narrator",
@@ -3540,10 +3670,10 @@
                             ]
                         },
                         {
-                            "id": 13,
+                            "id": 17,
                             "next": [
-                                17,
-                                14
+                                20,
+                                18
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -3557,9 +3687,9 @@
                             ]
                         },
                         {
-                            "id": 14,
+                            "id": 18,
                             "next": [
-                                15
+                                19
                             ],
                             "type": "narration",
                             "sender": "Narrator",
@@ -3568,9 +3698,9 @@
                             ]
                         },
                         {
-                            "id": 15,
+                            "id": 19,
                             "next": [
-                                16
+                                20
                             ],
                             "type": "narration",
                             "sender": "Narrator",
@@ -3579,9 +3709,9 @@
                             ]
                         },
                         {
-                            "id": 16,
+                            "id": 20,
                             "next": [
-                                17
+                                21
                             ],
                             "type": "narration",
                             "sender": "Narrator",
@@ -3590,9 +3720,9 @@
                             ]
                         },
                         {
-                            "id": 17,
+                            "id": 21,
                             "next": [
-                                18
+                                22
                             ],
                             "type": "npg",
                             "sender": "Koralia",
@@ -3601,9 +3731,9 @@
                             ]
                         },
                         {
-                            "id": 18,
+                            "id": 22,
                             "next": [
-                                19
+                                23
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -3615,18 +3745,29 @@
                             ]
                         },
                         {
-                            "id": 19,
+                            "id": 23,
                             "next": [
-                                20
+                                24
                             ],
                             "type": "npg",
                             "sender": "Koralia",
                             "messages": [
-                                "Yes, I wanted to tell you about Big Smile so you will not judge him from what you heard. Give him a chance the way he is. But time flies. I really need to go to that meeting now. Business can’t wait, you know… I think now you are ready to talk with Big Smile. Goodbye."
+                                "Yes, I wanted to tell you about Big Smile so you will not judge him from what you heard. Give him a chance the way he is. But time flies. I really need to go to that meeting now."
                             ]
                         },
                         {
-                            "id": 20,
+                            "id": 24,
+                            "next": [
+                                25
+                            ],
+                            "type": "npg",
+                            "sender": "Koralia",
+                            "messages": [
+                                "Business can’t wait, you know… I think now you are ready to talk with Big Smile. Goodbye."
+                            ]
+                        },
+                        {
+                            "id": 25,
                             "next": [
                                 -1
                             ],
@@ -3769,7 +3910,7 @@
                             "type": "npg",
                             "sender": "Johan",
                             "messages": [
-                                "Why would it do that! I mean, it does make someone very very powerful, but is that different from the current situation with Big Smile? As far as I have heard, everyone is after the potion now. Thanks to your gossip. But the potion is not what you think it is. "
+                                "Why would it do that! I mean, it does make someone very very powerful, but is that different from the current situation with Big Smile? As far as I have heard, everyone is after the potion now."
                             ]
                         },
                         {
@@ -3777,13 +3918,10 @@
                             "next": [
                                 10
                             ],
-                            "type": "player",
-                            "sender": "Me",
-                            "titles": [
-                                "Ask clarification"
-                            ],
+                            "type": "npg",
+                            "sender": "Johan",
                             "messages": [
-                                "What do you mean? How do you know?"
+                                "Thanks to your gossip. But the potion is not what you think it is. "
                             ]
                         },
                         {
@@ -3791,17 +3929,42 @@
                             "next": [
                                 11
                             ],
-                            "type": "npg",
-                            "sender": "Johan",
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Ask clarification"
+                            ],
                             "messages": [
-                                "Because I am the one who made the potion! Since the beginning, the potion brought me nothing but disgrace. The first time I worked on it, I created a potion that was not as valuable and desired as it is now. The outcome of the first potion was an increased smile but with a temporary result, it only lasted for a limited amount of time.  "
+                                "What do you mean? How do you know this? What do you say it is then?"
                             ]
                         },
                         {
                             "id": 11,
                             "next": [
-                                12,
+                                12
+                            ],
+                            "type": "npg",
+                            "sender": "Johan",
+                            "messages": [
+                                "Because I am the one who made the potion! Since the beginning, the potion brought me nothing but disgrace. The first time I worked on it, I created a potion that was not as valuable and desired as it is now."
+                            ]
+                        },
+                        {
+                            "id": 12,
+                            "next": [
                                 13
+                            ],
+                            "type": "npg",
+                            "sender": "Johan",
+                            "messages": [
+                                "The outcome of the first potion was an increased smile but with a temporary result, it only lasted for a limited amount of time.  "
+                            ]
+                        },
+                        {
+                            "id": 13,
+                            "next": [
+                                14,
+                                15
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -3815,31 +3978,42 @@
                             ]
                         },
                         {
-                            "id": 12,
-                            "next": [
-                                14
-                            ],
-                            "type": "npg",
-                            "sender": "Johan",
-                            "messages": [
-                                "Oh, well, I see. I did not know who had my potion. The thing is that my partners thought that this potion was useless and that we were wasting our time. They betrayed me and sold the potion to a man, so this man may be Epeo. It all starts to make sense. After that, there was nothing left. My smile started to decrease and my perfect life to decline. Now I know it was Epeo’s fault. I lost my dignity and the love of my life because of this. I lost everything, due to my partners."
-                            ]
-                        },
-                        {
-                            "id": 13,
-                            "next": [
-                                14
-                            ],
-                            "type": "npg",
-                            "sender": "Johan",
-                            "messages": [
-                                "My partners thought that this potion was useless and that we were wasting our time. I knew I could do better so I continue to try to perfect it but I was betrayed by them and the potion was sold to a man. There was nothing left. My smile started to decrease and my perfect life to decline. I lost my dignity and the love of my life. I lost everything, due to my partners."
-                            ]
-                        },
-                        {
                             "id": 14,
                             "next": [
-                                15
+                                16
+                            ],
+                            "type": "npg",
+                            "sender": "Johan",
+                            "messages": [
+                                "Oh, well, I see. I did not know who had my potion. The thing is that my partners thought that this potion was useless and that we were wasting our time. They betrayed me and sold the potion to a man, so this man may be Epeo. It all starts to make sense."
+                            ]
+                        },
+                        {
+                            "id": 15,
+                            "next": [
+                                16
+                            ],
+                            "type": "npg",
+                            "sender": "Johan",
+                            "messages": [
+                                "My partners thought that this potion was use less and that we were wasting our time. I knew I could do better so I continue to try to perfect it but I was betrayed by them and the potion was sold to a man."
+                            ]
+                        },
+                        {
+                            "id": 16,
+                            "next": [
+                                17
+                            ],
+                            "type": "npg",
+                            "sender": "Johan",
+                            "messages": [
+                                "After that, there was nothing left. My smile started to decrease and my perfect life to decline. Now I know it was Epeo’s fault. I lost my dignity and the love of my life because of this. I lost everything, due to my partners."
+                            ]
+                        },
+                        {
+                            "id": 17,
+                            "next": [
+                                18
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -3851,20 +4025,31 @@
                             ]
                         },
                         {
-                            "id": 15,
+                            "id": 18,
                             "next": [
-                                16
+                                19
                             ],
                             "type": "npg",
                             "sender": "Johan",
                             "messages": [
-                                "I have perfected the potion and I have created one that gives you a permanent smile, not bad uh? I worked hard to achieve this, I just want to get my previous wealth back. But these potions are cursed. If you want to have it, you are too late. Someone came to my lab and stole it right under my nose. "
+                                "I have perfected the potion and I have created one that gives you a permanent smile, not bad uh? I worked hard to achieve this, I just want to get my previous wealth back. But these potions are cursed."
                             ]
                         },
                         {
-                            "id": 16,
+                            "id": 19,
                             "next": [
-                                17
+                                20
+                            ],
+                            "type": "npg",
+                            "sender": "Johan",
+                            "messages": [
+                                "If you want to have it, you are too late. Someone came to my lab and stole it right under my nose."
+                            ]
+                        },
+                        {
+                            "id": 20,
+                            "next": [
+                                21
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -3876,9 +4061,9 @@
                             ]
                         },
                         {
-                            "id": 17,
+                            "id": 21,
                             "next": [
-                                18
+                                22
                             ],
                             "type": "npg",
                             "sender": "Johan",
@@ -3887,9 +4072,9 @@
                             ]
                         },
                         {
-                            "id": 18,
+                            "id": 22,
                             "next": [
-                                19
+                                23
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -3901,9 +4086,9 @@
                             ]
                         },
                         {
-                            "id": 19,
+                            "id": 23,
                             "next": [
-                                20
+                                24
                             ],
                             "type": "npg",
                             "sender": "Johan",
@@ -3912,7 +4097,7 @@
                             ]
                         },
                         {
-                            "id": 20,
+                            "id": 24,
                             "next": [
                                 -1
                             ],
@@ -4088,13 +4273,24 @@
                             "type": "npg",
                             "sender": "Big Smile",
                             "messages": [
-                                "They always try to undermine society, nothing new. But the absurd is that they do not even realize that they are going against themselves in this way. They ignore how much effort it takes to maintain the order. It would be surely easier for me to let people drown in their own freedom, but I am not such a selfish leader."
+                                "They always try to undermine society, nothing new. But the absurd is that they do not even realize that they are going against themselves in this way. They ignore how much effort it takes to maintain the order."
                             ]
                         },
                         {
                             "id": 12,
                             "next": [
                                 13
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "It would be surely easier for me to let people drown in their own freedom, but I am not such a selfish leader."
+                            ]
+                        },
+                        {
+                            "id": 13,
+                            "next": [
+                                14
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -4108,20 +4304,31 @@
                             ]
                         },
                         {
-                            "id": 13,
+                            "id": 14,
                             "next": [
-                                14
+                                15
                             ],
                             "type": "npg",
                             "sender": "Big Smile",
                             "messages": [
-                                "Surely it requires a strong temper and determination… But you know, fortunately, there’s this amazing white lady, who is always by my side and helps me! I suppose you’re the one who visited Golin… you should have something for me, shouldn’t you?"
+                                "Surely it requires a strong temper and determination… But you know, fortunately, there’s this amazing white lady, who is always by my side and helps me!"
                             ]
                         },
                         {
-                            "id": 14,
+                            "id": 15,
                             "next": [
-                                15
+                                16
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "I suppose you’re the one who visited Golin… you should have something for me, shouldn’t you?"
+                            ]
+                        },
+                        {
+                            "id": 16,
+                            "next": [
+                                17
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -4133,9 +4340,9 @@
                             ]
                         },
                         {
-                            "id": 15,
+                            "id": 17,
                             "next": [
-                                16
+                                18
                             ],
                             "type": "npg",
                             "sender": "Big Smile",
@@ -4144,32 +4351,54 @@
                             ]
                         },
                         {
-                            "id": 16,
-                            "next": [
-                                17
-                            ],
-                            "type": "npg",
-                            "sender": "Big Smile",
-                            "messages": [
-                                "One day a man killed my brother, the only loved person I had, as our parents died when we were just kids. As a punishment for the murder, the court gave me the killer’s wealth. I didn’t even choose my condition. They forced me to carry this huge fortune, which brings with it a huge burden. "
-                            ]
-                        },
-                        {
-                            "id": 17,
-                            "next": [
-                                18
-                            ],
-                            "type": "npg",
-                            "sender": "Big Smile",
-                            "messages": [
-                                "So, what I had to do?! I worked hard in order to be not just one of the wealthiest men, but the biggest smile ever! I wanted to have my revenge from this cruel life. What should a person pursue when he has lost everyone and everything in life?!"
-                            ]
-                        },
-                        {
                             "id": 18,
                             "next": [
-                                19,
+                                19
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "One day a man killed my brother, the only loved one I had, as our parents died when we were just kids. As a punishment for the murder, the court gave me the killer’s wealth."
+                            ]
+                        },
+                        {
+                            "id": 19,
+                            "next": [
                                 20
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "I didn’t even choose this situation. They forced me to carry this huge fortune, which brings with it a huge burden. "
+                            ]
+                        },
+                        {
+                            "id": 20,
+                            "next": [
+                                21
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "So, what should I have done?! I worked hard in order to not just be one of the wealthiest men, but to have the biggest smile ever!"
+                            ]
+                        },
+                        {
+                            "id": 21,
+                            "next": [
+                                22
+                            ],
+                            "type": "npg",
+                            "sender": "Big Smile",
+                            "messages": [
+                                "I wanted to have my revenge from this cruel life. What should a person pursue when he has lost everything in life?!"
+                            ]
+                        },
+                        {
+                            "id": 22,
+                            "next": [
+                                23,
+                                24
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -4183,29 +4412,29 @@
                             ]
                         },
                         {
-                            "id": 19,
+                            "id": 23,
                             "next": [
-                                21
+                                25
                             ],
                             "type": "npg",
                             "sender": "Big Smile",
                             "messages": [
-                                "Why should you? They only tell bad things about me, without even know my story. Anyway, work calls. Our conversation should end here. Goodbye!"
+                                "Why should you? They only tell bad things about me, without even knowing my story. Anyway, work calls. Our conversation should end here. Goodbye!"
                             ]
                         },
                         {
-                            "id": 20,
+                            "id": 24,
                             "next": [
-                                21
+                                25
                             ],
                             "type": "npg",
                             "sender": "Big Smile",
                             "messages": [
-                                "I have not so much time too. Goodbye!"
+                                "I dont have much time either. Goodbye!"
                             ]
                         },
                         {
-                            "id": 21,
+                            "id": 25,
                             "next": [
                                 -1
                             ],
