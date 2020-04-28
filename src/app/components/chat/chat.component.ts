@@ -46,7 +46,7 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
 
   public menuServiceSubscription: Subscription;
 
-  private currentUnfinishedChatItem: ChatItem;
+  public currentUnfinishedChatItem: ChatItem;
 
   constructor(
     private menuService: MenuService,
