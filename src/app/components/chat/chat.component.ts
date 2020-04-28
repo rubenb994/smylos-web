@@ -1,4 +1,7 @@
-import { Component, Input, OnChanges, Output, EventEmitter, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component, Input, OnChanges, Output, EventEmitter, AfterViewChecked,
+  ChangeDetectionStrategy, ChangeDetectorRef, OnInit, OnDestroy
+} from '@angular/core';
 import { Chat } from 'src/app/models/chat';
 import { ChatItem } from 'src/app/models/chat-item';
 import { Audio } from 'src/app/models/audio';
@@ -10,6 +13,7 @@ export interface ChatItemDisplay {
   option?: number;
 }
 
+// tslint:disable-next-line: no-conflicting-lifecycle
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -29,7 +33,7 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
   public chatFinished = false;
 
   // TODO timer of chat delay
-  private readonly timeBetweenChatsDuration = 1500;
+  private readonly timeBetweenChatsDuration = 500;
 
   // option buttons in chat disable
   public optionButtonVisible = false;
@@ -41,6 +45,8 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
   public audioLoaded = false;
 
   public menuServiceSubscription: Subscription;
+
+  private currentUnfinishedChatItem: ChatItem;
 
   constructor(
     private menuService: MenuService,
@@ -107,6 +113,13 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
     // Create and draw the chat message for the clicked title.
     const chatItemDisplay = this.createChatItemDisplay(chatItem, indexOfClickedTitle);
     this.chatItemsToDisplay.push(chatItemDisplay);
+
+    if (chatItem.next[0] === -1) {
+      console.log('Chat finished title button');
+      this.chatFinished = true;
+      this.changeDetectorRef.detectChanges();
+    }
+
     // Add the next chat item with a timeout.
     setTimeout(() => {
       this.addNextChatItem(chatItem.next[indexOfClickedTitle]);
@@ -154,6 +167,13 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
       return;
     }
     this.audioFinished = true;
+
+    // Logic for adding the next chat item after the audio finished.
+    if (this.currentUnfinishedChatItem == null) {
+      return;
+    }
+    this.addNextNonPlayerChatItem(this.currentUnfinishedChatItem);
+    this.currentUnfinishedChatItem = null;
   }
 
   public getChatClassNameForChatItem(chatItem: ChatItem): string {
@@ -194,6 +214,7 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
     if (currentChatItem == null || currentChatItem.next == null) {
       this.chatFinished = true;
       this.changeDetectorRef.detectChanges();
+      console.log('Chat finished add next chat item');
       return;
     }
 
@@ -206,14 +227,28 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
     // Detect changes and redraw array.
     this.changeDetectorRef.detectChanges();
 
-    let nextChatItem = this.chat.chat_items.find(chatItem => chatItem.id === currentChatItem.next[0]);
-    // If the next chat item is not of type player keep adding the chat items.
-    while (nextChatItem.type !== 'player') {
+    if (currentChatItem.audio_message != null && this.currentUnfinishedChatItem == null) {
+      this.currentUnfinishedChatItem = currentChatItem;
+      return;
+    }
+
+    // Add the next nonPlayerChatItem.
+    this.addNextNonPlayerChatItem(currentChatItem);
+  }
+
+  private addNextNonPlayerChatItem(currentChatItem: ChatItem): void {
+    setTimeout(() => {
+      const nextChatItem = this.chat.chat_items.find(chatItem => chatItem.id === currentChatItem.next[0]);
+      // Stop method if the nextChatItem is player, since it always requires user input.
+      if (nextChatItem.type === 'player') {
+        return;
+      }
       this.chatItemsToDisplay.push(this.createChatItemDisplay(nextChatItem));
       // Detect changes and redraw array.
       this.changeDetectorRef.detectChanges();
-      nextChatItem = this.chat.chat_items.find(chatItem => chatItem.id === nextChatItem.next[0]);
-    }
+      this.addNextNonPlayerChatItem(nextChatItem);
+    }, this.timeBetweenChatsDuration);
+
   }
 
   /**

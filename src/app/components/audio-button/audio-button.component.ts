@@ -42,7 +42,7 @@ export class AudioButtonComponent implements OnInit, OnChanges, AfterViewInit, O
 
       if (audioPlayer.paused) {
         // Todo remove line below.
-        // this.audioCompleted.emit(this.audio);
+        this.audioCompleted.emit(this.audio);
         audioPlayer.play();
       } else {
         audioPlayer.pause();
@@ -69,7 +69,7 @@ export class AudioButtonComponent implements OnInit, OnChanges, AfterViewInit, O
     if (this.autoPlay && audioPlayer.paused) {
       audioPlayer.play();
       // Todo remove line below.
-      // this.audioCompleted.emit(this.audio);
+      this.audioCompleted.emit(this.audio);
       // Detect changes so that the audio button displays the right icon.
       this.changeDetectorRef.detectChanges();
     }
@@ -99,7 +99,7 @@ export class AudioButtonComponent implements OnInit, OnChanges, AfterViewInit, O
       audioPlayer.pause();
     }
     // Todo remove line below.
-    // this.audioCompleted.emit(this.audio);
+    this.audioCompleted.emit(this.audio);
   }
 
   public checkIfAudioPlayerIsPaused(audioPlayer: HTMLAudioElement): boolean {
