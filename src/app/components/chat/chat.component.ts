@@ -1,4 +1,7 @@
-import { Component, Input, OnChanges, Output, EventEmitter, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component, Input, OnChanges, Output, EventEmitter, AfterViewChecked,
+  ChangeDetectionStrategy, ChangeDetectorRef, OnInit, OnDestroy
+} from '@angular/core';
 import { Chat } from 'src/app/models/chat';
 import { ChatItem } from 'src/app/models/chat-item';
 import { Audio } from 'src/app/models/audio';
@@ -10,6 +13,7 @@ export interface ChatItemDisplay {
   option?: number;
 }
 
+// tslint:disable-next-line: no-conflicting-lifecycle
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -41,6 +45,8 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
   public audioLoaded = false;
 
   public menuServiceSubscription: Subscription;
+
+  private currentUnfinishedChatItem: ChatItem;
 
   constructor(
     private menuService: MenuService,
@@ -161,6 +167,13 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
       return;
     }
     this.audioFinished = true;
+
+    // Logic for adding the next chat item after the audio finished.
+    if (this.currentUnfinishedChatItem == null) {
+      return;
+    }
+    this.addNextNonPlayerChatItem(this.currentUnfinishedChatItem);
+    this.currentUnfinishedChatItem = null;
   }
 
   public getChatClassNameForChatItem(chatItem: ChatItem): string {
@@ -213,6 +226,11 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
     this.chatItemsToDisplay.push(this.createChatItemDisplay(currentChatItem));
     // Detect changes and redraw array.
     this.changeDetectorRef.detectChanges();
+
+    if (currentChatItem.audio_message != null && this.currentUnfinishedChatItem == null) {
+      this.currentUnfinishedChatItem = currentChatItem;
+      return;
+    }
 
     // Add the next nonPlayerChatItem.
     this.addNextNonPlayerChatItem(currentChatItem);
