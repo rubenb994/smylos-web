@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
 
   constructor(private stageService: StageService) {
     // Todo remove this line below (only for development)
-    GameStateUtils.setLevel(1);
+    // GameStateUtils.setLevel(0);
     // GameStateUtils.setIntroductionCleared(false);
   }
 

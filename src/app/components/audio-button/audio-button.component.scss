@@ -12,6 +12,11 @@
 		border: 2px solid;
 		border-color: $secondary;
 	}
+
+	> i {
+		vertical-align: middle;
+		text-align: center;
+	}
 }
 
 .disabled-audio:hover {
