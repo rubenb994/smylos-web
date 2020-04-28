@@ -946,9 +946,9 @@
                             ]
                         },
                         {
-                            "id": 15,
+                            "id": 16,
                             "next": [
-                                16
+                                17
                             ],
                             "type": "npg",
                             "sender": "Kyril",
@@ -957,7 +957,7 @@
                             ]
                         },
                         {
-                            "id": 16,
+                            "id": 17,
                             "next": [
                                 -1
                             ],
@@ -4576,19 +4576,8 @@
                         {
                             "id": 1,
                             "next": [
-                                2
-                            ],
-                            "type": "npg",
-                            "sender": "Sisyphus",
-                            "messages": [
-                                "What are you doing here?"
-                            ]
-                        },
-                        {
-                            "id": 2,
-                            "next": [
-                                3,
-                                4
+                                2,
+                                3
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -4602,9 +4591,9 @@
                             ]
                         },
                         {
-                            "id": 3,
+                            "id": 2,
                             "next": [
-                                5
+                                4
                             ],
                             "type": "npg",
                             "sender": "Audio",
@@ -4614,9 +4603,9 @@
                             "audio_message": "a4_1_2a"
                         },
                         {
-                            "id": 4,
+                            "id": 3,
                             "next": [
-                                5
+                                4
                             ],
                             "type": "npg",
                             "sender": "Audio",
@@ -4626,33 +4615,10 @@
                             "audio_message": "a4_1_2b"
                         },
                         {
-                            "id": 5,
+                            "id": 4,
                             "next": [
+                                5,
                                 6
-                            ],
-                            "type": "npg",
-                            "sender": "Audio",
-                            "messages": [
-                                ""
-                            ],
-                            "audio_message": "a4_1_3"
-                        },
-                        {
-                            "id": 6,
-                            "next": [
-                                7
-                            ],
-                            "type": "npg",
-                            "sender": "Sisyphus",
-                            "messages": [
-                                "Do you think we should throw it in the well, or should I give it to you?"
-                            ]
-                        },
-                        {
-                            "id": 7,
-                            "next": [
-                                8,
-                                9
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -4666,31 +4632,31 @@
                             ]
                         },
                         {
-                            "id": 8,
+                            "id": 5,
                             "next": [
-                                11
+                                8
                             ],
                             "type": "npg",
                             "sender": "Audio",
                             "messages": [
                                 ""
                             ],
-                            "audio_message": "a4_1_4a"
+                            "audio_message": "a4_1_2a"
                         },
                         {
-                            "id": 9,
+                            "id": 6,
                             "next": [
-                                10
+                                7
                             ],
                             "type": "npg",
                             "sender": "Audio",
                             "messages": [
                                 ""
                             ],
-                            "audio_message": "a4_1_4b"
+                            "audio_message": "a4_1_2b"
                         },
                         {
-                            "id": 10,
+                            "id": 7,
                             "next": [
                                 -1
                             ],
@@ -4701,34 +4667,10 @@
                             ]
                         },
                         {
-                            "id": 11,
+                            "id": 8,
                             "next": [
-                                12
-                            ],
-                            "type": "npg",
-                            "sender": "Audio",
-                            "messages": [
-                                ""
-                            ],
-                            "audio_message": "a4_2_1"
-                        },
-                        {
-                            "id": 12,
-                            "next": [
-                                13
-                            ],
-                            "type": "npg",
-                            "sender": "Epeo",
-                            "messages": [
-                                "Now hand me the potion! Don't you value being loyal to your boss?"
-                            ],
-                            "audio_message": "a4_2_1"
-                        },
-                        {
-                            "id": 13,
-                            "next": [
-                                14,
-                                15
+                                9,
+                                10
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -4742,9 +4684,50 @@
                             ]
                         },
                         {
-                            "id": 14,
+                            "id": 9,
                             "next": [
-                                16
+                                11
+                            ],
+                            "type": "npg",
+                            "sender": "Audio",
+                            "messages": [
+                                ""
+                            ],
+                            "audio_message": "a4_2_1a"
+                        },
+                        {
+                            "id": 10,
+                            "next": [
+                                11
+                            ],
+                            "type": "npg",
+                            "sender": "Audio",
+                            "messages": [
+                                ""
+                            ],
+                            "audio_message": "a4_2_1b"
+                        },
+                        {
+                            "id": 11,
+                            "next": [
+                                12,
+                                13
+                            ],
+                            "type": "player",
+                            "sender": "Me",
+                            "titles": [
+                                "Yes",
+                                "No"
+                            ],
+                            "messages": [
+                                "Yes",
+                                "No"
+                            ]
+                        },
+                        {
+                            "id": 12,
+                            "next": [
+                                14
                             ],
                             "type": "npg",
                             "sender": "Audio",
@@ -4754,9 +4737,9 @@
                             "audio_message": "a4_2_2a"
                         },
                         {
-                            "id": 15,
+                            "id": 13,
                             "next": [
-                                16
+                                14
                             ],
                             "type": "npg",
                             "sender": "Audio",
@@ -4766,101 +4749,12 @@
                             "audio_message": "a4_2_2b"
                         },
                         {
-                            "id": 16,
+                            "id": 14,
                             "next": [
-                                17
-                            ],
-                            "type": "npg",
-                            "sender": "Audio",
-                            "messages": [
-                                ""
-                            ],
-                            "audio_message": "a4_2_3"
-                        },
-                        {
-                            "id": 17,
-                            "next": [
+                                15,
+                                16,
+                                17,
                                 18
-                            ],
-                            "type": "npg",
-                            "sender": "Big Smile",
-                            "messages": [
-                                "Do you think it is right to cheat your way through life, defy society's rules for your own personal gain?"
-                            ],
-                            "audio_message": "a4_2_3"
-                        },
-                        {
-                            "id": 18,
-                            "next": [
-                                19,
-                                20
-                            ],
-                            "type": "player",
-                            "sender": "Me",
-                            "titles": [
-                                "Yes",
-                                "No"
-                            ],
-                            "messages": [
-                                "Yes",
-                                "No"
-                            ]
-                        },
-                        {
-                            "id": 19,
-                            "next": [
-                                21
-                            ],
-                            "type": "npg",
-                            "sender": "Audio",
-                            "messages": [
-                                ""
-                            ],
-                            "audio_message": "a4_2_4a"
-                        },
-                        {
-                            "id": 20,
-                            "next": [
-                                21
-                            ],
-                            "type": "npg",
-                            "sender": "Audio",
-                            "messages": [
-                                ""
-                            ],
-                            "audio_message": "a4_2_4b"
-                        },
-                        {
-                            "id": 21,
-                            "next": [
-                                22
-                            ],
-                            "type": "npg",
-                            "sender": "Audio",
-                            "messages": [
-                                ""
-                            ],
-                            "audio_message": "a4_2_5"
-                        },
-                        {
-                            "id": 22,
-                            "next": [
-                                23
-                            ],
-                            "type": "npg",
-                            "sender": "Audio",
-                            "messages": [
-                                "Finish listening to the audio"
-                            ],
-                            "audio_message": "Final decision background voices"
-                        },
-                        {
-                            "id": 23,
-                            "next": [
-                                24,
-                                25,
-                                26,
-                                27
                             ],
                             "type": "player",
                             "sender": "Me",
@@ -4878,7 +4772,7 @@
                             ]
                         },
                         {
-                            "id": 24,
+                            "id": 15,
                             "next": [
                                 -1
                             ],
@@ -4889,7 +4783,7 @@
                             ]
                         },
                         {
-                            "id": 25,
+                            "id": 16,
                             "next": [
                                 -1
                             ],
@@ -4900,7 +4794,7 @@
                             ]
                         },
                         {
-                            "id": 26,
+                            "id": 17,
                             "next": [
                                 -1
                             ],
@@ -4911,7 +4805,7 @@
                             ]
                         },
                         {
-                            "id": 27,
+                            "id": 18,
                             "next": [
                                 -1
                             ],
