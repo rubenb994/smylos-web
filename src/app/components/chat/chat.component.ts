@@ -33,7 +33,7 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
   public chatFinished = false;
 
   // TODO timer of chat delay
-  private readonly timeBetweenChatsDuration = 500;
+  private readonly timeBetweenChatsDuration = 1;
 
   // option buttons in chat disable
   public optionButtonVisible = false;

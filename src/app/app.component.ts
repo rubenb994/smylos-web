@@ -27,7 +27,10 @@ export class AppComponent implements OnInit {
   public isMobile = false;
   public stagesLoading = true;
   public introductionFinished = false;
+
   public displayAlarm = false;
+  public displayAlternativeAlarm = false;
+
   public gameFinished = false;
 
   private notSupportedWidth = 995;
@@ -64,11 +67,6 @@ export class AppComponent implements OnInit {
 
     this.stageService.$stageFinished.subscribe(result => {
       if (result == null || result === false) {
-        return;
-      }
-
-      if (this.currentStage.level === 0) {
-        this.moveToNextStage();
         return;
       }
       this.displayAlarm = true;
@@ -142,13 +140,6 @@ export class AppComponent implements OnInit {
     } else {
       this.blurClass = 'blur';
     }
-  }
-
-  private moveToNextStage(): void {
-    const nextLevel = GameStateUtils.getLevel() + 1;
-    GameStateUtils.setLevel(nextLevel);
-
-    this.stageService.setCurrentStage(nextLevel);
   }
 
 }
