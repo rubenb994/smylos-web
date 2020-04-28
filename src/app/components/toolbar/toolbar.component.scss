@@ -13,18 +13,18 @@ toolbar items
 	background-color: $quartiary;
 	color: $primary;
 	text-align: center;
-  }
+}
 
-  .toolbar-row {
+.toolbar-row {
 	height: 100%;
 }
 
-  .alignBar {
-	  vertical-align: middle;
-	  margin-right: 8px;
-  }
+.alignBar {
+	vertical-align: middle;
+	margin-right: 8px;
+}
 
-  #progressBar {
+#progressBar {
 	background-color: white;
 	border: 2px solid;
 	border-color: $primary;
@@ -35,22 +35,20 @@ toolbar items
 	margin: 0;
 	display: inline-block;
 	vertical-align: middle;
-  }
+}
 
-  #progress {
-    content: '';
-    display: block;
-    background: $secondary;
+#progress {
+	content: "";
+	display: block;
+	background: $secondary;
 	width: 100%;
-	transition: 'width 1s';
+	transition: "width 1s";
 	transition-timing-function: ease;
-    height: 100%;
-    border-radius: 12px;
+	height: 100%;
+	border-radius: 12px;
 }
 
 .col-auto {
 	margin-left: 10px;
 	margin-right: 10px;
 }
-
-  
