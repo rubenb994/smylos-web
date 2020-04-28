@@ -975,11 +975,11 @@
                 "audios": [
                     {
                         "audio_id": "a1_45_0",
-                        "audio_title": "Hypatia and Kyril talking about Golin"
+                        "audio_title": "Kyril talking about Johan"
                     },
                     {
                         "audio_id": "a1_45_1",
-                        "audio_title": "Hypatia and Kyril talking about Johan",
+                        "audio_title": "Hypatia talking about Golin",
                         "disable_items": [
                             "a1_45_0"
                         ]
