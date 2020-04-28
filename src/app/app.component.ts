@@ -137,7 +137,6 @@ export class AppComponent implements OnInit {
    * If the game is finished or the introduction is not cleared the blur class will be applied.
    */
   private applyBlurClass(): void {
-    console.log(this.introductionFinished, this.gameFinished);
     if (this.introductionFinished && !this.gameFinished) {
       this.blurClass = '';
     } else {

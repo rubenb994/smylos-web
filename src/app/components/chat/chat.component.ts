@@ -29,7 +29,7 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
   public chatFinished = false;
 
   // TODO timer of chat delay
-  private readonly timeBetweenChatsDuration = 1500;
+  private readonly timeBetweenChatsDuration = 500;
 
   // option buttons in chat disable
   public optionButtonVisible = false;
@@ -107,6 +107,13 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
     // Create and draw the chat message for the clicked title.
     const chatItemDisplay = this.createChatItemDisplay(chatItem, indexOfClickedTitle);
     this.chatItemsToDisplay.push(chatItemDisplay);
+
+    if (chatItem.next[0] === -1) {
+      console.log('Chat finished title button');
+      this.chatFinished = true;
+      this.changeDetectorRef.detectChanges();
+    }
+
     // Add the next chat item with a timeout.
     setTimeout(() => {
       this.addNextChatItem(chatItem.next[indexOfClickedTitle]);
@@ -194,6 +201,7 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
     if (currentChatItem == null || currentChatItem.next == null) {
       this.chatFinished = true;
       this.changeDetectorRef.detectChanges();
+      console.log('Chat finished add next chat item');
       return;
     }
 
@@ -206,14 +214,23 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
     // Detect changes and redraw array.
     this.changeDetectorRef.detectChanges();
 
-    let nextChatItem = this.chat.chat_items.find(chatItem => chatItem.id === currentChatItem.next[0]);
-    // If the next chat item is not of type player keep adding the chat items.
-    while (nextChatItem.type !== 'player') {
+    // Add the next nonPlayerChatItem.
+    this.addNextNonPlayerChatItem(currentChatItem);
+  }
+
+  private addNextNonPlayerChatItem(currentChatItem: ChatItem): void {
+    setTimeout(() => {
+      const nextChatItem = this.chat.chat_items.find(chatItem => chatItem.id === currentChatItem.next[0]);
+      // Stop method if the nextChatItem is player, since it always requires user input.
+      if (nextChatItem.type === 'player') {
+        return;
+      }
       this.chatItemsToDisplay.push(this.createChatItemDisplay(nextChatItem));
       // Detect changes and redraw array.
       this.changeDetectorRef.detectChanges();
-      nextChatItem = this.chat.chat_items.find(chatItem => chatItem.id === nextChatItem.next[0]);
-    }
+      this.addNextNonPlayerChatItem(nextChatItem);
+    }, this.timeBetweenChatsDuration);
+
   }
 
   /**
