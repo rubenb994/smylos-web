@@ -39,8 +39,8 @@ export class AppComponent implements OnInit {
 
   constructor(private stageService: StageService) {
     // Todo remove this line below (only for development)
-    GameStateUtils.setLevel(4);
-    GameStateUtils.setIntroductionCleared(false);
+    // GameStateUtils.setLevel(4);
+    // GameStateUtils.setIntroductionCleared(false);
   }
 
   ngOnInit(): void {
