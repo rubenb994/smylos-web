@@ -48,18 +48,15 @@ Styling button
     width: 40px;
     border-radius: 50%;
     color: $primary;
-    border: 0px solid;
-    margin: -2px;
+    border: 2px solid transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover {
-        border: 2px solid transparent;
         border-color: $secondary;
         box-sizing: border-box;
-    }
-
-    > i {
-        vertical-align: middle;
-        text-align: center;
     }
 }
 
