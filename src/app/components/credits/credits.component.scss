@@ -1,0 +1,45 @@
+@import "../../../assets/styles/colors.scss";
+
+.credits-row {
+    width: 100vw;
+    height: 100vh;
+    position: sticky;
+    z-index: 3;
+}
+
+.credits {
+    width: 80%;
+    margin-top: 5%;
+    background-color: white;
+    border: 2px solid;
+    border-color: $secondary;
+    border-radius: 20px;
+}
+
+.credits-text {
+    text-align: justify;
+    color: $primary;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 60px;
+}
+
+.credits-title {
+    text-align: justify;
+    color: $primary;
+    padding-left: 60px;
+}
+
+#close-credits {
+    padding-top: 25px;
+    text-align: right;
+}
+
+#close-button-credits {
+    color: $primary;
+    background-color: white;
+    border: 0px;
+    &:hover {
+        color: $secondary;
+    }
+}

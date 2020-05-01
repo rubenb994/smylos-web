@@ -16,6 +16,7 @@ import { MobileErrorComponent } from './components/mobile-error/mobile-error.com
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FinishGameComponent } from './components/finish-game/finish-game.component';
+import { CreditsComponent } from './components/credits/credits.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FinishGameComponent } from './components/finish-game/finish-game.compon
     IntroductionComponent,
     PotionAlarmComponent,
     MobileErrorComponent,
-    FinishGameComponent
+    FinishGameComponent,
+    CreditsComponent
   ],
   imports: [
     BrowserModule,
