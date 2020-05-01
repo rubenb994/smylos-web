@@ -33,7 +33,7 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
   public chatFinished = false;
 
   // TODO timer of chat delay
-  private readonly timeBetweenChatsDuration = 1500;
+  private readonly timeBetweenChatsDuration = 1;
 
   // option buttons in chat disable
   public optionButtonVisible = false;
@@ -118,6 +118,11 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
       console.log('Chat finished title button');
       this.chatFinished = true;
       this.changeDetectorRef.detectChanges();
+    }
+
+    const nextChatItem = this.getNextChatItem(chatItem);
+    if (nextChatItem.type === 'player') {
+      return;
     }
 
     // Add the next chat item with a timeout.
