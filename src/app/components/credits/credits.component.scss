@@ -3,43 +3,57 @@
 .credits-row {
     width: 100vw;
     height: 100vh;
-    position: sticky;
+    position: fixed;
     z-index: 3;
-}
 
-.credits {
-    width: 80%;
-    margin-top: 5%;
-    background-color: white;
-    border: 2px solid;
-    border-color: $secondary;
-    border-radius: 20px;
-}
+    .credits {
+        width: 80%;
+        height: 80%;
+        background-color: white;
+        border: 2px solid;
+        border-color: $secondary;
+        border-radius: 20px;
+        padding: 0 60px 60px 60px;
 
-.credits-text {
-    text-align: justify;
-    color: $primary;
-    padding-left: 60px;
-    padding-right: 60px;
-    padding-bottom: 60px;
-}
+        .close-credits {
+            padding-top: 25px;
+            text-align: right;
+        }
 
-.credits-title {
-    text-align: justify;
-    color: $primary;
-    padding-left: 60px;
-}
+        #close-button-credits {
+            color: $primary;
+            background-color: white;
+            border: 0px;
+            &:hover {
+                color: $secondary;
+            }
+        }
 
-#close-credits {
-    padding-top: 25px;
-    text-align: right;
-}
+        .credits-title {
+            text-align: left;
+            color: $primary;
+        }
 
-#close-button-credits {
-    color: $primary;
-    background-color: white;
-    border: 0px;
-    &:hover {
-        color: $secondary;
+        .credits-box {
+            position: absolute;
+            height: 100%;
+        }
+
+        .credits-text {
+            text-align: justify;
+            overflow: auto;
+            height: 65%;
+            color: $primary;
+
+            .credits-font {
+                margin: 0px;
+            }
+        }
+
+        #credits-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
     }
 }

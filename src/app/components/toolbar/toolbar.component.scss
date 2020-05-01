@@ -52,3 +52,25 @@ toolbar items
 	margin-left: 10px;
 	margin-right: 10px;
 }
+
+.credits-button {
+	background-color: $quartiary;
+	color: $primary;
+	border-radius: 25px;
+	border: 2px solid;
+	border-color: $primary;
+	transition: 0.3s;
+	text-align: left;
+	cursor: pointer;
+
+	&:hover {
+		border: 2px solid;
+		border-color: $secondary;
+		background-color: white;
+	}
+}
+
+.credits-button-align {
+	right: 10px;
+	position: fixed;
+}

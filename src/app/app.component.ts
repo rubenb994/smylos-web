@@ -31,6 +31,8 @@ export class AppComponent implements OnInit {
   public displayAlarm = false;
   public displayAlternativeAlarm = false;
 
+  public displayCredits = true;
+
   public gameFinished = false;
 
   private notSupportedWidth = 995;
@@ -39,7 +41,7 @@ export class AppComponent implements OnInit {
 
   constructor(private stageService: StageService) {
     // Todo remove this line below (only for development)
-    // GameStateUtils.setLevel(4);
+    GameStateUtils.setLevel(4);
     // GameStateUtils.setIntroductionCleared(false);
   }
 
@@ -128,6 +130,14 @@ export class AppComponent implements OnInit {
    */
   public onAlarmFinish(): void {
     this.displayAlarm = false;
+  }
+
+  public onCreditButtonOpenClicked(): void {
+    this.displayCredits = true;
+  }
+
+  public onCreditButtonCloseClicked(): void {
+    this.displayCredits = false;
   }
 
   /**
