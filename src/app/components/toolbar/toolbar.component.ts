@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { ToolbarService } from 'src/app/services/toolbar.service';
 import { Stage } from 'src/app/models/stage';
 import { StageService } from 'src/app/services/stage.service';
@@ -14,6 +14,7 @@ import { StageService } from 'src/app/services/stage.service';
 export class ToolbarComponent implements OnInit, OnChanges {
 
   @Input() currentStage: Stage;
+  @Output() creditButtonClicked = new EventEmitter<boolean>();
 
   public potionCount = 0;
 
@@ -60,6 +61,10 @@ export class ToolbarComponent implements OnInit, OnChanges {
     });
   }
 
+  // open credits window
+  public onClickCreditsOpen(): void {
+    this.creditButtonClicked.emit(true);
+  }
 
 
   ngOnChanges(): void {
