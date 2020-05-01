@@ -7,18 +7,12 @@
     z-index: 3;
 
     .credits {
-        width: 80%;
         height: 80%;
         background-color: white;
         border: 2px solid;
         border-color: $secondary;
         border-radius: 20px;
-        padding: 0 60px 60px 60px;
-
-        .close-credits {
-            padding-top: 25px;
-            text-align: right;
-        }
+        padding: 40px 60px 60px 60px;
 
         #close-button-credits {
             color: $primary;
@@ -29,20 +23,14 @@
             }
         }
 
-        .credits-title {
-            text-align: left;
-            color: $primary;
-        }
-
         .credits-box {
-            position: absolute;
             height: 100%;
         }
 
         .credits-text {
             text-align: justify;
             overflow: auto;
-            height: 65%;
+            height: 90%;
             color: $primary;
 
             .credits-font {
