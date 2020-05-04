@@ -50,3 +50,7 @@ Thumbs.db
 .firebase/
 
 documentation/
+
+src/environments/environment.prod.ts
+
+src/environments/environment.ts

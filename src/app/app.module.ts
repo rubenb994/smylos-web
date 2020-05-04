@@ -17,6 +17,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FinishGameComponent } from './components/finish-game/finish-game.component';
 import { CreditsComponent } from './components/credits/credits.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { CreditsComponent } from './components/credits/credits.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAnalyticsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
