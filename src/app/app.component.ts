@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
 
   public displayCredits = false;
 
-  public gameFinished = false;
+  public gameFinished = true;
 
   private notSupportedWidth = 995;
 
@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
 
   constructor(private stageService: StageService) {
     // Todo remove this line below (only for development)
-    GameStateUtils.setLevel(3);
+    // GameStateUtils.setLevel(4);
     // GameStateUtils.setIntroductionCleared(false);
   }
 

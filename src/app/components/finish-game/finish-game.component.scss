@@ -8,7 +8,8 @@
 }
 
 .game-finished {
-    width: 30%;
+    width: 60%;
+    height: 70%;
     background-color: white;
     border: 2px solid;
     border-color: $secondary;
@@ -21,10 +22,10 @@
     padding: 40px;
 }
 
-#button-game-finished {
-    width: 100%;
-    margin-top: 10px;
-    padding: 10px 20px;
+.button-game-finished {
+    margin: 1%;
+    padding: 20px 30px;
+    height: 90%;
     background-color: #ffffff;
     color: $primary;
     border-radius: 25px;
@@ -37,4 +38,8 @@
     &:hover {
         border-color: $secondary;
     }
+}
+
+.text-button-game-finished {
+    margin: 0px;
 }
