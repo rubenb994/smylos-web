@@ -32,8 +32,7 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
 
   public chatFinished = false;
 
-  // TODO timer of chat delay
-  private readonly timeBetweenChatsDuration = 1;
+  private readonly timeBetweenChatsDuration = 1500;
 
   // option buttons in chat disable
   public optionButtonVisible = false;
@@ -69,8 +68,6 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
     if (this.chatItemsToDisplay.length <= 0) {
       // Add the first chat item.
       this.addNextChatItem(0);
-      // TODO remove line below (only for development)
-      // this.chatCompleted.emit();
     }
   }
 
@@ -104,8 +101,6 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
    * @param chatItem  the chat item which involved player interaction.
    */
   public onClickTitleButton(title: string, chatItem: ChatItem): void {
-    // TODO remove line below (only for development)
-    // this.chatCompleted.emit();
     const indexOfClickedTitle = chatItem.titles.indexOf(title);
     if (indexOfClickedTitle < 0) {
       return;
