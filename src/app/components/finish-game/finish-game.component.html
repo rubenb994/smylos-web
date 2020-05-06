@@ -2,47 +2,13 @@
 
     <div class="col-auto game-finished-col">
 
-        <div class="row info-row">
-            <div class="col-12 game-finished-text">
-                <h2>Decide</h2>
-                <p>You decide what will happen, but choose wisely. Whom of these people do you want to give the potion.
-                    Think about your experiences in the Smylos world. What do you want to happen?</p>
-            </div>
-        </div>
-
-        <div class="row button-row">
-            <div class="col-6">
-                <button class="button-game-finished" (click)="onClickRestartGame()">
-                    <h3>Epeo</h3><br>
-                    <p class="text-button-game-finished">Stay loyal to your boss and save Epeo's business. He
-                        was
-                        the one who helped you in the first
-                        place.</p>
-                </button>
-            </div>
-            <div class="col-6">
-                <button class="button-game-finished" (click)="onClickRestartGame()">
-                    <h3>Johan</h3><br>
-                    <p class="text-button-game-finished">Give the potion back to the rightful owner. Johan
-                        regains
-                        his wealth.</p>
-                </button>
-            </div>
-
-            <div class="col-6">
-                <button class="button-game-finished" (click)="onClickRestartGame()">
-                    <h3>Sisyphus</h3><br>
-                    <p class="text-button-game-finished">Destroy the system, try to give Sisyphus his son back.
-                    </p>
-                </button>
-            </div>
-            <div class="col-6">
-                <button class="button-game-finished" (click)="onClickRestartGame()">
-                    <h3>Big Smile</h3><br>
-                    <p class="text-button-game-finished">Keep the city as it is now. Smylos needs a ruler to
-                        maintain order in society.</p>
-                </button>
-            </div>
-        </div>
+        <ng-container *ngIf="choiceMade; else makeChoice">
+            <app-reset-game [choice]="choiceNumber" class="component"></app-reset-game>
+        </ng-container>
+        <ng-template #makeChoice>
+            <app-final-choice (choiceMade)="onChoiceMade($event)" class="component"></app-final-choice>
+        </ng-template>
 
     </div>
+
+</div>

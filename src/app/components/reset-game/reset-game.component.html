@@ -1,0 +1,38 @@
+<div class="final-choice-container">
+
+    <div class="row">
+        <div class="col-12 game-finished-text">
+            <h2>You have choosen {{choice}}</h2>
+
+
+            <span [ngSwitch]="choice">
+                <p *ngSwitchCase="0">
+                    Epeo
+                </p>
+                <p *ngSwitchCase="1">
+                    Johan
+                </p>
+                <p *ngSwitchCase="2">
+                    Sisyphus
+                </p>
+                <p *ngSwitchCase="3">
+                    Big Smile
+                </p>
+                <p *ngSwitchDefault>
+                    Nobody
+                </p>
+            </span>
+
+            <p>You decide what will happen, but choose wisely. Whom of these people do you want to give the potion.
+                Think about your experiences in the Smylos world. What do you want to happen?</p>
+        </div>
+    </div>
+
+    <div class="row button-row justify-content-center align-items-end">
+        <div class="col-6">
+            <button class="button-game-finished" (click)="onClickResetGame()">
+                Reset game
+            </button>
+        </div>
+    </div>
+</div>

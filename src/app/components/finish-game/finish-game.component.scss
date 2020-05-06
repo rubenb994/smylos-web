@@ -14,8 +14,6 @@
     border: 2px solid;
     border-color: $secondary;
     border-radius: 20px;
-    display: flex;
-    flex-direction: column;
 }
 
 .game-finished-text {
@@ -24,33 +22,7 @@
     padding: 40px 40px 0 40px;
 }
 
-.info-row {
+.component {
     width: 100%;
-}
-
-.button-row {
-    flex-grow: 1;
-    padding: 40px;
-}
-
-.button-game-finished {
-    padding: 15px 20px;
-    height: 90%;
-    width: 100%;
-    background-color: #ffffff;
-    color: $primary;
-    border-radius: 25px;
-    border: 2px solid;
-    border-color: $primary;
-    transition: 0.3s;
-    text-align: center;
-    cursor: pointer;
-
-    &:hover {
-        border-color: $secondary;
-    }
-}
-
-.text-button-game-finished {
-    margin: 0px;
+    height: 100%;
 }
