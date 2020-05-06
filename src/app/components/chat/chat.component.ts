@@ -101,6 +101,10 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
    * @param chatItem  the chat item which involved player interaction.
    */
   public onClickTitleButton(title: string, chatItem: ChatItem): void {
+    if (title == null || chatItem == null) {
+      return;
+    }
+
     const indexOfClickedTitle = chatItem.titles.indexOf(title);
     if (indexOfClickedTitle < 0) {
       return;
@@ -110,13 +114,12 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
     this.chatItemsToDisplay.push(chatItemDisplay);
 
     if (chatItem.next[0] === -1) {
-      console.log('Chat finished title button');
       this.chatFinished = true;
       this.changeDetectorRef.detectChanges();
     }
 
     const nextChatItem = this.getNextChatItem(chatItem);
-    if (nextChatItem.type === 'player') {
+    if (nextChatItem == null || nextChatItem.type === 'player') {
       return;
     }
 
@@ -214,7 +217,6 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
     if (currentChatItem == null || currentChatItem.next == null) {
       this.chatFinished = true;
       this.changeDetectorRef.detectChanges();
-      console.log('Chat finished add next chat item');
       return;
     }
 
@@ -239,6 +241,13 @@ export class ChatComponent implements OnChanges, AfterViewChecked, OnInit, OnDes
   private addNextNonPlayerChatItem(currentChatItem: ChatItem): void {
     setTimeout(() => {
       const nextChatItem = this.chat.chat_items.find(chatItem => chatItem.id === currentChatItem.next[0]);
+
+      if (nextChatItem == null) {
+        this.chatFinished = true;
+        this.changeDetectorRef.detectChanges();
+        return;
+      }
+
       // Stop method if the nextChatItem is player, since it always requires user input.
       if (nextChatItem.type === 'player') {
         return;

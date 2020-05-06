@@ -4708,7 +4708,7 @@
                                 14
                             ],
                             "type": "npg",
-                            "sender": "group discussion",
+                            "sender": "Group discussion",
                             "messages": [
                                 ""
                             ],
@@ -4720,7 +4720,7 @@
                                 14
                             ],
                             "type": "npg",
-                            "sender": "group discussion",
+                            "sender": "Group discussion",
                             "messages": [
                                 ""
                             ],
@@ -4760,7 +4760,7 @@
                                 18
                             ],
                             "type": "npg",
-                            "sender": "group discussion",
+                            "sender": "Group discussion",
                             "messages": [
                                 ""
                             ],
@@ -4772,7 +4772,7 @@
                                 18
                             ],
                             "type": "npg",
-                            "sender": "group discussion",
+                            "sender": "Group discussion",
                             "messages": [
                                 ""
                             ],
@@ -4781,79 +4781,12 @@
                         {
                             "id": 18,
                             "next": [
-                                19
+                                -1
                             ],
                             "type": "npg",
                             "sender": "Sisyphus",
                             "messages": [
                                 "You decide what to do, but choose wisely!"
-                            ]
-                        },
-                        {
-                            "id": 19,
-                            "next": [
-                                20,
-                                21,
-                                22,
-                                23
-                            ],
-                            "type": "player",
-                            "sender": "Me",
-                            "titles": [
-                                "Epeo",
-                                "Johan",
-                                "Big Smile",
-                                "Sisyphus"
-                            ],
-                            "messages": [
-                                "I give it to you Epeo",
-                                "I give it to you Johan",
-                                "I give it to you Big Smile",
-                                "I give it to you Sisyphus"
-                            ]
-                        },
-                        {
-                            "id": 20,
-                            "next": [
-                                -1
-                            ],
-                            "type": "narration",
-                            "sender": "Narrator",
-                            "messages": [
-                                "The game is finished, you gave the potion back to Epeo. You value loyalty"
-                            ]
-                        },
-                        {
-                            "id": 21,
-                            "next": [
-                                -1
-                            ],
-                            "type": "narration",
-                            "sender": "Narrator",
-                            "messages": [
-                                "The game is finished, you gave the potion to Johan. He regained his wealth. He was the original inventor."
-                            ]
-                        },
-                        {
-                            "id": 22,
-                            "next": [
-                                -1
-                            ],
-                            "type": "narration",
-                            "sender": "Narrator",
-                            "messages": [
-                                "The game is finished, you gave the potion to Big Smile. He is became the most powerful man in the world. You don't care about equality rules are important. Have you considered moving to China or Russia?"
-                            ]
-                        },
-                        {
-                            "id": 23,
-                            "next": [
-                                -1
-                            ],
-                            "type": "narration",
-                            "sender": "Narrator",
-                            "messages": [
-                                "The game is finished, you created equality for the complete city. Everyone has a smile"
                             ]
                         }
                     ]

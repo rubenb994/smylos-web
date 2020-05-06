@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
 
   public displayCredits = false;
 
-  public gameFinished = true;
+  public gameFinished = false;
 
   private notSupportedWidth = 995;
 
@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
 
   constructor(private stageService: StageService) {
     // Todo remove this line below (only for development)
-    // GameStateUtils.setLevel(3);
+    // GameStateUtils.setLevel(4);
     // GameStateUtils.setIntroductionCleared(false);
   }
 
@@ -71,17 +71,13 @@ export class AppComponent implements OnInit {
       if (result == null || result === false) {
         return;
       }
-      this.displayAlarm = true;
-    });
 
-    // Subscribe to stage finished property to display and hide the finish-game component.
-    this.stageService.$gameFinished.subscribe(result => {
-      if (result == null) {
+      if (this.currentStage.level === 4) {
+        this.gameFinished = true;
+        this.applyBlurClass();
         return;
       }
-      console.log(result);
-      this.gameFinished = result;
-      this.applyBlurClass();
+      this.displayAlarm = true;
     });
   }
 
