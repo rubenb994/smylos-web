@@ -7,25 +7,36 @@
     z-index: 3;
 }
 
-.game-finished {
-    width: 60%;
-    height: 70%;
+.game-finished-col {
+    width: 800px;
+    height: 600px;
     background-color: white;
     border: 2px solid;
     border-color: $secondary;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .game-finished-text {
     text-align: justify;
     color: $primary;
+    padding: 40px 40px 0 40px;
+}
+
+.info-row {
+    width: 100%;
+}
+
+.button-row {
+    flex-grow: 1;
     padding: 40px;
 }
 
 .button-game-finished {
-    margin: 1%;
-    padding: 20px 30px;
+    padding: 15px 20px;
     height: 90%;
+    width: 100%;
     background-color: #ffffff;
     color: $primary;
     border-radius: 25px;
