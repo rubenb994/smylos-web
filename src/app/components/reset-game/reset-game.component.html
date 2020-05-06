@@ -2,29 +2,98 @@
 
     <div class="row">
         <div class="col-12 game-finished-text">
-            <h2>You have choosen {{choice}}</h2>
 
 
             <span [ngSwitch]="choice">
+                <h2 *ngSwitchCase="0">
+                    You have choosen Epeo
+                </h2>
+                <h2 *ngSwitchCase="1">
+                    You have choosen Johan
+                </h2>
+                <h2 *ngSwitchCase="2">
+                    You have choosen Sisyphus
+                </h2>
+                <h2 *ngSwitchCase="3">
+                    You have choosen Big Smile
+                </h2>
+                <h2 *ngSwitchDefault>
+                    You have choosen nobody
+                </h2>
+            </span>
+
+            <span [ngSwitch]="choice">
                 <p *ngSwitchCase="0">
-                    Epeo
+                    Well done, you have decided to give the potion to Epeo. Your boss is happy and almost a bit
+                    surprised that you followed up on your word and completed the mission. Epeo knows he will never be
+                    able to leave the shades of society. He just wants to keep his business running and uses the parts
+                    of the potions to improve his weaker ones, making his business even more lucrative.
+                    <br>
+                    <br>
+                    However, Epeo is not alone in Smylos. The wealth based system has moved more people to shady
+                    activities. A competition is growing between different groups that navigate outside the system. In a
+                    culture where sharing is un thought of, the one in power can never maintain his position at the top
+                    for long. Every retake of power, the stakes reach higher until Epeo is outrunned by his enemies.
+                    Only then he realises that his manipulative approach has only brought him short term results but
+                    nothing or no one has stayed with him until the end.
                 </p>
                 <p *ngSwitchCase="1">
-                    Johan
+                    Well done, you have decided to give the potion to Johan. Although Johan might seem a bad guy, he is
+                    only trying to regain what he once lost. In the past he was betrayed by his business partners who
+                    sold his potion to Epeo. Johan lost his wealth and slipt down the social ladder. Feeling terribly
+                    mistreated, he became obsessed with regaining his wealth. His focus on developing a new potion
+                    became so strong that his wife left him. But thanks to you he can restore his smile and make up with
+                    his wife again.
+                    <br>
+                    <br>
+                    In the following days Johan reaches out to his previous wife, hoping she will want to talk to him
+                    again. However, she is still angry at him. Johan has ignored her for too long, he was not there when
+                    he should have. “You should’ve accepted what you had back then. Happyness was with us but you were
+                    blind. Why did you seek in the distance what was right beside you all the time?!” Johan realised he
+                    suffered from a strong tunnel vision. He remains alone, surrounded by his worthless wealth.
                 </p>
                 <p *ngSwitchCase="2">
-                    Sisyphus
+                    Well done, you have decided to give the potion to Sisyphus and therefore to throw it into the well.
+                    Although Sisyphus might seem confused, he is dealing with the constant pressure of a social system
+                    that he aims to destroy. Sisyphus has lost his wife and later his son left him to pursue a wealthy
+                    lifestyle. Years of sacrifice at the office in order to raise his son have taken their price. But
+                    from now on he will be free, there is no longer a use for the office. The potion has contaminated
+                    the drinking water and everyone now has a big smile.
+                    <br>
+                    <br>
+                    In the following days Sisyphus reaches out for his son, hoping he comes back. However, his son is
+                    angry at him. Sisyphus has destroyed everything he has worked for. “You should’ve accepte me as I am
+                    dad! Deal with the choices I make, I’m a grown up man!” In great remorse Sisyphus isolates himself
+                    at home. His job is gone, his son won’t see him. Up until now he has been driven by his search for
+                    the potion. A silence strikes his life and he turns away from his feeling, unable to write like he
+                    did in his youth.
+                    <br>
+                    <br>
+                    Simultaniously, Big Smile looses his power. All hyrarchy in the Smylos world is gone. The city falls
+                    and dark times are approaching. Big Smile declares a state of emergency and flees the city as it
+                    turns into an Anarchy. People have lost all their limits in the search for food. The streets are
+                    dangerous, buildings become ruines, and natures takes over. Slowly the city turns into slums leaving
+                    just a touch of the now worthless gold as a reminder of the empire that once was.
                 </p>
                 <p *ngSwitchCase="3">
-                    Big Smile
+                    Well done, you have decided to give the potion to Big Smile. Although Big Smiles might seem a harsh
+                    ruler, he sacrficed his personal interests to maintain a fair society. The city functions and
+                    provides opportunities to hard workers. Big Smile destroys the potion as soon as you give it to him.
+                    Thanks to you the life in Smylos can continue as before.
+                    <br>
+                    <br>
+                    Inequality still rules over Smylos and people continue to pursue the optimal smile. Big smile has
+                    distantiated himself even more. His life is lonely though justified as he sees it. To avoid such a
+                    danger again the streets are now partrouilled heavily. Johan and Epeo are arrested and send to jail.
+                    Big Smile is convinced he has to protect civilans against their own desires. People talk about Big
+                    Smiles rules as if he lost his mind, as if he has no empathy. Can Big Smile decide for his citizens?
+                    How long will Sisyphus be able to bear the new pace under the management of Koralia?
                 </p>
                 <p *ngSwitchDefault>
                     Nobody
                 </p>
             </span>
 
-            <p>You decide what will happen, but choose wisely. Whom of these people do you want to give the potion.
-                Think about your experiences in the Smylos world. What do you want to happen?</p>
         </div>
     </div>
 
