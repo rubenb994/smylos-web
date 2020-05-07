@@ -1,14 +1,14 @@
 <div class="row game-finished-row justify-content-center d-flex align-items-center">
 
-    <div class="col-auto game-finished">
-        <div class="row">
-            <div class="col-12 game-finished-text">
-                <h2>The end</h2>
-                <p>You have've finished the game.</p>
-                <p>HIER KOMT WIE JE BENT GEWORDEN EN DE TOEKOMST VAN DE STAD</p>
-                <button id="button-game-finished" (click)="onClickRestartGame()">Play again</button>
-            </div>
+    <div class="col-auto game-finished-col">
 
-        </div>
+        <ng-container *ngIf="choiceMade; else makeChoice">
+            <app-reset-game [choice]="choiceNumber" class="component"></app-reset-game>
+        </ng-container>
+        <ng-template #makeChoice>
+            <app-final-choice (choiceMade)="onChoiceMade($event)" class="component"></app-final-choice>
+        </ng-template>
+
     </div>
+
 </div>

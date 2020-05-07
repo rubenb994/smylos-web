@@ -7,8 +7,9 @@
     z-index: 3;
 }
 
-.game-finished {
-    width: 30%;
+.game-finished-col {
+    width: 800px;
+    height: 650px;
     background-color: white;
     border: 2px solid;
     border-color: $secondary;
@@ -18,23 +19,10 @@
 .game-finished-text {
     text-align: justify;
     color: $primary;
-    padding: 40px;
+    padding: 40px 40px 0 40px;
 }
 
-#button-game-finished {
+.component {
     width: 100%;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #ffffff;
-    color: $primary;
-    border-radius: 25px;
-    border: 2px solid;
-    border-color: $primary;
-    transition: 0.3s;
-    text-align: center;
-    cursor: pointer;
-
-    &:hover {
-        border-color: $secondary;
-    }
+    height: 100%;
 }

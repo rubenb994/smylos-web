@@ -11,15 +11,19 @@ import { StageService } from 'src/app/services/stage.service';
 })
 export class FinishGameComponent implements OnInit {
 
-  constructor(
-    private stageService: StageService
-  ) { }
+  public choiceMade = false;
+  public choiceNumber: number;
+
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  public onClickRestartGame(): void {
-    this.stageService.resetGame();
+  public onChoiceMade(choice: number) {
+    this.choiceNumber = choice;
+    this.choiceMade = true;
   }
+
+
 
 }

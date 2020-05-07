@@ -19,6 +19,8 @@ import { FinishGameComponent } from './components/finish-game/finish-game.compon
 import { CreditsComponent } from './components/credits/credits.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { FinalChoiceComponent } from './components/final-choice/final-choice.component';
+import { ResetGameComponent } from './components/reset-game/reset-game.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
     PotionAlarmComponent,
     MobileErrorComponent,
     FinishGameComponent,
-    CreditsComponent
+    CreditsComponent,
+    FinalChoiceComponent,
+    ResetGameComponent
   ],
   imports: [
     BrowserModule,

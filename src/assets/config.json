@@ -164,10 +164,10 @@
                             "type": "player",
                             "sender": "Me",
                             "titles": [
-                                "Looking forward to start"
+                                "Looking forward to starting"
                             ],
                             "messages": [
-                                "Mmm, interesting... I am looking forward to meet Epeo!"
+                                "Mmm, interesting... I am looking forward to meeting Epeo!"
                             ]
                         }
                     ]
@@ -260,7 +260,7 @@
                             "type": "npg",
                             "sender": "Epeo",
                             "messages": [
-                                "Welcome to my store! I’m Epeo, some call me the gatekeeper of the city."
+                                "Welcome to my store! I’m Epeo, some call me the gatekeeper of this city."
                             ]
                         },
                         {
@@ -407,7 +407,7 @@
                             "type": "npg",
                             "sender": "Epeo",
                             "messages": [
-                                "It is also crucial that you go around and listen to them in the city. It is a lot of information to be found in eavesdropping on others."
+                                "It is also crucial that you go around and listen to them in the city. A lot of information can be gathered from eavesdropping on others."
                             ]
                         },
                         {
@@ -418,7 +418,7 @@
                             "type": "npg",
                             "sender": "Epeo",
                             "messages": [
-                                "Remember, though, that my potion does not last forever, so choose wisely who you would like to talk to."
+                                "Remember, though, that my potion does not last forever, so choose wisely whom you would like to talk to."
                             ]
                         },
                         {
@@ -547,7 +547,7 @@
                             "type": "npg",
                             "sender": "Golin",
                             "messages": [
-                                "Hello there! You look like a friendly face! It’s my first time in this part of the city, I feel a bit uncomfortable. Sorry, I forgot to introduce myself, I’m Golin. What are you doing here?"
+                                "Hello there! You look like a friendly guy! It’s my first time in this part of the city, I feel a bit uncomfortable. Sorry, I forgot to introduce myself, I’m Golin. What are you doing here?"
                             ]
                         },
                         {
@@ -572,7 +572,7 @@
                             "type": "npg",
                             "sender": "Golin",
                             "messages": [
-                                "Wow, not bad! What are you going to do? "
+                                "Wow, not bad! What are you going to do?"
                             ]
                         },
                         {
@@ -597,7 +597,7 @@
                             "type": "npg",
                             "sender": "Golin",
                             "messages": [
-                                "Well, I don’t really know. Trying to “find myself”, I guess. I have been living in the slums my entire life, following Cynics way of living."
+                                "Well, I don’t really know. Trying to “find myself”, I guess. I have been living in the slums my entire life, following the Cynic way of living."
                             ]
                         },
                         {
@@ -609,7 +609,7 @@
                             "type": "player",
                             "sender": "Me",
                             "titles": [
-                                "Ask him about the cynics",
+                                "Ask him about the Cynics",
                                 "Make him continue"
                             ],
                             "messages": [
@@ -846,7 +846,7 @@
                             "type": "npg",
                             "sender": "Kyril",
                             "messages": [
-                                "I strongly believe in a life free from all possessions, wealth and power. However, I also believe in freedom of thought, everyone should be free to choose what is best for his own life, that’s why I let Golin go."
+                                "I strongly believe in a life free from all possessions, wealth and power. However, I also believe in freedom of thought, everyone should be free to choose what is best for himself, that’s why I let Golin go."
                             ]
                         },
                         {
@@ -903,7 +903,7 @@
                             "type": "npg",
                             "sender": "Kyril",
                             "messages": [
-                                "Ok, I understand. Unfortunately, when I left the smiling world, I also stopped having contact with my friends from that part of the city. But even if we don’t have contact anymore, I still try to stay updated on what they are doing in their life."
+                                "Ok, I understand. Unfortunately, when I left the smiling world, I also stopped having contact with my friends from that part of the city. We don’t have contact anymore, but I try to stay updated on what they are doing in life."
                             ]
                         },
                         {
@@ -942,7 +942,7 @@
                             "type": "npg",
                             "sender": "Kyril",
                             "messages": [
-                                "As a poor man, you are invisible. His ideology is that you should work hard to deserve a place in this society. He has the biggest smile of all, and is the ideal everyone is thriving to be. Be careful around him."
+                                "As a poor man, you are invisible. His ideology is that you should work hard to deserve a place in this society. He has the biggest smile of all, and is the ideal everyone is thriving for. Be careful around him."
                             ]
                         },
                         {
@@ -1063,7 +1063,7 @@
                             "type": "npg",
                             "sender": "Sisyphus",
                             "messages": [
-                                "Ohh Epeo, I know him for years! We know each other very well, but… I’m not always sure to know him fully. He doesn’t seem transparent to me."
+                                "Ohh Epeo, I know him for years! We know each other very well, but… I’m not always sure to know him fully. He doesn’t seem honest to me."
                             ]
                         },
                         {
@@ -1074,7 +1074,7 @@
                             "type": "npg",
                             "sender": "Sisyphus",
                             "messages": [
-                                "I heard some rumours… some say Plousios was his real name, that he changed his identity a lot of years ago, before I even met him."
+                                "I heard some rumours… some say Plousios was his real name, that he changed his identity many years ago, before I even met him."
                             ]
                         },
                         {
@@ -1090,8 +1090,8 @@
                                 "Be condescending"
                             ],
                             "messages": [
-                                "Why should he have done such a thing?!",
-                                "Why should he have done such a thing?!"
+                                "Why would he have done such a thing?!",
+                                "Why would he have done such a thing?!"
                             ]
                         },
                         {
@@ -1102,7 +1102,7 @@
                             "type": "npg",
                             "sender": "Sisyphus",
                             "messages": [
-                                "They say he killed a man… But who knows, we don’t know who to trust anymore in this city! Anyway, what did you need help with, again?"
+                                "They say he killed a man… But who knows, we don’t know whom to trust anymore in this city! Anyway, what did you need help with again?"
                             ]
                         },
                         {
@@ -1113,7 +1113,7 @@
                             "type": "npg",
                             "sender": "Sisyphus",
                             "messages": [
-                                "Oh no, I didn’t mean that! He’s always ready to help people… well, he doesn’t give anything for nothing, but who really does it in this world?! By the way, what did you need help with, again?"
+                                "Oh no, I didn’t mean that! He’s always ready to help people… well, he won't do anything for free, but who really does it in this world?! By the way, what did you need help with, again?"
                             ]
                         },
                         {
@@ -1177,7 +1177,7 @@
                             "type": "npg",
                             "sender": "Sisyphus",
                             "messages": [
-                                "Bye! Don’t let this awful city affect your pure soul!"
+                                "Bye! Don’t let this awful city harm your pure soul!"
                             ]
                         },
                         {
@@ -1307,7 +1307,7 @@
                             "type": "npg",
                             "sender": "Epeo",
                             "messages": [
-                                "Look who’s back again! I bet you’ve run out of the temporary potion, haven’t you?"
+                                "Look who’s back again! I bet you ran out of potion, haven’t you?"
                             ]
                         },
                         {
@@ -1343,7 +1343,7 @@
                             "type": "npg",
                             "sender": "Epeo",
                             "messages": [
-                                "By the way, how was your first time in the smiling world? Have you discovered something interesting there?"
+                                "By the way, how was your first time in the smiling world? Did you discover something interesting there?"
                             ]
                         },
                         {
@@ -1359,7 +1359,7 @@
                                 "Talk about Johan"
                             ],
                             "messages": [
-                                "Well, to be honest, during my quest I heard some rumours about you. They told me that Epeo is not your real name, that you changed your identity.",
+                                "Well, to be honest, I heard some rumours about you. They told me that Epeo is not your real name, that you changed your identity.",
                                 "Hmm… I managed to talk to Kyril, a man from the slums. He previously lived in the city and decided to leave everything he owned in order to follow the Cynic way of life."
                             ]
                         },
@@ -1371,7 +1371,7 @@
                             "type": "npg",
                             "sender": "Epeo",
                             "messages": [
-                                "Haha, nice one! How could they tell such a tall tale?!"
+                                "Haha, nice one! How could they tell such a fantasy tale?!"
                             ]
                         },
                         {
@@ -1399,7 +1399,7 @@
                             ],
                             "messages": [
                                 "Sisyphus, the man you suggested to visit last time!",
-                                "Oh, it was just a rumour I heard while wandering around the city. I can’t really say who exactly affirmed that."
+                                "Oh, it was just a rumour I heard while wandering around the city. I can’t really say who exactly said that."
                             ]
                         },
                         {
@@ -1460,7 +1460,7 @@
                             "type": "npg",
                             "sender": "Epeo",
                             "messages": [
-                                "Well, you should have talked to someone during all this time!"
+                                "Well, you must have spoken to someone?!"
                             ]
                         },
                         {
@@ -1474,7 +1474,7 @@
                                 "Sure!"
                             ],
                             "messages": [
-                                "Sure! I met Sisyphus who told me that he actually heard about a certain potion which could alter society. He will investigate more and report his discoveries if I’ll come back to him in a couple of days."
+                                "Sure! I met Sisyphus who told me that he actually heard about a certain potion which could alter society. He will investigate more and report his findings if I’ll come back to him in a couple of days."
                             ]
                         },
                         {
@@ -1524,7 +1524,7 @@
                                 "Kyiril knows Johan"
                             ],
                             "messages": [
-                                "Kyril told me that, when he was a smiling one, he had a friend whose name is Johan. He said I should talk to him as he has always worked in the field of chemistry, moreover, he had some business about potion-making. Maybe can be useful, but he couldn’t guide me to him as he lost contacts with smiling people when he left the city."
+                                "Kyril told me that, when he was a smiling person, he had a friend called Johan. He said I should talk to him because he has always worked in the field of chemistry, moreover, he had some business about potion-making. Maybe this can be useful, but he couldn’t tell me where he is as he lost contacts with smiling people when he left the city."
                             ]
                         },
                         {
@@ -1560,7 +1560,7 @@
                             "type": "npg",
                             "sender": "Epeo",
                             "messages": [
-                                "Oh, it’s really powerful, it can permanently modify people’s smiles. Well, time is precious! Here’s your temporary potion again. Just to advise you, Golin has just moved to his father’s house, the Palace, you’ll find him there! Have a productive journey in the city! Goodbye!"
+                                "Oh, it’s really powerful, it can permanently modify people’s smiles. Well, time is precious! Here’s your temporary potion again. Just to inform you, Golin has just moved to his father’s house, the Palace, you’ll find him there! Have a productive stay in the city! Goodbye!"
                             ]
                         },
                         {
@@ -1634,7 +1634,7 @@
                                 "I was looking for you"
                             ],
                             "messages": [
-                                "Uhm… I don’t know many people in this city, and Epeo told me you moved here. How did you acquire that big smile?"
+                                "Uhm… I don’t know many people in this city, and Epeo told me you moved here. How did you get that big smile?"
                             ]
                         },
                         {
@@ -1673,7 +1673,7 @@
                             "type": "npg",
                             "sender": "Golin",
                             "messages": [
-                                "Well… he was really sick, he died a couple of days after we met. He was filled with remorse about not meeting me before and helping my mother out. I was apparently the only child he had, so he wanted me to inherit his fortune."
+                                "Well… he was really sick, he died a couple of days after we met. He was filled with remorse about not meeting me before and helping my mother out. Apparently, I was the only child he had, so he wanted me to inherit his fortune."
                             ]
                         },
                         {
@@ -1684,7 +1684,7 @@
                             "type": "npg",
                             "sender": "Golin",
                             "messages": [
-                                "So, here I am in this big fancy house, could almost call it a palace. I even have a permanent smile now, but have no idea what I should do."
+                                "So, here I am in this big fancy house, could almost call it a palace. I even have a permanent smile now, but have no idea what to do."
                             ]
                         },
                         {
@@ -1748,7 +1748,7 @@
                             "type": "npg",
                             "sender": "Golin",
                             "messages": [
-                                "I don’t really know what to do. I was hoping to find answers, but this just made everything worse. I guess I will just live here for a while, see how it is. Maybe if I try this lifestyle I might realise Kyril's choice more."
+                                "I don’t really know what to do. I was hoping to find answers, but this just made everything worse. I guess I will just live here for a while, see how it is. Maybe if I try this lifestyle I might understand Kyril's decision better."
                             ]
                         },
                         {
@@ -1937,8 +1937,8 @@
                                 "Be vague"
                             ],
                             "messages": [
-                                "I am still working on finding the potion. I try to talk to people, and listen around to find some clues. I am making progress, but I still have some work let.",
-                                "I am still going around talking to people and gathering information. I still have some work to do though."
+                                "I am still working on finding the potion. I try to talk to people, and listen around to find some clues. I am making progress, but I still have quite some work to do.",
+                                "I am still going around talking to people and gathering information. I still have quite some work to do though."
                             ]
                         },
                         {
@@ -2275,7 +2275,7 @@
                 "audios": [
                     {
                         "audio_id": "a2_36_0",
-                        "audio_title": "Sisyphus and Koralia"
+                        "audio_title": "Koralia talks to Sisyphus"
                     }
                 ]
             },
@@ -2403,7 +2403,7 @@
                             "type": "npg",
                             "sender": "Hypatia",
                             "messages": [
-                                "Oh, ok. Then I need to keep looking for him. Bye!"
+                                "Oh, ok. Then I need to go back to him. Bye!"
                             ]
                         },
                         {
@@ -2417,7 +2417,7 @@
                                 "I'm looking for a potion"
                             ],
                             "messages": [
-                                "I am trying to find a potion. I don’t know who has it, but I think it is someone with power. I talked to a guy called Sisyphus at the Government building. He said that you might have some information."
+                                "I am trying to find a potion. I don’t know who has it, but I think it is someone with power. I talked to a guy called Sisyphus at the government building. He said that you might have some information."
                             ]
                         },
                         {
@@ -2439,7 +2439,7 @@
                             "type": "npg",
                             "sender": "Hypatia",
                             "messages": [
-                                "I had a hard life: I was raised by some relatives in the slums, as my parents died. When I got the opportunity to pay their help back and raise Golin, it meant a lot to me. Now I want to find Golin, only to be sure he’s safe and sound."
+                                "I had a hard life: I was raised by some relatives in the slums, as my parents died. When I got the opportunity to pay their help back and raise Golin, it meant a lot to me. Now I want to talk to Golin, only to be sure he’s safe and sound."
                             ]
                         },
                         {
@@ -2527,7 +2527,7 @@
                             "type": "npg",
                             "sender": "Receptionist",
                             "messages": [
-                                "Sisyphus, I know him. Can’t find any booking in the system, but since I know Sisyphus I will let it pass for this time."
+                                "Sisyphus, I know him. Can’t find any booking in the system, but since I know Sisyphus I will let you pass for this time."
                             ]
                         },
                         {
@@ -2598,7 +2598,7 @@
                                 "Do not be straightforward"
                             ],
                             "messages": [
-                                "Hi, thank you for taking the time. I work for a guy named Epeo, he has sent me on a mission to find a certain potion. It is supposedly very important. I have been talking to a lot of people and have now ended up here with you. Do you know about this, or know anyone that might know?",
+                                "Hi, thank you for taking the time. I work for a guy named Epeo, he has sent me on a mission to find a certain potion. It is supposedly very important. I have been talking to a lot of people and have now ended up here with you. Do you know about this, or know anyone that might know more?",
                                 "Hi, thank you for taking the time. I heard the rumour that something is happening in the city that could threaten Big Smile’s power."
                             ]
                         },
@@ -2806,7 +2806,7 @@
                                 "Not yet"
                             ],
                             "messages": [
-                                "Not yet, but maybe I have some interesting clues which bring me closer to the final resolution!"
+                                "Not yet, but maybe I have some interesting clues which bring me closer to the final solution!"
                             ]
                         },
                         {
@@ -2844,7 +2844,7 @@
                             "type": "npg",
                             "sender": "Epeo",
                             "messages": [
-                                "Why are you trying, we need results! Do you realise how much potion you already used? Do you realise how much I gave to you? Ohh... You owe me a lot. So stop waiting for my smiles and bring me what makes me happy!"
+                                "Why are you trying, we need results! Do you realise how much potion you already used? Do you realise how much I gave to you? Ohh... You owe me a lot. So stop wasting my smiles and bring me what makes me happy!"
                             ]
                         },
                         {
@@ -2976,7 +2976,7 @@
                             "type": "npg",
                             "sender": "Golin",
                             "messages": [
-                                "My mission? Ohh, well I don’t know really. I have a pretty chill life. I party, drink, eat, have sex. I can’t complain, can I? I got a lot of friends, at least a lot of people showing up for my parties..."
+                                "My mission? Ohh, well I don’t know really. I have a pretty chill life. I party, drink, eat, have sex. I can’t complain, can I? I have many of friends, at least many people showing up for my parties..."
                             ]
                         },
                         {
@@ -2987,7 +2987,7 @@
                             "type": "npg",
                             "sender": "Golin",
                             "messages": [
-                                "And I got a really nice chariot"
+                                "And I have a really nice chariot"
                             ]
                         },
                         {
@@ -3139,7 +3139,7 @@
                                 "Don't bother"
                             ],
                             "messages": [
-                                "Ok, I don’t believe you then. You are probably just bragging about that you know him. If you actually know him you should be able to prove it. ",
+                                "Ok, I don’t believe you then. You are probably just bragging about. If you actually know him you should be able to prove it. ",
                                 "Okay, whatever."
                             ]
                         },
@@ -3223,7 +3223,7 @@
                             "type": "npg",
                             "sender": "Golin",
                             "messages": [
-                                "Here, take this to his office. I will let you know that you are bringing his merch. You acquired a mysterious bag"
+                                "Here, take this to his office. I will let you know that you are bringing his merch."
                             ]
                         },
                         {
@@ -3741,7 +3741,7 @@
                             "type": "npg",
                             "sender": "Koralia",
                             "messages": [
-                                "Yes, I wanted to tell you about Big Smile so you will not judge him from what you heard. Give him a chance the way he is. But time flies. I really need to go to that meeting now."
+                                "Yes, I wanted to tell you about Big Smile so you will not judge him based on what you heard. Give him a chance the way he is. But time flies. I really need to go to that meeting now."
                             ]
                         },
                         {
@@ -4082,7 +4082,7 @@
                             "type": "npg",
                             "sender": "Johan",
                             "messages": [
-                                "I really don’t know him. He looked a little bit confused, I could see the craziness in his eyes. But I’m going to fix this, I’m going to get my potion again. I’m sure I am."
+                                "I really don’t know him. He looked a little bit confused, I could see the craziness in his eyes. But I’m going to fix this, I will get my potion back again. I’m sure I will."
                             ]
                         },
                         {
@@ -4201,7 +4201,7 @@
                             "type": "npg",
                             "sender": "Big Smile",
                             "messages": [
-                                "Sent to the city?! So you do not come from the city, I infer… And exactly, of what kind of mission are you talking about? Who sent you here?"
+                                "Sent to the city?! So you do not come from the city, I infer… And exactly, of what kind of mission are you speaking? Who sent you here?"
                             ]
                         },
                         {
@@ -4226,7 +4226,7 @@
                             "type": "npg",
                             "sender": "Big Smile",
                             "messages": [
-                                "Another time that bloody potion?! Who could have it?! Damn, YOU should tell me that! Why are you here then, if you don’t have any useful information?! Have you read news agency on this door plaque?! "
+                                "Another time that bloody potion?! Who could have it?! Damn, YOU should tell me that! Why are you here then, if you don’t have any useful information?! Have you read the news on this door plaque?! "
                             ]
                         },
                         {
@@ -4251,7 +4251,7 @@
                             "type": "npg",
                             "sender": "Big Smile",
                             "messages": [
-                                "Are you trying to face me?! Obviously I have my own emissaries, but do you really think I am going to tell confidential information to the first person who comes here?!"
+                                "Are you trying to face me?! Obviously I have my own emissaries, but do you really think I am going to tell confidential information to any person who comes up here?!"
                             ]
                         },
                         {
@@ -4396,7 +4396,7 @@
                                 "Say goodbye"
                             ],
                             "messages": [
-                                "Oh, I’m terribly sorry about that, I didn’t know it.",
+                                "Oh, I’m terribly sorry for that, I didn’t know it.",
                                 "I see your point. It has to be difficult to govern an entire city, we can’t even imagine that. However, I really have to leave you, I need to speed up my quest. It has been a pleasure to meet you. Goodbye!"
                             ]
                         },
@@ -4556,7 +4556,7 @@
                                 1
                             ],
                             "type": "npg",
-                            "sender": "Audio",
+                            "sender": "Sisyphus and Epeo",
                             "messages": [
                                 ""
                             ],
@@ -4568,7 +4568,7 @@
                                 2
                             ],
                             "type": "npg",
-                            "sender": "Audio",
+                            "sender": "Sisyphus",
                             "messages": [
                                 "What are you doing here?"
                             ]
@@ -4596,7 +4596,7 @@
                                 5
                             ],
                             "type": "npg",
-                            "sender": "Audio",
+                            "sender": "Sisyphus and Epeo",
                             "messages": [
                                 ""
                             ],
@@ -4608,7 +4608,7 @@
                                 5
                             ],
                             "type": "npg",
-                            "sender": "Audio",
+                            "sender": "Sisyphus and Epeo",
                             "messages": [
                                 ""
                             ],
@@ -4620,7 +4620,7 @@
                                 6
                             ],
                             "type": "npg",
-                            "sender": "Audio",
+                            "sender": "Sisyphus",
                             "messages": [
                                 "Do you think we should throw it in the well or should I give it to you?"
                             ]
@@ -4628,18 +4628,15 @@
                         {
                             "id": 6,
                             "next": [
-                                7,
-                                8
+                                7
                             ],
                             "type": "player",
                             "sender": "Me",
                             "titles": [
-                                "Give it to me",
-                                "Throw it in the well"
+                                "Give it to me"
                             ],
                             "messages": [
-                                "Give it to me",
-                                "Throw it in the well"
+                                "Give it to me"
                             ]
                         },
                         {
@@ -4648,7 +4645,7 @@
                                 10
                             ],
                             "type": "npg",
-                            "sender": "Audio",
+                            "sender": "Sisyphus and Epeo",
                             "messages": [
                                 ""
                             ],
@@ -4660,7 +4657,7 @@
                                 9
                             ],
                             "type": "npg",
-                            "sender": "Audio",
+                            "sender": "Sisyphus",
                             "messages": [
                                 ""
                             ],
@@ -4683,7 +4680,7 @@
                                 11
                             ],
                             "type": "npg",
-                            "sender": "Audio",
+                            "sender": "Epeo",
                             "messages": [
                                 "Don't you value being loyal to your boss?"
                             ]
@@ -4711,7 +4708,7 @@
                                 14
                             ],
                             "type": "npg",
-                            "sender": "Audio",
+                            "sender": "Group discussion",
                             "messages": [
                                 ""
                             ],
@@ -4723,7 +4720,7 @@
                                 14
                             ],
                             "type": "npg",
-                            "sender": "Audio",
+                            "sender": "Group discussion",
                             "messages": [
                                 ""
                             ],
@@ -4735,7 +4732,7 @@
                                 15
                             ],
                             "type": "npg",
-                            "sender": "Audio",
+                            "sender": "Big Smile",
                             "messages": [
                                 "Do you think it is right to cheat your way through life? Defy society rules for your own personal gain?"
                             ]
@@ -4763,7 +4760,7 @@
                                 18
                             ],
                             "type": "npg",
-                            "sender": "Audio",
+                            "sender": "Group discussion",
                             "messages": [
                                 ""
                             ],
@@ -4775,7 +4772,7 @@
                                 18
                             ],
                             "type": "npg",
-                            "sender": "Audio",
+                            "sender": "Group discussion",
                             "messages": [
                                 ""
                             ],
@@ -4784,79 +4781,12 @@
                         {
                             "id": 18,
                             "next": [
-                                19
+                                -1
                             ],
                             "type": "npg",
-                            "sender": "Audio",
+                            "sender": "Sisyphus",
                             "messages": [
                                 "You decide what to do, but choose wisely!"
-                            ]
-                        },
-                        {
-                            "id": 19,
-                            "next": [
-                                20,
-                                21,
-                                22,
-                                23
-                            ],
-                            "type": "player",
-                            "sender": "Me",
-                            "titles": [
-                                "Epeo",
-                                "Johan",
-                                "Big Smile",
-                                "Sisyphus"
-                            ],
-                            "messages": [
-                                "I give it to you Epeo",
-                                "I give it to you Johan",
-                                "I give it to you Big Smile",
-                                "I give it to you Sisyphus"
-                            ]
-                        },
-                        {
-                            "id": 20,
-                            "next": [
-                                -1
-                            ],
-                            "type": "narration",
-                            "sender": "Narrator",
-                            "messages": [
-                                "The game is finished, you gave the potion back to Epeo. You value loyalty"
-                            ]
-                        },
-                        {
-                            "id": 21,
-                            "next": [
-                                -1
-                            ],
-                            "type": "narration",
-                            "sender": "Narrator",
-                            "messages": [
-                                "The game is finished, you gave the potion to Johan. He regained his wealth. He was the original inventor."
-                            ]
-                        },
-                        {
-                            "id": 22,
-                            "next": [
-                                -1
-                            ],
-                            "type": "narration",
-                            "sender": "Narrator",
-                            "messages": [
-                                "The game is finished, you gave the potion to Big Smile. He is became the most powerful man in the world. You don't care about equality rules are important. Have you considered moving to China or Russia?"
-                            ]
-                        },
-                        {
-                            "id": 23,
-                            "next": [
-                                -1
-                            ],
-                            "type": "narration",
-                            "sender": "Narrator",
-                            "messages": [
-                                "The game is finished, you created equality for the complete city. Everyone has a smile"
                             ]
                         }
                     ]
