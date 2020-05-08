@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Stage } from '../models/stage';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { LocationNFC, LOCATION_NFCS } from '../config/location-nfc';
 import { NFC } from '../models/nfc';
 import { Chat } from '../models/chat';
@@ -40,6 +39,7 @@ export class StageService {
   public $gameFinished: BehaviorSubject<boolean> = new BehaviorSubject(null);
 
   constructor() {
+
   }
 
   public setCurrentStage(level: number) {
