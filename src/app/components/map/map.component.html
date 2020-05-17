@@ -1,0 +1,199 @@
+<div class="map-container">
+	<button class="buttonPlus" (click)="onClickZoomIn()"><i class="material-icons">add</i></button>
+	<button class="buttonPlus buttonMin" (click)="onClickZoomOut()"><i class="material-icons">remove</i></button>
+
+	<svg version="1.1" id="smylos-map" x="0px" y="0px" viewBox="0 0 1338.073 1041.33"
+		enable-background="new 0 0 1338.073 1041.33" xml:space="preserve">
+		<g id="Layer_2">
+
+			<image overflow="visible" width="13004" height="9185" xlink:href="assets/images/A1_map.jpg"
+				transform="matrix(0.1006 0 0 0.1006 4 39.9619)">
+			</image>
+		</g>
+		<g id="smylos-map">
+			<g id="Layer_2_1_">
+
+				<g #bigSmileOfficeContainer (mouseover)="onMouseOverGroup(bigSmileOfficeContainer)"
+					(mouseout)="onMouseOutGroup(bigSmileOfficeContainer)">
+					<image overflow="visible" opacity="0" enable-background="new   " width="106" height="115"
+						xlink:href="assets/images/dot2.png" transform="matrix(0.24 0 0 0.24 731.876 148.5126)">
+					</image>
+					<image overflow="visible" opacity="0" enable-background="new   " width="106" height="115"
+						id="bigSmileDot" class="dot" xlink:href="assets/images/dot.png"
+						transform="matrix(0.24 0 0 0.24 731.876 148.5126)">
+					</image>
+
+					<rect (click)="onClickBigSmileOffice()" id="bigSmileOffice" x="689.508" y="128.61" opacity="0"
+						fill="#3ACEB8" enable-background="new    " width="96.451" height="65.12" />
+				</g>
+
+				<g #executiveOfficeContainer (mouseover)="onMouseOverGroup(executiveOfficeContainer)"
+					(mouseout)="onMouseOutGroup(executiveOfficeContainer)">
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						xlink:href="assets/images/dot2.png" transform="matrix(0.24 0 0 0.24 741.8243 233.6676)">
+					</image>
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						id="executiveOfficeDot" xlink:href="assets/images/dot.png"
+						transform="matrix(0.24 0 0 0.24 741.8243 233.6676)">
+					</image>
+
+					<rect (click)="onClickExecutiveOffice()" id="executiveOffice" x="689.508" y="207.476" opacity="0"
+						fill="#3ACEB8" enable-background="new    " width="96.451" height="65.12" />
+
+				</g>
+
+				<g #taxOfficeContainer (mouseover)="onMouseOverGroup(taxOfficeContainer)"
+					(mouseout)="onMouseOutGroup(taxOfficeContainer)">
+
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						xlink:href="assets/images/dot2.png" transform="matrix(0.24 0 0 0.24 719.156 302.9856)">
+					</image>
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						id="taxOfficeDot" xlink:href="assets/images/dot.png"
+						transform="matrix(0.24 0 0 0.24 719.156 302.9856)">
+					</image>
+
+					<rect (click)="onClickTaxOffice()" id="taxOffice" x="689.508" y="284.225" opacity="0" fill="#3ACEB8"
+						enable-background="new    " width="96.451" height="65.12" />
+
+				</g>
+
+				<g #hillHouseContainer (mouseover)="onMouseOverGroup(hillHouseContainer)"
+					(mouseout)="onMouseOutGroup(hillHouseContainer)">
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						xlink:href="assets/images/dot2.png" transform="matrix(0.24 0 0 0.24 956.4761 258.7958)">
+					</image>
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						id="hillHouseDot" xlink:href="assets/images/dot.png"
+						transform="matrix(0.24 0 0 0.24 956.4761 258.7958)">
+					</image>
+
+					<rect (click)="onClickHillHouse()" id="hillHouse" x="903.751" y="247.467" opacity="0" fill="#3ACEB8"
+						enable-background="new    " width="96.451" height="65.12" />
+
+				</g>
+
+				<g #marketContainer (mouseover)="onMouseOverGroup(marketContainer)"
+					(mouseout)="onMouseOutGroup(marketContainer)">
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						xlink:href="assets/images/dot2.png" transform="matrix(0.24 0 0 0.24 903.7507 451.3311)">
+					</image>
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						id="marketDot" xlink:href="assets/images/dot.png"
+						transform="matrix(0.24 0 0 0.24 903.7507 451.3311)">
+					</image>
+
+					<rect (click)="onClickMarket()" id="market" x="868.245" y="426.348" opacity="0" fill="#3ACEB8"
+						enable-background="new    " width="96.451" height="65.12" />
+
+				</g>
+
+				<g #eastDistrictContainer (mouseover)="onMouseOverGroup(eastDistrictContainer)"
+					(mouseout)="onMouseOutGroup(eastDistrictContainer)">
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						xlink:href="assets/images/dot2.png" transform="matrix(0.24 0 0 0.24 899.1549 505.2676)">
+					</image>
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						id="eastDistrictDot" xlink:href="assets/images/dot.png"
+						transform="matrix(0.24 0 0 0.24 899.1549 505.2676)">
+					</image>
+
+					<rect (click)="onClickEastDistrict()" id="eastDistrict" x="840.328" y="500.307" opacity="0"
+						fill="#3ACEB8" enable-background="new    " width="96.451" height="65.12" />
+
+				</g>
+
+				<g #wellContainer (mouseover)="onMouseOverGroup(wellContainer)"
+					(mouseout)="onMouseOutGroup(wellContainer)">
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						xlink:href="assets/images/dot2.png" transform="matrix(0.24 0 0 0.24 741.8243 491.4677)">
+					</image>
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						id="wellDot" xlink:href="assets/images/dot.png"
+						transform="matrix(0.24 0 0 0.24 741.8243 491.4677)">
+					</image>
+
+					<rect (click)="onClickWell()" id="well" x="696.371" y="484.925" opacity="0" fill="#3ACEB8"
+						enable-background="new    " width="96.451" height="65.12" />
+
+				</g>
+
+				<g #westDistrictContainer (mouseover)="onMouseOverGroup(westDistrictContainer)"
+					(mouseout)="onMouseOutGroup(westDistrictContainer)">
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						xlink:href="assets/images/dot2.png" transform="matrix(0.24 0 0 0.24 559.9841 569.9201)">
+					</image>
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						id="westDistrictDot" xlink:href="assets/images/dot.png"
+						transform="matrix(0.24 0 0 0.24 559.9841 569.9201)">
+					</image>
+
+					<rect (click)="onClickWestDistrict()" id="westDistrict" x="524.479" y="551.16" opacity="0"
+						fill="#3ACEB8" enable-background="new    " width="96.451" height="65.12" />
+
+				</g>
+
+				<g #palaceContainer (mouseover)="onMouseOverGroup(palaceContainer)"
+					(mouseout)="onMouseOutGroup(palaceContainer)">
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						xlink:href="assets/images/dot2.png" transform="matrix(0.24 0 0 0.24 409.1341 254.6329)">
+					</image>
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						id="palaceDot" xlink:href="assets/images/dot.png"
+						transform="matrix(0.24 0 0 0.24 409.1341 254.6329)">
+					</image>
+
+					<rect (click)="onClickPalace()" id="palace" x="338.123" y="253.836" opacity="0" fill="#3ACEB8"
+						enable-background="new    " width="96.451" height="65.12" />
+
+				</g>
+
+				<g #parkContainer (mouseover)="onMouseOverGroup(parkContainer)"
+					(mouseout)="onMouseOutGroup(parkContainer)">
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						xlink:href="assets/images/dot2.png" transform="matrix(0.24 0 0 0.24 321.5822 400.6571)">
+					</image>
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						id="parkDot" xlink:href="assets/images/dot.png"
+						transform="matrix(0.24 0 0 0.24 321.5822 400.6571)">
+					</image>
+
+					<rect (click)="onClickPark()" id="park" x="130.006" y="393.788" opacity="0" fill="#3ACEB8"
+						enable-background="new    " width="241.276" height="123.697" />
+
+				</g>
+
+				<g #epeosStoreContainer (mouseover)="onMouseOverGroup(epeosStoreContainer)"
+					(mouseout)="onMouseOutGroup(epeosStoreContainer)">
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						xlink:href="assets/images/dot2.png" transform="matrix(0.24 0 0 0.24 873.7149 636.3967)">
+					</image>
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						id="epeosStoreDot" xlink:href="assets/images/dot.png"
+						transform="matrix(0.24 0 0 0.24 873.7149 636.3967)">
+					</image>
+
+					<rect (click)="onClickEpeosStore()" id="epeosStore" x="815.424" y="636.396" opacity="0"
+						fill="#3ACEB8" enable-background="new    " width="96.451" height="65.12" />
+
+				</g>
+
+				<g #slumsContainer (mouseover)="onMouseOverGroup(slumsContainer)"
+					(mouseout)="onMouseOutGroup(slumsContainer)">
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						xlink:href="assets/images/dot2.png" transform="matrix(0.4033 0 0 0.4033 602.9999 749.6591)">
+					</image>
+					<image overflow="visible" opacity="0" enable-background="new    " width="106" height="115"
+						id="slumsDot" xlink:href="assets/images/dot.png"
+						transform="matrix(0.4033 0 0 0.4033 602.9999 749.6591)">
+					</image>
+
+					<rect (click)="onClickSlums()" id="slums" x="459.132" y="757.076" opacity="0" fill="#3ACEB8"
+						enable-background="new    " width="404.517" height="146.531" />
+
+				</g>
+			</g>
+		</g>
+	</svg>
+
+</div>

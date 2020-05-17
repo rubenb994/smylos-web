@@ -1,0 +1,40 @@
+@import "../../../assets/styles/colors.scss";
+
+.mobile-row {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 3;
+}
+
+.mobile {
+    width: 80%;
+    background-color: white;
+    border: 2px solid;
+    border-color: $secondary;
+    border-radius: 20px;
+}
+
+.error-icon {
+    color: $secondary;
+    font-size: 40px;
+    display: inline-block;
+    align-self: center;
+    vertical-align: middle;
+    margin-right: 16px;
+}
+
+.mobile-text {
+    text-align: justify;
+    color: $primary;
+    padding: 40px;
+}
+
+.error-title {
+    display: inline-block;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+}

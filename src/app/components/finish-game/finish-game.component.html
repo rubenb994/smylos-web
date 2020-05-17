@@ -1,0 +1,14 @@
+<div class="row game-finished-row justify-content-center d-flex align-items-center">
+
+    <div class="col-auto game-finished-col">
+
+        <ng-container *ngIf="choiceMade; else makeChoice">
+            <app-reset-game [choice]="choiceNumber" class="component"></app-reset-game>
+        </ng-container>
+        <ng-template #makeChoice>
+            <app-final-choice (choiceMade)="onChoiceMade($event)" class="component"></app-final-choice>
+        </ng-template>
+
+    </div>
+
+</div>

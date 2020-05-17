@@ -1,0 +1,43 @@
+@import "../../../assets/styles/colors.scss";
+.final-choice-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-finished-text {
+    text-align: justify;
+    color: $primary;
+    padding: 40px 40px 0 40px;
+}
+
+.info-row {
+    width: 100%;
+}
+
+.button-row {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.button-game-finished {
+    padding: 15px 20px;
+    width: 100%;
+    background-color: #ffffff;
+    color: $primary;
+    border-radius: 25px;
+    border: 2px solid;
+    border-color: $primary;
+    transition: 0.3s;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+        border-color: $secondary;
+    }
+}
+
+.text-button-game-finished {
+    margin: 0px;
+}
