@@ -7,13 +7,15 @@ the map
 .map-container,
 #smylos-map {
 	width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
 	overflow: hidden;
 }
 
-* { padding: 0 }
+* {
+	padding: 0;
+}
 
 /*--------------------
 zoom buttons
@@ -28,18 +30,21 @@ zoom buttons
 	width: 40px;
 	border-radius: 50%;
 	color: $primary;
-	vertical-align: middle;
-	text-align: center;
-	border: 0px;
-	
+	border: 2px solid;
+	border-color: $tertiary;
+
 	&:hover {
-        border: 2px solid;
-	border-color: $secondary;        
-    }
+		border: 2px solid;
+		border-color: $secondary;
+	}
+
+	> i {
+		vertical-align: middle;
+		text-align: center;
+	}
 }
 
 .buttonMin {
 	right: 50px;
 	bottom: 100px;
 }
-

@@ -27,7 +27,12 @@ export class AppComponent implements OnInit {
   public isMobile = false;
   public stagesLoading = true;
   public introductionFinished = false;
+
   public displayAlarm = false;
+  public displayAlternativeAlarm = false;
+
+  public displayCredits = false;
+
   public gameFinished = false;
 
   private notSupportedWidth = 995;
@@ -35,9 +40,7 @@ export class AppComponent implements OnInit {
   public blurClass = '';
 
   constructor(private stageService: StageService) {
-    // Todo remove this line below (only for development)
-    GameStateUtils.setLevel(1);
-    // GameStateUtils.setIntroductionCleared(false);
+
   }
 
   ngOnInit(): void {
@@ -67,21 +70,12 @@ export class AppComponent implements OnInit {
         return;
       }
 
-      if (this.currentStage.level === 0) {
-        this.moveToNextStage();
+      if (this.currentStage.level === 4) {
+        this.gameFinished = true;
+        this.applyBlurClass();
         return;
       }
       this.displayAlarm = true;
-    });
-
-    // Subscribe to stage finished property to display and hide the finish-game component.
-    this.stageService.$gameFinished.subscribe(result => {
-      if (result == null) {
-        return;
-      }
-      console.log(result);
-      this.gameFinished = result;
-      this.applyBlurClass();
     });
   }
 
@@ -132,24 +126,24 @@ export class AppComponent implements OnInit {
     this.displayAlarm = false;
   }
 
+  public onCreditButtonOpenClicked(): void {
+    this.displayCredits = true;
+  }
+
+  public onCreditButtonCloseClicked(): void {
+    this.displayCredits = false;
+  }
+
   /**
    * Method to set the blurClass property based on the introductionFinished property or the game finished property.
    * If the game is finished or the introduction is not cleared the blur class will be applied.
    */
   private applyBlurClass(): void {
-    console.log(this.introductionFinished, this.gameFinished);
     if (this.introductionFinished && !this.gameFinished) {
       this.blurClass = '';
     } else {
       this.blurClass = 'blur';
     }
-  }
-
-  private moveToNextStage(): void {
-    const nextLevel = GameStateUtils.getLevel() + 1;
-    GameStateUtils.setLevel(nextLevel);
-
-    this.stageService.setCurrentStage(nextLevel);
   }
 
 }

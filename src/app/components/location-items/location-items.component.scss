@@ -43,14 +43,21 @@ Styling button
     position: fixed;
     left: 25px;
     top: 25px;
+    background-color: $tertiary;
     height: 40px;
     width: 40px;
-    background-color: $tertiary;
     border-radius: 50%;
     color: $primary;
-    vertical-align: middle;
-    text-align: center;
-    border: 0px;
+    border: 2px solid transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        border-color: $secondary;
+        box-sizing: border-box;
+    }
 }
 
 .button-fragment {

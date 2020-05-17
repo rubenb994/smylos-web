@@ -16,6 +16,11 @@ import { MobileErrorComponent } from './components/mobile-error/mobile-error.com
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FinishGameComponent } from './components/finish-game/finish-game.component';
+import { CreditsComponent } from './components/credits/credits.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { FinalChoiceComponent } from './components/final-choice/final-choice.component';
+import { ResetGameComponent } from './components/reset-game/reset-game.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +34,18 @@ import { FinishGameComponent } from './components/finish-game/finish-game.compon
     IntroductionComponent,
     PotionAlarmComponent,
     MobileErrorComponent,
-    FinishGameComponent
+    FinishGameComponent,
+    CreditsComponent,
+    FinalChoiceComponent,
+    ResetGameComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAnalyticsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

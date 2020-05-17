@@ -15,7 +15,9 @@ export class AudioButtonComponent implements OnInit, OnChanges, AfterViewInit, O
   @Input() disableButton = false;
   @Output() audioCompleted = new EventEmitter<Audio>(null);
 
-  public audioPlayerSrc: string;
+  public audioPlayerMp3Src: string;
+  public audioPlayerWavSrc: string;
+
   public audioPlayerId: string;
 
   public paused = true;
@@ -39,10 +41,7 @@ export class AudioButtonComponent implements OnInit, OnChanges, AfterViewInit, O
         return;
       }
 
-
       if (audioPlayer.paused) {
-        // Todo remove line below.
-        this.audioCompleted.emit(this.audio);
         audioPlayer.play();
       } else {
         audioPlayer.pause();
@@ -55,7 +54,8 @@ export class AudioButtonComponent implements OnInit, OnChanges, AfterViewInit, O
       return;
     }
 
-    this.audioPlayerSrc = this.getSrcUrl();
+    this.audioPlayerMp3Src = this.getSrcUrl('mp3');
+    this.audioPlayerWavSrc = this.getSrcUrl('wav');
     this.audioPlayerId = this.audio.audio_id;
 
     this.setDisabledClass();
@@ -68,8 +68,6 @@ export class AudioButtonComponent implements OnInit, OnChanges, AfterViewInit, O
     }
     if (this.autoPlay && audioPlayer.paused) {
       audioPlayer.play();
-      // Todo remove line below.
-      this.audioCompleted.emit(this.audio);
       // Detect changes so that the audio button displays the right icon.
       this.changeDetectorRef.detectChanges();
     }
@@ -98,8 +96,6 @@ export class AudioButtonComponent implements OnInit, OnChanges, AfterViewInit, O
     } else {
       audioPlayer.pause();
     }
-    // Todo remove line below.
-    this.audioCompleted.emit(this.audio);
   }
 
   public checkIfAudioPlayerIsPaused(audioPlayer: HTMLAudioElement): boolean {
@@ -128,13 +124,13 @@ export class AudioButtonComponent implements OnInit, OnChanges, AfterViewInit, O
   /**
    * Method to fetch the src url of a audio file.
    */
-  private getSrcUrl(): string {
+  private getSrcUrl(fileExtenson: string): string {
     if (this.audio == null) {
       return '';
     }
     // Thanks to Andre his weird json this was nessecary since the internal id's use underscores and a lowercase letter.
     // While the audio files are using dots and a capital letter.
     const audioId = this.audio.audio_id.replace('a', 'A').replace('_', '.').replace('_', '.');
-    return `assets/audio/${audioId}.mp3`;
+    return `assets/audio/${audioId}.${fileExtenson}`;
   }
 }

@@ -54,7 +54,7 @@
                 </div>
 
                 <ng-template #npgTyping>
-                    <ng-container *ngIf="!chatFinished">
+                    <ng-container *ngIf="!chatFinished && currentUnfinishedChatItem == null">
                         <div class="npg-typing-container">
                             <div class="lds-ellipsis">
                                 <div></div>
@@ -65,6 +65,7 @@
                         </div>
                     </ng-container>
                 </ng-template>
+
 
 
             </ng-container>

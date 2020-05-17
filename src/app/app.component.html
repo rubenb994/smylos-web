@@ -15,13 +15,17 @@
             <app-finish-game *ngIf="gameFinished"></app-finish-game>
 
             <div class="game-items" [ngClass]="blurClass">
-                <app-potion-alarm *ngIf="displayAlarm" (alarmFinish)="onAlarmFinish()">
+                <app-credits *ngIf="displayCredits" (creditButtonClicked)="onCreditButtonCloseClicked()"></app-credits>
+                <app-potion-alarm *ngIf="displayAlarm" [currentStageLevel]="currentStage.level"
+                    (alarmFinish)="onAlarmFinish()">
                 </app-potion-alarm>
 
                 <app-map (newLocationSelected)="onNewLocationSelected($event)"></app-map>
                 <app-location-items [selectedLocation]="selectedLocation"></app-location-items>
-                <app-toolbar [currentStage]="currentStage"></app-toolbar>
+                <app-toolbar (creditButtonClicked)="onCreditButtonOpenClicked()" [currentStage]="currentStage">
+                </app-toolbar>
                 <app-logo></app-logo>
+
             </div>
 
         </ng-template>
