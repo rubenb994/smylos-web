@@ -1,0 +1,24 @@
+@import "../../../assets/styles/colors.scss";
+
+.button-audio {
+	background-color: white;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	color: $primary;
+	border: 0px;
+
+	&:hover {
+		border: 2px solid;
+		border-color: $secondary;
+	}
+
+	> i {
+		vertical-align: middle;
+		text-align: center;
+	}
+}
+
+.disabled-audio:hover {
+	border: none;
+}

@@ -1,0 +1,24 @@
+<div class="row potion-alarm-row justify-content-center d-flex align-items-center">
+
+    <div class="col-auto potion-alarm">
+        <div class="row">
+            <div class="col-12 potion-alarm-text">
+                <ng-container *ngIf="!displayAlternativePotionAlarm; else displayAlternativeText">
+                    <h2>Potion Alarm</h2>
+                    <p>You ran out of potion and therefore your temporary smile. Without a smile, it is no longer
+                        possible
+                        to interact with the characters in the smiling world. Go back to Epeo's store for a new potion.
+                    </p>
+                </ng-container>
+                <ng-template #displayAlternativeText>
+                    <h2>Tutorial Completed</h2>
+                    <p>You have finished the tutorial. You can now contintue with level 2.
+                    </p>
+                </ng-template>
+
+                <button id="button-potion-alarm" (click)="onClickFinishStage()">Ok</button>
+            </div>
+
+        </div>
+    </div>
+</div>
