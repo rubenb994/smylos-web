@@ -146,5 +146,8 @@
       }
     }
   },
-  "defaultProject": "smylos-web"
+  "defaultProject": "smylos-web",
+  "cli": {
+    "analytics": false
+  }
 }
