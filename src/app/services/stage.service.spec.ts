@@ -162,5 +162,25 @@ describe('StageService', () => {
         });
     });
 
+    describe('calculatePotionAmount', () => {
 
+        beforeEach(() => {
+            service.setCurrentStage(1);
+        });
+
+        it('should have been called', () => {
+            const methodSpy = spyOn(service, 'calculatePotionAmount');
+
+            service.calculatePotionAmount();
+
+            expect(methodSpy).toHaveBeenCalledTimes(1);
+        });
+
+        it('should have called potionAmount with value 100', () => {
+            service.$potionAmount.pipe(skip(1)).subscribe(value => expect(value).toBe(100));
+
+            service.calculatePotionAmount();
+        });
+
+    });
 });
